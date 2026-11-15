@@ -1,0 +1,63 @@
+name: Atualizar Dados R, Compilar Boletins LaTeX e Publicar Jornal
+
+on:
+  # Permite rodar manualmente com 1 clique na aba "Actions" do GitHub
+  workflow_dispatch:
+  # Roda automaticamente todos os dias às 08:00 (horário de Brasília / 11:00 UTC)
+  schedule:
+    - cron: '0 11 * * *'
+  # Roda automaticamente sempre que qualquer integrante da equipe subir um texto em 'boletins/textos_equipe/'
+  push:
+    branches: [ main, master ]
+    paths:
+      - 'boletins/textos_equipe/**'
+      - 'boletins/templates/**'
+      - 'index.qmd'
+      - 'news.qmd'
+      - 'scripts/**'
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  atualizar-e-renderizar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 1. Baixar repositório (Checkout)
+        uses: actions/checkout@v4
+
+      - name: 2. Configurar o R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+
+      - name: 3. Configurar LaTeX (TinyTeX) para compilar os Boletins em PDF
+        uses: r-lib/actions/setup-tinytex@v2
+
+      - name: 4. Instalar pacotes do LaTeX e do R necessários
+        run: |
+          tlmgr install helvetic booktabs tabularx colortbl fancyhdr lastpage parskip babel-portuges
+          Rscript -e 'install.packages(c("jsonlite", "plotly", "DT", "rmarkdown", "knitr", "htmltools"))'
+
+      - name: 5. Executar rotina de extração de indicadores e compilação de Boletins LaTeX (R)
+        run: |
+          Rscript scripts/atualizar_dados.R
+          Rscript scripts/compilar_boletins.R
+
+      - name: 6. Configurar Quarto CLI
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: 7. Renderizar a Central de Boletins (news.html) e o Painel (index.html)
+        run: |
+          quarto render news.qmd --to html
+          quarto render index.qmd
+
+      - name: 8. Salvar PDFs, dados e HTML atualizados no repositório
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add dados/ boletins/publicados/ index.html news.html || true
+          git diff --staged --quiet || git commit -m "chore(boletins): compilacao automatica de boletins LaTeX e atualizacao do painel"
+          git push

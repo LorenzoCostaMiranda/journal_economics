@@ -1,0 +1,1973 @@
+\documentclass[10pt,a4paper]{article}
+
+% ==============================================================================
+% TEMPLATE EDITORIAL — PERIÓDICO EM 2 COLUNAS (DOSSIÊ ANUAL E CARTA DE CONJUNTURA)
+% JORNAL ECONÔMICO DO TOCANTINS
+%   - Dossiê Anual (DA): Verde-Floresta (#0B5D32), Marfim (#FAF6EE) e Carmim (#A61C1C)
+%   - Carta de Conjuntura (CC): Azul Cobalto (#0A2E73), Esmeralda (#1B7A43),
+%     Lima Editorial (#8CE000 no selo escuro) e Azul-Gelo (#F3F6FB)
+% ==============================================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+
+\usepackage[top=1.35cm, bottom=1.45cm, left=1.35cm, right=1.35cm, headheight=14pt, headsep=8pt, footskip=18pt]{geometry}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{colortbl}
+\usepackage{tikz}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{setspace}
+\usepackage{multicol}
+\usepackage{amssymb}
+\usepackage{hyperref}
+
+% Paleta Editorial Dinâmica (Proporção 75% Neutro / 20% Primária / 5% Acento)
+\definecolor{corprimaria}{HTML}{0A2E73}
+\definecolor{corsecundaria}{HTML}{1B7A43}
+\definecolor{coracento}{HTML}{1B7A43}
+\definecolor{coracentoheader}{HTML}{8CE000}
+\definecolor{coracentotexto}{HTML}{0A2E73}
+\definecolor{corfundo}{HTML}{F3F6FB}
+\definecolor{cinzatexto}{HTML}{1E293B}
+\definecolor{cinzasub}{HTML}{475569}
+\definecolor{cinzaborda}{HTML}{CBD5E1}
+\definecolor{verdealta}{HTML}{15803D}
+\definecolor{vermelhobaixa}{HTML}{B91C1C}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=corprimaria,
+  urlcolor=corsecundaria,
+  pdftitle={Carta de Conjuntura do Tocantins — Caderno Integrado de Atividade, Trabalho, Empresas, Comércio Exterior, Fisco, Agropecuária e IPER-TO},
+  pdfauthor={Jornal Economico do Tocantins}
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3.5pt}
+\setlength{\columnsep}{0.60cm}
+\setlength{\columnseprule}{0.4pt}
+\def\columnseprulecolor{\color{cinzaborda}}
+\renewcommand{\arraystretch}{1.14}
+
+% Cabeçalho e Rodapé de Periódico Econômico (Sem sobreposição central)
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.5pt}
+\renewcommand{\footrule}{\hbox to\headwidth{\color{coracento}\leaders\hrule height \footrulewidth\hfill}}
+
+\fancyhead[L]{\ifnum\value{page}>1 \scriptsize\bfseries\color{corprimaria}JORNAL ECONÔMICO DO TOCANTINS \enspace{\color{coracento}$\vert$}\enspace {\mdseries\color{cinzasub}CARTA DE CONJUNTURA DO TOCANTINS}\fi}
+\fancyhead[R]{\ifnum\value{page}>1 \scriptsize\color{cinzasub}Ref.: \textbf{4\textordmasculine{} Trimestre de 2026 (Edição Integrada)} $\cdot$ \#01/2026\fi}
+
+\fancyfoot[L]{\scriptsize\color{cinzasub}\textbf{\color{corprimaria}Jornal Econômico do Tocantins} $\cdot$ Lorenzo Costa e Equipe | Núcleo de Conjuntura do Jornal Econômico do Tocantins $\cdot$ Publicado em 14/11/2026}
+\fancyfoot[R]{\scriptsize\bfseries\color{corprimaria}Pág. \thepage\ de \pageref*{LastPage}}
+
+% Banner de Abertura de Seção Principal (Caderno Periódico)
+\newcommand{\bannersecaoperiodico}[3]{%
+  \par\vspace{0.14cm}%
+  \noindent\begin{tikzpicture}
+    \node[
+      fill=corprimaria,
+      inner xsep=10pt,
+      inner ysep=6pt,
+      text width=\textwidth-20pt,
+      align=left
+    ] (bsec) {
+      \hbox to \linewidth{%
+        {\colorbox{coracentoheader}{\strut\hspace{4pt}\scriptsize\bfseries\color{coracentotexto}SEÇÃO #1\hspace{4pt}}}%
+        \hspace{8pt}%
+        {\normalsize\bfseries\color{white}#2}%
+        \hfill
+      }%
+      \par\vspace{2pt}%
+      {\scriptsize\color{corfundo}#3\par}%
+    };
+    \fill[coracento] (bsec.south west) rectangle ([yshift=-2pt]bsec.south east);
+  \end{tikzpicture}%
+  \par\vspace{0.10cm}%
+}
+
+% Subtítulo de Coluna dentro do Layout de 2 Colunas
+\newcommand{\secaoperiodico}[1]{%
+  \par\vspace{0.10cm}%
+  \noindent{\small\bfseries\color{corprimaria}\rule{0.14cm}{0.26cm}\hspace{4pt}{\color{coracento}\rule{0.06cm}{0.26cm}}\hspace{5pt}#1}%
+  \par\vspace{0.03cm}%
+  {\color{coracento}\hrule height 0.7pt}%
+  \vspace{0.06cm}%
+}
+
+\begin{document}
+\color{cinzatexto}
+
+% ==============================================================================
+% MASTHEAD DE CAPA DO PERIÓDICO (AUTO-AJUSTÁVEL, SEM COLISÃO DE TÍTULO/SUBTÍTULO)
+% ==============================================================================
+\noindent\begin{tikzpicture}
+  \node[
+    fill=corprimaria,
+    inner xsep=12pt,
+    inner ysep=9pt,
+    text width=\textwidth-24pt,
+    align=left
+  ] (masthead) {
+    \hbox to \linewidth{%
+      {\colorbox{coracentoheader}{\strut\hspace{5pt}\scriptsize\bfseries\color{coracentotexto}CARTA DE CONJUNTURA DO TOCANTINS $\cdot$ \#01/2026\hspace{5pt}}}%
+      \hfill
+      {\scriptsize\color{white}\textbf{JORNAL ECONÔMICO DO TOCANTINS} \enspace{\color{coracentoheader}$\vert$}\enspace Publicado em 14/11/2026}%
+    }%
+    \par\vspace{4pt}%
+    {\color{coracento}\hrule height 0.9pt}%
+    \par\vspace{5pt}%
+    {\fontsize{13.5}{16.2}\selectfont\bfseries\color{white}Carta de Conjuntura do Tocantins — Caderno Integrado de Atividade, Trabalho, Empresas, Comércio Exterior, Fisco, Agropecuária e IPER-TO\par}%
+    \vspace{3pt}%
+    {\footnotesize\color{corfundo}Análise interseccional completa das 8 dimensões econômicas estaduais e municipais: PIB e Contas Regionais, PNAD/CAGED/RAIS, Demografia Empresarial e QSA, Balança Comercial (US\$/Kg), Arrecadação CNAE 2.0, Pesquisas Agropecuárias do IBGE (LSPA, PAM, PPM, PEVS, Abate, Leite e Ovos) e Indicador IPER-TO \enspace{\color{coracentoheader}$\vert$}\enspace \textbf{Ref.: 4\textordmasculine{} Trimestre de 2026 (Edição Integrada)}\par}%
+  };
+  \fill[coracento] (masthead.south west) rectangle ([yshift=-2.6pt]masthead.south east);
+\end{tikzpicture}
+
+\vspace{0.10cm}
+
+% ==============================================================================
+% CORPO COMPLETO DO PERIÓDICO (DOSSIÊ ANUAL OU CARTA DE CONJUNTURA)
+% ==============================================================================
+\bannersecaoperiodico{1}{PIB DO TOCANTINS E CONTAS REGIONAIS}{Contas Trimestrais SEPLAN-TO (Ajuste Sazonal X-13ARIMA-SEATS), IBGE Tabela 1621 e Contas Regionais (Tabela 5938)}
+\noindent\makebox[\textwidth][s]{%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.286\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}PIB NOMINAL (TOCANTINS)}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}R\$ 25,8 Bi $\blacktriangledown$ 1,3\%}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Ref.: T1 2026 (SEPLAN-TO)}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}\hfill%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.286\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}IMPOSTOS LÍQUIDOS (TO)}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}R\$ 2,26 Bi $\blacktriangledown$ 0,2\%}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Preços Correntes e Var. Dessaz.}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}\hfill%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.286\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}PIB NOMINAL (BRASIL)}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}R\$ 3,43 Tri $\blacktriangle$ 0,5\%}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}IBGE Tabelas 1846 / 5932}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}%
+}
+\par\vspace{0.03cm}
+\noindent{\fontsize{6.3}{7.5}\selectfont\bfseries\color{corsecundaria}DESEMPENHO SETORIAL NO TRIMESTRE (DO MAIOR CRESCIMENTO AO MENOR, DA ESQUERDA PARA A DIREITA)}\par\vspace{0.02cm}
+\noindent\makebox[\textwidth][s]{%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.286\textwidth, minimum height=0.92cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}1\textordmasculine{} Indústria}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{verdealta}$\blacktriangle$ + 3,1\%}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Maior crescimento trimestral}%
+  };
+  \fill[verdealta] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}\hfill%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.286\textwidth, minimum height=0.92cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}2\textordmasculine{} Serviços}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{verdealta}$\blacktriangle$ + 1,5\%}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Desempenho positivo na margem}%
+  };
+  \fill[verdealta] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}\hfill%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.286\textwidth, minimum height=0.92cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}3\textordmasculine{} Agropecuária}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{vermelhobaixa}$\blacktriangledown$ - 7,2\%}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Retração trimestral na margem}%
+  };
+  \fill[vermelhobaixa] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}%
+}
+
+\vspace{0.04cm}
+\noindent\begin{tikzpicture}
+  \node[fill=corfundo, draw=cinzaborda, line width=0.5pt, rounded corners=2pt,
+        inner xsep=8pt, inner ysep=5pt, text width=\textwidth-17pt, font=\scriptsize\color{cinzatexto}] (dbox) {
+    {\footnotesize\bfseries\color{corprimaria}Radar de Variações, Saltos e Estabilidades Conjunturais}\par\vspace{2pt}
+    \begin{itemize}[leftmargin=11pt, itemsep=1.0pt, topsep=1pt, parsep=0pt]
+       \item \textbf{\color{vermelhobaixa}[OSCILAÇÃO NEGATIVA LEVE] PIB Trimestral do Tocantins (Ajuste Sazonal X-13):} PIB Trimestral do Tocantins (Ajuste Sazonal X-13) apresentou acomodação negativa de -1,28\%. [nível: R\$ 25,8 Bi $\blacktriangledown$ 1,3\%]
+       \item \textbf{\color{verdealta}[AVANÇO MODERADO] PIB Trimestral do Brasil (IBGE Tabela 1621):} PIB Trimestral do Brasil (IBGE Tabela 1621) avançou +1,07\% em trajetória de expansão gradual. [nível: R\$ 3,43 Tri $\blacktriangle$ 0,5\%]
+       \item \textbf{\color{verdealta}[AVANÇO MODERADO] 1\textordmasculine{} Setor em Desempenho (Indústria):} 1\textordmasculine{} Setor em Desempenho (Indústria) avançou +3,07\% em trajetória de expansão gradual. [nível: $\blacktriangle$ + 3,1\%]
+       \item \textbf{\color{vermelhobaixa}[RETRAÇÃO RELEVANTE] 3\textordmasculine{} Setor em Desempenho (Agropecuária):} 3\textordmasculine{} Setor em Desempenho (Agropecuária) recuou -7,16\%, sinalizando desaceleração relevante no período. [nível: $\blacktriangledown$ - 7,2\%]
+    \end{itemize}
+  };
+  \fill[corprimaria] (dbox.north west) rectangle ([xshift=3pt]dbox.south west);
+\end{tikzpicture}
+
+\vspace{0.04cm}
+\begin{multicols}{2}
+\secaoperiodico{1.1. Dinâmica Trimestral Dessazonalizada e Pareamento Nacional}
+O acompanhamento da atividade econômica estadual exige separar o componente cíclico estrutural da forte sazonalidade agrícola concentrada nos dois primeiros trimestres do ano. Aplicando a especificação oficial X-13ARIMA-SEATS às séries encadeadas da SEPLAN-TO e pareando-as lado a lado com a Tabela 1621 do IBGE para o Brasil, verifica-se que o PIB Nominal do Tocantins atingiu \textbf{R\$ 25,8 Bi $\blacktriangledown$ 1,3\%} na referência \textbf{T1 2026}, enquanto a economia nacional registrou \textbf{R\$ 3,43 Tri $\blacktriangle$ 0,5\%}.
+
+Na decomposição setorial dessazonalizada, liderou o desempenho estadual o segmento de \textbf{Indústria ($\blacktriangle$ + 3,1\%)}, seguido por \textbf{Serviços ($\blacktriangle$ + 1,5\%)} e \textbf{Agropecuária ($\blacktriangledown$ - 7,2\%)}. A resiliência conjunta da indústria de transformação, construção e serviços urbanos tem amortecido as oscilações climáticas e de preços internacionais das commodities agrícolas.
+
+\secaoperiodico{1.2. Contas Regionais (Tabela 5938 IBGE) e Hierarquia Municipal}
+Sob a ótica estrutural das Contas Regionais do Brasil (Tabela 5938 do IBGE, divulgada com defasagem metodológica de dois anos), o Tocantins consolida ganhos contínuos de participação tanto no Produto Interno Bruto da Região Norte quanto no total nacional. A distribuição espacial do PIB municipal evidencia a complementaridade entre o polo de serviços, administração e comércio da capital (Palmas), o eixo agroindustrial e logístico do Norte/Médio Norte (Araguaína, Colinas e Guaraí) e os polos graneleiros e logísticos do Sul e Sudeste (Porto Nacional, Gurupi, Paraíso do Tocantins, Formoso do Araguaia e Campos Lindos).
+\end{multicols}
+\begin{center}\includegraphics[width=0.78\textwidth]{figuras/2026_10_carta_pib_s1_pib_to_br.pdf}\end{center}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Valores Correntes Trimestrais do PIB e Valor Adicionado Setorial do Tocantins (R\$ Milhões — SEPLAN-TO)}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.5pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrrrrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Trimestre} & \textbf{\color{white}VA Agro (R\$ Mi)} & \textbf{\color{white}VA Ind. (R\$ Mi)} & \textbf{\color{white}VA Serv. (R\$ Mi)} & \textbf{\color{white}VA Total (R\$ Mi)} & \textbf{\color{white}Impostos (R\$ Mi)} & \textbf{\color{white}PIB Nominal (R\$ Mi)} \\
+\midrule
+T2 2024 & R\$ 4.745,7 & R\$ 2.000,1 & R\$ 10.279,5 & R\$ 17.025,4 & R\$ 1.760,5 & R\$ 18.785,9 \\
+\rowcolor{corfundo} T3 2024 & R\$ 2.275,5 & R\$ 2.006,9 & R\$ 10.496,0 & R\$ 14.778,4 & R\$ 1.764,3 & R\$ 16.542,6 \\
+T4 2024 & R\$ 1.251,3 & R\$ 1.966,6 & R\$ 10.332,3 & R\$ 13.550,2 & R\$ 1.720,2 & R\$ 15.270,3 \\
+\rowcolor{corfundo} T1 2025 & R\$ 8.665,9 & R\$ 2.046,9 & R\$ 10.961,2 & R\$ 21.673,9 & R\$ 1.978,3 & R\$ 23.652,2 \\
+T2 2025 & R\$ 5.782,0 & R\$ 2.145,5 & R\$ 11.280,4 & R\$ 19.207,9 & R\$ 1.997,3 & R\$ 21.205,2 \\
+\rowcolor{corfundo} T3 2025 & R\$ 2.827,9 & R\$ 2.134,7 & R\$ 11.375,2 & R\$ 16.337,8 & R\$ 1.976,9 & R\$ 18.314,7 \\
+T4 2025 & R\$ 1.418,3 & R\$ 2.012,5 & R\$ 11.484,5 & R\$ 14.915,3 & R\$ 1.976,6 & R\$ 16.891,9 \\
+\rowcolor{corfundo} T1 2026 & R\$ 8.971,5 & R\$ 2.423,7 & R\$ 12.095,4 & R\$ 23.490,6 & R\$ 2.263,0 & R\$ 25.753,6 \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: SEPLAN-TO — Contas Regionais Trimestrais do Tocantins (Aba Valores Correntes).}}
+\end{minipage}
+\par\vspace{0.08cm}
+
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Comparativo Lado a Lado: Série Dessazonalizada X-13 (Tocantins) vs. Tabela 1621 IBGE (Brasil)}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.5pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrrrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Trimestre} & \textbf{\color{white}PIB TO: Índ. (Var.)} & \textbf{\color{white}PIB BR: Índ. (Var.)} & \textbf{\color{white}Agro TO/BR} & \textbf{\color{white}Ind. TO/BR} & \textbf{\color{white}Serv. TO/BR} \\
+\midrule
+T2 2024 & 173.1 (+4.87\%) & 189.6 (+1.71\%) & +15.4\% / -1.6\% & +2.2\% / +0.8\% & +2.4\% / +1.0\% \\
+\rowcolor{corfundo} T3 2024 & 174.4 (+0.71\%) & 191.2 (+0.90\%) & -6.6\% / +0.5\% & -0.0\% / +0.6\% & +1.0\% / +0.8\% \\
+T4 2024 & 177.2 (+1.64\%) & 191.4 (+0.08\%) & +17.1\% / -2.2\% & +0.1\% / +0.3\% & -0.7\% / +0.0\% \\
+\rowcolor{corfundo} T1 2025 & 183.5 (+3.54\%) & 193.8 (+1.26\%) & +3.5\% / +16.1\% & -3.3\% / +0.0\% & +2.1\% / +0.2\% \\
+T2 2025 & 180.1 (-1.85\%) & 194.5 (+0.36\%) & -1.1\% / -3.2\% & +5.9\% / +0.7\% & -1.1\% / +0.8\% \\
+\rowcolor{corfundo} T3 2025 & 179.7 (-0.20\%) & 194.7 (+0.11\%) & -4.6\% / +0.5\% & -0.7\% / +0.6\% & +0.5\% / +0.3\% \\
+T4 2025 & 181.6 (+1.01\%) & 195.2 (+0.25\%) & +6.5\% / +0.7\% & -3.3\% / -0.7\% & +1.4\% / +0.6\% \\
+\rowcolor{corfundo} T1 2026 & 179.2 (-1.28\%) & 197.3 (+1.07\%) & -7.2\% / +2.2\% & +3.1\% / +1.2\% & +1.5\% / +0.4\% \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: SEPLAN-TO (ajuste sazonal próprio X-13ARIMA-SEATS) e IBGE/SIDRA (Tabela 1621: códs. 90687, 90691, 90696 e 90707).}}
+\end{minipage}
+\par\vspace{0.08cm}
+
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Contas Regionais do Brasil (IBGE - Tabela 5938): Estrutura do PIB e Valor Adicionado do Tocantins}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.5pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrrrrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Ano} & \textbf{\color{white}PIB (R\$ Mi)} & \textbf{\color{white}Impostos (R\$ Mi)} & \textbf{\color{white}VA Agro (R\$ Mi)} & \textbf{\color{white}VA Ind. (R\$ Mi)} & \textbf{\color{white}VA Serv. (R\$ Mi)} & \textbf{\color{white}Part. Norte / BR} \\
+\midrule
+2018 & R\$ 35.666,2 & R\$ 3.554,2 & R\$ 4.192,2 & R\$ 3.942,5 & R\$ 23.977,2 & 9.20\% / 0.51\% \\
+\rowcolor{corfundo} 2019 & R\$ 39.355,9 & R\$ 3.817,5 & R\$ 5.036,9 & R\$ 4.211,5 & R\$ 26.290,1 & 9.36\% / 0.53\% \\
+2020 & R\$ 43.649,8 & R\$ 4.140,9 & R\$ 8.033,2 & R\$ 4.408,4 & R\$ 27.067,3 & 9.13\% / 0.57\% \\
+\rowcolor{corfundo} 2021 & R\$ 51.780,8 & R\$ 5.085,4 & R\$ 13.364,4 & R\$ 5.000,3 & R\$ 28.330,7 & 9.18\% / 0.57\% \\
+2022 & R\$ 58.208,8 & R\$ - & R\$ - & R\$ - & R\$ - & 10.13\% / 0.58\% \\
+\rowcolor{corfundo} 2023 & R\$ 64.317,7 & R\$ - & R\$ - & R\$ - & R\$ - & 10.10\% / 0.59\% \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: IBGE — Contas Regionais do Brasil (Tabela 5938). Nota: Pesquisa estrutural anual com defasagem oficial de \textasciitilde{}2 anos.}}
+\end{minipage}
+\par\vspace{0.08cm}
+
+\par\vspace{0.08cm}
+\noindent\begin{minipage}[t]{0.482\textwidth}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Ótica Anualizada (Acum. 4 Trimestres — SEPLAN-TO)}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.5pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrrrrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Trim.} & \textbf{\color{white}Agro} & \textbf{\color{white}Ind.} & \textbf{\color{white}Serv.} & \textbf{\color{white}VA Tot.} & \textbf{\color{white}Imp.} & \textbf{\color{white}PIB Ac. 4T} \\
+\midrule
+T4 2024 & +9.77\% & +8.52\% & +6.01\% & +7.22\% & +6.09\% & +7.11\% \\
+\rowcolor{corfundo} T1 2025 & +24.92\% & +5.80\% & +5.30\% & +10.21\% & +5.79\% & +9.79\% \\
+T2 2025 & +19.62\% & +4.08\% & +4.36\% & +8.30\% & +4.69\% & +7.96\% \\
+\rowcolor{corfundo} T3 2025 & +21.75\% & +2.50\% & +2.44\% & +7.24\% & +2.88\% & +6.83\% \\
+T4 2025 & +19.60\% & +0.43\% & +1.82\% & +5.87\% & +2.34\% & +5.54\% \\
+\rowcolor{corfundo} T1 2026 & +2.72\% & +1.90\% & +1.72\% & +1.53\% & +1.81\% & +1.55\% \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: SEPLAN-TO (Aba Acum. em 4 trimestres).}}
+\end{minipage}
+\par\vspace{0.08cm}
+\end{minipage}\hfill
+{\color{cinzaborda}\vrule width 0.4pt}\hfill
+\begin{minipage}[t]{0.482\textwidth}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Top 10 Municípios no PIB (IBGE Tabela 5938)}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.0pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{cllrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Pos.} & \textbf{\color{white}Município (TO)} & \textbf{\color{white}Ano} & \textbf{\color{white}PIB Corrente} & \textbf{\color{white}Part. TO} \\
+\midrule
+1\textordmasculine{} & Palmas & 2023 & R\$ 14.168,47 Mi & 22,03\% \\
+\rowcolor{corfundo} 2\textordmasculine{} & Araguaína & 2023 & R\$ 7.357,64 Mi & 11,44\% \\
+3\textordmasculine{} & Gurupi & 2023 & R\$ 3.695,02 Mi & 5,74\% \\
+\rowcolor{corfundo} 4\textordmasculine{} & Porto Nacional & 2023 & R\$ 3.195,89 Mi & 4,97\% \\
+5\textordmasculine{} & Paraíso do Tocantins & 2023 & R\$ 2.288,33 Mi & 3,56\% \\
+\rowcolor{corfundo} 6\textordmasculine{} & Colinas do Tocantins & 2023 & R\$ 1.161,30 Mi & 1,81\% \\
+7\textordmasculine{} & Guaraí & 2023 & R\$ 1.130,11 Mi & 1,76\% \\
+\rowcolor{corfundo} 8\textordmasculine{} & Pedro Afonso & 2023 & R\$ 1.090,44 Mi & 1,70\% \\
+9\textordmasculine{} & Lagoa da Confusão & 2023 & R\$ 1.089,84 Mi & 1,69\% \\
+\rowcolor{corfundo} 10\textordmasculine{} & Cariri do Tocantins & 2023 & R\$ 997,80 Mi & 1,55\% \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: IBGE — PIB dos Municípios (Tabela 5938).}}
+\end{minipage}
+\par\vspace{0.08cm}
+\end{minipage}
+\par\vspace{0.08cm}
+
+\newpage
+\bannersecaoperiodico{2}{MERCADO DE TRABALHO: PNAD CONTÍNUA, NOVO CAGED E RAIS}{Desocupação nas 27 UFs (4099), Horas Trabalhadas (6374), Movimentação CAGED e Microdados Estruturais da RAIS}
+\noindent\makebox[\textwidth][s]{%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}ESTOQUE RAIS (2025)}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}437.580}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Estab. Ativos: 33.198}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}\hfill%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}SALDO CAGED (09/26)}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}+716}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Adm: 11.263 | Desl: 10.547}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}\hfill%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}DESOCUPAÇÃO (PNAD)}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}4,1\%}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}IBGE Tabela 4099 (27 UFs)}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}\hfill%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}REMUNERAÇÃO RAIS / PNAD}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}R\$ 4.022,93}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}PNAD Habitual: R\$ 3.351}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}%
+}
+
+\vspace{0.08cm}
+\noindent\begin{tikzpicture}
+  \node[fill=corfundo, draw=cinzaborda, line width=0.5pt, rounded corners=2pt,
+        inner xsep=8pt, inner ysep=5pt, text width=\textwidth-17pt, font=\scriptsize\color{cinzatexto}] (dbox) {
+    {\footnotesize\bfseries\color{corprimaria}Radar de Variações, Saltos e Estabilidades Conjunturais}\par\vspace{2pt}
+    \begin{itemize}[leftmargin=11pt, itemsep=1.0pt, topsep=1pt, parsep=0pt]
+       \item \textbf{\color{vermelhobaixa}[QUEDA DRÁSTICA / CONTRAÇÃO ACENTUADA] Saldo Mensal do Novo CAGED (09/26):} Saldo Mensal do Novo CAGED (09/26) sofreu retração acentuada de -42,40\% (queda drástica que requer atenção conjuntural). [nível: +716 vagas]
+       \item \textbf{\color{verdealta}[CRESCIMENTO FORTE] Estoque de Vínculos Ativos (RAIS):} Estoque de Vínculos Ativos (RAIS) apresentou crescimento robusto de +5,40\% no período. [nível: 437.580]
+       \item \textbf{\color{vermelhobaixa}[OSCILAÇÃO NEGATIVA LEVE] Taxa de Desocupação PNAD (Tocantins):} Taxa de Desocupação PNAD (Tocantins) apresentou acomodação negativa de -0,30\%. [nível: 4,1\%]
+       \item \textbf{\color{verdealta}[AVANÇO MODERADO] Rendimento Médio Real Habitual (PNAD):} Rendimento Médio Real Habitual (PNAD) avançou +4,20\% em trajetória de expansão gradual. [nível: R\$ 3.351]
+    \end{itemize}
+  };
+  \fill[corprimaria] (dbox.north west) rectangle ([xshift=3pt]dbox.south west);
+\end{tikzpicture}
+
+\vspace{0.08cm}
+\begin{multicols}{2}
+\secaoperiodico{2.1. PNAD Contínua: Desocupação (27 UFs) e Jornada por Ocupação}
+A taxa de desocupação do Tocantins situou-se em \textbf{4,1\%} na PNAD Contínua Trimestral (Tabela 4099 do IBGE), posicionando o Estado entre os mercados de trabalho mais aquecidos da Região Norte e do país. O rendimento médio mensal real habitual no trabalho principal alcançou \textbf{R\$ 3.351} (Tabela 5436). Adicionalmente, os dados da Tabela 6374 do IBGE detalham a intensidade da jornada semanal habitual por posição na ocupação (Empregados, Empregadores, Conta Própria e Trabalhadores Familiares Auxiliares), evidenciando o elevado grau de engajamento produtivo dos empregadores e assalariados formais no Estado.
+
+\secaoperiodico{2.2. Fluxo Mensal (Novo CAGED) e Estoque Anual (RAIS sem Abandonados)}
+No mercado formal celetista (Novo CAGED), o Tocantins registrou saldo consolidado de \textbf{+716 postos} em \textbf{Setembro/2026}, resultante de \textbf{11.263 admissões} (salário médio inicial de \textbf{R\$ 2.117,32}) e \textbf{10.547 desligamentos}. Na base estrutural da RAIS (\textbf{2025}), após a exclusão rigorosa dos vínculos abandonados em 31/12, o Estado contabiliza \textbf{437.580 vínculos ativos} distribuídos em \textbf{33.198 estabelecimentos empregadores}, com remuneração média de \textbf{R\$ 4.022,93}.
+\end{multicols}
+\begin{center}\includegraphics[width=0.92\textwidth]{figuras/2026_10_carta_pib_s2_trab_caged.pdf}\end{center}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}[t]{0.482\textwidth}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Movimentação Setorial do Novo CAGED no Tocantins (Setembro/2026)}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.5pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrrrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Grande Grupamento Setorial} & \textbf{\color{white}Admissões} & \textbf{\color{white}Desligamentos} & \textbf{\color{white}Saldo Mês} & \textbf{\color{white}Saldo Acum. Ano} & \textbf{\color{white}Salário Médio Adm.} \\
+\midrule
+Serviços & 4.735 & 4.145 & +590 & +2.634 & R\$ 2.055,59 \\
+\rowcolor{corfundo} Construção & 1.212 & 1.001 & +211 & +2.229 & R\$ 2.531,37 \\
+Comércio & 3.033 & 2.912 & +121 & +329 & R\$ 1.900,07 \\
+\rowcolor{corfundo} Agropecuária & 1.179 & 1.366 & -187 & -851 & R\$ 2.438,64 \\
+Indústria & 1.104 & 1.123 & -19 & +788 & R\$ 2.172,38 \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: MTE — Microdados do Novo CAGED (MOV + FOR - EXC).}}
+\end{minipage}
+\par\vspace{0.08cm}
+\end{minipage}\hfill
+{\color{cinzaborda}\vrule width 0.4pt}\hfill
+\begin{minipage}[t]{0.482\textwidth}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Top 5 Municípios do Tocantins em Estoque Formal (RAIS) e Saldo Mensal (Novo CAGED)}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.0pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{clrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Pos.} & \textbf{\color{white}Município (Top 5 TO)} & \textbf{\color{white}Estoque (RAIS) 2025} & \textbf{\color{white}Saldo (Novo CAGED) 09/26} \\
+\midrule
+1\textordmasculine{} & Palmas & 220.673 & +399 \\
+\rowcolor{corfundo} 2\textordmasculine{} & Araguaína & 47.010 & +180 \\
+3\textordmasculine{} & Gurupi & 20.492 & +89 \\
+\rowcolor{corfundo} 4\textordmasculine{} & Porto Nacional & 14.172 & +76 \\
+5\textordmasculine{} & Paraíso do Tocantins & 12.288 & +27 \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: MTE — Microdados da RAIS (vínculos ativos em 31/12 sem abandonados) e Novo CAGED.}}
+\end{minipage}
+\par\vspace{0.08cm}
+\end{minipage}
+\par\vspace{0.08cm}
+
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}PNAD Contínua (IBGE - Tabela 4099): Ranking Completo da Taxa de Desocupação nas 27 UFs e Brasil (1\textordmasculine{} = Menor Desemprego)}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.5pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{clrrclrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Pos.} & \textbf{\color{white}Unidade da Federação} & \textbf{\color{white}Taxa} & \textbf{\color{white}Var.} & \textbf{\color{white}Pos.} & \textbf{\color{white}Unidade da Federação} & \textbf{\color{white}Taxa} & \textbf{\color{white}Var.} \\
+\midrule
+1\textordmasculine{} & Santa Catarina & 2,1\% & -0.1 p.p. (12m) & 15\textordmasculine{} & Maranhão & 6,0\% & -0.6 p.p. (12m) \\
+\rowcolor{corfundo} 2\textordmasculine{} & Mato Grosso & 2,2\% & -0.6 p.p. (12m) & 16\textordmasculine{} & Pará & 6,2\% & -0.7 p.p. (12m) \\
+3\textordmasculine{} & Espírito Santo & 2,3\% & -0.8 p.p. (12m) & 17\textordmasculine{} & Distrito Federal & 6,5\% & -2.2 p.p. (12m) \\
+\rowcolor{corfundo} 4\textordmasculine{} & Rondônia & 2,6\% & +0.3 p.p. (12m) & 18\textordmasculine{} & Acre & 6,6\% & -0.7 p.p. (12m) \\
+5\textordmasculine{} & Mato Grosso do Sul & 2,7\% & -0.2 p.p. (12m) & 19\textordmasculine{} & Ceará & 6,6\% & +0.0 p.p. (12m) \\
+\rowcolor{corfundo} 6\textordmasculine{} & Paraná & 3,1\% & -0.7 p.p. (12m) & 20\textordmasculine{} & Rio de Janeiro & 7,1\% & -1.0 p.p. (12m) \\
+7\textordmasculine{} & Minas Gerais & 3,8\% & -0.2 p.p. (12m) & 21\textordmasculine{} & Amazonas & 7,5\% & -0.2 p.p. (12m) \\
+\rowcolor{corfundo} 8\textordmasculine{} & Goiás & 4,0\% & -0.4 p.p. (12m) & 22\textordmasculine{} & Alagoas & 7,9\% & +0.4 p.p. (12m) \\
+9\textordmasculine{} & * Tocantins (TO) & 4,1\% & -1.2 p.p. (12m) & 23\textordmasculine{} & Sergipe & 7,9\% & -0.2 p.p. (12m) \\
+\rowcolor{corfundo} 10\textordmasculine{} & Rio Grande do Sul & 4,2\% & -0.1 p.p. (12m) & 24\textordmasculine{} & Piauí & 8,3\% & -0.2 p.p. (12m) \\
+11\textordmasculine{} & Roraima & 5,0\% & -0.9 p.p. (12m) & 25\textordmasculine{} & Pernambuco & 8,3\% & -2.1 p.p. (12m) \\
+\rowcolor{corfundo} 12\textordmasculine{} & Paraíba & 5,4\% & -1.6 p.p. (12m) & 26\textordmasculine{} & Bahia & 9,1\% & +0.0 p.p. (12m) \\
+13\textordmasculine{} & São Paulo & 5,4\% & +0.3 p.p. (12m) & 27\textordmasculine{} & Amapá & 9,8\% & +2.9 p.p. (12m) \\
+\rowcolor{corfundo} 14\textordmasculine{} & Rio Grande do Norte & 5,6\% & -1.9 p.p. (12m) & BR & Brasil & 5,4\% & -0.4 p.p. (12m) \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: IBGE — PNAD Contínua Trimestral (Tabela 4099). Nota: Variação em pontos percentuais (p.p.).}}
+\end{minipage}
+\par\vspace{0.08cm}
+
+\par\vspace{0.08cm}
+\noindent\begin{minipage}[t]{0.482\textwidth}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Emprego Formal por Escolaridade (RAIS 2025)}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.0pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Grau de Instrução (RAIS)} & \textbf{\color{white}Vínculos Ativos} & \textbf{\color{white}Part. \%} & \textbf{\color{white}Remuneração (R\$)} \\
+\midrule
+Fundamental Incompleto ou Menos & 31.898 & 7,3\% & R\$ 2.229,08 \\
+\rowcolor{corfundo} Fundamental Completo & 14.612 & 3,3\% & R\$ 2.613,98 \\
+Médio Incompleto & 17.220 & 3,9\% & R\$ 2.166,08 \\
+\rowcolor{corfundo} Médio Completo & 214.334 & 49,0\% & R\$ 2.727,29 \\
+Superior Incompleto & 8.281 & 1,9\% & R\$ 2.869,54 \\
+\rowcolor{corfundo} Superior Completo ou Pós-Graduação & 151.235 & 34,6\% & R\$ 7.015,30 \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: MTE — Microdados da RAIS (sem abandonados).}}
+\end{minipage}
+\par\vspace{0.08cm}
+\end{minipage}\hfill
+{\color{cinzaborda}\vrule width 0.4pt}\hfill
+\begin{minipage}[t]{0.482\textwidth}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Série 12 Meses do Novo CAGED Consolidado (TO)}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.0pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Mês/Ano} & \textbf{\color{white}Admissões} & \textbf{\color{white}Deslig.} & \textbf{\color{white}Saldo Líq.} & \textbf{\color{white}Sal. Adm.} \\
+\midrule
+10/25 & 11.729 & 11.702 & +27 & R\$ 1.973,31 \\
+\rowcolor{corfundo} 11/25 & 9.774 & 10.137 & -363 & R\$ 1.986,90 \\
+12/25 & 7.739 & 12.188 & -4.449 & R\$ 1.985,61 \\
+\rowcolor{corfundo} 01/26 & 12.090 & 10.505 & +1.585 & R\$ 2.124,62 \\
+02/26 & 12.495 & 11.112 & +1.383 & R\$ 2.066,93 \\
+\rowcolor{corfundo} 03/26 & 12.262 & 11.595 & +667 & R\$ 2.042,92 \\
+04/26 & 11.746 & 11.149 & +597 & R\$ 2.082,84 \\
+\rowcolor{corfundo} 05/26 & 11.014 & 11.650 & -636 & R\$ 2.100,71 \\
+06/26 & 11.299 & 11.401 & -102 & R\$ 2.109,84 \\
+\rowcolor{corfundo} 07/26 & 11.794 & 12.118 & -324 & R\$ 2.092,34 \\
+08/26 & 12.610 & 11.367 & +1.243 & R\$ 2.076,50 \\
+\rowcolor{corfundo} 09/26 & 11.263 & 10.547 & +716 & R\$ 2.117,32 \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: MTE — Microdados do Novo CAGED (MOV+FOR-EXC).}}
+\end{minipage}
+\par\vspace{0.08cm}
+\end{minipage}
+\par\vspace{0.08cm}
+
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}PNAD Contínua (IBGE - Tabela 6374): Média de Horas Semanais Habitualmente Trabalhadas no Trabalho Principal (TO vs. Brasil)}\par\vspace{2pt}
+  {\fontsize{7.0}{8.6}\selectfont\setlength{\tabcolsep}{4.5pt}%
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}Xrrrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Posição na Ocupação (14 anos ou mais)} & \textbf{\color{white}Tocantins (Trim. Ant.)} & \textbf{\color{white}Tocantins (Atual)} & \textbf{\color{white}Brasil (Atual)} & \textbf{\color{white}Diferencial TO vs. BR} \\
+\midrule
+Empregado & 38,8 h/sem & 38,5 h/sem & 39,6 h/sem & -1.1 h \\
+\rowcolor{corfundo} Empregador & 36,7 h/sem & 35,7 h/sem & 37,5 h/sem & -1.8 h \\
+Conta própria & 43,6 h/sem & 43,2 h/sem & 44,9 h/sem & -1.7 h \\
+\rowcolor{corfundo} Trabalhador familiar auxiliar & 28,8 h/sem & 31,9 h/sem & 28,9 h/sem & +3.0 h \\
+\bottomrule
+\end{tabularx}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: IBGE — PNAD Contínua Trimestral (Tabela 6374: Empregado, Empregador, Conta própria e Trabalhador familiar auxiliar).}}
+\end{minipage}
+\par\vspace{0.08cm}
+
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Novo CAGED (Setembro/2026): Admissões, Desligamentos, Saldo e Salário Médio por Faixa Etária, Sexo e Tipo de Estabelecimento}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.5pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{llrrrrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Recorte} & \textbf{\color{white}Categoria (Novo CAGED)} & \textbf{\color{white}Admissões Mês} & \textbf{\color{white}Desligamentos Mês} & \textbf{\color{white}Saldo Mês} & \textbf{\color{white}Saldo Acum. Ano} & \textbf{\color{white}Salário Médio Adm.} \\
+\midrule
+Faixa Etária & Até 17 anos & 324 & 154 & +170 & +1.568 & R\$ 1.427,43 \\
+\rowcolor{corfundo} Faixa Etária & 18 a 24 anos & 3.853 & 3.426 & +427 & +4.282 & R\$ 1.839,81 \\
+Faixa Etária & 25 a 29 anos & 2.084 & 2.001 & +83 & -279 & R\$ 2.124,87 \\
+\rowcolor{corfundo} Faixa Etária & 30 a 39 anos & 2.681 & 2.651 & +30 & -388 & R\$ 2.331,48 \\
+Faixa Etária & 40 a 49 anos & 1.617 & 1.611 & +6 & +27 & R\$ 2.393,42 \\
+\rowcolor{corfundo} Faixa Etária & 50 a 64 anos & 641 & 642 & -1 & -167 & R\$ 2.518,49 \\
+Faixa Etária & 65 anos ou mais & 34 & 49 & -15 & -137 & R\$ 2.717,27 \\
+\rowcolor{corfundo} Faixa Etária & Não Identificado & 29 & 13 & +16 & +223 & R\$ 1.750,32 \\
+Gênero / Sexo & Mulher & 4.261 & 3.890 & +371 & +2.328 & R\$ 1.924,63 \\
+\rowcolor{corfundo} Gênero / Sexo & Homem & 7.002 & 6.657 & +345 & +2.801 & R\$ 2.234,84 \\
+Tipo Estab. & CNPJ & 9.882 & 9.263 & +619 & +4.864 & R\$ 2.055,04 \\
+\rowcolor{corfundo} Tipo Estab. & CNO (Cadastro Nacional de Obra) & 481 & 399 & +82 & +1.041 & R\$ 2.685,75 \\
+Tipo Estab. & CAEPF (Pessoa Física / Produtor Rural) & 900 & 885 & +15 & -776 & R\$ 2.490,64 \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: MTE — Microdados do Novo CAGED (MOV + FOR - EXC).}}
+\end{minipage}
+\par\vspace{0.08cm}
+
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Novo CAGED: Movimentação e Salário Médio Mensal Declarado por Nível de Escolaridade no Tocantins}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.5pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrrrrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Grau de Instrução (Novo CAGED)} & \textbf{\color{white}Admissões} & \textbf{\color{white}Desligamentos} & \textbf{\color{white}Saldo Mês} & \textbf{\color{white}Saldo Ano} & \textbf{\color{white}Salário Adm.} & \textbf{\color{white}Salário Desl.} \\
+\midrule
+Fundamental Incompleto ou Menos & 559 & 641 & -82 & -186 & R\$ 2.113,82 & R\$ 2.154,81 \\
+\rowcolor{corfundo} Fundamental Completo & 422 & 422 & 0 & +94 & R\$ 2.207,00 & R\$ 2.173,87 \\
+Médio Incompleto & 825 & 711 & +114 & +155 & R\$ 1.915,54 & R\$ 1.893,17 \\
+\rowcolor{corfundo} Médio Completo & 8.252 & 7.609 & +643 & +4.988 & R\$ 2.027,91 & R\$ 2.051,76 \\
+Superior Incompleto & 465 & 441 & +24 & +199 & R\$ 2.112,53 & R\$ 2.242,57 \\
+\rowcolor{corfundo} Superior Completo ou Pós-Graduação & 740 & 723 & +17 & -121 & R\$ 3.320,57 & R\$ 3.462,77 \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: MTE — Microdados do Novo CAGED.}}
+\end{minipage}
+\par\vspace{0.08cm}
+
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}RAIS (2025 — Sem Vínculos Abandonados): Estoque e Remuneração Média por Faixa Etária, Raça/Cor e Sexo no Tocantins}\par\vspace{2pt}
+  {\fontsize{7.0}{8.6}\selectfont\setlength{\tabcolsep}{4.5pt}%
+\begin{tabularx}{\linewidth}{l>{\raggedright\arraybackslash}Xrrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Dimensão} & \textbf{\color{white}Categoria Demográfica (RAIS)} & \textbf{\color{white}Vínculos Ativos (31/12)} & \textbf{\color{white}Participação (\%)} & \textbf{\color{white}Remuneração Média (R\$)} \\
+\midrule
+Faixa Etária & 10 a 14 anos & 49 & 0,0\% & R\$ 777,83 \\
+\rowcolor{corfundo} Faixa Etária & 15 a 17 anos & 3.234 & 0,7\% & R\$ 1.044,48 \\
+Faixa Etária & 18 a 24 anos & 56.164 & 12,8\% & R\$ 2.054,81 \\
+\rowcolor{corfundo} Faixa Etária & 25 a 29 anos & 56.159 & 12,8\% & R\$ 2.901,45 \\
+Faixa Etária & 30 a 39 anos & 116.901 & 26,7\% & R\$ 3.729,21 \\
+\rowcolor{corfundo} Faixa Etária & 40 a 49 anos & 119.087 & 27,2\% & R\$ 4.894,83 \\
+Faixa Etária & 50 a 64 anos & 77.858 & 17,8\% & R\$ 5.674,80 \\
+\rowcolor{corfundo} Faixa Etária & 65 anos ou mais & 8.125 & 1,9\% & R\$ 6.350,54 \\
+Faixa Etária & Não Identificado & 3 & 0,0\% & R\$ - \\
+\rowcolor{corfundo} Raça / Cor & Parda & 307.895 & 70,4\% & R\$ 3.557,54 \\
+Raça / Cor & Branca & 76.255 & 17,4\% & R\$ 5.838,22 \\
+\rowcolor{corfundo} Raça / Cor & Preta & 27.438 & 6,3\% & R\$ 3.830,02 \\
+Raça / Cor & Não Identificado & 17.804 & 4,1\% & R\$ 4.132,99 \\
+\rowcolor{corfundo} Raça / Cor & Amarela & 5.043 & 1,1\% & R\$ 4.497,35 \\
+Raça / Cor & Indígena & 3.145 & 0,7\% & R\$ 2.945,77 \\
+\rowcolor{corfundo} Gênero / Sexo & Homem & 224.302 & 51,3\% & R\$ 4.154,66 \\
+Gênero / Sexo & Mulher & 213.278 & 48,7\% & R\$ 3.872,06 \\
+\bottomrule
+\end{tabularx}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: MTE — Microdados da RAIS (filtro oficial: ind\_vinculo\_abandonado\_codigo == 0 e vínculo ativo em 31/12).}}
+\end{minipage}
+\par\vspace{0.08cm}
+
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}RAIS (2025): Estoque de Vínculos Ativos e Remuneração Média por Seção CNAE 2.0 no Tocantins}\par\vspace{2pt}
+  {\fontsize{7.0}{8.6}\selectfont\setlength{\tabcolsep}{4.5pt}%
+\begin{tabularx}{\linewidth}{c>{\raggedright\arraybackslash}Xrrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Seção} & \textbf{\color{white}Seção de Atividade Econômica (CNAE 2.0 — RAIS)} & \textbf{\color{white}Vínculos Ativos} & \textbf{\color{white}Part. (\%)} & \textbf{\color{white}Remuneração Média} \\
+\midrule
+O & Administração Pública, Defesa e Seguridade & 130.461 & 29,81\% & R\$ 6.162,44 \\
+\rowcolor{corfundo} P & Educação & 75.305 & 17,21\% & R\$ 4.906,22 \\
+G & Comércio; Reparação de Veículos Automotore & 64.023 & 14,63\% & R\$ 2.598,88 \\
+\rowcolor{corfundo} A & Agricultura, Pecuária, Produção Florestal, & 31.325 & 7,16\% & R\$ 2.956,64 \\
+N & Atividades Administrativas e Serviços Comp & 26.237 & 6,00\% & R\$ 2.464,70 \\
+\rowcolor{corfundo} C & Indústrias de Transformação & 21.151 & 4,83\% & R\$ 2.938,59 \\
+Q & Saúde Humana e Serviços Sociais & 21.042 & 4,81\% & R\$ 2.977,56 \\
+\rowcolor{corfundo} F & Construção & 12.322 & 2,82\% & R\$ 3.003,83 \\
+H & Transporte, Armazenagem e Correio & 11.633 & 2,66\% & R\$ 3.228,92 \\
+\rowcolor{corfundo} I & Alojamento e Alimentação & 10.267 & 2,35\% & R\$ 1.996,35 \\
+M & Atividades Profissionais, Científicas e Té & 9.482 & 2,17\% & R\$ 3.078,69 \\
+\rowcolor{corfundo} S & Outras Atividades de Serviços & 8.701 & 1,99\% & R\$ 1.949,14 \\
+J & Informação e Comunicação & 3.808 & 0,87\% & R\$ 2.903,34 \\
+\rowcolor{corfundo} K & Atividades Financeiras, de Seguros e Servi & 3.152 & 0,72\% & R\$ 8.192,63 \\
+\bottomrule
+\end{tabularx}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: MTE — Microdados da RAIS Vínculos.}}
+\end{minipage}
+\par\vspace{0.08cm}
+
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}RAIS Estabelecimentos (2025): Distribuição por Natureza Jurídica, Faixa de Tamanho em 31/12 e Tipo no Tocantins}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.5pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{llrrrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Recorte RAIS Estab.} & \textbf{\color{white}Categoria do Estabelecimento} & \textbf{\color{white}Estab. c/ Vínculo} & \textbf{\color{white}\% Estab.} & \textbf{\color{white}Vínculos em 31/12} & \textbf{\color{white}\% Vínculos} \\
+\midrule
+Natureza Jurídica & Administração Pública & 846 & 2,5\% & 207.355 & 47,4\% \\
+\rowcolor{corfundo} Natureza Jurídica & Entidades Empresariais & 23.649 & 71,2\% & 190.351 & 43,5\% \\
+Natureza Jurídica & Não Identificado / CAEPF & 7.200 & 21,7\% & 24.221 & 5,5\% \\
+\rowcolor{corfundo} Natureza Jurídica & Entidades sem Fins Lucrativos & 721 & 2,2\% & 12.721 & 2,9\% \\
+Natureza Jurídica & Pessoas Físicas e Outras Organizações & 782 & 2,4\% & 2.932 & 0,7\% \\
+\rowcolor{corfundo} Porte / Tamanho (31/12) & Zero vínculos & 58.120 & 63,6\% & 0 & 0,0\% \\
+Porte / Tamanho (31/12) & Até 4 vínculos & 22.884 & 25,1\% & 41.786 & 9,6\% \\
+\rowcolor{corfundo} Porte / Tamanho (31/12) & De 5 a 9 vínculos & 5.131 & 5,6\% & 33.503 & 7,7\% \\
+Porte / Tamanho (31/12) & De 10 a 19 vínculos & 2.721 & 3,0\% & 36.327 & 8,3\% \\
+\rowcolor{corfundo} Porte / Tamanho (31/12) & De 20 a 49 vínculos & 1.451 & 1,6\% & 43.648 & 10,0\% \\
+Porte / Tamanho (31/12) & De 50 a 99 vínculos & 559 & 0,6\% & 38.743 & 8,8\% \\
+\rowcolor{corfundo} Porte / Tamanho (31/12) & De 100 a 249 vínculos & 323 & 0,3\% & 49.293 & 11,3\% \\
+Porte / Tamanho (31/12) & De 250 a 499 vínculos & 72 & 0,1\% & 24.504 & 5,6\% \\
+\rowcolor{corfundo} Porte / Tamanho (31/12) & De 500 a 999 vínculos & 30 & 0,0\% & 22.292 & 5,1\% \\
+Porte / Tamanho (31/12) & 1.000 ou mais vínculos & 27 & 0,0\% & 147.484 & 33,7\% \\
+\rowcolor{corfundo} Tipo Estab. & CNPJ & 25.165 & 77,6\% & 410.166 & 93,7\% \\
+Tipo Estab. & CAEPF (Pessoa Física / Produtor Rural) & 7.525 & 20,6\% & 23.962 & 5,5\% \\
+\rowcolor{corfundo} Tipo Estab. & CNO (Cadastro Nacional de Obras) & 508 & 1,8\% & 3.452 & 0,8\% \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: MTE — Microdados da RAIS Estabelecimentos (Total de estabelecimentos registrados na base: 91.318 | Com vínculo ativo: 33.198).}}
+\end{minipage}
+\par\vspace{0.08cm}
+
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Síntese Municipal Integrada do Mercado de Trabalho (Top 12 Municípios: RAIS Estabelecimentos, RAIS Vínculos e Novo CAGED)}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.5pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{clrrrrrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Pos.} & \textbf{\color{white}Município (Top 12 TO)} & \textbf{\color{white}Estab. RAIS} & \textbf{\color{white}Vínculos RAIS} & \textbf{\color{white}Rem. Média RAIS} & \textbf{\color{white}Saldo CAGED Mês} & \textbf{\color{white}Saldo CAGED Ano} & \textbf{\color{white}Sal. Adm. CAGED} \\
+\midrule
+1\textordmasculine{} & Palmas & 8.282 & 220.673 & R\$ 5.198,29 & +399 & +1.856 & R\$ 2.065,74 \\
+\rowcolor{corfundo} 2\textordmasculine{} & Araguaína & 4.490 & 47.010 & R\$ 3.154,85 & +180 & +935 & R\$ 2.013,02 \\
+3\textordmasculine{} & Gurupi & 2.524 & 20.492 & R\$ 3.171,87 & +89 & -128 & R\$ 2.105,56 \\
+\rowcolor{corfundo} 4\textordmasculine{} & Porto Nacional & 1.559 & 14.172 & R\$ 3.288,74 & +76 & +267 & R\$ 2.149,57 \\
+5\textordmasculine{} & Paraíso do Tocantins & 1.534 & 12.288 & R\$ 2.835,99 & +27 & +252 & R\$ 2.099,55 \\
+\rowcolor{corfundo} 6\textordmasculine{} & Colinas do Tocantins & 712 & 5.707 & R\$ 3.085,95 & +9 & +86 & R\$ 2.038,46 \\
+7\textordmasculine{} & Guaraí & 579 & 3.608 & R\$ 2.997,80 & -9 & +140 & R\$ 1.970,37 \\
+\rowcolor{corfundo} 8\textordmasculine{} & Formoso do Araguaia & 457 & 3.387 & R\$ 3.123,89 & -85 & -15 & R\$ 2.093,57 \\
+9\textordmasculine{} & Lagoa da Confusão & 372 & 3.137 & R\$ 3.390,91 & -36 & -62 & R\$ 2.276,34 \\
+\rowcolor{corfundo} 10\textordmasculine{} & Dianópolis & 392 & 3.122 & R\$ 3.055,02 & -17 & +21 & R\$ 2.029,34 \\
+11\textordmasculine{} & Tocantinópolis & 248 & 3.014 & R\$ 2.852,75 & -19 & +124 & R\$ 2.112,53 \\
+\rowcolor{corfundo} 12\textordmasculine{} & Araguatins & 354 & 2.891 & R\$ 2.801,26 & +3 & +222 & R\$ 2.109,59 \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: MTE — Microdados da RAIS e do Novo CAGED para os 139 municípios do Tocantins.}}
+\end{minipage}
+\par\vspace{0.08cm}
+
+\newpage
+\bannersecaoperiodico{3}{DINÂMICA EMPRESARIAL, SIMPLES NACIONAL E QUADRO SOCIETÁRIO (QSA)}{CNPJs Ativos, Capital Social, Matriz/Filial, CNAE 2.0, Sócios QSA, Municípios e Tempos do Mapa de Empresas}
+\noindent\makebox[\textwidth][s]{%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}CNPJS ATIVOS (ESTOQUE)}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}167.565}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Saldo 12m: + 15.608}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}\hfill%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}MEI / MICROEMPRESAS}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}52,9\% / 34,0\%}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Pequenos Negócios: 86,9\%}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}\hfill%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}OPTANTES SIMPLES (SINAC)}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}164.996}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Sócios QSA: 106.471}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}\hfill%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}TEMPO DE ABERTURA (2026)}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}18,5 horas}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Viab.: 15,7h | Reg.: 2,7h}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}%
+}
+
+\vspace{0.08cm}
+\noindent\begin{tikzpicture}
+  \node[fill=corfundo, draw=cinzaborda, line width=0.5pt, rounded corners=2pt,
+        inner xsep=8pt, inner ysep=5pt, text width=\textwidth-17pt, font=\scriptsize\color{cinzatexto}] (dbox) {
+    {\footnotesize\bfseries\color{corprimaria}Radar de Variações, Saltos e Estabilidades Conjunturais}\par\vspace{2pt}
+    \begin{itemize}[leftmargin=11pt, itemsep=1.0pt, topsep=1pt, parsep=0pt]
+       \item \textbf{\color{verdealta}[EXPANSÃO DRÁSTICA / SALTO POSITIVO] Estoque de CNPJs Ativos (Out/2026):} Estoque de CNPJs Ativos (Out/2026) registrou aceleração expressiva de +9,65\% (mudança drástica acima do padrão recente). [nível: 167.565]
+       \item \textbf{\color{verdealta}[EXPANSÃO DRÁSTICA / SALTO POSITIVO] Novas Inscrições de CNPJ no Mês:} Novas Inscrições de CNPJ no Mês registrou aceleração expressiva de +5,46\% (mudança drástica acima do padrão recente). [nível: 2.760]
+       \item \textbf{\color{corsecundaria}[ESTABILIDADE (VALOR INALTERADO)] Participação de MEIs + Microempresas (ME):} Participação de MEIs + Microempresas (ME) manteve-se praticamente inalterado (+0,05\%), indicando estabilidade marginal. [nível: 86,9\%]
+       \item \textbf{\color{vermelhobaixa}[QUEDA DRÁSTICA / CONTRAÇÃO ACENTUADA] Tempo Médio de Abertura de Empresas (TO vs. Brasil):} Tempo Médio de Abertura de Empresas (TO vs. Brasil) sofreu retração acentuada de -29,39\% (queda drástica que requer atenção conjuntural). [nível: 18,5h (BR: 26,2h)]
+    \end{itemize}
+  };
+  \fill[corprimaria] (dbox.north west) rectangle ([xshift=3pt]dbox.south west);
+\end{tikzpicture}
+
+\vspace{0.08cm}
+\begin{multicols}{2}
+\secaoperiodico{3.1. Demografia Empresarial, Porte e Simples Nacional}
+O tecido empresarial do Tocantins atingiu \textbf{167.565 CNPJs ativos} em \textbf{Outubro/2026}, acumulando saldo líquido positivo de \textbf{+ 15.608 empresas} nos últimos 12 meses e \textbf{2.760 novas inscrições} no mês mais recente. Os pequenos negócios sustentam a capilaridade produtiva estadual: os Microempreendedores Individuais (MEI) representam \textbf{52,9\%} do estoque ativo e as Microempresas (ME) somam \textbf{34,0\%} (totalizando \textbf{86,9\%} entre MEI e ME), com \textbf{164.996 optantes} pelo regime do Simples Nacional (SINAC).
+
+\secaoperiodico{3.2. Capital Social, Matriz/Filial, QSA e REDESIM (2026)}
+A abertura estrutural da base da Receita Federal evidencia a predominância de estabelecimentos matrizes (94,7\% do parque ativo), mas com presença crescente de filiais de redes atacadistas, agroindustriais e logísticas nos polos regionais. No Mapa de Empresas (REDESIM), o Tocantins registra em 2026 tempo médio total de abertura de \textbf{18,5 horas} — decomposto em \textbf{15,7 horas de análise de viabilidade} e apenas \textbf{2,7 horas de registro} —, posicionando-se abaixo da média nacional (\textbf{26,2 horas}).
+\end{multicols}
+\begin{center}\includegraphics[width=0.92\textwidth]{figuras/2026_10_carta_pib_s3_emp_ativos.pdf}\end{center}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Distribuição das Empresas Ativas por Porte no Tocantins (Out/2026)}\par\vspace{2pt}
+  {\fontsize{7.0}{8.6}\selectfont\setlength{\tabcolsep}{4.5pt}%
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}Xrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Porte Empresarial (Receita Federal / SINAC)} & \textbf{\color{white}CNPJs Ativos no Tocantins} & \textbf{\color{white}Participação no Estoque (\%)} \\
+\midrule
+MEI & 88.650 & 52,90\% \\
+\rowcolor{corfundo} Microempresa (ME) & 56.958 & 33,99\% \\
+Pequeno Porte (EPP) & 11.896 & 7,10\% \\
+\rowcolor{corfundo} Não Informado / Demais & 10.061 & 6,00\% \\
+\bottomrule
+\end{tabularx}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: Receita Federal / SERPRO e SINAC (Optantes Simples Nacional: 164.996 | Tempo Médio de Abertura 2026: 18,5h).}}
+\end{minipage}
+\par\vspace{0.08cm}
+
+\par\vspace{0.08cm}
+\noindent\begin{minipage}[t]{0.482\textwidth}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Quadro Societário (QSA) por Qualificação (Total: 106.471)}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.0pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Qualificação e Tipo no QSA (RFB)} & \textbf{\color{white}Sócios} & \textbf{\color{white}Empresas} & \textbf{\color{white}Part. \%} \\
+\midrule
+Sócio-Administrador (Pessoa Física) & 61.828 & 54.177 & 55,33\% \\
+\rowcolor{corfundo} Sócio (Pessoa Física) & 18.061 & 13.176 & 16,16\% \\
+Diretor (Pessoa Física) & 14.635 & 1.996 & 13,10\% \\
+\rowcolor{corfundo} Administrador (Pessoa Física) & 7.706 & 5.304 & 6,90\% \\
+Sócio (Pessoa Jurídica) & 4.789 & 3.274 & 4,29\% \\
+\rowcolor{corfundo} Conselheiro de Administração (Pessoa Física) & 1.854 & 515 & 1,66\% \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: RFB/SERPRO. Gênero QSA: Feminino (32,9\%); Masculino (67,0\%); Não informado (0,0\%).}}
+\end{minipage}
+\par\vspace{0.08cm}
+\end{minipage}\hfill
+{\color{cinzaborda}\vrule width 0.4pt}\hfill
+\begin{minipage}[t]{0.482\textwidth}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Perfil Etário do Quadro Societário (QSA — TO)}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.0pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Faixa Etária dos Sócios (QSA)} & \textbf{\color{white}Sócios} & \textbf{\color{white}Empresas} & \textbf{\color{white}Part. \%} \\
+\midrule
+Até 25 anos & 4.821 & 4.331 & 4,5\% \\
+\rowcolor{corfundo} Dos 26 aos 35 anos & 18.579 & 16.230 & 17,4\% \\
+Dos 36 aos 49 anos & 42.435 & 30.040 & 39,9\% \\
+\rowcolor{corfundo} Dos 50+ & 40.635 & 24.007 & 38,2\% \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: Receita Federal do Brasil / SERPRO — Microdados do QSA.}}
+\end{minipage}
+\par\vspace{0.08cm}
+\end{minipage}
+\par\vspace{0.08cm}
+
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Balanço Demográfico Empresarial nos Últimos 12 Meses no Tocantins (Aberturas, Baixas e Estoque)}\par\vspace{2pt}
+  {\fontsize{7.0}{8.6}\selectfont\setlength{\tabcolsep}{4.5pt}%
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}Xrrrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Competência} & \textbf{\color{white}Novas Inscrições (Aberturas)} & \textbf{\color{white}Baixas / Extinções} & \textbf{\color{white}Saldo Líquido Mensal} & \textbf{\color{white}Estoque de CNPJs Ativos} \\
+\midrule
+Nov/25 & 2.168 & 1.306 & +862 & 152.819 \\
+\rowcolor{corfundo} Dez/25 & 2.007 & 1.441 & +566 & 153.385 \\
+Jan/26 & 3.845 & 2.042 & +1.803 & 155.188 \\
+\rowcolor{corfundo} Fev/26 & 3.241 & 1.781 & +1.460 & 156.648 \\
+Mar/26 & 3.518 & 1.790 & +1.728 & 158.376 \\
+\rowcolor{corfundo} Abr/26 & 3.086 & 1.636 & +1.450 & 159.826 \\
+Mai/26 & 2.973 & 1.798 & +1.175 & 161.001 \\
+\rowcolor{corfundo} Jun/26 & 3.009 & 1.690 & +1.319 & 162.320 \\
+Jul/26 & 2.781 & 1.468 & +1.313 & 163.633 \\
+\rowcolor{corfundo} Ago/26 & 2.989 & 1.562 & +1.427 & 165.060 \\
+Set/26 & 2.617 & 1.416 & +1.201 & 166.261 \\
+\rowcolor{corfundo} Out/26 & 2.760 & 1.456 & +1.304 & 167.565 \\
+\bottomrule
+\end{tabularx}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: Receita Federal do Brasil / SERPRO.}}
+\end{minipage}
+\par\vspace{0.08cm}
+
+\par\vspace{0.08cm}
+\noindent\begin{minipage}[t]{0.482\textwidth}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Empresas Ativas por Capital Social e Matriz vs. Filial (TO)}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.0pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{llrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Recorte} & \textbf{\color{white}Faixa de Capital / Matriz-Filial} & \textbf{\color{white}CNPJs Ativos} & \textbf{\color{white}Part. \%} \\
+\midrule
+Capital Social & Até R\$ 800,00 & 9.282 & 5,54\% \\
+\rowcolor{corfundo} Capital Social & De R\$ 800,01 a R\$ 3.600,00 & 27.496 & 16,41\% \\
+Capital Social & De R\$ 3.600,01 a R\$ 5.000,00 & 19.387 & 11,57\% \\
+\rowcolor{corfundo} Capital Social & De R\$ 5.000,01 a R\$ 10.000,00 & 23.114 & 13,79\% \\
+Capital Social & De R\$ 10.000,01 a R\$ 100.000,00 & 60.974 & 36,39\% \\
+\rowcolor{corfundo} Capital Social & Acima de R\$ 100.000,00 & 27.312 & 16,30\% \\
+Tipo Estab. & Filial (Saldo: +390) & 8.813 & 5,26\% \\
+\rowcolor{corfundo} Tipo Estab. & Matriz (Saldo: +13.790) & 158.752 & 94,74\% \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: Receita Federal do Brasil / SERPRO.}}
+\end{minipage}
+\par\vspace{0.08cm}
+\end{minipage}\hfill
+{\color{cinzaborda}\vrule width 0.4pt}\hfill
+\begin{minipage}[t]{0.482\textwidth}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Empresas Ativas por Seção da CNAE 2.0 no Tocantins}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.0pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Seção CNAE 2.0 Fiscal Principal (Top 10 TO)} & \textbf{\color{white}Ativos} & \textbf{\color{white}Saldo Ano} & \textbf{\color{white}Part. \%} \\
+\midrule
+G - COMÉRCIO & 55.296 & +2.692 & 33,00\% \\
+\rowcolor{corfundo} F - CONSTRUÇÃO & 15.676 & +1.750 & 9,36\% \\
+H - TRANSPORTE, ARMAZENAGEM E CORREIO & 13.408 & +1.831 & 8,00\% \\
+\rowcolor{corfundo} I - ALOJAMENTO E ALIMENTAÇÃO & 12.861 & +983 & 7,68\% \\
+C - INDÚSTRIAS DE TRANSFORMAÇÃO & 12.221 & +997 & 7,29\% \\
+\rowcolor{corfundo} M - ATIVIDADES PROFISSIONAIS, CIENTÍFI & 11.178 & +1.162 & 6,67\% \\
+S - OUTRAS ATIVIDADES DE SERVIÇOS & 10.924 & +950 & 6,52\% \\
+\rowcolor{corfundo} N - ATIVIDADES ADMINISTRATIVAS E SERVI & 10.783 & +1.129 & 6,44\% \\
+Q - SAÚDE HUMANA E SERVIÇOS SOCIAIS & 6.358 & +728 & 3,79\% \\
+\rowcolor{corfundo} P - EDUCAÇÃO & 4.032 & +389 & 2,41\% \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: Receita Federal do Brasil / SERPRO.}}
+\end{minipage}
+\par\vspace{0.08cm}
+\end{minipage}
+\par\vspace{0.08cm}
+
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Mapa de Empresas (REDESIM / Gov. Federal): Evolução dos Tempos de Viabilidade, Registro e Abertura no Tocantins vs. Brasil (Em 2026 — TO: 18,5h | BR: 26,2h)}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.5pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{crrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Ano Ref.} & \textbf{\color{white}Tempo de Viabilidade (TO vs BR)} & \textbf{\color{white}Tempo de Registro (TO vs BR)} & \textbf{\color{white}Tempo Total de Abertura (TO vs BR)} \\
+\midrule
+2021 & 22,0 h (BR: 21,6h) & 24,7 h (BR: 23,3h) & 46,8 h (BR: 44,9h) \\
+\rowcolor{corfundo} 2022 & 13,4 h (BR: 15,0h) & 6,0 h (BR: 15,3h) & 19,4 h (BR: 30,3h) \\
+2023 & 11,1 h (BR: 12,0h) & 2,4 h (BR: 13,3h) & 13,4 h (BR: 25,3h) \\
+\rowcolor{corfundo} 2024 & 7,3 h (BR: 9,5h) & 1,6 h (BR: 7,7h) & 8,9 h (BR: 17,2h) \\
+2025 & 8,5 h (BR: 8,7h) & 1,4 h (BR: 10,4h) & 10,0 h (BR: 19,1h) \\
+\rowcolor{corfundo} 2026 & 15,7 h (BR: 11,4h) & 2,7 h (BR: 14,8h) & 18,5 h (BR: 26,2h) \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: Painel Mapa de Empresas — REDESIM / MDIC / Receita Federal.}}
+\end{minipage}
+\par\vspace{0.08cm}
+
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Desagregação Municipal da Dinâmica Empresarial no Tocantins: Estoque, Saldo, Porte, Simples Nacional e QSA}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.5pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{clrrrrrrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Pos.} & \textbf{\color{white}Município (Top 12)} & \textbf{\color{white}CNPJs Ativos} & \textbf{\color{white}Novos Mês} & \textbf{\color{white}Saldo 12m} & \textbf{\color{white}MEIs (\%)} & \textbf{\color{white}ME + EPP} & \textbf{\color{white}Simples (SINAC)} & \textbf{\color{white}Sócios QSA} \\
+\midrule
+1\textordmasculine{} & Palmas & 58.042 & 1.107 & +6.089 & 30.797 (53,1\%) & 23.306 & 55.573 & 41.367 \\
+\rowcolor{corfundo} 2\textordmasculine{} & Araguaína & 23.554 & 405 & +2.575 & 12.239 (52,0\%) & 10.093 & 22.347 & 15.411 \\
+3\textordmasculine{} & Gurupi & 12.071 & 209 & +969 & 6.484 (53,7\%) & 4.957 & 11.756 & 7.821 \\
+\rowcolor{corfundo} 4\textordmasculine{} & Porto Nacional & 8.335 & 121 & +829 & 4.354 (52,2\%) & 3.474 & 8.039 & 5.287 \\
+5\textordmasculine{} & Paraíso do Tocantins & 7.522 & 106 & +765 & 4.031 (53,6\%) & 3.063 & 7.041 & 4.954 \\
+\rowcolor{corfundo} 6\textordmasculine{} & Colinas do Tocantins & 3.862 & 52 & +277 & 2.087 (54,0\%) & 1.573 & 3.849 & 2.159 \\
+7\textordmasculine{} & Guaraí & 2.723 & 49 & +235 & 1.500 (55,1\%) & 1.085 & 2.808 & 1.743 \\
+\rowcolor{corfundo} 8\textordmasculine{} & Araguatins & 1.879 & 32 & +132 & 895 (47,6\%) & 904 & 1.967 & 1.277 \\
+9\textordmasculine{} & Dianópolis & 1.850 & 19 & +108 & 1.007 (54,4\%) & 748 & 1.942 & 1.170 \\
+\rowcolor{corfundo} 10\textordmasculine{} & Formoso do Araguaia & 1.757 & 23 & +106 & 872 (49,6\%) & 778 & 1.681 & 1.175 \\
+11\textordmasculine{} & Miracema do Tocantins & 1.673 & 25 & +86 & 914 (54,6\%) & 687 & 1.792 & 1.076 \\
+\rowcolor{corfundo} 12\textordmasculine{} & Lagoa da Confusão & 1.643 & 36 & +179 & 904 (55,0\%) & 622 & 1.639 & 1.000 \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: Receita Federal / SERPRO e Portal SINAC/Simples Nacional para os 139 municípios do Tocantins.}}
+\end{minipage}
+\par\vspace{0.08cm}
+
+\newpage
+\bannersecaoperiodico{4}{COMÉRCIO EXTERIOR, DENSIDADE DE VALOR E MUNICÍPIOS EXPORTADORES}{Top 10 SH4 (US\$ FOB e Kg), Top 10 Países, Indicador US\$/Kg, Matriz Top 3 Produto $\times$ País e Top 10 Municípios}
+\noindent\makebox[\textwidth][s]{%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}EXPORTAÇÕES (TO)}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}US\$ 200,89 Mi}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Ref.: 10/2026 (Peso: 289.390 t)}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}\hfill%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}IMPORTAÇÕES (TO)}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}US\$ 63,95 Mi}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Ref.: 10/2026 (Peso: 148.241 t)}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}\hfill%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}SALDO COMERCIAL}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}+ US\$ 136,94 Mi}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Superávit Primário FOB}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}\hfill%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}1\textordmasculine{} DESTINO EXPORTADOR}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}China}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}55,6\% da pauta (US\$ 1.571,4 Mi)}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}%
+}
+
+\vspace{0.08cm}
+\noindent\begin{tikzpicture}
+  \node[fill=corfundo, draw=cinzaborda, line width=0.5pt, rounded corners=2pt,
+        inner xsep=8pt, inner ysep=5pt, text width=\textwidth-17pt, font=\scriptsize\color{cinzatexto}] (dbox) {
+    {\footnotesize\bfseries\color{corprimaria}Radar de Variações, Saltos e Estabilidades Conjunturais}\par\vspace{2pt}
+    \begin{itemize}[leftmargin=11pt, itemsep=1.0pt, topsep=1pt, parsep=0pt]
+       \item \textbf{\color{verdealta}[EXPANSÃO DRÁSTICA / SALTO POSITIVO] Exportações FOB do Tocantins (10/2026):} Exportações FOB do Tocantins (10/2026) registrou aceleração expressiva de +17,97\% (mudança drástica acima do padrão recente). [nível: US\$ 200,89 Mi]
+       \item \textbf{\color{verdealta}[EXPANSÃO DRÁSTICA / SALTO POSITIVO] Importações FOB do Tocantins (10/2026):} Importações FOB do Tocantins (10/2026) registrou aceleração expressiva de +118,57\% (mudança drástica acima do padrão recente). [nível: US\$ 63,95 Mi]
+       \item \textbf{\color{vermelhobaixa}[QUEDA DRÁSTICA / CONTRAÇÃO ACENTUADA] Saldo da Balança Comercial (TO):} Saldo da Balança Comercial (TO) sofreu retração acentuada de -2,91\% (queda drástica que requer atenção conjuntural). [nível: + US\$ 136,94 Mi]
+       \item \textbf{\color{verdealta}[EXPANSÃO DRÁSTICA / SALTO POSITIVO] 1\textordmasculine{} Produto Exportado (Soja, mesmo triturada):} 1\textordmasculine{} Produto Exportado (Soja, mesmo triturada) registrou aceleração expressiva de +54,05\% (mudança drástica acima do padrão recente). [nível: US\$ 1.528,48 Mi]
+    \end{itemize}
+  };
+  \fill[corprimaria] (dbox.north west) rectangle ([xshift=3pt]dbox.south west);
+\end{tikzpicture}
+
+\vspace{0.08cm}
+\begin{multicols}{2}
+\secaoperiodico{4.1. Pauta Comercial em Valor FOB e Volume Físico (Kg/Ton)}
+O superávit estrutural da balança comercial do Tocantins (\textbf{+ US\$ 136,94 Mi} no mês de referência \textbf{10/2026}, com exportações de \textbf{US\$ 200,89 Mi} e importações de \textbf{US\$ 63,95 Mi}) apoia-se na liderança do complexo soja e da cadeia da carne bovina congelada e fresca. Ao incorporar a métrica física de peso líquido (quilogramas e toneladas), constata-se a elevada escala logística exigida para o escoamento multimodal (Ferrovia Norte-Sul) dos grãos frente à maior densidade de valor por quilograma da proteína animal processada nos frigoríficos estaduais.
+
+\secaoperiodico{4.2. Indicador US\$/Kg, Matriz Produto $\times$ País e Municípios}
+O indicador de densidade de valor (\texttt{US\$ FOB / Kg} e \texttt{Kg por US\$ 1.000 FOB}) sintetiza os termos de troca da economia tocantinense: enquanto um quilograma médio exportado nas posições de carne bovina supera US\$ 4,50/kg, os grãos in natura situam-se na faixa de US\$ 0,38 a US\$ 0,45/kg. Pelo lado importador, a pauta é altamente concentrada em insumos produtivos estratégicos (adubos e fertilizantes nitrogenados, potássicos e fosfatados oriundos da Rússia, China, Canadá e Marrocos), fundamentais para sustentar a produtividade agrícola dos principais municípios exportadores (Porto Nacional, Araguaína, Gurupi, Paraíso do Tocantins e Alvorada).
+\end{multicols}
+\begin{center}\includegraphics[width=0.92\textwidth]{figuras/2026_10_carta_pib_s4_comex_balanca.pdf}\end{center}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}[t]{0.482\textwidth}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Top 10 Posições SH4 Exportadas pelo Tocantins em Valor FOB e Peso Líquido (Acumulado no Ano até 10/2026)}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.5pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{cclrrrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Pos.} & \textbf{\color{white}SH4} & \textbf{\color{white}Produto Exportado (Top 10)} & \textbf{\color{white}Valor FOB} & \textbf{\color{white}Peso Líq. (Ton)} & \textbf{\color{white}US\$/Kg} & \textbf{\color{white}Part. \%} \\
+\midrule
+1\textordmasculine{} & 1201 & Soja, mesmo triturada & US\$ 1.528,48 Mi & 3.647.173,2 t & US\$ 0,42 & 54,0\% \\
+\rowcolor{corfundo} 2\textordmasculine{} & 0202 & Carnes de animais da espécie bovina, c & US\$ 454,92 Mi & 78.445,1 t & US\$ 5,80 & 16,1\% \\
+3\textordmasculine{} & 7108 & Ouro & US\$ 242,50 Mi & 2,0 t & US\$ 118.581,25 & 8,6\% \\
+\rowcolor{corfundo} 4\textordmasculine{} & 2304 & Tortas e outros resíduos sólidos da ex & US\$ 173,25 Mi & 493.770,3 t & US\$ 0,35 & 6,1\% \\
+5\textordmasculine{} & 0713 & Legumes de vagem, secos, em grão, mesm & US\$ 111,75 Mi & 137.902,2 t & US\$ 0,81 & 4,0\% \\
+\rowcolor{corfundo} 6\textordmasculine{} & 1005 & Milho & US\$ 95,24 Mi & 455.062,5 t & US\$ 0,21 & 3,4\% \\
+7\textordmasculine{} & 0102 & Animais vivos da espécie bovina & US\$ 65,25 Mi & 20.823,2 t & US\$ 3,13 & 2,3\% \\
+\rowcolor{corfundo} 8\textordmasculine{} & 3504 & Peptonas e seus derivados & US\$ 46,06 Mi & 6.502,2 t & US\$ 7,08 & 1,6\% \\
+9\textordmasculine{} & 0201 & Carnes de animais da espécie bovina, f & US\$ 32,04 Mi & 5.022,7 t & US\$ 6,38 & 1,1\% \\
+\rowcolor{corfundo} 10\textordmasculine{} & 1207 & Outras sementes e frutos oleaginosos,  & US\$ 24,40 Mi & 22.777,8 t & US\$ 1,07 & 0,9\% \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: Comex Stat / MDIC (metricFOB e metricKG).}}
+\end{minipage}
+\par\vspace{0.08cm}
+\end{minipage}\hfill
+{\color{cinzaborda}\vrule width 0.4pt}\hfill
+\begin{minipage}[t]{0.482\textwidth}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Top 10 Posições SH4 Importadas pelo Tocantins em Valor FOB e Peso Líquido (Acumulado no Ano até 10/2026)}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.5pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{cclrrrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Pos.} & \textbf{\color{white}SH4} & \textbf{\color{white}Produto Importado (Top 10)} & \textbf{\color{white}Valor FOB} & \textbf{\color{white}Peso Líq. (Ton)} & \textbf{\color{white}US\$/Kg} & \textbf{\color{white}Part. \%} \\
+\midrule
+1\textordmasculine{} & 3102 & Adubos (fertilizantes) azotados & US\$ 73,18 Mi & 207.103,9 t & US\$ 0,35 & 20,0\% \\
+\rowcolor{corfundo} 2\textordmasculine{} & 3104 & Adubos (fertilizantes) potássicos & US\$ 64,64 Mi & 185.366,9 t & US\$ 0,35 & 17,6\% \\
+3\textordmasculine{} & 3105 & Adubos (fertilizantes) contendo dois o & US\$ 36,56 Mi & 50.188,1 t & US\$ 0,73 & 10,0\% \\
+\rowcolor{corfundo} 4\textordmasculine{} & 3103 & Adubos (fertilizantes) fosfatados & US\$ 23,10 Mi & 55.636,7 t & US\$ 0,42 & 6,3\% \\
+5\textordmasculine{} & 2713 & Coque de petróleo, betume de petróleo  & US\$ 19,06 Mi & 190.679,1 t & US\$ 0,10 & 5,2\% \\
+\rowcolor{corfundo} 6\textordmasculine{} & 2715 & Misturas betuminosas à base de asfalto & US\$ 17,51 Mi & 35.504,2 t & US\$ 0,49 & 4,8\% \\
+7\textordmasculine{} & 7210 & Produtos laminados planos de ferro ou  & US\$ 13,16 Mi & 17.785,0 t & US\$ 0,74 & 3,6\% \\
+\rowcolor{corfundo} 8\textordmasculine{} & 2503 & Enxofre de qualquer espécie, exceto su & US\$ 11,39 Mi & 14.844,2 t & US\$ 0,77 & 3,1\% \\
+9\textordmasculine{} & 3808 & Insecticidas, rodenticidas, fungicidas & US\$ 11,37 Mi & 3.280,3 t & US\$ 3,47 & 3,1\% \\
+\rowcolor{corfundo} 10\textordmasculine{} & 1511 & Óleo de palma e respectivas fracções & US\$ 7,27 Mi & 6.117,9 t & US\$ 1,19 & 2,0\% \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: Comex Stat / MDIC (metricFOB e metricKG).}}
+\end{minipage}
+\par\vspace{0.08cm}
+\end{minipage}
+\par\vspace{0.08cm}
+
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Top 10 Países Parceiros do Tocantins: Destinos de Exportação e Origens de Importação (Acumulado no Ano até 10/2026)}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.5pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{clrrlrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Pos.} & \textbf{\color{white}Destino Exportação (TO)} & \textbf{\color{white}US\$ FOB Exp.} & \textbf{\color{white}\% Exp.} & \textbf{\color{white}Origem Importação (TO)} & \textbf{\color{white}US\$ FOB Imp.} & \textbf{\color{white}\% Imp.} \\
+\midrule
+1\textordmasculine{} & China & US\$ 1.571,38 Mi & 55,6\% & China & US\$ 80,66 Mi & 22,0\% \\
+\rowcolor{corfundo} 2\textordmasculine{} & Canadá & US\$ 213,77 Mi & 7,6\% & Estados Unidos & US\$ 61,44 Mi & 16,8\% \\
+3\textordmasculine{} & Índia & US\$ 111,40 Mi & 3,9\% & Canadá & US\$ 40,13 Mi & 10,9\% \\
+\rowcolor{corfundo} 4\textordmasculine{} & Egito & US\$ 82,77 Mi & 2,9\% & Venezuela & US\$ 36,53 Mi & 10,0\% \\
+5\textordmasculine{} & Espanha & US\$ 82,74 Mi & 2,9\% & Turcomenistão & US\$ 22,51 Mi & 6,1\% \\
+\rowcolor{corfundo} 6\textordmasculine{} & Turquia & US\$ 63,85 Mi & 2,3\% & Uzbequistão & US\$ 17,04 Mi & 4,7\% \\
+7\textordmasculine{} & Irã & US\$ 47,86 Mi & 1,7\% & Nigéria & US\$ 14,93 Mi & 4,1\% \\
+\rowcolor{corfundo} 8\textordmasculine{} & Países Baixos (Holanda & US\$ 47,76 Mi & 1,7\% & Marrocos & US\$ 14,84 Mi & 4,0\% \\
+9\textordmasculine{} & Rússia & US\$ 40,60 Mi & 1,4\% & Egito & US\$ 11,19 Mi & 3,0\% \\
+\rowcolor{corfundo} 10\textordmasculine{} & Estados Unidos & US\$ 37,26 Mi & 1,3\% & Rússia & US\$ 11,09 Mi & 3,0\% \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: Comex Stat / MDIC.}}
+\end{minipage}
+\par\vspace{0.08cm}
+
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Série Retrospectiva de 12 Meses da Balança Comercial do Tocantins em Valor FOB e Volume Físico (Toneladas)}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.5pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrrrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Competência} & \textbf{\color{white}Exportações FOB} & \textbf{\color{white}Volume Exp. (Ton)} & \textbf{\color{white}Importações FOB} & \textbf{\color{white}Volume Imp. (Ton)} & \textbf{\color{white}Saldo Comercial FOB} \\
+\midrule
+09/2025 & US\$ 292,23 Mi & 607.244,5 t & US\$ 47,35 Mi & 81.784,5 t & US\$ 244,88 Mi \\
+\rowcolor{corfundo} 10/2025 & US\$ 222,99 Mi & 367.595,6 t & US\$ 39,17 Mi & 76.071,3 t & US\$ 183,83 Mi \\
+01/2026 & US\$ 134,94 Mi & 142.606,1 t & US\$ 17,09 Mi & 49.666,5 t & US\$ 117,86 Mi \\
+\rowcolor{corfundo} 02/2026 & US\$ 146,15 Mi & 157.844,2 t & US\$ 15,13 Mi & 56.306,1 t & US\$ 131,03 Mi \\
+03/2026 & US\$ 415,71 Mi & 808.627,7 t & US\$ 26,34 Mi & 44.557,7 t & US\$ 389,37 Mi \\
+\rowcolor{corfundo} 04/2026 & US\$ 424,05 Mi & 850.423,1 t & US\$ 54,87 Mi & 104.553,6 t & US\$ 369,18 Mi \\
+05/2026 & US\$ 436,41 Mi & 812.258,0 t & US\$ 40,39 Mi & 120.409,5 t & US\$ 396,01 Mi \\
+\rowcolor{corfundo} 06/2026 & US\$ 362,73 Mi & 617.331,1 t & US\$ 38,77 Mi & 91.816,2 t & US\$ 323,96 Mi \\
+07/2026 & US\$ 322,44 Mi & 554.096,4 t & US\$ 30,11 Mi & 96.546,9 t & US\$ 292,33 Mi \\
+\rowcolor{corfundo} 08/2026 & US\$ 214,03 Mi & 333.296,1 t & US\$ 50,73 Mi & 143.179,8 t & US\$ 163,30 Mi \\
+09/2026 & US\$ 170,30 Mi & 333.714,0 t & US\$ 29,26 Mi & 52.648,9 t & US\$ 141,04 Mi \\
+\rowcolor{corfundo} 10/2026 & US\$ 200,89 Mi & 289.389,8 t & US\$ 63,95 Mi & 148.240,8 t & US\$ 136,94 Mi \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: Comex Stat / MDIC.}}
+\end{minipage}
+\par\vspace{0.08cm}
+
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Indicador de Densidade de Valor e Termos de Troca do Tocantins (Valor Unitário US\$ FOB/Kg e Quilogramas por US\$ 1.000 FOB)}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.5pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrrrrrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Mês/Ano} & \textbf{\color{white}Exp. (Ton)} & \textbf{\color{white}US\$/Kg Exp.} & \textbf{\color{white}Kg/US\$ 1k Exp.} & \textbf{\color{white}Imp. (Ton)} & \textbf{\color{white}US\$/Kg Imp.} & \textbf{\color{white}Kg/US\$ 1k Imp.} & \textbf{\color{white}Termos Troca} \\
+\midrule
+01/2026 & 142.606,1 & US\$ 0,95 & 1.056,8 kg & 49.666,5 & US\$ 0,34 & 2.906,9 kg & 2,75 \\
+\rowcolor{corfundo} 02/2026 & 157.844,2 & US\$ 0,93 & 1.080,0 kg & 56.306,1 & US\$ 0,27 & 3.722,7 kg & 3,44 \\
+03/2026 & 808.627,7 & US\$ 0,51 & 1.945,2 kg & 44.557,7 & US\$ 0,59 & 1.691,3 kg & 0,87 \\
+\rowcolor{corfundo} 04/2026 & 850.423,1 & US\$ 0,50 & 2.005,5 kg & 104.553,6 & US\$ 0,52 & 1.905,3 kg & 0,95 \\
+05/2026 & 812.258,0 & US\$ 0,54 & 1.861,2 kg & 120.409,5 & US\$ 0,34 & 2.980,9 kg & 1,60 \\
+\rowcolor{corfundo} 06/2026 & 617.331,1 & US\$ 0,59 & 1.701,9 kg & 91.816,2 & US\$ 0,42 & 2.368,1 kg & 1,39 \\
+07/2026 & 554.096,4 & US\$ 0,58 & 1.718,4 kg & 96.546,9 & US\$ 0,31 & 3.206,3 kg & 1,86 \\
+\rowcolor{corfundo} 08/2026 & 333.296,1 & US\$ 0,64 & 1.557,2 kg & 143.179,8 & US\$ 0,35 & 2.822,2 kg & 1,81 \\
+09/2026 & 333.714,0 & US\$ 0,51 & 1.959,6 kg & 52.648,9 & US\$ 0,56 & 1.799,3 kg & 0,92 \\
+\rowcolor{corfundo} 10/2026 & 289.389,8 & US\$ 0,69 & 1.440,5 kg & 148.240,8 & US\$ 0,43 & 2.317,9 kg & 1,61 \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: Elaboração própria do Jornal Econômico do Tocantins a partir de metricFOB e metricKG da API Comex Stat / MDIC.}}
+\end{minipage}
+\par\vspace{0.08cm}
+
+\par\vspace{0.08cm}
+\noindent\begin{minipage}[t]{0.482\textwidth}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Matriz Produto x País (Exportações — Top 3 SH4 no Ano)}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.5pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{llrrrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Top 3 Exportado (SH4)} & \textbf{\color{white}Destino} & \textbf{\color{white}Valor FOB} & \textbf{\color{white}Peso (t)} & \textbf{\color{white}US\$/Kg} & \textbf{\color{white}\% Prod.} \\
+\midrule
+1\textordmasculine{} [1201] Soja, mesmo triturad & China & US\$ 1.313,36 Mi & 3.147.136,9 t & US\$ 0,42 & 85,9\% \\
+\rowcolor{corfundo} 1\textordmasculine{} [1201] Soja, mesmo triturad & Espanha & US\$ 45,80 Mi & 105.219,6 t & US\$ 0,44 & 3,0\% \\
+1\textordmasculine{} [1201] Soja, mesmo triturad & Egito & US\$ 27,08 Mi & 64.433,9 t & US\$ 0,42 & 1,8\% \\
+\rowcolor{corfundo} 1\textordmasculine{} [1201] Soja, mesmo triturad & Vietnã & US\$ 26,31 Mi & 60.542,1 t & US\$ 0,43 & 1,7\% \\
+1\textordmasculine{} [1201] Soja, mesmo triturad & Japão & US\$ 25,48 Mi & 60.019,5 t & US\$ 0,42 & 1,7\% \\
+\rowcolor{corfundo} 2\textordmasculine{} [0202] Carnes de animais da & China & US\$ 242,43 Mi & 38.458,9 t & US\$ 6,30 & 53,3\% \\
+2\textordmasculine{} [0202] Carnes de animais da & Rússia & US\$ 34,61 Mi & 6.464,9 t & US\$ 5,35 & 7,6\% \\
+\rowcolor{corfundo} 2\textordmasculine{} [0202] Carnes de animais da & Egito & US\$ 20,61 Mi & 3.951,3 t & US\$ 5,22 & 4,5\% \\
+2\textordmasculine{} [0202] Carnes de animais da & Filipinas & US\$ 19,99 Mi & 4.352,3 t & US\$ 4,59 & 4,4\% \\
+\rowcolor{corfundo} 2\textordmasculine{} [0202] Carnes de animais da & Líbia & US\$ 19,00 Mi & 3.841,7 t & US\$ 4,95 & 4,2\% \\
+3\textordmasculine{} [7108] Ouro & Canadá & US\$ 210,73 Mi & 1,6 t & US\$ 132.954,97 & 86,9\% \\
+\rowcolor{corfundo} 3\textordmasculine{} [7108] Ouro & Suíça & US\$ 28,24 Mi & 0,2 t & US\$ 127.187,94 & 11,6\% \\
+3\textordmasculine{} [7108] Ouro & Emirados Árabes Un & US\$ 3,45 Mi & 0,0 t & US\$ 143.599,04 & 1,4\% \\
+\rowcolor{corfundo} 3\textordmasculine{} [7108] Ouro & China & US\$ 0,08 Mi & 0,2 t & US\$ 387,55 & 0,0\% \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: Comex Stat / MDIC.}}
+\end{minipage}
+\par\vspace{0.08cm}
+\end{minipage}\hfill
+{\color{cinzaborda}\vrule width 0.4pt}\hfill
+\begin{minipage}[t]{0.482\textwidth}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Matriz Produto x País (Importações — Top 3 SH4 no Ano)}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.5pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{llrrrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Top 3 Importado (SH4)} & \textbf{\color{white}Origem} & \textbf{\color{white}Valor FOB} & \textbf{\color{white}Peso (t)} & \textbf{\color{white}US\$/Kg} & \textbf{\color{white}\% Prod.} \\
+\midrule
+1\textordmasculine{} [3102] Adubos (fertilizante & Uzbequistão & US\$ 17,04 Mi & 35.842,9 t & US\$ 0,48 & 23,3\% \\
+\rowcolor{corfundo} 1\textordmasculine{} [3102] Adubos (fertilizante & Venezuela & US\$ 16,53 Mi & 34.523,0 t & US\$ 0,48 & 22,6\% \\
+1\textordmasculine{} [3102] Adubos (fertilizante & China & US\$ 15,36 Mi & 82.300,0 t & US\$ 0,19 & 21,0\% \\
+\rowcolor{corfundo} 1\textordmasculine{} [3102] Adubos (fertilizante & Nigéria & US\$ 14,92 Mi & 33.500,0 t & US\$ 0,45 & 20,4\% \\
+1\textordmasculine{} [3102] Adubos (fertilizante & Omã & US\$ 8,79 Mi & 19.765,9 t & US\$ 0,44 & 12,0\% \\
+\rowcolor{corfundo} 2\textordmasculine{} [3104] Adubos (fertilizante & Canadá & US\$ 40,08 Mi & 116.220,3 t & US\$ 0,34 & 62,0\% \\
+2\textordmasculine{} [3104] Adubos (fertilizante & Turcomenistão & US\$ 12,24 Mi & 34.691,9 t & US\$ 0,35 & 18,9\% \\
+\rowcolor{corfundo} 2\textordmasculine{} [3104] Adubos (fertilizante & Rússia & US\$ 10,55 Mi & 29.454,6 t & US\$ 0,36 & 16,3\% \\
+2\textordmasculine{} [3104] Adubos (fertilizante & Israel & US\$ 1,77 Mi & 5.000,0 t & US\$ 0,35 & 2,7\% \\
+\rowcolor{corfundo} 3\textordmasculine{} [3105] Adubos (fertilizante & Estados Unidos & US\$ 35,76 Mi & 48.185,4 t & US\$ 0,74 & 97,8\% \\
+3\textordmasculine{} [3105] Adubos (fertilizante & China & US\$ 0,80 Mi & 2.002,7 t & US\$ 0,40 & 2,2\% \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: Comex Stat / MDIC.}}
+\end{minipage}
+\par\vspace{0.08cm}
+\end{minipage}
+\par\vspace{0.08cm}
+
+\par\vspace{0.08cm}
+\noindent\begin{minipage}[t]{0.482\textwidth}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Top 10 Municípios Exportadores do Tocantins no Ano}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.5pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{clrrrrl}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Pos.} & \textbf{\color{white}Município Exportador} & \textbf{\color{white}US\$ FOB} & \textbf{\color{white}Peso (t)} & \textbf{\color{white}US\$/Kg} & \textbf{\color{white}Part. \%} & \textbf{\color{white}1\textordmasculine{} Produto} \\
+\midrule
+1\textordmasculine{} & Porto Nacional & US\$ 556,64 Mi & 1.448.930,4 t & US\$ 0,38 & 20,8\% & Soja, mesmo triturad \\
+\rowcolor{corfundo} 2\textordmasculine{} & Santa Rosa do Tocantins & US\$ 282,37 Mi & 671.218,5 t & US\$ 0,42 & 10,6\% & Soja, mesmo triturad \\
+3\textordmasculine{} & Almas & US\$ 238,97 Mi & 1,8 t & US\$ 132.246,46 & 8,9\% & Ouro \\
+\rowcolor{corfundo} 4\textordmasculine{} & Campos Lindos & US\$ 207,42 Mi & 524.791,7 t & US\$ 0,40 & 7,8\% & Soja, mesmo triturad \\
+5\textordmasculine{} & Araguaína & US\$ 197,07 Mi & 33.278,8 t & US\$ 5,92 & 7,4\% & Carnes de animais da \\
+\rowcolor{corfundo} 6\textordmasculine{} & Alvorada & US\$ 173,73 Mi & 398.336,8 t & US\$ 0,44 & 6,5\% & Soja, mesmo triturad \\
+7\textordmasculine{} & Palmas & US\$ 166,24 Mi & 407.763,0 t & US\$ 0,41 & 6,2\% & Soja, mesmo triturad \\
+\rowcolor{corfundo} 8\textordmasculine{} & Gurupi & US\$ 136,53 Mi & 22.327,6 t & US\$ 6,11 & 5,1\% & Carnes de animais da \\
+9\textordmasculine{} & Paraíso do Tocantins & US\$ 134,16 Mi & 23.698,3 t & US\$ 5,66 & 5,0\% & Carnes de animais da \\
+\rowcolor{corfundo} 10\textordmasculine{} & Guaraí & US\$ 109,46 Mi & 262.445,2 t & US\$ 0,42 & 4,1\% & Soja, mesmo triturad \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: API Comex Stat / MDIC (/cities).}}
+\end{minipage}
+\par\vspace{0.08cm}
+\end{minipage}\hfill
+{\color{cinzaborda}\vrule width 0.4pt}\hfill
+\begin{minipage}[t]{0.482\textwidth}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Top 10 Municípios Importadores do Tocantins no Ano}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.5pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{clrrrrl}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Pos.} & \textbf{\color{white}Município Importador} & \textbf{\color{white}US\$ FOB} & \textbf{\color{white}Peso (t)} & \textbf{\color{white}US\$/Kg} & \textbf{\color{white}Part. \%} & \textbf{\color{white}1\textordmasculine{} Insumo} \\
+\midrule
+1\textordmasculine{} & Palmas & US\$ 107,27 Mi & 318.721,0 t & US\$ 0,34 & 29,3\% & Coque de petróleo, b \\
+\rowcolor{corfundo} 2\textordmasculine{} & Palmeirante & US\$ 107,12 Mi & 273.501,6 t & US\$ 0,39 & 29,2\% & Adubos (fertilizante \\
+3\textordmasculine{} & Lagoa da Confusão & US\$ 42,39 Mi & 90.151,1 t & US\$ 0,47 & 11,6\% & Adubos (fertilizante \\
+\rowcolor{corfundo} 4\textordmasculine{} & Miranorte & US\$ 32,88 Mi & 105.441,9 t & US\$ 0,31 & 9,0\% & Adubos (fertilizante \\
+5\textordmasculine{} & Gurupi & US\$ 18,36 Mi & 35.645,3 t & US\$ 0,52 & 5,0\% & Misturas betuminosas \\
+\rowcolor{corfundo} 6\textordmasculine{} & Porto Nacional & US\$ 17,46 Mi & 17.745,8 t & US\$ 0,98 & 4,8\% & Álcoois acíclicos e  \\
+7\textordmasculine{} & Araguaína & US\$ 15,29 Mi & 4.921,1 t & US\$ 3,11 & 4,2\% & Insecticidas, rodent \\
+\rowcolor{corfundo} 8\textordmasculine{} & Arraias & US\$ 10,39 Mi & 12.813,7 t & US\$ 0,81 & 2,8\% & Enxofre de qualquer  \\
+9\textordmasculine{} & Colinas do Tocantins & US\$ 4,71 Mi & 10.291,9 t & US\$ 0,46 & 1,3\% & Adubos (fertilizante \\
+\rowcolor{corfundo} 10\textordmasculine{} & Xambioá & US\$ 3,51 Mi & 31.154,4 t & US\$ 0,11 & 1,0\% & Coque de petróleo, b \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: API Comex Stat / MDIC (/cities).}}
+\end{minipage}
+\par\vspace{0.08cm}
+\end{minipage}
+\par\vspace{0.08cm}
+
+\newpage
+\bannersecaoperiodico{5}{ARRECADAÇÃO TRIBUTÁRIA E FINANÇAS PÚBLICAS ESTADUAIS}{Execução Mensal e Plurianual (2023--2026), Transferências do FPE e Detalhamento do ICMS por Setor CNAE 2.0}
+\noindent\makebox[\textwidth][s]{%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}RECEITA TOTAL DO MÊS}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}R\$ 1,19 Bi}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Ref.: 09/26}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}\hfill%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}ARRECADAÇÃO DE ICMS}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}R\$ 566,48 Mi}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Var. Mês: -5,25\% | YoY: +1.1\%}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}\hfill%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}REPASSES DO FPE}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}R\$ 438,14 Mi}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Tesouro Nacional / STN}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}\hfill%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}IPVA E OUTROS TRIBUTOS}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}R\$ 189,35 Mi}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}IPVA puro: R\$ 53,89 Mi}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}%
+}
+
+\vspace{0.08cm}
+\noindent\begin{tikzpicture}
+  \node[fill=corfundo, draw=cinzaborda, line width=0.5pt, rounded corners=2pt,
+        inner xsep=8pt, inner ysep=5pt, text width=\textwidth-17pt, font=\scriptsize\color{cinzatexto}] (dbox) {
+    {\footnotesize\bfseries\color{corprimaria}Radar de Variações, Saltos e Estabilidades Conjunturais}\par\vspace{2pt}
+    \begin{itemize}[leftmargin=11pt, itemsep=1.0pt, topsep=1pt, parsep=0pt]
+       \item \textbf{\color{vermelhobaixa}[QUEDA DRÁSTICA / CONTRAÇÃO ACENTUADA] Arrecadação de ICMS (09/26):} Arrecadação de ICMS (09/26) sofreu retração acentuada de -5,25\% (queda drástica que requer atenção conjuntural). [nível: R\$ 566,48 Mi]
+       \item \textbf{\color{vermelhobaixa}[QUEDA DRÁSTICA / CONTRAÇÃO ACENTUADA] Cota-Parte do FPE (Transferência União):} Cota-Parte do FPE (Transferência União) sofreu retração acentuada de -19,32\% (queda drástica que requer atenção conjuntural). [nível: R\$ 438,14 Mi]
+       \item \textbf{\color{vermelhobaixa}[QUEDA DRÁSTICA / CONTRAÇÃO ACENTUADA] IPVA e Outros Tributos Estaduais:} IPVA e Outros Tributos Estaduais sofreu retração acentuada de -10,32\% (queda drástica que requer atenção conjuntural). [nível: R\$ 189,35 Mi]
+       \item \textbf{\color{verdealta}[AVANÇO MODERADO] Variação Interanual do ICMS (YoY):} Variação Interanual do ICMS (YoY) avançou +1,14\% em trajetória de expansão gradual. [nível: +1.1\%]
+    \end{itemize}
+  };
+  \fill[corprimaria] (dbox.north west) rectangle ([xshift=3pt]dbox.south west);
+\end{tikzpicture}
+
+\vspace{0.08cm}
+\begin{multicols}{2}
+\secaoperiodico{5.1. Estrutura das Receitas Próprias e Transferências (FPE)}
+As finanças públicas do Tocantins combinam a arrecadação tributária própria gerida pela SEFAZ-TO (ICMS, IPVA, ITCD, IRRF Retido na Fonte e Taxas Estaduais) com os repasses constitucionais da União via Fundo de Participação dos Estados (FPE/STN). Na competência \textbf{Setembro/2026}, a receita total monitorada alcançou \textbf{R\$ 1,19 Bi}, sendo \textbf{R\$ 566,48 Mi} provenientes do ICMS (variação mensal de \textbf{-5,25\%} e interanual de \textbf{+1.1\%}), \textbf{R\$ 438,14 Mi} de cota-parte líquida do FPE e \textbf{R\$ 189,35 Mi} de IPVA e demais tributos.
+
+\secaoperiodico{5.2. Incidência do ICMS por Seção CNAE 2.0}
+O exame desagregado da arrecadação de ICMS por seção da CNAE 2.0 e rubrica econômica revela que a base tributária tocantinense é sustentada pelo tripé \textbf{Combustíveis e Lubrificantes}, \textbf{Comércio Atacadista e Varejista} (Seção G) e \textbf{Indústria de Transformação} (Seção C), seguidos pelo fornecimento de \textbf{Energia Elétrica} (Seção D). A expansão do consumo urbano e do fluxo rodoviário de cargas ao longo da BR-153 atua como principal transmissor do crescimento econômico para o tesouro estadual.
+\end{multicols}
+\begin{center}\includegraphics[width=0.92\textwidth]{figuras/2026_10_carta_pib_s5_fin_receitas.pdf}\end{center}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}[t]{0.482\textwidth}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Execução Mensal das Receitas Próprias e Transferências Constitucionais do Tocantins}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.0pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Mês (2026)} & \textbf{\color{white}ICMS (SEFAZ-TO)} & \textbf{\color{white}Cota-Parte FPE (STN)} & \textbf{\color{white}IPVA + Outros Tributos} & \textbf{\color{white}Receita Total Mensal} \\
+\midrule
+Jan & R\$ 531,60 Mi & R\$ 608,22 Mi & R\$ 199,28 Mi & R\$ 1.339,10 Mi \\
+\rowcolor{corfundo} Fev & R\$ 465,76 Mi & R\$ 721,45 Mi & R\$ 171,72 Mi & R\$ 1.358,93 Mi \\
+Mar & R\$ 494,71 Mi & R\$ 458,07 Mi & R\$ 167,87 Mi & R\$ 1.120,65 Mi \\
+\rowcolor{corfundo} Abr & R\$ 562,91 Mi & R\$ 525,78 Mi & R\$ 155,18 Mi & R\$ 1.243,87 Mi \\
+Mai & R\$ 520,81 Mi & R\$ 638,69 Mi & R\$ 195,65 Mi & R\$ 1.355,15 Mi \\
+\rowcolor{corfundo} Jun & R\$ 557,93 Mi & R\$ 640,98 Mi & R\$ 162,83 Mi & R\$ 1.361,74 Mi \\
+Jul & R\$ 572,89 Mi & R\$ 419,66 Mi & R\$ 206,02 Mi & R\$ 1.198,57 Mi \\
+\rowcolor{corfundo} Ago & R\$ 597,87 Mi & R\$ 543,05 Mi & R\$ 211,15 Mi & R\$ 1.352,07 Mi \\
+Set & R\$ 566,48 Mi & R\$ 438,14 Mi & R\$ 189,35 Mi & R\$ 1.193,97 Mi \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: Boletim Tributário SEFAZ-TO e Secretaria do Tesouro Nacional (STN).}}
+\end{minipage}
+\par\vspace{0.08cm}
+\end{minipage}\hfill
+{\color{cinzaborda}\vrule width 0.4pt}\hfill
+\begin{minipage}[t]{0.482\textwidth}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Arrecadação de ICMS por Segmento Econômico no Tocantins (Setembro/2026)}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.0pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Segmento Econômico do ICMS (Painel)} & \textbf{\color{white}Arrecadação no Mês} & \textbf{\color{white}Participação no ICMS (\%)} \\
+\midrule
+Combustíveis & R\$ 172,81 Mi & 30,51\% \\
+\rowcolor{corfundo} Comércio & R\$ 172,77 Mi & 30,50\% \\
+Indústria & R\$ 103,08 Mi & 18,20\% \\
+\rowcolor{corfundo} Energia Elétrica & R\$ 63,73 Mi & 11,25\% \\
+Demais Atividades & R\$ 30,11 Mi & 5,32\% \\
+\rowcolor{corfundo} Comunicação & R\$ 9,20 Mi & 1,62\% \\
+Transportes & R\$ 8,27 Mi & 1,46\% \\
+\rowcolor{corfundo} Agropecuária & R\$ 6,52 Mi & 1,15\% \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: SEFAZ-TO — Boletim Tributário Estadual.}}
+\end{minipage}
+\par\vspace{0.08cm}
+\end{minipage}
+\par\vspace{0.08cm}
+
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Consolidado Plurianual das Receitas Estaduais do Tocantins (2023–2026)}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.5pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrrrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Exercício} & \textbf{\color{white}Receita Total} & \textbf{\color{white}ICMS Acumulado} & \textbf{\color{white}FPE Acumulado} & \textbf{\color{white}IPVA + Outros} & \textbf{\color{white}Var. Anual ICMS} \\
+\midrule
+2023 (Jan-Dez) & R\$ 12.120,0 Mi & R\$ 5.028,9 Mi & R\$ 5.238,3 Mi & R\$ 2.368,4 Mi & - \\
+\rowcolor{corfundo} 2024 (Jan-Dez) & R\$ 13.756,3 Mi & R\$ 5.949,4 Mi & R\$ 5.744,1 Mi & R\$ 2.623,4 Mi & +18.31\% \\
+2025 (Jan-Dez) & R\$ 14.940,0 Mi & R\$ 6.407,9 Mi & R\$ 6.228,3 Mi & R\$ 2.913,3 Mi & +7.71\% \\
+\rowcolor{corfundo} 2026 (Acum. Jan-Set) & R\$ 11.522,1 Mi & R\$ 4.871,0 Mi & R\$ 4.994,0 Mi & R\$ 2.023,6 Mi & +3.65\% \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: SEFAZ-TO e STN.}}
+\end{minipage}
+\par\vspace{0.08cm}
+
+\par\vspace{0.08cm}
+\noindent\begin{minipage}[t]{0.482\textwidth}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}ICMS por Grande Setor e Seção CNAE 2.0 (2026 — SEFAZ/CONFAZ)}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.0pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{llrrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Setor} & \textbf{\color{white}Seção CNAE 2.0 (ICMS)} & \textbf{\color{white}Acum. Ano} & \textbf{\color{white}Part. \%} & \textbf{\color{white}Var. Anual} \\
+\midrule
+Comércio & Comércio Atacadista e Varejista  & R\$ 1.532,76 Mi & 31,47\% & -0.35\% \\
+\rowcolor{corfundo} Combustíveis & Combustíveis e Lubrificantes (Di & R\$ 1.453,80 Mi & 29,85\% & +4.29\% \\
+Indústria & Indústria Geral e Construção (Se & R\$ 930,78 Mi & 19,11\% & +6.22\% \\
+\rowcolor{corfundo} Energia Elétrica & Eletricidade e Gás (Seção D CNAE & R\$ 481,18 Mi & 9,88\% & +19.91\% \\
+Demais Atividades & Demais Serviços e Outras Ativida & R\$ 250,70 Mi & 5,15\% & -6.62\% \\
+\rowcolor{corfundo} Comunicação & Informação e Comunicação (Seção  & R\$ 87,42 Mi & 1,79\% & -0.47\% \\
+Transportes & Transporte, Armazenagem e Correi & R\$ 67,73 Mi & 1,39\% & +5.64\% \\
+\rowcolor{corfundo} Agropecuária & Agropecuária (Seção A CNAE 2.0) & R\$ 66,59 Mi & 1,37\% & -3.88\% \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: SEFAZ-TO e CONFAZ.}}
+\end{minipage}
+\par\vspace{0.08cm}
+\end{minipage}\hfill
+{\color{cinzaborda}\vrule width 0.4pt}\hfill
+\begin{minipage}[t]{0.482\textwidth}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Detalhamento Analítico do ICMS por Rubrica (SEFAZ-TO)}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.5pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{llrrrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Seção} & \textbf{\color{white}Rubrica / Atividade SEFAZ-TO} & \textbf{\color{white}No Mês} & \textbf{\color{white}Var. Mês} & \textbf{\color{white}Acum. Ano} & \textbf{\color{white}Part. \%} \\
+\midrule
+Deducoes & ICMS & R\$ 0,01 Mi & -80.7\% & R\$ 0,83 Mi & -\% \\
+\rowcolor{corfundo} Deducoes & IPVA & R\$ 0,02 Mi & -37.0\% & R\$ 0,21 Mi & -\% \\
+Deducoes & ITCD & R\$ 0,00 Mi & -79.6\% & R\$ 0,38 Mi & -\% \\
+\rowcolor{corfundo} Deducoes & Outras Receitas & R\$ 0,00 Mi & +92.0\% & R\$ 0,50 Mi & -\% \\
+Deducoes & Restituição IRRF & R\$ 0,00 Mi & +0.0\% & R\$ 0,00 Mi & -\% \\
+\rowcolor{corfundo} Deducoes & Subtotal - Deduções & R\$ 0,03 Mi & -65.0\% & R\$ 1,93 Mi & -\% \\
+Deducoes & Taxa & R\$ 0,00 Mi & +0.0\% & R\$ 0,01 Mi & -\% \\
+\rowcolor{corfundo} ICMS & Agricultura & R\$ 4,11 Mi & +5.3\% & R\$ 35,59 Mi & 0,73\% \\
+ICMS & Atv. a Classificar & R\$ 21,82 Mi & +7.0\% & R\$ 173,75 Mi & 3,57\% \\
+\rowcolor{corfundo} ICMS & Combustíveis & R\$ 172,81 Mi & -10.4\% & R\$ 1.453,80 Mi & 29,85\% \\
+ICMS & Comunicação & R\$ 9,20 Mi & -6.7\% & R\$ 87,42 Mi & 1,79\% \\
+\rowcolor{corfundo} ICMS & Comércio & R\$ 172,77 Mi & -2.7\% & R\$ 1.532,76 Mi & 31,47\% \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: SEFAZ-TO — Boletim Tributário Estadual.}}
+\end{minipage}
+\par\vspace{0.08cm}
+\end{minipage}
+\par\vspace{0.08cm}
+
+\newpage
+\bannersecaoperiodico{6}{PRODUÇÃO AGROPECUÁRIA, FLORESTAL E PROTEÍNA ANIMAL (IBGE)}{LSPA (6588), PAM (5457 UF e Top 10 Mun.), PPM (3939 e 74), PEVS (5930, 291 e 289), Abate (1092--1094), Leite (1086) e Ovos (915)}
+\noindent\makebox[\textwidth][s]{%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}SAFRA DE SOJA (LSPA)}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}5,08 Mi t}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Área: 1,51 Mi ha}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}\hfill%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}VALOR BRUTO PAM (2025)}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}R\$ 14,89 Bi}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Produção Agrícola Municipal (5457)}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}\hfill%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}REBANHO BOVINO (2025)}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}11,53 Mi cab.}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Var. Anual: -0.79\%}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}\hfill%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}ABATE TRIMESTRAL BOVINO}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}362.539 cab.}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Carcaças: 91.058 t (T2 2026)}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}%
+}
+
+\vspace{0.08cm}
+\noindent\begin{tikzpicture}
+  \node[fill=corfundo, draw=cinzaborda, line width=0.5pt, rounded corners=2pt,
+        inner xsep=8pt, inner ysep=5pt, text width=\textwidth-17pt, font=\scriptsize\color{cinzatexto}] (dbox) {
+    {\footnotesize\bfseries\color{corprimaria}Radar de Variações, Saltos e Estabilidades Conjunturais}\par\vspace{2pt}
+    \begin{itemize}[leftmargin=11pt, itemsep=1.0pt, topsep=1pt, parsep=0pt]
+       \item \textbf{\color{verdealta}[EXPANSÃO DRÁSTICA / SALTO POSITIVO] Produção de Soja no Tocantins (LSPA 6588 / PAM 5457):} Produção de Soja no Tocantins (LSPA 6588 / PAM 5457) registrou aceleração expressiva de +17,18\% (mudança drástica acima do padrão recente). [nível: 5.084.944 t]
+       \item \textbf{\color{vermelhobaixa}[OSCILAÇÃO NEGATIVA LEVE] Efetivo do Rebanho Bovino Estadual (PPM 3939):} Efetivo do Rebanho Bovino Estadual (PPM 3939) apresentou acomodação negativa de -0,79\%. [nível: 11.532.757 cabeças]
+       \item \textbf{\color{vermelhobaixa}[QUEDA DRÁSTICA / CONTRAÇÃO ACENTUADA] Peso das Carcaças Bovinas Abatidas (Pesquisa do Abate 1092):} Peso das Carcaças Bovinas Abatidas (Pesquisa do Abate 1092) sofreu retração acentuada de -3,45\% (queda drástica que requer atenção conjuntural). [nível: 91.057,7 t]
+       \item \textbf{\color{vermelhobaixa}[QUEDA DRÁSTICA / CONTRAÇÃO ACENTUADA] Captação Trimestral de Leite Cru (Pesquisa do Leite 1086):} Captação Trimestral de Leite Cru (Pesquisa do Leite 1086) sofreu retração acentuada de -14,93\% (queda drástica que requer atenção conjuntural). [nível: 23.238 mil L]
+    \end{itemize}
+  };
+  \fill[corprimaria] (dbox.north west) rectangle ([xshift=3pt]dbox.south west);
+\end{tikzpicture}
+
+\vspace{0.08cm}
+\begin{multicols}{2}
+\secaoperiodico{6.1. Dinâmica das Lavouras: LSPA (6588) e PAM (5457)}
+O complexo agropecuário do Tocantins — integrante estratégico da fronteira agrícola do MATOPIBA — combina o prognóstico mensal de safra do Levantamento Sistemático da Produção Agrícola (LSPA — Tabela 6588 do IBGE) com o fechamento municipal consolidado da Produção Agrícola Municipal (PAM — Tabela 5457). A soja em grão lidera a área plantada e o valor bruto de geração de renda no campo, seguida pelo milho 2ª safra (safrinha), pelo arroz irrigado na bacia do Rio Formoso e Rio Javaés (Formoso do Araguaia e Lagoa da Confusão) e pela expansão da cana-de-açúcar, mandioca e fruticultura irrigada.
+
+\secaoperiodico{6.2. Pecuária (PPM), Silvicultura (PEVS) e Pesquisas Trimestrais}
+Na pecuária (PPM — Tabelas 3939 e 74), o Tocantins supera a marca de 11,4 milhões de cabeças bovinas, sustentando um parque frigorífico exportador cujo abate trimestral (Tabelas 1092, 1093 e 1094) abastece mercados asiáticos, europeus e do Oriente Médio. Na silvicultura e extrativismo vegetal (PEVS — Tabelas 5930, 291 e 289), destacam-se os maciços florestais de eucalipto voltados à celulose, madeira em tora e lenha, bem como a cadeia extrativa do babaçu e do pequi. Por fim, as pesquisas trimestrais do Leite (Tabela 1086) e de Ovos de Galinha (Tabela 915) demonstram o fortalecimento das cadeias regionais de laticínios e avicultura de postura.
+\end{multicols}
+\begin{center}\includegraphics[width=0.90\textwidth]{figuras/2026_10_carta_pib_s6_agro_lavouras.pdf}\end{center}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}[t]{0.482\textwidth}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}LSPA (IBGE - Tabela 6588): Levantamento Sistemático da Produção Agrícola do Tocantins (Estimativa Oficial de Safra)}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.0pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{lcrrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Safra / Produto Monitorado (LSPA — Tocantins)} & \textbf{\color{white}Mês Ref.} & \textbf{\color{white}Área Colhida (ha)} & \textbf{\color{white}Produção Estimada (Ton)} & \textbf{\color{white}Rendimento Médio (kg/ha)} \\
+\midrule
+Cereais, leguminosas e oleaginosas & outubro 2026 & 2.415.171 & 8.674.247 & - \\
+\rowcolor{corfundo} Soja & outubro 2026 & 1.513.636 & 5.084.944 & 3.359 \\
+Cana-de-açúcar & outubro 2026 & 36.347 & 2.952.594 & 81.233 \\
+\rowcolor{corfundo} Milho (2\textordfeminine{} Safra) & outubro 2026 & 465.404 & 2.334.017 & 5.015 \\
+Arroz & outubro 2026 & 107.109 & 645.054 & 6.022 \\
+\rowcolor{corfundo} Milho (1\textordfeminine{} Safra) & outubro 2026 & 72.954 & 341.384 & 4.679 \\
+Mandioca & outubro 2026 & 12.862 & 199.990 & 15.549 \\
+\rowcolor{corfundo} Sorgo & outubro 2026 & 53.324 & 105.608 & 1.980 \\
+Feijão (2\textordfeminine{} Safra) & outubro 2026 & 142.926 & 103.379 & 723 \\
+\rowcolor{corfundo} Algodão herbáceo & outubro 2026 & 11.242 & 39.665 & 3.528 \\
+Banana & outubro 2026 & 3.634 & 35.584 & 9.792 \\
+\rowcolor{corfundo} Gergelim & outubro 2026 & 39.354 & 22.969 & 584 \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: IBGE — Levantamento Sistemático da Produção Agrícola (Tabela 6588).}}
+\end{minipage}
+\par\vspace{0.08cm}
+\end{minipage}\hfill
+{\color{cinzaborda}\vrule width 0.4pt}\hfill
+\begin{minipage}[t]{0.482\textwidth}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}PAM (IBGE - Tabela 5457): Produção Agrícola Consolidada do Tocantins por Cultura (Safra 2025)}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.5pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrrrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Cultura Temporária / Permanente (PAM)} & \textbf{\color{white}Área Colhida (ha)} & \textbf{\color{white}Quantidade (Ton)} & \textbf{\color{white}Var. Anual Qtd.} & \textbf{\color{white}Rend. (kg/ha)} & \textbf{\color{white}Valor Bruto (R\$ Mi)} \\
+\midrule
+Soja (em grão) & 1.436.506 & 5.089.615 & +17.18\% & 3.543 & R\$ 9.649,48 Mi \\
+\rowcolor{corfundo} Milho (em grão) & 556.346 & 2.649.322 & +22.43\% & 4.762 & R\$ 2.303,87 Mi \\
+Arroz (em casca) & 133.946 & 730.029 & -6.14\% & 5.450 & R\$ 928,02 Mi \\
+\rowcolor{corfundo} Mandioca & 14.209 & 220.249 & -7.37\% & 15.501 & R\$ 494,19 Mi \\
+Cana-de-açúcar & 53.826 & 4.088.308 & +38.66\% & 75.954 & R\$ 468,61 Mi \\
+\rowcolor{corfundo} Feijão (em grão) & 93.136 & 98.344 & +29.87\% & 1.056 & R\$ 276,17 Mi \\
+Abacaxi & 3.564 & 76.670 & +11.10\% & 21.512 & R\$ 258,77 Mi \\
+\rowcolor{corfundo} Gergelim & 60.093 & 35.797 & - & 596 & R\$ 122,15 Mi \\
+Banana (cacho) & 3.763 & 38.791 & +5.68\% & 10.309 & R\$ 120,83 Mi \\
+\rowcolor{corfundo} Alface & 478 & 13.432 & - & 28.100 & R\$ 109,06 Mi \\
+Melancia & 4.103 & 114.977 & +5.41\% & 28.023 & R\$ 100,53 Mi \\
+\rowcolor{corfundo} Algodão herbáceo (em caroço) & 15.140 & 53.309 & +78.34\% & 3.521 & R\$ 59,26 Mi \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: IBGE — Produção Agrícola Municipal (Tabela 5457).}}
+\end{minipage}
+\par\vspace{0.08cm}
+\end{minipage}
+\par\vspace{0.08cm}
+
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}PAM (IBGE - Tabela 5457): Top 10 Municípios Agrícolas do Tocantins por Valor Bruto da Produção (2025)}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.5pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{clrrrrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Pos.} & \textbf{\color{white}Município Produtor (Top 10 PAM)} & \textbf{\color{white}Área Colhida (ha)} & \textbf{\color{white}Soja (Ton)} & \textbf{\color{white}Milho (Ton)} & \textbf{\color{white}Valor Bruto Total} & \textbf{\color{white}Part. UF (\%)} \\
+\midrule
+1\textordmasculine{} & Campos Lindos & 126.010 & 226.440 & 340.415 & R\$ 760,84 Mi & 5,05\% \\
+\rowcolor{corfundo} 2\textordmasculine{} & Pedro Afonso & 92.367 & 90.095 & 95.501 & R\$ 720,73 Mi & 4,78\% \\
+3\textordmasculine{} & Porto Nacional & 127.196 & 279.000 & 207.700 & R\$ 698,02 Mi & 4,63\% \\
+\rowcolor{corfundo} 4\textordmasculine{} & Lagoa da Confusão & 96.501 & 28.857 & 18.300 & R\$ 602,15 Mi & 3,99\% \\
+5\textordmasculine{} & Caseara & 80.236 & 221.752 & 103.001 & R\$ 589,69 Mi & 3,91\% \\
+\rowcolor{corfundo} 6\textordmasculine{} & Araguacema & 65.202 & 171.994 & 67.580 & R\$ 496,85 Mi & 3,30\% \\
+7\textordmasculine{} & Marianópolis do Tocantins & 63.831 & 188.045 & 33.750 & R\$ 465,87 Mi & 3,09\% \\
+\rowcolor{corfundo} 8\textordmasculine{} & Monte do Carmo & 92.848 & 181.440 & 162.600 & R\$ 461,67 Mi & 3,06\% \\
+9\textordmasculine{} & Mateiros & 74.927 & 193.200 & 82.100 & R\$ 422,58 Mi & 2,80\% \\
+\rowcolor{corfundo} 10\textordmasculine{} & Pium & 79.407 & 120.450 & 66.223 & R\$ 419,91 Mi & 2,79\% \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: IBGE — Produção Agrícola Municipal (Tabela 5457).}}
+\end{minipage}
+\par\vspace{0.08cm}
+
+\par\vspace{0.08cm}
+\noindent\begin{minipage}[t]{0.482\textwidth}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}PPM (IBGE - Tabela 3939): Efetivo dos Rebanhos Pecuários no Estado do Tocantins}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.0pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Espécie / Efetivo do Rebanho (PPM)} & \textbf{\color{white}Efetivo Anterior} & \textbf{\color{white}Efetivo Atual (2025)} & \textbf{\color{white}Variação Absoluta (Cab.)} & \textbf{\color{white}Variação Anual (\%)} \\
+\midrule
+Bovino & 11.624.631 & 11.532.757 & -91.874 & -0.79\% \\
+\rowcolor{corfundo} Galináceos - total & 7.361.696 & 6.763.859 & -597.837 & -8.12\% \\
+Galináceos - galinhas & 2.781.867 & 3.040.213 & +258.346 & +9.29\% \\
+\rowcolor{corfundo} Suíno - total & 191.280 & 186.990 & -4.290 & -2.24\% \\
+Equino & 166.119 & 153.208 & -12.911 & -7.77\% \\
+\rowcolor{corfundo} Ovino & 98.819 & 87.133 & -11.686 & -11.83\% \\
+Suíno - matrizes de suínos & 60.230 & 58.223 & -2.007 & -3.33\% \\
+\rowcolor{corfundo} Caprino & 9.997 & 8.360 & -1.637 & -16.37\% \\
+Bubalino & 6.274 & 6.642 & +368 & +5.87\% \\
+\rowcolor{corfundo} Codornas & 351 & 70 & -281 & -80.06\% \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: IBGE — Pesquisa da Pecuária Municipal (Tabela 3939).}}
+\end{minipage}
+\par\vspace{0.08cm}
+\end{minipage}\hfill
+{\color{cinzaborda}\vrule width 0.4pt}\hfill
+\begin{minipage}[t]{0.482\textwidth}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}PPM (IBGE - Tabela 3939): Top 10 Municípios do Tocantins em Efetivo do Rebanho Bovino}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.0pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{clcrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Pos.} & \textbf{\color{white}Município Pecuário (Top 10 TO)} & \textbf{\color{white}Ano Ref.} & \textbf{\color{white}Efetivo Bovino (Cabeças)} & \textbf{\color{white}Participação no Rebanho Estadual (\%)} \\
+\midrule
+1\textordmasculine{} & Araguaçu & 2025 & 518.354 & 4,49\% \\
+\rowcolor{corfundo} 2\textordmasculine{} & Formoso do Araguaia & 2025 & 347.661 & 3,01\% \\
+3\textordmasculine{} & Araguaína & 2025 & 315.022 & 2,73\% \\
+\rowcolor{corfundo} 4\textordmasculine{} & Peixe & 2025 & 289.683 & 2,51\% \\
+5\textordmasculine{} & Paranã & 2025 & 275.381 & 2,39\% \\
+\rowcolor{corfundo} 6\textordmasculine{} & Arraias & 2025 & 275.226 & 2,39\% \\
+7\textordmasculine{} & Araguatins & 2025 & 219.585 & 1,90\% \\
+\rowcolor{corfundo} 8\textordmasculine{} & Sandolândia & 2025 & 219.246 & 1,90\% \\
+9\textordmasculine{} & Pium & 2025 & 211.766 & 1,84\% \\
+\rowcolor{corfundo} 10\textordmasculine{} & Dueré & 2025 & 209.004 & 1,81\% \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: IBGE — Pesquisa da Pecuária Municipal (Tabela 3939).}}
+\end{minipage}
+\par\vspace{0.08cm}
+\end{minipage}
+\par\vspace{0.08cm}
+
+\par\vspace{0.08cm}
+\noindent\begin{minipage}[t]{0.482\textwidth}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}PPM (IBGE - Tabela 74): Produção de Origem Animal (Leite, Ovos de Galinha, Codorna e Mel de Abelha) no Tocantins}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.0pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{lcrcr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Produto de Origem Animal (PPM)} & \textbf{\color{white}Ano Ref.} & \textbf{\color{white}Produção Física} & \textbf{\color{white}Unidade} & \textbf{\color{white}Valor da Produção (R\$ Mi)} \\
+\midrule
+Leite & 2025 & 421.694 & Mil litros & R\$ 1.097,97 Mi \\
+\rowcolor{corfundo} Ovos de galinha & 2025 & 55.810 & Mil dúzias & R\$ 394,18 Mi \\
+Mel de abelha & 2025 & 123.525 & Quilogramas & R\$ 5,53 Mi \\
+\rowcolor{corfundo} Ovos de codorna & 2025 & 0 & Mil dúzias & R\$ 0,00 Mi \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: IBGE — Pesquisa da Pecuária Municipal (Tabela 74).}}
+\end{minipage}
+\par\vspace{0.08cm}
+\end{minipage}\hfill
+{\color{cinzaborda}\vrule width 0.4pt}\hfill
+\begin{minipage}[t]{0.482\textwidth}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}PEVS (IBGE - Tabelas 5930, 291 e 289): Silvicultura, Florestas Plantadas e Extração Vegetal no Tocantins (2025)}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.0pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{llrcr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Modalidade (PEVS)} & \textbf{\color{white}Espécie Florestal / Produto da Silvicultura e Extrativismo} & \textbf{\color{white}Quantidade} & \textbf{\color{white}Unidade} & \textbf{\color{white}Valor da Produção} \\
+\midrule
+Silvicultura & Lenha & 149.689 & Metros cúbicos & R\$ 22.985,0 mil \\
+\rowcolor{corfundo} Silvicultura & Lenha de eucalipto & 131.955 & Metros cúbicos & R\$ 21.573,0 mil \\
+Extrativismo Vegetal & Lenha & 248.042 & Metros cúbicos & R\$ 17.258,0 mil \\
+\rowcolor{corfundo} Extrativismo Vegetal & Alimentícios & 4.085 & Toneladas & R\$ 8.596,0 mil \\
+Extrativismo Vegetal & Oleaginosos & 421 & Toneladas & R\$ 5.737,0 mil \\
+\rowcolor{corfundo} Extrativismo Vegetal & Babaçu (amêndoa) & 408 & Toneladas & R\$ 5.400,0 mil \\
+Silvicultura & Madeira em tora & 30.209 & Metros cúbicos & R\$ 5.217,0 mil \\
+\rowcolor{corfundo} Extrativismo Vegetal & Pequi (fruto) & 3.112 & Toneladas & R\$ 4.349,0 mil \\
+Silvicultura & Madeira em tora para outras finalidades & 5.709 & Metros cúbicos & R\$ 4.262,0 mil \\
+\rowcolor{corfundo} Silvicultura & Madeira em tora de Teca para outras finali & 2.934 & Metros cúbicos & R\$ 3.249,0 mil \\
+Extrativismo Vegetal & Carvão vegetal & 1.244 & Toneladas & R\$ 2.259,0 mil \\
+\rowcolor{corfundo} Extrativismo Vegetal & Cajá (fruto) & 583 & Toneladas & R\$ 1.833,0 mil \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: IBGE — Produção da Extração Vegetal e da Silvicultura (Tabelas 5930, 291 e 289).}}
+\end{minipage}
+\par\vspace{0.08cm}
+\end{minipage}
+\par\vspace{0.08cm}
+
+\begin{center}\includegraphics[width=0.90\textwidth]{figuras/2026_10_carta_pib_s6_agro_leite_ovos.pdf}\end{center}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Pesquisas Trimestrais Pecuárias do IBGE no Tocantins: Abate (Tabelas 1092, 1093 e 1094), Leite (1086) e Ovos de Galinha (915)}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.5pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrrrrrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Trimestre} & \textbf{\color{white}Bovinos (Cab.)} & \textbf{\color{white}Carcaça Bov. (t)} & \textbf{\color{white}Suínos (Cab.)} & \textbf{\color{white}Frangos (Cab.)} & \textbf{\color{white}Carcaça Fra. (t)} & \textbf{\color{white}Leite Cru (1086)} & \textbf{\color{white}Ovos Galinha (915)} \\
+\midrule
+T3 2024 & 366.658 & 97.038,8 t & - & 6.139.266 & 15.223,4 t & 25.155 mil L & - mil dz \\
+\rowcolor{corfundo} T4 2024 & 310.008 & 82.635,2 t & - & - & - t & 31.196 mil L & - mil dz \\
+T1 2025 & 359.584 & 90.985,6 t & - & 5.884.654 & 15.034,7 t & 33.931 mil L & - mil dz \\
+\rowcolor{corfundo} T2 2025 & 384.684 & 97.174,3 t & - & 6.245.268 & 14.818,0 t & 32.868 mil L & - mil dz \\
+T3 2025 & 396.694 & 103.426,1 t & 919 & 6.525.231 & 15.919,0 t & 25.405 mil L & - mil dz \\
+\rowcolor{corfundo} T4 2025 & 367.141 & 97.469,5 t & 894 & 6.481.415 & 15.784,2 t & 28.022 mil L & - mil dz \\
+T1 2026 & 375.185 & 94.309,5 t & 627 & 6.266.210 & 16.274,7 t & 27.317 mil L & - mil dz \\
+\rowcolor{corfundo} T2 2026 & 362.539 & 91.057,7 t & 648 & 6.478.162 & 15.527,5 t & 23.238 mil L & - mil dz \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: IBGE — Pesquisas Trimestrais do Abate de Animais (1092/1093/1094), do Leite (1086) e de Ovos de Galinha — POG (915).}}
+\end{minipage}
+\par\vspace{0.08cm}
+
+\newpage
+\bannersecaoperiodico{7}{INDICADOR PROPRIETÁRIO IPER-TO}{Índice de Pressão e Expansão Regional do Tocantins — Nota Técnica de Estatística Experimental em Construção}
+\noindent\begin{tikzpicture}
+  \node[fill=corfundo, draw=corprimaria, line width=1pt, rounded corners=3pt, inner sep=8pt, text width=\textwidth-18pt] {
+    {\normalsize\bfseries\color{corprimaria}AVISO METODOLÓGICO OFICIAL — ESTATÍSTICA EXPERIMENTAL EM CONSTRUÇÃO}\par\vspace{3pt}
+    {\footnotesize\color{cinzatexto}O \textbf{Índice de Pressão e Expansão Regional do Tocantins (IPER-TO)} encontra-se em fase de desenvolvimento, calibração econométrica e validação retrospectiva (\textit{backtesting}) pelo Núcleo de Inteligência Econômica do \textbf{Jornal Econômico do Tocantins}. Em conformidade com as boas práticas internacionais de divulgação de estatísticas experimentais (padrão IBGE / Eurostat / OCDE), a arquitetura conceitual e o estágio de integração das bases são apresentados nesta seção, enquanto a série numérica oficial passará a ser divulgada após a conclusão dos testes de estabilidade fora da amostra.}
+  };
+\end{tikzpicture}
+\vspace{0.12cm}
+\begin{multicols}{2}
+\secaoperiodico{7.1. Objetivo do Indicador Antecedente e Coincidente}
+As Contas Regionais oficiais possuem defasagem estrutural e mesmo o PIB Trimestral estadual é divulgado após o encerramento de cada trimestre. O \textbf{IPER-TO} foi concebido pelo Jornal Econômico do Tocantins para preencher essa lacuna informacional, sintetizando em um único número-índice mensal (centrado em 100 pontos no equilíbrio tendencial) o ritmo instantâneo de expansão ou desaceleração da economia tocantinense.
+
+\secaoperiodico{7.2. Modelagem Econométrica e Próximas Etapas}
+A metodologia combina um \textbf{Modelo de Fatores Dinâmicos em Espaço de Estados (Filtro de Kalman)} para compatibilizar variáveis mensais (Novo CAGED, Receita Federal/CNPJ, Comex Stat e SEFAZ-TO) e trimestrais (SEPLAN-TO, PNAD Contínua e Pesquisas Agropecuárias do IBGE), todas previamente dessazonalizadas via X-13ARIMA-SEATS e padronizadas em \textit{z-scores}. As cinco dimensões já estão 100\% integradas ao banco de dados automatizado do jornal, restando apenas a etapa final de validação dos pesos ótimos de previsão do ciclo regional.
+\end{multicols}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Arquitetura Metodológica do Índice de Pressão e Expansão Regional do Tocantins (IPER-TO — Estatística Experimental)}\par\vspace{2pt}
+  {\fontsize{7.0}{8.6}\selectfont\setlength{\tabcolsep}{4.5pt}%
+\begin{tabularx}{\linewidth}{ll>{\raggedright\arraybackslash}Xcc}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Dimensão Analítica do IPER-TO} & \textbf{\color{white}Variáveis Primárias Integradas} & \textbf{\color{white}Frequência} & \textbf{\color{white}Método de Ponderação} & \textbf{\color{white}Estágio Técnico} \\
+\midrule
+1. Pulso de Atividade e Consumo & PIB Trimestral (X-13) + ICMS Deflacionado & Mensal / Trimestral & Fator Dinâmico (DFM / PCA) & Séries Padronizadas [OK] \\
+\rowcolor{corfundo} 2. Pulso do Mercado de Trabalho Formal & Novo CAGED (Saldo + Salário Adm.) + PNAD & Mensal / Trimestral & Fator Dinâmico (DFM / PCA) & Séries Padronizadas [OK] \\
+3. Pulso de Investimento Empresarial & Aberturas Líquidas CNPJ + Tempo REDESIM & Mensal & Fator Dinâmico (DFM / PCA) & Séries Padronizadas [OK] \\
+\rowcolor{corfundo} 4. Pulso Externo e Agroindustrial & Comex Stat (FOB + Ton) + Abate/Leite IBGE & Mensal / Trimestral & Fator Dinâmico (DFM / PCA) & Séries Padronizadas [OK] \\
+5. Pulso Fiscal e Liquidez Regional & ICMS CNAE 2.0 + FPE Líquido + IPCA/Selic & Mensal & Fator Dinâmico (DFM / PCA) & Em Calibração de Pesos \\
+\bottomrule
+\end{tabularx}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: Núcleo de Inteligência Econômica e Modelagem Quantitativa — Jornal Econômico do Tocantins.}}
+\end{minipage}
+\par\vspace{0.08cm}
+
+\newpage
+\bannersecaoperiodico{8}{ANÁLISE CONJUNTURAL INTEGRADA E INTELIGÊNCIA DE MERCADO}{Interseccionalidade entre Atividade Produtiva, Emprego, Demografia Empresarial, Comércio Exterior, Fisco e Agronegócio}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Matriz de Interseccionalidade Macroeconômica: Cruzamento entre PIB, Trabalho, Empresas, Comex, Fisco e Agropecuária}\par\vspace{2pt}
+  {\fontsize{7.0}{8.6}\selectfont\setlength{\tabcolsep}{4.5pt}%
+\begin{tabularx}{\linewidth}{l>{\raggedright\arraybackslash}Xc}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Eixo de Transmissão Intersetorial no Tocantins} & \textbf{\color{white}Evidência Empírica Integrada nas Bases do Período} & \textbf{\color{white}Sinal Conjuntural} \\
+\midrule
+1. Agropecuária (PAM/LSPA) x Comércio Exterior x PIB & Safra de grãos e abate bovino sustentam US\$ 200,89 Mi em exportações no mês e saldo de + US\$ 136,94 Mi & Expansão Estrutural \\
+\rowcolor{corfundo} 2. Dinâmica Empresarial (CNPJ/REDESIM) x Novo CAGED & Abertura de 2.760 CNPJs/mês (abertura em 18,5h) impulsiona 11.263 admissões formais & Forte Tração \\
+3. Massa Salarial Formal (RAIS/CAGED) x ICMS (CNAE 2.0) & Estoque de 437.580 vínculos (rem. R\$ 4.022,93) sustenta ICMS de Comércio e Combustíveis (R\$ 566,48 Mi) & Transbordamento Urbano \\
+\rowcolor{corfundo} 4. Custo Monetário (Selic/IPCA) x Indústria e Construção & Com Selic em 13,75\% a.a. e IPCA em 4,63\%, Serviços (+1,5\%) e Indústria (+3,1\%) mostram resiliência & Atenção Seletiva \\
+5. Polos Municipais (Top 10 PIB x RAIS x Comex x PAM) & Palmas lidera Serviços/Administração/Emprego; Araguaína, Porto Nacional e Gurupi articulam Agroindústria e Logística & Complementaridade Regional \\
+\bottomrule
+\end{tabularx}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: Núcleo de Conjuntura Econômica — Jornal Econômico do Tocantins.}}
+\end{minipage}
+\par\vspace{0.08cm}
+
+\vspace{0.04cm}
+\begin{multicols}{2}
+\begin{spacing}{0.96}
+\secaoperiodico{8.1. Transmissão Intersetorial: Do Campo aos Serviços Urbanos}
+{\small A principal contribuição analítica desta Carta de Conjuntura reside na leitura interseccional dos seis pilares empíricos monitorados. Os microdados demonstram que a economia do Tocantins opera sob um circuito de retroalimentação virtuoso entre a produção primária exportadora e o ecossistema urbano de empresas e trabalho formal. O excedente gerado pela colheita de grãos (LSPA/PAM) e pelo complexo frigorífico (PPM/Abate) converte-se em superávit cambial comercial (\textbf{+ US\$ 136,94 Mi}), cuja renda interna demanda serviços logísticos, comércio atacadista, manutenção mecânica, serviços financeiros e construção civil.
+
+Esse efeito multiplicador fica evidente no cruzamento entre a Receita Federal (SERPRO/REDESIM) e o Ministério do Trabalho (Novo CAGED e RAIS): a redução do tempo médio de abertura de empresas no Tocantins para \textbf{18,5 horas} (com \textbf{2,7 horas de registro}) acelera a formalização de novos estabelecimentos (\textbf{167.565 ativos}), os quais respondem diretamente pela absorção de mão de obra formal (\textbf{437.580 vínculos RAIS} e saldo mensal de \textbf{+716} no Novo CAGED) e pela sustentação da arrecadação de ICMS (\textbf{R\$ 566,48 Mi}).}
+
+\secaoperiodico{8.2. Leitura Crítica da Equipe Editorial}
+{\small A leitura estrutural e interseccional das oito seções que compõem esta Carta de Conjuntura evidencia que a economia do Tocantins atravessa uma fase de maturação produtiva caracterizada pela crescente integração entre o campo e os polos urbanos regionais. Nas Contas Regionais e no PIB Trimestral dessazonalizado (Seção 1), observa-se que momentos de acomodação sazonal da lavoura são compensados pelo avanço da Indústria (+3,1\%) e dos Serviços (+1,5\%), sustentando o patamar trimestral de R\$ 25,8 bilhões.
+
+\medskip
+Esse dinamismo urbano reflete-se diretamente nos microdados do Mercado de Trabalho (Seção 2) e da Dinâmica Empresarial (Seção 3). A taxa de desocupação de 4,1\% (Tabela 4099 do IBGE) e a jornada habitual sólida dos empregadores e assalariados (Tabela 6374) caminham lado a lado com um estoque de 437.580 vínculos formais ativos na RAIS (distribuídos em 33.198 estabelecimentos) e remuneração média de R\$ 4.022,93. Simultaneamente, o ambiente de negócios — impulsionado por um tempo médio de abertura de 18,5 horas na REDESIM (15,7h de viabilidade e 2,7h de registro) — elevou o estoque empresarial para 167.565 CNPJs ativos e 102.075 sócios no QSA.
+
+\medskip
+Pelo lado externo e fiscal (Seções 4 e 5), a pauta exportadora liderada pela soja em grão e pela carne bovina industrializada garante superávits comerciais recorrentes, enquanto a relação US\$ FOB/Kg evidencia o prêmio de valor agregado obtido pelos municípios com plantas frigoríficas e agroindustriais instaladas (como Araguaína, Paraíso do Tocantins, Porto Nacional e Gurupi). Por sua vez, a arrecadação própria de ICMS (R\$ 566,48 milhões no mês e R\$ 4,87 bilhões acumulados no ano) captura a circulação de combustíveis, comércio atacadista e energia elétrica gerada por esse circuito produtivo.
+
+\medskip
+Finalmente, o caderno especial das sete pesquisas agropecuárias e florestais do IBGE (Seção 6 — LSPA, PAM, PPM, PEVS, Abate Trimestral, Leite e Ovos de Galinha) demonstra a escala física que sustenta a economia estadual: mais de 11,4 milhões de cabeças bovinas, abate trimestral em expansão, consolidação dos polos agrícolas municipais e avanço das cadeias de silvicultura (eucalipto), leite e avicultura.}
+
+\secaoperiodico{8.3. Cenários Prospectivos e Vetores de Monitoramento}
+{\small Para os próximos trimestres, o cenário-base do Núcleo de Conjuntura projeta continuidade da expansão do emprego formal no setor terciário e na agroindústria, sustentada pelo calendário de plantio e comercialização da nova safra de grãos (LSPA/PAM) e pela demanda internacional aquecida por proteína animal tocantinense.
+
+\medskip
+No plano institucional e analítico, a conclusão da fase de calibração econométrica do Índice de Pressão e Expansão Regional do Tocantins (IPER-TO — Seção 7) dotará o Estado de uma ferramenta proprietária de monitoramento mensal antecedente, consolidando o Jornal Econômico do Tocantins como referência técnica em inteligência econômica regional.}
+\end{spacing}
+\end{multicols}
+
+
+\vspace{0.12cm}
+
+% ==============================================================================
+% EXPEDIENTE INSTITUCIONAL E NOTA METODOLÓGICA
+% ==============================================================================
+\noindent\begin{tikzpicture}
+  \node[
+    fill=corfundo,
+    draw=cinzaborda,
+    line width=0.5pt,
+    rounded corners=2pt,
+    inner sep=6pt,
+    text width=\textwidth-13pt,
+    font=\scriptsize\color{cinzasub}
+  ] {
+    \textbf{\color{corprimaria}Expediente e Nota Metodológica:} Caderno periódico trimestral/esporádico estruturado em 8 seções integradas pelo Jornal Econômico do Tocantins, unificando todas as bases estaduais, municipais e setoriais com diagnóstico estatístico automatizado e análise interseccional da equipe.\par\vspace{2pt}
+    \textbf{\color{corprimaria}Equipe Responsável:} Lorenzo Costa e Equipe | Núcleo de Conjuntura do Jornal Econômico do Tocantins \enspace$\vert$\enspace \textbf{\color{corprimaria}Publicação Institucional:} Núcleo de Conjuntura Econômica — \textit{Jornal Econômico do Tocantins}.
+  };
+\end{tikzpicture}
+
+\end{document}

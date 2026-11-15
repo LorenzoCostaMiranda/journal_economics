@@ -1,0 +1,369 @@
+\documentclass[10pt,a4paper]{article}
+
+% ==============================================================================
+% TEMPLATE EDITORIAL — PERIÓDICO EM 2 COLUNAS (DOSSIÊ ANUAL E CARTA DE CONJUNTURA)
+% JORNAL ECONÔMICO DO TOCANTINS
+%   - Dossiê Anual (DA): Verde-Floresta (#0B5D32), Marfim (#FAF6EE) e Carmim (#A61C1C)
+%   - Carta de Conjuntura (CC): Azul Cobalto (#0A2E73), Esmeralda (#1B7A43),
+%     Lima Editorial (#8CE000 no selo escuro) e Azul-Gelo (#F3F6FB)
+% ==============================================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+
+\usepackage[top=1.35cm, bottom=1.45cm, left=1.35cm, right=1.35cm, headheight=14pt, headsep=8pt, footskip=18pt]{geometry}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{colortbl}
+\usepackage{tikz}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{setspace}
+\usepackage{multicol}
+\usepackage{amssymb}
+\usepackage{hyperref}
+
+% Paleta Editorial Dinâmica (Proporção 75% Neutro / 20% Primária / 5% Acento)
+\definecolor{corprimaria}{HTML}{0B5D32}
+\definecolor{corsecundaria}{HTML}{146B3A}
+\definecolor{coracento}{HTML}{A61C1C}
+\definecolor{coracentoheader}{HTML}{FAF6EE}
+\definecolor{coracentotexto}{HTML}{0B5D32}
+\definecolor{corfundo}{HTML}{FAF6EE}
+\definecolor{cinzatexto}{HTML}{1E293B}
+\definecolor{cinzasub}{HTML}{475569}
+\definecolor{cinzaborda}{HTML}{CBD5E1}
+\definecolor{verdealta}{HTML}{15803D}
+\definecolor{vermelhobaixa}{HTML}{B91C1C}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=corprimaria,
+  urlcolor=corsecundaria,
+  pdftitle={Dossiê Anual — PIB do Tocantins, Séries Dessazonalizadas e Contas Regionais},
+  pdfauthor={Jornal Economico do Tocantins}
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3.5pt}
+\setlength{\columnsep}{0.60cm}
+\setlength{\columnseprule}{0.4pt}
+\def\columnseprulecolor{\color{cinzaborda}}
+\renewcommand{\arraystretch}{1.14}
+
+% Cabeçalho e Rodapé de Periódico Econômico (Sem sobreposição central)
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.5pt}
+\renewcommand{\footrule}{\hbox to\headwidth{\color{coracento}\leaders\hrule height \footrulewidth\hfill}}
+
+\fancyhead[L]{\ifnum\value{page}>1 \scriptsize\bfseries\color{corprimaria}JORNAL ECONÔMICO DO TOCANTINS \enspace{\color{coracento}$\vert$}\enspace {\mdseries\color{cinzasub}DOSSIÊ ANUAL / SEMESTRAL (DA)}\fi}
+\fancyhead[R]{\ifnum\value{page}>1 \scriptsize\color{cinzasub}Ref.: \textbf{Consolidado Anual / Últimos 4 Trimestres (2025–2026)} $\cdot$ \#08/2026\fi}
+
+\fancyfoot[L]{\scriptsize\color{cinzasub}\textbf{\color{corprimaria}Jornal Econômico do Tocantins} $\cdot$ Lorenzo Costa e Equipe | Núcleo de Conjuntura do Jornal Econômico do Tocantins $\cdot$ Publicado em 14/11/2026}
+\fancyfoot[R]{\scriptsize\bfseries\color{corprimaria}Pág. \thepage\ de \pageref*{LastPage}}
+
+% Banner de Abertura de Seção Principal (Caderno Periódico)
+\newcommand{\bannersecaoperiodico}[3]{%
+  \par\vspace{0.14cm}%
+  \noindent\begin{tikzpicture}
+    \node[
+      fill=corprimaria,
+      inner xsep=10pt,
+      inner ysep=6pt,
+      text width=\textwidth-20pt,
+      align=left
+    ] (bsec) {
+      \hbox to \linewidth{%
+        {\colorbox{coracentoheader}{\strut\hspace{4pt}\scriptsize\bfseries\color{coracentotexto}SEÇÃO #1\hspace{4pt}}}%
+        \hspace{8pt}%
+        {\normalsize\bfseries\color{white}#2}%
+        \hfill
+      }%
+      \par\vspace{2pt}%
+      {\scriptsize\color{corfundo}#3\par}%
+    };
+    \fill[coracento] (bsec.south west) rectangle ([yshift=-2pt]bsec.south east);
+  \end{tikzpicture}%
+  \par\vspace{0.10cm}%
+}
+
+% Subtítulo de Coluna dentro do Layout de 2 Colunas
+\newcommand{\secaoperiodico}[1]{%
+  \par\vspace{0.10cm}%
+  \noindent{\small\bfseries\color{corprimaria}\rule{0.14cm}{0.26cm}\hspace{4pt}{\color{coracento}\rule{0.06cm}{0.26cm}}\hspace{5pt}#1}%
+  \par\vspace{0.03cm}%
+  {\color{coracento}\hrule height 0.7pt}%
+  \vspace{0.06cm}%
+}
+
+\begin{document}
+\color{cinzatexto}
+
+% ==============================================================================
+% MASTHEAD DE CAPA DO PERIÓDICO (AUTO-AJUSTÁVEL, SEM COLISÃO DE TÍTULO/SUBTÍTULO)
+% ==============================================================================
+\noindent\begin{tikzpicture}
+  \node[
+    fill=corprimaria,
+    inner xsep=12pt,
+    inner ysep=9pt,
+    text width=\textwidth-24pt,
+    align=left
+  ] (masthead) {
+    \hbox to \linewidth{%
+      {\colorbox{coracentoheader}{\strut\hspace{5pt}\scriptsize\bfseries\color{coracentotexto}DOSSIÊ ANUAL / SEMESTRAL (DA) $\cdot$ \#08/2026\hspace{5pt}}}%
+      \hfill
+      {\scriptsize\color{white}\textbf{JORNAL ECONÔMICO DO TOCANTINS} \enspace{\color{coracentoheader}$\vert$}\enspace Publicado em 14/11/2026}%
+    }%
+    \par\vspace{4pt}%
+    {\color{coracento}\hrule height 0.9pt}%
+    \par\vspace{5pt}%
+    {\fontsize{13.5}{16.2}\selectfont\bfseries\color{white}Dossiê Anual — PIB do Tocantins, Séries Dessazonalizadas e Contas Regionais\par}%
+    \vspace{3pt}%
+    {\footnotesize\color{corfundo}Balanço estrutural sob a ótica acumulada em 4 trimestres e plurianual: comparação entre o ajuste sazonal X-13ARIMA-SEATS (TO), a Tabela 1621 do IBGE (Brasil) e o PIB Municipal (Tabela 5938) \enspace{\color{coracentoheader}$\vert$}\enspace \textbf{Ref.: Consolidado Anual / Últimos 4 Trimestres (2025–2026)}\par}%
+  };
+  \fill[coracento] (masthead.south west) rectangle ([yshift=-2.6pt]masthead.south east);
+\end{tikzpicture}
+
+\vspace{0.10cm}
+
+% ==============================================================================
+% CORPO COMPLETO DO PERIÓDICO (DOSSIÊ ANUAL OU CARTA DE CONJUNTURA)
+% ==============================================================================
+\noindent\makebox[\textwidth][s]{%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.286\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}PIB NOMINAL (TOCANTINS)}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}R\$ 25,8 Bi $\blacktriangledown$ 1,3\%}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Ref.: T1 2026 (SEPLAN-TO)}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}\hfill%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.286\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}IMPOSTOS LÍQUIDOS (TO)}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}R\$ 2,26 Bi $\blacktriangledown$ 0,2\%}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Preços Correntes e Var. Dessaz.}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}\hfill%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.286\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}PIB NOMINAL (BRASIL)}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}R\$ 3,43 Tri $\blacktriangle$ 0,5\%}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}IBGE Tabelas 1846 / 5932}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}%
+}
+\par\vspace{0.03cm}
+\noindent{\fontsize{6.3}{7.5}\selectfont\bfseries\color{corsecundaria}DESEMPENHO SETORIAL NO TRIMESTRE (DO MAIOR CRESCIMENTO AO MENOR, DA ESQUERDA PARA A DIREITA)}\par\vspace{0.02cm}
+\noindent\makebox[\textwidth][s]{%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.286\textwidth, minimum height=0.92cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}1\textordmasculine{} Indústria}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{verdealta}$\blacktriangle$ + 3,1\%}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Maior crescimento trimestral}%
+  };
+  \fill[verdealta] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}\hfill%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.286\textwidth, minimum height=0.92cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}2\textordmasculine{} Serviços}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{verdealta}$\blacktriangle$ + 1,5\%}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Desempenho positivo na margem}%
+  };
+  \fill[verdealta] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}\hfill%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.286\textwidth, minimum height=0.92cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}3\textordmasculine{} Agropecuária}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{vermelhobaixa}$\blacktriangledown$ - 7,2\%}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Retração trimestral na margem}%
+  };
+  \fill[vermelhobaixa] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}%
+}
+
+\vspace{0.03cm}
+\noindent\begin{tikzpicture}
+  \node[fill=corfundo, draw=cinzaborda, line width=0.5pt, rounded corners=2pt,
+        inner xsep=8pt, inner ysep=5pt, text width=\textwidth-17pt, font=\scriptsize\color{cinzatexto}] (dbox) {
+    {\footnotesize\bfseries\color{corprimaria}Síntese de Variações e Desempenho (Ótica Anual / 12 Meses)}\par\vspace{2pt}
+    \begin{itemize}[leftmargin=11pt, itemsep=1.0pt, topsep=1pt, parsep=0pt]
+       \item \textbf{\color{vermelhobaixa}[OSCILAÇÃO NEGATIVA LEVE] PIB Trimestral do Tocantins (Ajuste Sazonal X-13):} PIB Trimestral do Tocantins (Ajuste Sazonal X-13) apresentou acomodação negativa de -1,28\%. [nível: R\$ 25,8 Bi $\blacktriangledown$ 1,3\%]
+       \item \textbf{\color{verdealta}[AVANÇO MODERADO] PIB Trimestral do Brasil (IBGE Tabela 1621):} PIB Trimestral do Brasil (IBGE Tabela 1621) avançou +1,07\% em trajetória de expansão gradual. [nível: R\$ 3,43 Tri $\blacktriangle$ 0,5\%]
+       \item \textbf{\color{verdealta}[AVANÇO MODERADO] 1\textordmasculine{} Setor em Desempenho (Indústria):} 1\textordmasculine{} Setor em Desempenho (Indústria) avançou +3,07\% em trajetória de expansão gradual. [nível: $\blacktriangle$ + 3,1\%]
+       \item \textbf{\color{vermelhobaixa}[RETRAÇÃO RELEVANTE] 3\textordmasculine{} Setor em Desempenho (Agropecuária):} 3\textordmasculine{} Setor em Desempenho (Agropecuária) recuou -7,16\%, sinalizando desaceleração relevante no período. [nível: $\blacktriangledown$ - 7,2\%]
+    \end{itemize}
+  };
+  \fill[corprimaria] (dbox.north west) rectangle ([xshift=3pt]dbox.south west);
+\end{tikzpicture}
+
+\vspace{0.03cm}
+\begin{multicols}{2}
+\secaoperiodico{1. Análise Estrutural Anual / Acumulado em 12 Meses}
+{\small Enquanto os boletins mensais e trimestrais capturam oscilações de curtíssimo prazo, a ótica anual e acumulada em quatro trimestres permite enxergar a tendência estrutural da economia tocantinense livre de ruídos sazonais. O pareamento histórico entre o índice de volume ajustado sazonalmente (X-13ARIMA-SEATS) da SEPLAN-TO e a Tabela 1621 do IBGE confirma que o Tocantins mantém diferencial positivo de crescimento frente à média nacional ao longo do ciclo recente.
+
+\medskip
+Nas Contas Regionais do Brasil (Tabela 5938 do IBGE), observa-se a consolidação de uma rede urbana policêntrica: Palmas lidera a geração de Valor Adicionado em serviços e administração pública, enquanto Araguaína, Porto Nacional, Gurupi e Paraíso do Tocantins ancoram o processamento agroindustrial, o comércio atacadista e os corredores multimodais da Ferrovia Norte-Sul e da BR-153.
+
+\medskip
+Por sua vez, os municípios de fronteira agrícola altamente tecnificada — como Campos Lindos, Formoso do Araguaia e Lagoa da Confusão — figuram no Top 10 estadual graças à escala produtiva das lavouras de soja, milho e arroz irrigado.}
+\end{multicols}
+\begin{center}\includegraphics[width=0.84\textwidth]{figuras/2026_11_dossie_pib_pib_to_br.pdf}\end{center}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Comparativo Lado a Lado: Série Dessazonalizada X-13 (Tocantins) vs. Tabela 1621 IBGE (Brasil)}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.5pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrrrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Trimestre} & \textbf{\color{white}PIB TO: Índ. (Var.)} & \textbf{\color{white}PIB BR: Índ. (Var.)} & \textbf{\color{white}Agro TO/BR} & \textbf{\color{white}Ind. TO/BR} & \textbf{\color{white}Serv. TO/BR} \\
+\midrule
+T2 2024 & 173.1 (+4.87\%) & 189.6 (+1.71\%) & +15.4\% / -1.6\% & +2.2\% / +0.8\% & +2.4\% / +1.0\% \\
+\rowcolor{corfundo} T3 2024 & 174.4 (+0.71\%) & 191.2 (+0.90\%) & -6.6\% / +0.5\% & -0.0\% / +0.6\% & +1.0\% / +0.8\% \\
+T4 2024 & 177.2 (+1.64\%) & 191.4 (+0.08\%) & +17.1\% / -2.2\% & +0.1\% / +0.3\% & -0.7\% / +0.0\% \\
+\rowcolor{corfundo} T1 2025 & 183.5 (+3.54\%) & 193.8 (+1.26\%) & +3.5\% / +16.1\% & -3.3\% / +0.0\% & +2.1\% / +0.2\% \\
+T2 2025 & 180.1 (-1.85\%) & 194.5 (+0.36\%) & -1.1\% / -3.2\% & +5.9\% / +0.7\% & -1.1\% / +0.8\% \\
+\rowcolor{corfundo} T3 2025 & 179.7 (-0.20\%) & 194.7 (+0.11\%) & -4.6\% / +0.5\% & -0.7\% / +0.6\% & +0.5\% / +0.3\% \\
+T4 2025 & 181.6 (+1.01\%) & 195.2 (+0.25\%) & +6.5\% / +0.7\% & -3.3\% / -0.7\% & +1.4\% / +0.6\% \\
+\rowcolor{corfundo} T1 2026 & 179.2 (-1.28\%) & 197.3 (+1.07\%) & -7.2\% / +2.2\% & +3.1\% / +1.2\% & +1.5\% / +0.4\% \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: SEPLAN-TO (ajuste sazonal próprio X-13ARIMA-SEATS) e IBGE/SIDRA (Tabela 1621: códs. 90687, 90691, 90696 e 90707).}}
+\end{minipage}
+\par\vspace{0.08cm}
+
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Contas Regionais do Brasil (IBGE - Tabela 5938): Estrutura do PIB e Valor Adicionado do Tocantins}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.5pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrrrrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Ano} & \textbf{\color{white}PIB (R\$ Mi)} & \textbf{\color{white}Impostos (R\$ Mi)} & \textbf{\color{white}VA Agro (R\$ Mi)} & \textbf{\color{white}VA Ind. (R\$ Mi)} & \textbf{\color{white}VA Serv. (R\$ Mi)} & \textbf{\color{white}Part. Norte / BR} \\
+\midrule
+2018 & R\$ 35.666,2 & R\$ 3.554,2 & R\$ 4.192,2 & R\$ 3.942,5 & R\$ 23.977,2 & 9.20\% / 0.51\% \\
+\rowcolor{corfundo} 2019 & R\$ 39.355,9 & R\$ 3.817,5 & R\$ 5.036,9 & R\$ 4.211,5 & R\$ 26.290,1 & 9.36\% / 0.53\% \\
+2020 & R\$ 43.649,8 & R\$ 4.140,9 & R\$ 8.033,2 & R\$ 4.408,4 & R\$ 27.067,3 & 9.13\% / 0.57\% \\
+\rowcolor{corfundo} 2021 & R\$ 51.780,8 & R\$ 5.085,4 & R\$ 13.364,4 & R\$ 5.000,3 & R\$ 28.330,7 & 9.18\% / 0.57\% \\
+2022 & R\$ 58.208,8 & R\$ - & R\$ - & R\$ - & R\$ - & 10.13\% / 0.58\% \\
+\rowcolor{corfundo} 2023 & R\$ 64.317,7 & R\$ - & R\$ - & R\$ - & R\$ - & 10.10\% / 0.59\% \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: IBGE — Contas Regionais do Brasil (Tabela 5938). Nota: Pesquisa estrutural anual com defasagem oficial de \textasciitilde{}2 anos.}}
+\end{minipage}
+\par\vspace{0.08cm}
+
+\bannersecaoperiodico{2}{BALANÇO RETROSPECTIVO (12 MESES) E CENÁRIOS PROSPECTIVOS}{Séries Anualizadas, Consolidação Plurianual, Capilaridade Regional e Perspectivas da Equipe Técnica}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}[t]{0.482\textwidth}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Ótica Anualizada (Acum. 4 Trimestres — SEPLAN-TO)}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.5pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrrrrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Trim.} & \textbf{\color{white}Agro} & \textbf{\color{white}Ind.} & \textbf{\color{white}Serv.} & \textbf{\color{white}VA Tot.} & \textbf{\color{white}Imp.} & \textbf{\color{white}PIB Ac. 4T} \\
+\midrule
+T4 2024 & +9.77\% & +8.52\% & +6.01\% & +7.22\% & +6.09\% & +7.11\% \\
+\rowcolor{corfundo} T1 2025 & +24.92\% & +5.80\% & +5.30\% & +10.21\% & +5.79\% & +9.79\% \\
+T2 2025 & +19.62\% & +4.08\% & +4.36\% & +8.30\% & +4.69\% & +7.96\% \\
+\rowcolor{corfundo} T3 2025 & +21.75\% & +2.50\% & +2.44\% & +7.24\% & +2.88\% & +6.83\% \\
+T4 2025 & +19.60\% & +0.43\% & +1.82\% & +5.87\% & +2.34\% & +5.54\% \\
+\rowcolor{corfundo} T1 2026 & +2.72\% & +1.90\% & +1.72\% & +1.53\% & +1.81\% & +1.55\% \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: SEPLAN-TO (Aba Acum. em 4 trimestres).}}
+\end{minipage}
+\par\vspace{0.08cm}
+\end{minipage}\hfill
+{\color{cinzaborda}\vrule width 0.4pt}\hfill
+\begin{minipage}[t]{0.482\textwidth}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Top 10 Municípios no PIB (IBGE Tabela 5938)}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.0pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{cllrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Pos.} & \textbf{\color{white}Município (TO)} & \textbf{\color{white}Ano} & \textbf{\color{white}PIB Corrente} & \textbf{\color{white}Part. TO} \\
+\midrule
+1\textordmasculine{} & Palmas & 2023 & R\$ 14.168,47 Mi & 22,03\% \\
+\rowcolor{corfundo} 2\textordmasculine{} & Araguaína & 2023 & R\$ 7.357,64 Mi & 11,44\% \\
+3\textordmasculine{} & Gurupi & 2023 & R\$ 3.695,02 Mi & 5,74\% \\
+\rowcolor{corfundo} 4\textordmasculine{} & Porto Nacional & 2023 & R\$ 3.195,89 Mi & 4,97\% \\
+5\textordmasculine{} & Paraíso do Tocantins & 2023 & R\$ 2.288,33 Mi & 3,56\% \\
+\rowcolor{corfundo} 6\textordmasculine{} & Colinas do Tocantins & 2023 & R\$ 1.161,30 Mi & 1,81\% \\
+7\textordmasculine{} & Guaraí & 2023 & R\$ 1.130,11 Mi & 1,76\% \\
+\rowcolor{corfundo} 8\textordmasculine{} & Pedro Afonso & 2023 & R\$ 1.090,44 Mi & 1,70\% \\
+9\textordmasculine{} & Lagoa da Confusão & 2023 & R\$ 1.089,84 Mi & 1,69\% \\
+\rowcolor{corfundo} 10\textordmasculine{} & Cariri do Tocantins & 2023 & R\$ 997,80 Mi & 1,55\% \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: IBGE — PIB dos Municípios (Tabela 5938).}}
+\end{minipage}
+\par\vspace{0.08cm}
+\end{minipage}
+\par\vspace{0.08cm}
+
+\vspace{0.03cm}
+\begin{multicols}{2}
+\secaoperiodico{2.1. Vetores Estruturais e Perspectivas para o Próximo Ciclo}
+{\small Para o horizonte plurianual, a maturação de investimentos em armazenagem, esmagamento de grãos e plantas frigoríficas aponta para a elevação da retenção interna de Valor Adicionado Industrial no território tocantinense.}
+
+\secaoperiodico{2.2. Transmissão Intersetorial e Capilaridade Municipal}
+{\small O acompanhamento sob a ótica acumulada em 12 meses evidencia que a dinâmica econômica do Tocantins apoia-se na complementaridade entre os polos regionais consolidados (Palmas, Araguaína, Gurupi, Porto Nacional, Paraíso do Tocantins e Colinas do Tocantins) e os municípios de expansão agroindustrial e logística ao longo do corredor da BR-153 e da Ferrovia Norte-Sul. A depuração de efeitos sazonais de curto prazo permite identificar ganhos persistentes de escala produtiva, formalização empresarial e densidade salarial.}
+
+\secaoperiodico{2.3. Síntese Institucional e Metodológica (Ótica de 12 Meses)}
+{\small A leitura conjunta das séries acumuladas em quatro trimestres e das comparações interanuais confirma a solidez dos fundamentos regionais do Tocantins neste eixo temático. O monitoramento contínuo das bases oficiais pelo Jornal Econômico do Tocantins — integrando extração automatizada via APIs públicas, tratamento de microdados e revisão analítica da equipe — permite distinguir oscilações transitórias de mudanças estruturais de tendência, subsidiando decisões de investimento privado e formulação de políticas públicas estaduais e municipais.}
+\end{multicols}
+
+
+\vspace{0.12cm}
+
+% ==============================================================================
+% EXPEDIENTE INSTITUCIONAL E NOTA METODOLÓGICA
+% ==============================================================================
+\noindent\begin{tikzpicture}
+  \node[
+    fill=corfundo,
+    draw=cinzaborda,
+    line width=0.5pt,
+    rounded corners=2pt,
+    inner sep=6pt,
+    text width=\textwidth-13pt,
+    font=\scriptsize\color{cinzasub}
+  ] {
+    \textbf{\color{corprimaria}Expediente e Nota Metodológica:} Séries trimestrais do Tocantins dessazonalizadas pelo algoritmo oficial X-13ARIMA-SEATS do U.S. Census Bureau, comparadas lado a lado com a Tabela 1621 do IBGE (Contas Nacionais Trimestrais) e complementadas pelas Contas Regionais do Brasil (Tabela 5938 do IBGE).\par\vspace{2pt}
+    \textbf{\color{corprimaria}Equipe Responsável:} Lorenzo Costa e Equipe | Núcleo de Conjuntura do Jornal Econômico do Tocantins \enspace$\vert$\enspace \textbf{\color{corprimaria}Publicação Institucional:} Núcleo de Conjuntura Econômica — \textit{Jornal Econômico do Tocantins}.
+  };
+\end{tikzpicture}
+
+\end{document}

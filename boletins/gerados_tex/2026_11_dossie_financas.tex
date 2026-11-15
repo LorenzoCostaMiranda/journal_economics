@@ -1,0 +1,318 @@
+\documentclass[10pt,a4paper]{article}
+
+% ==============================================================================
+% TEMPLATE EDITORIAL — PERIÓDICO EM 2 COLUNAS (DOSSIÊ ANUAL E CARTA DE CONJUNTURA)
+% JORNAL ECONÔMICO DO TOCANTINS
+%   - Dossiê Anual (DA): Verde-Floresta (#0B5D32), Marfim (#FAF6EE) e Carmim (#A61C1C)
+%   - Carta de Conjuntura (CC): Azul Cobalto (#0A2E73), Esmeralda (#1B7A43),
+%     Lima Editorial (#8CE000 no selo escuro) e Azul-Gelo (#F3F6FB)
+% ==============================================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+
+\usepackage[top=1.35cm, bottom=1.45cm, left=1.35cm, right=1.35cm, headheight=14pt, headsep=8pt, footskip=18pt]{geometry}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{colortbl}
+\usepackage{tikz}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{setspace}
+\usepackage{multicol}
+\usepackage{amssymb}
+\usepackage{hyperref}
+
+% Paleta Editorial Dinâmica (Proporção 75% Neutro / 20% Primária / 5% Acento)
+\definecolor{corprimaria}{HTML}{0B5D32}
+\definecolor{corsecundaria}{HTML}{146B3A}
+\definecolor{coracento}{HTML}{A61C1C}
+\definecolor{coracentoheader}{HTML}{FAF6EE}
+\definecolor{coracentotexto}{HTML}{0B5D32}
+\definecolor{corfundo}{HTML}{FAF6EE}
+\definecolor{cinzatexto}{HTML}{1E293B}
+\definecolor{cinzasub}{HTML}{475569}
+\definecolor{cinzaborda}{HTML}{CBD5E1}
+\definecolor{verdealta}{HTML}{15803D}
+\definecolor{vermelhobaixa}{HTML}{B91C1C}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=corprimaria,
+  urlcolor=corsecundaria,
+  pdftitle={Dossiê Anual — Arrecadação Tributária e Finanças Públicas do Tocantins (2023–2026)},
+  pdfauthor={Jornal Economico do Tocantins}
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3.5pt}
+\setlength{\columnsep}{0.60cm}
+\setlength{\columnseprule}{0.4pt}
+\def\columnseprulecolor{\color{cinzaborda}}
+\renewcommand{\arraystretch}{1.14}
+
+% Cabeçalho e Rodapé de Periódico Econômico (Sem sobreposição central)
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.5pt}
+\renewcommand{\footrule}{\hbox to\headwidth{\color{coracento}\leaders\hrule height \footrulewidth\hfill}}
+
+\fancyhead[L]{\ifnum\value{page}>1 \scriptsize\bfseries\color{corprimaria}JORNAL ECONÔMICO DO TOCANTINS \enspace{\color{coracento}$\vert$}\enspace {\mdseries\color{cinzasub}DOSSIÊ ANUAL / SEMESTRAL (DA)}\fi}
+\fancyhead[R]{\ifnum\value{page}>1 \scriptsize\color{cinzasub}Ref.: \textbf{Acumulado no Exercício e Série Plurianual (2023–2026)} $\cdot$ \#07/2026\fi}
+
+\fancyfoot[L]{\scriptsize\color{cinzasub}\textbf{\color{corprimaria}Jornal Econômico do Tocantins} $\cdot$ Lorenzo Costa e Equipe | Núcleo de Conjuntura do Jornal Econômico do Tocantins $\cdot$ Publicado em 14/11/2026}
+\fancyfoot[R]{\scriptsize\bfseries\color{corprimaria}Pág. \thepage\ de \pageref*{LastPage}}
+
+% Banner de Abertura de Seção Principal (Caderno Periódico)
+\newcommand{\bannersecaoperiodico}[3]{%
+  \par\vspace{0.14cm}%
+  \noindent\begin{tikzpicture}
+    \node[
+      fill=corprimaria,
+      inner xsep=10pt,
+      inner ysep=6pt,
+      text width=\textwidth-20pt,
+      align=left
+    ] (bsec) {
+      \hbox to \linewidth{%
+        {\colorbox{coracentoheader}{\strut\hspace{4pt}\scriptsize\bfseries\color{coracentotexto}SEÇÃO #1\hspace{4pt}}}%
+        \hspace{8pt}%
+        {\normalsize\bfseries\color{white}#2}%
+        \hfill
+      }%
+      \par\vspace{2pt}%
+      {\scriptsize\color{corfundo}#3\par}%
+    };
+    \fill[coracento] (bsec.south west) rectangle ([yshift=-2pt]bsec.south east);
+  \end{tikzpicture}%
+  \par\vspace{0.10cm}%
+}
+
+% Subtítulo de Coluna dentro do Layout de 2 Colunas
+\newcommand{\secaoperiodico}[1]{%
+  \par\vspace{0.10cm}%
+  \noindent{\small\bfseries\color{corprimaria}\rule{0.14cm}{0.26cm}\hspace{4pt}{\color{coracento}\rule{0.06cm}{0.26cm}}\hspace{5pt}#1}%
+  \par\vspace{0.03cm}%
+  {\color{coracento}\hrule height 0.7pt}%
+  \vspace{0.06cm}%
+}
+
+\begin{document}
+\color{cinzatexto}
+
+% ==============================================================================
+% MASTHEAD DE CAPA DO PERIÓDICO (AUTO-AJUSTÁVEL, SEM COLISÃO DE TÍTULO/SUBTÍTULO)
+% ==============================================================================
+\noindent\begin{tikzpicture}
+  \node[
+    fill=corprimaria,
+    inner xsep=12pt,
+    inner ysep=9pt,
+    text width=\textwidth-24pt,
+    align=left
+  ] (masthead) {
+    \hbox to \linewidth{%
+      {\colorbox{coracentoheader}{\strut\hspace{5pt}\scriptsize\bfseries\color{coracentotexto}DOSSIÊ ANUAL / SEMESTRAL (DA) $\cdot$ \#07/2026\hspace{5pt}}}%
+      \hfill
+      {\scriptsize\color{white}\textbf{JORNAL ECONÔMICO DO TOCANTINS} \enspace{\color{coracentoheader}$\vert$}\enspace Publicado em 14/11/2026}%
+    }%
+    \par\vspace{4pt}%
+    {\color{coracento}\hrule height 0.9pt}%
+    \par\vspace{5pt}%
+    {\fontsize{13.5}{16.2}\selectfont\bfseries\color{white}Dossiê Anual — Arrecadação Tributária e Finanças Públicas do Tocantins (2023–2026)\par}%
+    \vspace{3pt}%
+    {\footnotesize\color{corfundo}Análise acumulada de 12 meses e plurianual das receitas próprias (ICMS, IPVA e outros tributos) e das transferências constitucionais do FPE \enspace{\color{coracentoheader}$\vert$}\enspace \textbf{Ref.: Acumulado no Exercício e Série Plurianual (2023–2026)}\par}%
+  };
+  \fill[coracento] (masthead.south west) rectangle ([yshift=-2.6pt]masthead.south east);
+\end{tikzpicture}
+
+\vspace{0.10cm}
+
+% ==============================================================================
+% CORPO COMPLETO DO PERIÓDICO (DOSSIÊ ANUAL OU CARTA DE CONJUNTURA)
+% ==============================================================================
+\noindent\makebox[\textwidth][s]{%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}RECEITA TOTAL DO MÊS}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}R\$ 1,19 Bi}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Ref.: 09/26}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}\hfill%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}ARRECADAÇÃO DE ICMS}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}R\$ 566,48 Mi}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Var. Mês: -5,25\% | YoY: +1.1\%}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}\hfill%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}REPASSES DO FPE}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}R\$ 438,14 Mi}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Tesouro Nacional / STN}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}\hfill%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}IPVA E OUTROS TRIBUTOS}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}R\$ 189,35 Mi}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}IPVA puro: R\$ 53,89 Mi}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}%
+}
+
+\vspace{0.03cm}
+\noindent\begin{tikzpicture}
+  \node[fill=corfundo, draw=cinzaborda, line width=0.5pt, rounded corners=2pt,
+        inner xsep=8pt, inner ysep=5pt, text width=\textwidth-17pt, font=\scriptsize\color{cinzatexto}] (dbox) {
+    {\footnotesize\bfseries\color{corprimaria}Síntese de Variações e Desempenho (Ótica Anual / 12 Meses)}\par\vspace{2pt}
+    \begin{itemize}[leftmargin=11pt, itemsep=1.0pt, topsep=1pt, parsep=0pt]
+       \item \textbf{\color{vermelhobaixa}[QUEDA DRÁSTICA / CONTRAÇÃO ACENTUADA] Arrecadação de ICMS (09/26):} Arrecadação de ICMS (09/26) sofreu retração acentuada de -5,25\% (queda drástica que requer atenção conjuntural). [nível: R\$ 566,48 Mi]
+       \item \textbf{\color{vermelhobaixa}[QUEDA DRÁSTICA / CONTRAÇÃO ACENTUADA] Cota-Parte do FPE (Transferência União):} Cota-Parte do FPE (Transferência União) sofreu retração acentuada de -19,32\% (queda drástica que requer atenção conjuntural). [nível: R\$ 438,14 Mi]
+       \item \textbf{\color{vermelhobaixa}[QUEDA DRÁSTICA / CONTRAÇÃO ACENTUADA] IPVA e Outros Tributos Estaduais:} IPVA e Outros Tributos Estaduais sofreu retração acentuada de -10,32\% (queda drástica que requer atenção conjuntural). [nível: R\$ 189,35 Mi]
+       \item \textbf{\color{verdealta}[AVANÇO MODERADO] Variação Interanual do ICMS (YoY):} Variação Interanual do ICMS (YoY) avançou +1,14\% em trajetória de expansão gradual. [nível: +1.1\%]
+    \end{itemize}
+  };
+  \fill[corprimaria] (dbox.north west) rectangle ([xshift=3pt]dbox.south west);
+\end{tikzpicture}
+
+\vspace{0.03cm}
+\begin{multicols}{2}
+\secaoperiodico{1. Análise Estrutural Anual / Acumulado em 12 Meses}
+{\small Sob a ótica anual e plurianual (2023–2026), o desempenho fiscal do Estado do Tocantins demonstra fortalecimento gradual da arrecadação tributária própria frente às transferências federais. Enquanto os repasses constitucionais do Fundo de Participação dos Estados (FPE) refletem a arrecadação nacional de IR e IPI, o ICMS estadual mantém crescimento acumulado positivo de 3,65\% em 2026, superando o patamar observado nos exercícios anteriores.
+
+\medskip
+A composição setorial do ICMS evidencia que Combustíveis, Comércio e Indústria respondem por mais de 78\% da arrecadação própria estadual, funcionando como termômetro direto da circulação de mercadorias no corredor logístico Norte-Sul e do consumo das famílias nos municípios polos.}
+\end{multicols}
+\begin{center}\includegraphics[width=0.84\textwidth]{figuras/2026_11_dossie_financas_fin_receitas.pdf}\end{center}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}[t]{0.482\textwidth}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Execução Mensal das Receitas Próprias e Transferências Constitucionais do Tocantins}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.0pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Mês (2026)} & \textbf{\color{white}ICMS (SEFAZ-TO)} & \textbf{\color{white}Cota-Parte FPE (STN)} & \textbf{\color{white}IPVA + Outros Tributos} & \textbf{\color{white}Receita Total Mensal} \\
+\midrule
+Jan & R\$ 531,60 Mi & R\$ 608,22 Mi & R\$ 199,28 Mi & R\$ 1.339,10 Mi \\
+\rowcolor{corfundo} Fev & R\$ 465,76 Mi & R\$ 721,45 Mi & R\$ 171,72 Mi & R\$ 1.358,93 Mi \\
+Mar & R\$ 494,71 Mi & R\$ 458,07 Mi & R\$ 167,87 Mi & R\$ 1.120,65 Mi \\
+\rowcolor{corfundo} Abr & R\$ 562,91 Mi & R\$ 525,78 Mi & R\$ 155,18 Mi & R\$ 1.243,87 Mi \\
+Mai & R\$ 520,81 Mi & R\$ 638,69 Mi & R\$ 195,65 Mi & R\$ 1.355,15 Mi \\
+\rowcolor{corfundo} Jun & R\$ 557,93 Mi & R\$ 640,98 Mi & R\$ 162,83 Mi & R\$ 1.361,74 Mi \\
+Jul & R\$ 572,89 Mi & R\$ 419,66 Mi & R\$ 206,02 Mi & R\$ 1.198,57 Mi \\
+\rowcolor{corfundo} Ago & R\$ 597,87 Mi & R\$ 543,05 Mi & R\$ 211,15 Mi & R\$ 1.352,07 Mi \\
+Set & R\$ 566,48 Mi & R\$ 438,14 Mi & R\$ 189,35 Mi & R\$ 1.193,97 Mi \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: Boletim Tributário SEFAZ-TO e Secretaria do Tesouro Nacional (STN).}}
+\end{minipage}
+\par\vspace{0.08cm}
+\end{minipage}\hfill
+{\color{cinzaborda}\vrule width 0.4pt}\hfill
+\begin{minipage}[t]{0.482\textwidth}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Arrecadação de ICMS por Segmento Econômico no Tocantins (Setembro/2026)}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.0pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Segmento Econômico do ICMS (Painel)} & \textbf{\color{white}Arrecadação no Mês} & \textbf{\color{white}Participação no ICMS (\%)} \\
+\midrule
+Combustíveis & R\$ 172,81 Mi & 30,51\% \\
+\rowcolor{corfundo} Comércio & R\$ 172,77 Mi & 30,50\% \\
+Indústria & R\$ 103,08 Mi & 18,20\% \\
+\rowcolor{corfundo} Energia Elétrica & R\$ 63,73 Mi & 11,25\% \\
+Demais Atividades & R\$ 30,11 Mi & 5,32\% \\
+\rowcolor{corfundo} Comunicação & R\$ 9,20 Mi & 1,62\% \\
+Transportes & R\$ 8,27 Mi & 1,46\% \\
+\rowcolor{corfundo} Agropecuária & R\$ 6,52 Mi & 1,15\% \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: SEFAZ-TO — Boletim Tributário Estadual.}}
+\end{minipage}
+\par\vspace{0.08cm}
+\end{minipage}
+\par\vspace{0.08cm}
+
+\bannersecaoperiodico{2}{BALANÇO RETROSPECTIVO (12 MESES) E CENÁRIOS PROSPECTIVOS}{Séries Anualizadas, Consolidação Plurianual, Capilaridade Regional e Perspectivas da Equipe Técnica}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Consolidado Plurianual das Receitas Estaduais do Tocantins (2023–2026)}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.5pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrrrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Exercício} & \textbf{\color{white}Receita Total} & \textbf{\color{white}ICMS Acumulado} & \textbf{\color{white}FPE Acumulado} & \textbf{\color{white}IPVA + Outros} & \textbf{\color{white}Var. Anual ICMS} \\
+\midrule
+2023 (Jan-Dez) & R\$ 12.120,0 Mi & R\$ 5.028,9 Mi & R\$ 5.238,3 Mi & R\$ 2.368,4 Mi & - \\
+\rowcolor{corfundo} 2024 (Jan-Dez) & R\$ 13.756,3 Mi & R\$ 5.949,4 Mi & R\$ 5.744,1 Mi & R\$ 2.623,4 Mi & +18.31\% \\
+2025 (Jan-Dez) & R\$ 14.940,0 Mi & R\$ 6.407,9 Mi & R\$ 6.228,3 Mi & R\$ 2.913,3 Mi & +7.71\% \\
+\rowcolor{corfundo} 2026 (Acum. Jan-Set) & R\$ 11.522,1 Mi & R\$ 4.871,0 Mi & R\$ 4.994,0 Mi & R\$ 2.023,6 Mi & +3.65\% \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: SEFAZ-TO e STN.}}
+\end{minipage}
+\par\vspace{0.08cm}
+
+\vspace{0.03cm}
+\begin{multicols}{2}
+\secaoperiodico{2.1. Vetores Estruturais e Perspectivas para o Próximo Ciclo}
+{\small Para o fechamento do exercício fiscal, o ingresso sazonal das receitas de fim de ano e a estabilidade da base de contribuintes ativos apontam para o cumprimento confortável das metas arrecadatórias estaduais.}
+
+\secaoperiodico{2.2. Transmissão Intersetorial e Capilaridade Municipal}
+{\small O acompanhamento sob a ótica acumulada em 12 meses evidencia que a dinâmica econômica do Tocantins apoia-se na complementaridade entre os polos regionais consolidados (Palmas, Araguaína, Gurupi, Porto Nacional, Paraíso do Tocantins e Colinas do Tocantins) e os municípios de expansão agroindustrial e logística ao longo do corredor da BR-153 e da Ferrovia Norte-Sul. A depuração de efeitos sazonais de curto prazo permite identificar ganhos persistentes de escala produtiva, formalização empresarial e densidade salarial.}
+
+\secaoperiodico{2.3. Síntese Institucional e Metodológica (Ótica de 12 Meses)}
+{\small A leitura conjunta das séries acumuladas em quatro trimestres e das comparações interanuais confirma a solidez dos fundamentos regionais do Tocantins neste eixo temático. O monitoramento contínuo das bases oficiais pelo Jornal Econômico do Tocantins — integrando extração automatizada via APIs públicas, tratamento de microdados e revisão analítica da equipe — permite distinguir oscilações transitórias de mudanças estruturais de tendência, subsidiando decisões de investimento privado e formulação de políticas públicas estaduais e municipais.}
+\end{multicols}
+
+
+\vspace{0.12cm}
+
+% ==============================================================================
+% EXPEDIENTE INSTITUCIONAL E NOTA METODOLÓGICA
+% ==============================================================================
+\noindent\begin{tikzpicture}
+  \node[
+    fill=corfundo,
+    draw=cinzaborda,
+    line width=0.5pt,
+    rounded corners=2pt,
+    inner sep=6pt,
+    text width=\textwidth-13pt,
+    font=\scriptsize\color{cinzasub}
+  ] {
+    \textbf{\color{corprimaria}Expediente e Nota Metodológica:} Consolida os indicadores fiscais do painel: Receita Tributária Própria (ICMS, IPVA, ITCD, IRRF e Taxas) extraída dos Boletins Tributários da SEFAZ-TO e repasses constitucionais do FPE (STN).\par\vspace{2pt}
+    \textbf{\color{corprimaria}Equipe Responsável:} Lorenzo Costa e Equipe | Núcleo de Conjuntura do Jornal Econômico do Tocantins \enspace$\vert$\enspace \textbf{\color{corprimaria}Publicação Institucional:} Núcleo de Conjuntura Econômica — \textit{Jornal Econômico do Tocantins}.
+  };
+\end{tikzpicture}
+
+\end{document}

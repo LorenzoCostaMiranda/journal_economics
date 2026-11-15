@@ -1,0 +1,14 @@
+TIPO: flash_pib
+TITULO: Boletim Flash — PIB Trimestral do Tocantins e Comparativo Setorial com o Brasil
+SUBTITULO: Pareamento lado a lado entre a série dessazonalizada X-13ARIMA-SEATS (SEPLAN-TO) e a Tabela 1621 do IBGE, acrescido das Contas Regionais (Tabela 5938)
+AUTOR: Lorenzo Costa e Equipe | Jornal Econômico do Tocantins
+DATA: 14/11/2026
+PERIODO: 1º Trimestre de 2026
+DESTAQUE_CURTO: Indústria (+3,1%) e Serviços (+1,5%) lideram a expansão trimestral dessazonalizada no Tocantins, compensando a acomodação sazonal da Agropecuária (-7,2%) e mantendo o PIB nominal trimestral em R$ 25,8 bilhões.
+=== ANALISE_CONJUNTURA ===
+A comparação direta entre a série trimestral do Tocantins — ajustada sazonalmente pelo método X-13ARIMA-SEATS — e a Tabela 1621 do IBGE para o Brasil evidencia uma mudança importante nos vetores de tração de curto prazo da economia estadual. No trimestre mais recente contra o trimestre imediatamente anterior, a Indústria tocantinense avançou 3,1% e o setor de Serviços cresceu 1,5%, superando o ritmo médio nacional em ambos os grupamentos.
+
+Por sua vez, as Contas Regionais do Brasil (Tabela 5938 do IBGE) confirmam o ganho estrutural de participação do Tocantins tanto na Região Norte quanto no Produto Interno Bruto brasileiro, sustentado pela expansão contínua do Valor Adicionado Bruto da agropecuária, da agroindústria e dos serviços logísticos.
+
+=== PERSPECTIVAS ===
+O desempenho positivo dos setores secundário e terciário na margem sinaliza maior diversificação produtiva intraestadual, reduzindo a volatilidade macroeconômica nos trimestres de entressafra agrícola.

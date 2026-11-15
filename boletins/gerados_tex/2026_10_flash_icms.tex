@@ -1,0 +1,293 @@
+\documentclass[10pt,a4paper]{article}
+
+% ==============================================================================
+% TEMPLATE EDITORIAL — BOLETIM FLASH (JORNAL ECONÔMICO DO TOCANTINS)
+% Estilo: Briefing Executivo de Jornal Econômico (2 Páginas Balanceadas)
+% Paleta FLASH: Azul-Marinho (#0F2537), Azul Secundário (#244B6B),
+%               Dourado Institucional (#C8942B) e Fundo Neutro (#F4F6F9)
+% ==============================================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+
+\usepackage[top=1.35cm, bottom=1.45cm, left=1.40cm, right=1.40cm, headheight=14pt, headsep=8pt, footskip=18pt]{geometry}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{colortbl}
+\usepackage{tikz}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{setspace}
+\usepackage{multicol}
+\usepackage{amssymb}
+\usepackage{hyperref}
+
+% Cores institucionais do Boletim FLASH
+\definecolor{corprimaria}{HTML}{0F2537}
+\definecolor{corsecundaria}{HTML}{244B6B}
+\definecolor{corfundo}{HTML}{F4F6F9}
+\definecolor{douradoto}{HTML}{C8942B}
+\definecolor{coracento}{HTML}{C8942B}
+\definecolor{cinzatexto}{HTML}{1E293B}
+\definecolor{cinzasub}{HTML}{475569}
+\definecolor{cinzaborda}{HTML}{CBD5E1}
+\definecolor{verdealta}{HTML}{15803D}
+\definecolor{vermelhobaixa}{HTML}{B91C1C}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=corprimaria,
+  urlcolor=corsecundaria,
+  pdftitle={Arrecadação de ICMS no Tocantins avança sustentada pelo comércio atacadista e setor de combustíveis},
+  pdfauthor={Jornal Economico do Tocantins}
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3.5pt}
+\setlength{\columnsep}{0.55cm}
+\setlength{\columnseprule}{0.4pt}
+\def\columnseprulecolor{\color{cinzaborda}}
+\renewcommand{\arraystretch}{1.15}
+
+% Cabeçalho e Rodapé de Jornal Econômico (Sem colisão central)
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.5pt}
+\renewcommand{\footrule}{\hbox to\headwidth{\color{douradoto}\leaders\hrule height \footrulewidth\hfill}}
+
+\fancyhead[L]{\ifnum\value{page}>1 \scriptsize\bfseries\color{corprimaria}JORNAL ECONÔMICO DO TOCANTINS \enspace{\color{douradoto}$\vert$}\enspace {\mdseries\color{cinzasub}BOLETIM RÁPIDO (FLASH MENSAL) $\cdot$ Outubro/2026}\fi}
+\fancyhead[R]{\ifnum\value{page}>1 \scriptsize\color{cinzasub}\#05/2026\fi}
+
+\fancyfoot[L]{\scriptsize\color{cinzasub}\textbf{\color{corprimaria}Jornal Econômico do Tocantins} $\cdot$ Arrecadação Tributária e Transferências Constitucionais (TO) $\cdot$ Publicado em 29/10/2026}
+\fancyfoot[R]{\scriptsize\bfseries\color{corprimaria}Pág. \thepage\ de \pageref*{LastPage}}
+
+% Comando para Títulos de Seção Estilo Jornal Financeiro
+\newcommand{\secaoboletim}[1]{%
+  \par\vspace{0.16cm}%
+  \noindent\begin{tikzpicture}
+    \fill[corprimaria] (0,0) rectangle (\textwidth, 0.52);
+    \fill[douradoto] (0,0) rectangle (0.16, 0.52);
+    \node[anchor=west, font=\small\bfseries, text=white] at (0.30, 0.26) {\MakeUppercase{#1}};
+  \end{tikzpicture}%
+  \par\vspace{0.08cm}%
+}
+
+\newcommand{\subsecaoboletim}[1]{%
+  \par\vspace{0.10cm}%
+  \noindent{\small\bfseries\color{corprimaria}\rule{0.14cm}{0.26cm}\hspace{5pt}#1}%
+  \par\vspace{0.03cm}%
+  {\color{douradoto}\hrule height 0.6pt}%
+  \vspace{0.06cm}%
+}
+
+\begin{document}
+\color{cinzatexto}
+
+% ==============================================================================
+% MASTHEAD DE JORNAL ECONÔMICO (AUTO-AJUSTÁVEL, SEM SOBREPOSIÇÃO DE TEXTO)
+% ==============================================================================
+\noindent\begin{tikzpicture}
+  \node[
+    fill=corprimaria,
+    inner xsep=12pt,
+    inner ysep=10pt,
+    text width=\textwidth-24pt,
+    align=left
+  ] (masthead) {
+    % Linha superior do cabeçalho do jornal
+    \hbox to \linewidth{%
+      {\colorbox{douradoto}{\strut\hspace{4pt}\scriptsize\bfseries\color{corprimaria}BOLETIM RÁPIDO (FLASH MENSAL) $\cdot$ \#05/2026\hspace{4pt}}}%
+      \hfill
+      {\scriptsize\color{white}\textbf{JORNAL ECONÔMICO DO TOCANTINS} \enspace{\color{douradoto}$\vert$}\enspace Ref.: \textbf{Outubro/2026} \enspace{\color{douradoto}$\vert$}\enspace 29/10/2026}%
+    }%
+    \par\vspace{5pt}%
+    {\color{douradoto}\hrule height 0.8pt}%
+    \par\vspace{6pt}%
+    % Título Principal e Subtítulo com quebra automática limpa
+    {\fontsize{13.5}{16.2}\selectfont\bfseries\color{white}Arrecadação de ICMS no Tocantins avança sustentada pelo comércio atacadista e setor de combustíveis\par}%
+    \vspace{3.5pt}%
+    {\footnotesize\color{corfundo}Receita própria estadual ganha tração e equilibra a composição fiscal ao lado das transferências federais do FPE\par}%
+  };
+  \fill[douradoto] (masthead.south west) rectangle ([yshift=-2.5pt]masthead.south east);
+\end{tikzpicture}
+
+\vspace{0.14cm}
+
+% ==============================================================================
+% 1. FAIXA DE INDICADORES-CHAVE DO PAINEL (4 CARDS KPI EM LINHA ÚNICA)
+% ==============================================================================
+\noindent\makebox[\textwidth][s]{%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}RECEITA TOTAL DO MÊS}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}R\$ 1,19 Bi}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Ref.: 09/26}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}\hfill%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}ARRECADAÇÃO DE ICMS}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}R\$ 566,48 Mi}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Var. Mês: -5,25\% | YoY: +1.1\%}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}\hfill%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}REPASSES DO FPE}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}R\$ 438,14 Mi}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Tesouro Nacional / STN}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}\hfill%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}IPVA E OUTROS TRIBUTOS}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}R\$ 189,35 Mi}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}IPVA puro: R\$ 53,89 Mi}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}%
+}
+
+
+\vspace{0.10cm}
+
+% ==============================================================================
+% 2. ANÁLISE PRELIMINAR AUTOMATIZADA DO SCRIPT (RASTREAMENTO DE VARIAÇÕES)
+% ==============================================================================
+\noindent\begin{tikzpicture}
+  \node[fill=corfundo, draw=cinzaborda, line width=0.5pt, rounded corners=2pt,
+        inner xsep=8pt, inner ysep=5pt, text width=\textwidth-17pt, font=\scriptsize\color{cinzatexto}] (dbox) {
+    {\footnotesize\bfseries\color{corprimaria}Síntese de Variações entre Períodos Subsequentes}\par\vspace{2pt}
+    \begin{itemize}[leftmargin=11pt, itemsep=1.0pt, topsep=1pt, parsep=0pt]
+       \item \textbf{\color{vermelhobaixa}[QUEDA DRÁSTICA / CONTRAÇÃO ACENTUADA] Arrecadação de ICMS (09/26):} Arrecadação de ICMS (09/26) sofreu retração acentuada de -5,25\% (queda drástica que requer atenção conjuntural). [nível: R\$ 566,48 Mi]
+       \item \textbf{\color{vermelhobaixa}[QUEDA DRÁSTICA / CONTRAÇÃO ACENTUADA] Cota-Parte do FPE (Transferência União):} Cota-Parte do FPE (Transferência União) sofreu retração acentuada de -19,32\% (queda drástica que requer atenção conjuntural). [nível: R\$ 438,14 Mi]
+       \item \textbf{\color{vermelhobaixa}[QUEDA DRÁSTICA / CONTRAÇÃO ACENTUADA] IPVA e Outros Tributos Estaduais:} IPVA e Outros Tributos Estaduais sofreu retração acentuada de -10,32\% (queda drástica que requer atenção conjuntural). [nível: R\$ 189,35 Mi]
+       \item \textbf{\color{verdealta}[AVANÇO MODERADO] Variação Interanual do ICMS (YoY):} Variação Interanual do ICMS (YoY) avançou +1,14\% em trajetória de expansão gradual. [nível: +1.1\%]
+    \end{itemize}
+  };
+  \fill[corprimaria] (dbox.north west) rectangle ([xshift=3pt]dbox.south west);
+\end{tikzpicture}
+
+
+\vspace{0.08cm}
+
+% ==============================================================================
+% 3. ANÁLISE CONJUNTURAL DA EQUIPE E PERSPECTIVAS (2 COLUNAS DE JORNAL)
+% ==============================================================================
+\secaoboletim{1. Análise Conjuntural da Equipe e Cenários}
+
+\begin{multicols}{2}
+\begin{spacing}{1.06}
+{\small A evolução recente das receitas estaduais mostra um fortalecimento importante da arrecadação própria do Tocantins via ICMS. A concentração expressiva da receita tributária nos segmentos de Comércio Atacadista, Combustíveis e Comércio Varejista está diretamente ligada à geografia econômica do Estado: como corredor obrigatório de cargas entre o Sul/Sudeste e o Norte/Nordeste, o consumo de óleo diesel e a atividade de distribuição atacadista funcionam como verdadeiros termômetros em tempo real da atividade econômica regional.
+
+\medskip
+Ao mesmo tempo, a complementaridade entre a arrecadação própria (ICMS e IPVA) e as transferências constitucionais do Fundo de Participação dos Estados (FPE) garante previsibilidade de caixa ao Tesouro Estadual, permitindo a manutenção do cronograma de investimentos públicos em malha viária e serviços essenciais.}
+
+\subsecaoboletim{Perspectivas e Cenários}
+{\small Nos próximos meses, a intensificação do transporte da safra e o aquecimento das vendas de fim de ano devem sustentar o crescimento real da receita de ICMS, ampliando o espaço fiscal para o fechamento do exercício orçamentário com equilíbrio nas contas públicas.}
+
+\end{spacing}
+\end{multicols}
+
+% ==============================================================================
+% 4. PANORAMA ESTATÍSTICO, GRÁFICO E TABELAS EXECUTIVAS DO PERÍODO
+% ==============================================================================
+\secaoboletim{2. Panorama Estatístico, Gráfico e Tabelas Executivas do Período}
+
+\begin{center}\includegraphics[width=0.95\textwidth]{figuras/2026_10_flash_icms_fin_receitas.pdf}\end{center}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}[t]{0.482\textwidth}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Execução Mensal das Receitas Próprias e Transferências Constitucionais do Tocantins}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.0pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Mês (2026)} & \textbf{\color{white}ICMS (SEFAZ-TO)} & \textbf{\color{white}Cota-Parte FPE (STN)} & \textbf{\color{white}IPVA + Outros Tributos} & \textbf{\color{white}Receita Total Mensal} \\
+\midrule
+Jan & R\$ 531,60 Mi & R\$ 608,22 Mi & R\$ 199,28 Mi & R\$ 1.339,10 Mi \\
+\rowcolor{corfundo} Fev & R\$ 465,76 Mi & R\$ 721,45 Mi & R\$ 171,72 Mi & R\$ 1.358,93 Mi \\
+Mar & R\$ 494,71 Mi & R\$ 458,07 Mi & R\$ 167,87 Mi & R\$ 1.120,65 Mi \\
+\rowcolor{corfundo} Abr & R\$ 562,91 Mi & R\$ 525,78 Mi & R\$ 155,18 Mi & R\$ 1.243,87 Mi \\
+Mai & R\$ 520,81 Mi & R\$ 638,69 Mi & R\$ 195,65 Mi & R\$ 1.355,15 Mi \\
+\rowcolor{corfundo} Jun & R\$ 557,93 Mi & R\$ 640,98 Mi & R\$ 162,83 Mi & R\$ 1.361,74 Mi \\
+Jul & R\$ 572,89 Mi & R\$ 419,66 Mi & R\$ 206,02 Mi & R\$ 1.198,57 Mi \\
+\rowcolor{corfundo} Ago & R\$ 597,87 Mi & R\$ 543,05 Mi & R\$ 211,15 Mi & R\$ 1.352,07 Mi \\
+Set & R\$ 566,48 Mi & R\$ 438,14 Mi & R\$ 189,35 Mi & R\$ 1.193,97 Mi \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: Boletim Tributário SEFAZ-TO e Secretaria do Tesouro Nacional (STN).}}
+\end{minipage}
+\par\vspace{0.08cm}
+\end{minipage}\hfill
+{\color{cinzaborda}\vrule width 0.4pt}\hfill
+\begin{minipage}[t]{0.482\textwidth}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Arrecadação de ICMS por Segmento Econômico no Tocantins (Setembro/2026)}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.0pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Segmento Econômico do ICMS (Painel)} & \textbf{\color{white}Arrecadação no Mês} & \textbf{\color{white}Participação no ICMS (\%)} \\
+\midrule
+Combustíveis & R\$ 172,81 Mi & 30,51\% \\
+\rowcolor{corfundo} Comércio & R\$ 172,77 Mi & 30,50\% \\
+Indústria & R\$ 103,08 Mi & 18,20\% \\
+\rowcolor{corfundo} Energia Elétrica & R\$ 63,73 Mi & 11,25\% \\
+Demais Atividades & R\$ 30,11 Mi & 5,32\% \\
+\rowcolor{corfundo} Comunicação & R\$ 9,20 Mi & 1,62\% \\
+Transportes & R\$ 8,27 Mi & 1,46\% \\
+\rowcolor{corfundo} Agropecuária & R\$ 6,52 Mi & 1,15\% \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: SEFAZ-TO — Boletim Tributário Estadual.}}
+\end{minipage}
+\par\vspace{0.08cm}
+\end{minipage}
+\par\vspace{0.08cm}
+
+
+
+\vfill
+
+% ==============================================================================
+% EXPEDIENTE EDITORIAL E NOTA METODOLÓGICA
+% ==============================================================================
+\noindent\begin{tikzpicture}
+  \node[
+    fill=corfundo,
+    draw=cinzaborda,
+    line width=0.5pt,
+    rounded corners=2pt,
+    inner sep=6pt,
+    text width=\textwidth-13pt,
+    font=\scriptsize\color{cinzasub}
+  ] {
+    \textbf{\color{corprimaria}Nota Metodológica e Fontes Primárias:} Consolida os indicadores fiscais do painel: Receita Tributária Própria (ICMS, IPVA, ITCD, IRRF e Taxas) extraída dos Boletins Tributários da SEFAZ-TO e repasses constitucionais do FPE (STN).\par\vspace{2pt}
+    \textbf{\color{corprimaria}Expediente Editorial:} Lorenzo Costa e Equipe | Jornal Econômico do Tocantins \enspace$\vert$\enspace \textbf{\color{corprimaria}Publicação:} Núcleo de Conjuntura Econômica — \textit{Jornal Econômico do Tocantins}.
+  };
+\end{tikzpicture}
+
+\end{document}

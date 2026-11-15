@@ -1,0 +1,20 @@
+TIPO: carta_conjuntura
+TITULO: Carta de Conjuntura do Tocantins — Caderno Integrado de Atividade, Trabalho, Empresas, Comércio Exterior, Fisco, Agropecuária e IPER-TO
+SUBTITULO: Análise interseccional completa das 8 dimensões econômicas estaduais e municipais: PIB e Contas Regionais, PNAD/CAGED/RAIS, Demografia Empresarial e QSA, Balança Comercial (US$/Kg), Arrecadação CNAE 2.0, Pesquisas Agropecuárias do IBGE (LSPA, PAM, PPM, PEVS, Abate, Leite e Ovos) e Indicador IPER-TO
+AUTOR: Lorenzo Costa e Equipe | Núcleo de Conjuntura do Jornal Econômico do Tocantins
+DATA: 14/11/2026
+PERIODO: 4º Trimestre de 2026 (Edição Integrada)
+DESTAQUE_CURTO: O cruzamento integral das bases macroeconômicas e microdados estaduais confirma o transbordamento do excedente agroexportador (US$ 136,94 Mi de saldo mensal) para a criação líquida de empresas (+15.608 CNPJs em 12 meses), a manutenção do pleno emprego formal (4,1% de desocupação e 437.580 vínculos RAIS) e a resiliência da indústria (+3,1%) e dos serviços (+1,5%).
+=== ANALISE_CONJUNTURA ===
+A leitura estrutural e interseccional das oito seções que compõem esta Carta de Conjuntura evidencia que a economia do Tocantins atravessa uma fase de maturação produtiva caracterizada pela crescente integração entre o campo e os polos urbanos regionais. Nas Contas Regionais e no PIB Trimestral dessazonalizado (Seção 1), observa-se que momentos de acomodação sazonal da lavoura são compensados pelo avanço da Indústria (+3,1%) e dos Serviços (+1,5%), sustentando o patamar trimestral de R$ 25,8 bilhões.
+
+Esse dinamismo urbano reflete-se diretamente nos microdados do Mercado de Trabalho (Seção 2) e da Dinâmica Empresarial (Seção 3). A taxa de desocupação de 4,1% (Tabela 4099 do IBGE) e a jornada habitual sólida dos empregadores e assalariados (Tabela 6374) caminham lado a lado com um estoque de 437.580 vínculos formais ativos na RAIS (distribuídos em 33.198 estabelecimentos) e remuneração média de R$ 4.022,93. Simultaneamente, o ambiente de negócios — impulsionado por um tempo médio de abertura de 18,5 horas na REDESIM (15,7h de viabilidade e 2,7h de registro) — elevou o estoque empresarial para 167.565 CNPJs ativos e 102.075 sócios no QSA.
+
+Pelo lado externo e fiscal (Seções 4 e 5), a pauta exportadora liderada pela soja em grão e pela carne bovina industrializada garante superávits comerciais recorrentes, enquanto a relação US$ FOB/Kg evidencia o prêmio de valor agregado obtido pelos municípios com plantas frigoríficas e agroindustriais instaladas (como Araguaína, Paraíso do Tocantins, Porto Nacional e Gurupi). Por sua vez, a arrecadação própria de ICMS (R$ 566,48 milhões no mês e R$ 4,87 bilhões acumulados no ano) captura a circulação de combustíveis, comércio atacadista e energia elétrica gerada por esse circuito produtivo.
+
+Finalmente, o caderno especial das sete pesquisas agropecuárias e florestais do IBGE (Seção 6 — LSPA, PAM, PPM, PEVS, Abate Trimestral, Leite e Ovos de Galinha) demonstra a escala física que sustenta a economia estadual: mais de 11,4 milhões de cabeças bovinas, abate trimestral em expansão, consolidação dos polos agrícolas municipais e avanço das cadeias de silvicultura (eucalipto), leite e avicultura.
+
+=== PERSPECTIVAS ===
+Para os próximos trimestres, o cenário-base do Núcleo de Conjuntura projeta continuidade da expansão do emprego formal no setor terciário e na agroindústria, sustentada pelo calendário de plantio e comercialização da nova safra de grãos (LSPA/PAM) e pela demanda internacional aquecida por proteína animal tocantinense.
+
+No plano institucional e analítico, a conclusão da fase de calibração econométrica do Índice de Pressão e Expansão Regional do Tocantins (IPER-TO — Seção 7) dotará o Estado de uma ferramenta proprietária de monitoramento mensal antecedente, consolidando o Jornal Econômico do Tocantins como referência técnica em inteligência econômica regional.

@@ -1,0 +1,21 @@
+VISÃO GERAL: 
+
+- BOX PIB (TO)
+- BOX Taxa desocupação
+- BOX variação arrecadação ICMS
+- BOX variação abertura de CNPJs
+
+* GRAPH PIB + ICMS
+* GRAPH CNPJ + aumento do emprego
+
+PIB:
+
+- BOX com valor nominal do PIB do Estado com seta para cima ou para baixo mostrando o valor da variação variação.
+- BOX com valor nominal dos impostos do Estado com seta para cima ou para baixo mostrando o valor da variação  
+- BOX com valor nominal do PIB do País seta para cima ou para baixo mostrando o valor da variação variação.
+
+* GRAPH PIB TO x PIB País
+
+- BOX maior variação setorial (seja agropecuária, indústria ou serviços)
+- BOX segunda maior variação setorial (seja agropecuária, indústria ou serviços)
+- BOX terceira maior variação setorial (seja agropecuária, indústria ou serviços)

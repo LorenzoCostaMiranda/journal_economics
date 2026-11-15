@@ -1,0 +1,14 @@
+TIPO: flash_panorama
+TITULO: Boletim Flash — Visão Geral: Pulso Macroeconômico de Curto Prazo do Tocantins
+SUBTITULO: Monitoramento integrado das variações entre períodos subsequentes em atividade, mercado de trabalho, arrecadação de ICMS e abertura de empresas
+AUTOR: Lorenzo Costa e Equipe | Jornal Econômico do Tocantins
+DATA: 14/11/2026
+PERIODO: Novembro/2026
+DESTAQUE_CURTO: O painel antecedente aponta manutenção do baixo desemprego estadual (4,1%) e ritmo consistente de abertura de novos CNPJs (2.760 no mês), amortecendo oscilações sazonais da atividade primária e da arrecadação tributária.
+=== ANALISE_CONJUNTURA ===
+A leitura conjunta dos quatro indicadores-síntese do painel revela um quadro de resiliência do ciclo doméstico tocantinense na passagem entre períodos subsequentes. Embora a variação trimestral dessazonalizada do PIB reflita a acomodação natural da safra agrícola após o pico de colheita, os indicadores mensais de alta frequência — especialmente a abertura de novos CNPJs e o fluxo de contratações formais — seguem operando acima da linha de base histórica.
+
+O pareamento em índice (Base 100) entre novas inscrições empresariais na Receita Federal e admissões declaradas no Novo CAGED confirma a elevada elasticidade entre o empreendedorismo local e a absorção de mão de obra nos centros urbanos de Palmas, Araguaína e Gurupi.
+
+=== PERSPECTIVAS ===
+Para os próximos meses, a sazonalidade de final de ano no comércio varejista e nos serviços pessoais tende a impulsionar tanto a arrecadação própria de ICMS quanto as contratações temporárias e efetivas no setor terciário estadual.

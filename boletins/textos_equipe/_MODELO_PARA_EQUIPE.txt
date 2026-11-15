@@ -1,0 +1,33 @@
+# ==============================================================================
+# GUIA RÁPIDO PARA A EQUIPE EDITORIAL — JORNAL ECONÔMICO DO TOCANTINS
+# Códigos válidos para o campo TIPO:
+#   1. BOLETINS FLASH (1 coluna, Azul-Marinho e Dourado, 2 a 3 páginas, ótica mensal/trimestral):
+#      - flash_panorama  (Visão Geral — exclusivo FLASH)
+#      - flash_pib       (PIB Trimestral TO + IBGE 1621 lado a lado + Contas Regionais 5938)
+#      - flash_trabalho  (ou flash_caged: Painel + Top 5 Municípios + PNAD 4099 27 UFs)
+#      - flash_comex     (Painel + Top 10 SH4 FOB & Kg + Top 10 Países Exp/Imp)
+#      - flash_financas  (ou flash_icms: Receitas do Painel sob ótica mensal)
+#      - flash_empresas  (Painel + Sócios QSA por qualificação, faixa etária e sexo)
+#   2. DOSSIÊS ANUAIS — DA (2 colunas, Verde Floresta, Marfim e Carmim, 3 a 4 páginas, ótica anual/12m):
+#      - dossie_pib
+#      - dossie_trabalho
+#      - dossie_comex    (ou fechamento_comex)
+#      - dossie_financas
+#      - dossie_empresas
+#   3. CARTA DE CONJUNTURA — CC (2 colunas + tabelas largas, Azul Cobalto, Esmeralda e Lima, 8 Seções):
+#      - carta_conjuntura (Gera o caderno completo com as 8 Seções na ordem oficial + Agro + IPER-TO)
+# ==============================================================================
+TIPO: flash_comex
+TITULO: [Escreva aqui o título principal do boletim]
+SUBTITULO: [Escreva aqui o subtítulo complementar da publicação]
+AUTOR: Lorenzo Costa e Equipe | Jornal Econômico do Tocantins
+DATA: 14/11/2026
+PERIODO: Outubro/2026
+DESTAQUE_CURTO: [Escreva em 1 ou 2 frases o principal recado executivo desta edição para o leitor.]
+=== ANALISE_CONJUNTURA ===
+Escreva aqui a análise qualitativa da equipe. Não é necessário utilizar comandos de formatação: basta digitar o texto corrido em parágrafos separados por uma linha em branco.
+
+A primeira parte do boletim (indicadores-chave, diagnóstico estatístico automatizado do script que detecta saltos, quedas e estabilidades, além das tabelas e gráficos) já será gerada automaticamente pelo R e diagramada no template LaTeX oficial. Aqui entra a leitura crítica, o contexto regional do Tocantins e a interpretação econômica da equipe.
+
+=== PERSPECTIVAS ===
+Escreva aqui as perspectivas, tendências esperadas para os próximos meses e eventuais riscos ou oportunidades para os agentes econômicos do Estado.

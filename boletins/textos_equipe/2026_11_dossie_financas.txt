@@ -1,0 +1,14 @@
+TIPO: dossie_financas
+TITULO: Dossiê Anual — Arrecadação Tributária e Finanças Públicas do Tocantins (2023–2026)
+SUBTITULO: Análise acumulada de 12 meses e plurianual das receitas próprias (ICMS, IPVA e outros tributos) e das transferências constitucionais do FPE
+AUTOR: Lorenzo Costa e Equipe | Núcleo de Conjuntura do Jornal Econômico do Tocantins
+DATA: 14/11/2026
+PERIODO: Acumulado no Exercício e Série Plurianual (2023–2026)
+DESTAQUE_CURTO: No acumulado de 2026 (jan-set), o ICMS do Tocantins soma R$ 4,87 bilhões (+3,65% ante igual período do ano anterior), enquanto a receita total monitorada (tributos próprios + FPE) atinge R$ 11,48 bilhões no exercício.
+=== ANALISE_CONJUNTURA ===
+Sob a ótica anual e plurianual (2023–2026), o desempenho fiscal do Estado do Tocantins demonstra fortalecimento gradual da arrecadação tributária própria frente às transferências federais. Enquanto os repasses constitucionais do Fundo de Participação dos Estados (FPE) refletem a arrecadação nacional de IR e IPI, o ICMS estadual mantém crescimento acumulado positivo de 3,65% em 2026, superando o patamar observado nos exercícios anteriores.
+
+A composição setorial do ICMS evidencia que Combustíveis, Comércio e Indústria respondem por mais de 78% da arrecadação própria estadual, funcionando como termômetro direto da circulação de mercadorias no corredor logístico Norte-Sul e do consumo das famílias nos municípios polos.
+
+=== PERSPECTIVAS ===
+Para o fechamento do exercício fiscal, o ingresso sazonal das receitas de fim de ano e a estabilidade da base de contribuintes ativos apontam para o cumprimento confortável das metas arrecadatórias estaduais.

@@ -1,0 +1,16 @@
+TIPO: dossie_trabalho
+TITULO: Dossiê Anual — Mercado de Trabalho Formal (RAIS e Novo CAGED) e PNAD nas 27 UFs
+SUBTITULO: Avaliação em perspectiva de 12 meses do estoque de vínculos ativos sem abandonados (RAIS), saldo acumulado de vagas (Novo CAGED), Top 5 municípios e ranking nacional de desocupação (Tabela 4099 IBGE)
+AUTOR: Lorenzo Costa e Equipe | Núcleo de Conjuntura do Jornal Econômico do Tocantins
+DATA: 14/11/2026
+PERIODO: Balanço Anual / 12 Meses (2025–2026)
+DESTAQUE_CURTO: Com 437.580 vínculos formais ativos na RAIS (em 33.198 estabelecimentos), remuneração média de R$ 4.022,93 e taxa de desocupação de apenas 4,1% na PNAD Contínua, o Tocantins consolida uma das melhores trajetórias laborais do país em 12 meses.
+=== ANALISE_CONJUNTURA ===
+A análise anualizada do mercado de trabalho tocantinense — integrando o estoque estrutural da RAIS (depurado de vínculos abandonados em 31/12), o fluxo acumulado em 12 meses do Novo CAGED e a série trimestral da PNAD Contínua (Tabela 4099 do IBGE para todas as 27 Unidades da Federação e Brasil) — revela um processo consistente de formalização e qualificação da força de trabalho estadual.
+
+O perfil educacional dos vínculos ativos na RAIS mostra que trabalhadores com Ensino Médio Completo e Ensino Superior Completo já respondem pela ampla maioria dos postos formais do Estado, impulsionando a remuneração média estadual para R$ 4.022,93. No recorte territorial dos cinco maiores polos empregadores (Palmas, Araguaína, Gurupi, Porto Nacional e Paraíso do Tocantins), concentra-se a tração dos setores de Serviços, Comércio e Construção Civil.
+
+No comparativo federativo da Tabela 4099 do IBGE, a taxa de desocupação de 4,1% mantém o Tocantins sistematicamente abaixo da média brasileira e na liderança de ocupação da Região Norte.
+
+=== PERSPECTIVAS ===
+A manutenção da taxa de desocupação próxima ao pleno emprego friccional tende a sustentar ganhos reais de rendimento habitual no setor de serviços e exigir investimentos crescentes das empresas em treinamento técnico e retenção de talentos.

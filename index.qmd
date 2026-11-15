@@ -1,0 +1,3278 @@
+---
+title: "Jornal Econômico do Tocantins<br><span style='font-size: 14px; font-weight: normal; color: #6c757d;'>Autor: Lorenzo Costa | Graduado em Economia<br>Atualizado em `r format(Sys.Date(), '%d/%m/%Y')`</span>"
+lang: pt-BR
+format: 
+  dashboard:
+    logo: logo.png
+    nav-buttons: [github]
+    orientation: rows
+    embed-resources: true
+---
+
+```{=html}
+<style>
+/* ==========================================================================
+   SÍMBOLO ELEGANTE DE ATUALIZAÇÃO RECENTE ("ATUALIZADO")
+   Visível na parte superior de gráficos e caixas de informação por 1 semana
+   ========================================================================== */
+
+/* 1. Em caixas de informações (Value Boxes) */
+.card.atualizado,
+.bslib-value-box.atualizado {
+  position: relative !important;
+}
+
+.card.atualizado::before,
+.bslib-value-box.atualizado::before {
+  content: "!";
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background-color: #d85c5c;
+  color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  min-height: 18px;
+  border-radius: 50%;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 18px;
+  z-index: 99;
+  box-shadow: 0 2px 5px rgba(216, 92, 92, 0.45);
+  pointer-events: none;
+}
+
+/* 2. Em cartões de gráficos e tabelas */
+.card:has(.atualizado) {
+  position: relative !important;
+}
+
+.card:has(.atualizado)::before {
+  content: "!";
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background-color: #d85c5c;
+  color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  min-height: 18px;
+  border-radius: 50%;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 18px;
+  z-index: 999;
+  box-shadow: 0 2px 5px rgba(216, 92, 92, 0.45);
+  pointer-events: none;
+}
+
+/* Evita duplicação interna se o cartão pai já tiver o selo */
+/* 3. Data de atualizacao na parte inferior de caixas e graficos (discreta e proporcional) */
+.vb-data-atualizado {
+  font-size: 8.5px !important;
+  font-weight: 500 !important;
+  color: rgba(255, 255, 255, 0.48) !important;
+  margin-top: 3px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 3.5px !important;
+  line-height: 1 !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  letter-spacing: 0.15px !important;
+  cursor: help;
+}
+
+.vb-data-atualizado .ponto-data {
+  color: #d85c5c !important;
+  font-size: 5.5px !important;
+  opacity: 0.85 !important;
+  line-height: 1 !important;
+}
+
+.card-footer-atualizado {
+  font-size: 9.5px !important;
+  font-weight: 500 !important;
+  color: #8c939b !important;
+  padding: 4px 14px 5px 14px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  border-top: 1px solid #edf0f2 !important;
+  background-color: #fafbfc !important;
+  border-bottom-left-radius: 16px !important;
+  border-bottom-right-radius: 16px !important;
+  margin-top: auto !important;
+  line-height: 1.2 !important;
+  cursor: help;
+}
+
+.card-footer-atualizado .ponto-data {
+  color: #d85c5c !important;
+  font-size: 6.5px !important;
+  opacity: 0.85 !important;
+}
+
+.card:has(.atualizado) .atualizado::before {
+  display: none !important;
+}
+
+@keyframes pulso {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+[class*="icone-img-"]::after {
+  content: "";
+  position: absolute;
+  right: clamp(10px, 1.2vw, 16px);
+  top: 50%;
+  transform: translateY(-50%);
+  width: clamp(36px, 3.8vw, 58px);
+  height: clamp(36px, 3.8vw, 58px);
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.28; /* A sua transparência perfeita para TODOS */
+  pointer-events: none;
+}
+
+/* 2. OS SEUS ÍCONES: Basta 1 linha para cada PNG na pasta icons/ */
+.icone-img-pib::after { background-image: url('icons/pib.png'); }
+.icone-img-desocupacao::after { background-image: url('icons/desocupacao.png'); }
+.icone-img-icms::after { background-image: url('icons/icms.png'); }
+.icone-img-cnpj::after { background-image: url('icons/cnpj.png'); }
+.icone-img-tocantins::after { background-image: url('icons/tocantins.png'); }
+.icone-img-brasil::after { background-image: url('icons/brasil.png'); }
+.icone-img-exportacao::after { background-image: url('icons/exportacao.png'); }
+.icone-img-importacao::after { background-image: url('icons/importacao.png'); }
+.icone-img-saldo::after { background-image: url('icons/saldo.png'); }
+.icone-img-receita::after { background-image: url('icons/receita.png'); }
+.icone-img-fpe::after { background-image: url('icons/fpe.png'); }
+
+/* Selo exclusivo para os títulos das abas */
+.selo-aba {
+  background-color: #d85c5c;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+  font-size: 9px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 10px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+/* ==========================================================================
+   FAIXA DE COTAÇÕES EM TEMPO REAL (TICKER AO VIVO NO TOPO - PASSANDO EM FILA)
+   Estilo clássico dos principais jornais econômicos (Valor Econômico, Bloomberg)
+   ========================================================================== */
+#barra-cotacoes-aovivo {
+  display: none; /* Inicia oculto por padrão - visível apenas na aba Câmbio e Mercados */
+  background-color: #0f2537;
+  color: #ffffff;
+  font-size: 12.5px;
+  height: 38px;
+  align-items: center;
+  border-bottom: 2px solid #c8942b;
+  box-shadow: 0 2px 10px rgba(15, 37, 55, 0.15);
+  overflow: hidden;
+  position: relative;
+  z-index: 1020;
+}
+
+.ticker-fixo-esquerda {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #0f2537;
+  padding: 0 16px;
+  height: 100%;
+  z-index: 5;
+  box-shadow: 4px 0 10px rgba(15, 37, 55, 0.8);
+  white-space: nowrap;
+}
+
+.badge-aovivo {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: rgba(200, 148, 43, 0.18);
+  border: 1px solid #c8942b;
+  color: #c8942b;
+  font-weight: 700;
+  font-size: 10.5px;
+  padding: 3px 9px;
+  border-radius: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.ponto-aovivo {
+  width: 7px;
+  height: 7px;
+  background-color: #c8942b;
+  border-radius: 50%;
+  display: inline-block;
+  animation: pulso 1.5s infinite;
+}
+
+/* Faixa deslizante contínua com as cotações passando em fila */
+.ticker-trilha-container {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.ticker-trilha {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  animation: rolarFilaTicker 36s linear infinite;
+}
+
+.ticker-trilha-container:hover .ticker-trilha {
+  animation-play-state: paused;
+}
+
+@keyframes rolarFilaTicker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 20px;
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 12.5px;
+}
+
+.ticker-nome {
+  color: #e9ecef;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.ticker-valor {
+  color: #c8942b;
+  font-weight: 700;
+}
+
+.ticker-var {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+.var-alta {
+  color: #4cd964;
+  background-color: rgba(76, 217, 100, 0.14);
+}
+
+.var-baixa {
+  color: #ff6b6b;
+  background-color: rgba(216, 92, 92, 0.20);
+}
+
+.var-neutra {
+  color: #e9ecef;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.ticker-fixo-direita {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #0f2537;
+  padding: 0 16px;
+  height: 100%;
+  z-index: 5;
+  box-shadow: -4px 0 10px rgba(15, 37, 55, 0.8);
+  font-size: 11.5px;
+  color: #a2a8ae;
+  white-space: nowrap;
+}
+
+.btn-atualizar-cotacoes {
+  background: transparent;
+  border: 1px solid #c8942b;
+  color: #c8942b;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 9px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-atualizar-cotacoes:hover {
+  background-color: #c8942b;
+  color: #0f2537;
+}
+
+/* Tabela elegante de Commodities & Câmbio na aba Câmbio e Mercados */
+.tabela-mercados-aovivo {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+
+.tabela-mercados-aovivo thead th {
+  background-color: #0f2537;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 10px 12px;
+  text-align: left;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.tabela-mercados-aovivo thead th:first-child {
+  border-top-left-radius: 10px;
+}
+
+.tabela-mercados-aovivo thead th:last-child {
+  border-top-right-radius: 10px;
+  text-align: right;
+}
+
+.tabela-mercados-aovivo tbody tr {
+  border-bottom: 1px solid #e9ecef;
+  transition: background-color 0.15s ease;
+}
+
+.tabela-mercados-aovivo tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+.tabela-mercados-aovivo tbody td {
+  padding: 10px 12px;
+  color: #0f2537;
+  vertical-align: middle;
+}
+
+.tabela-mercados-aovivo tbody td:last-child {
+  text-align: right;
+  font-weight: 700;
+}
+
+.subtexto-ativo {
+  display: block;
+  font-size: 11px;
+  color: #858c94;
+  font-weight: 400;
+}
+
+.preco-destaque {
+  font-weight: 700;
+  color: #0f2537;
+  font-size: 14px;
+}
+
+.piscar-atualizacao {
+  animation: flashDourado 0.8s ease;
+}
+
+@keyframes flashDourado {
+  0% { background-color: rgba(200, 148, 43, 0.25); }
+  100% { background-color: transparent; }
+}
+
+/* ==========================================================================
+   ELEMENTOS VISUAIS DE NOTA METODOLÓGICA (DESSAZONALIZAÇÃO PRÓPRIA DO JORNAL)
+   Funciona ao passar o mouse (Desktop) ou tocar/clicar (Celular)
+   ========================================================================== */
+.nota-sazonal-wrapper {
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  vertical-align: middle !important;
+  z-index: 1080 !important;
+}
+
+/* Na ValueBox "Variação trimestral do PIB": ícone circular discreto (15x15px) logo após a palavra "PIB",
+   longe da logo à direita e sem aumentar nem 1 pixel a altura da caixa! */
+.nota-sazonal-wrapper.wrapper-titulo-box {
+  display: inline-flex !important;
+  align-items: center !important;
+  vertical-align: middle !important;
+  margin-left: 6px !important;
+  position: relative !important;
+  top: -1px !important;
+  z-index: 1090 !important;
+}
+
+.nota-sazonal-trigger {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif !important;
+  font-size: 10.5px !important;
+  font-weight: 600 !important;
+  line-height: 1.2 !important;
+  padding: 2px 8px !important;
+  border-radius: 12px !important;
+  cursor: pointer !important;
+  user-select: none !important;
+  transition: all 0.2s ease !important;
+}
+
+/* Ícone "i" elegante em anel dourado (15x15px) ao lado do título da ValueBox */
+.nota-sazonal-trigger.trigger-circulo-box {
+  width: 15px !important;
+  height: 15px !important;
+  min-width: 15px !important;
+  min-height: 15px !important;
+  padding: 0 !important;
+  border-radius: 50% !important;
+  background-color: rgba(200, 148, 43, 0.16) !important;
+  border: 1.3px solid rgba(200, 148, 43, 0.85) !important;
+  color: #c8942b !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: none !important;
+}
+
+.nota-sazonal-trigger.trigger-circulo-box:hover,
+.nota-sazonal-wrapper.ativo .nota-sazonal-trigger.trigger-circulo-box {
+  background-color: #c8942b !important;
+  border-color: #c8942b !important;
+  color: #0f2537 !important;
+  transform: scale(1.1) !important;
+}
+
+.nota-sazonal-trigger.trigger-circulo-box .nota-sazonal-icone {
+  width: 100% !important;
+  height: 100% !important;
+  background: transparent !important;
+  color: inherit !important;
+  font-size: 9.5px !important;
+  font-weight: 800 !important;
+  font-family: Georgia, "Times New Roman", serif !important;
+  font-style: italic !important;
+  line-height: 1 !important;
+}
+
+/* Estilo para fundo escuro (dentro da ValueBox "Variação trimestral do PIB") */
+.nota-sazonal-trigger.tema-escuro {
+  background-color: rgba(200, 148, 43, 0.22) !important;
+  border: 1px solid rgba(200, 148, 43, 0.75) !important;
+  color: #f3d28c !important;
+  margin-left: 6px !important;
+}
+
+.nota-sazonal-trigger.tema-escuro:hover,
+.nota-sazonal-wrapper.ativo .nota-sazonal-trigger.tema-escuro {
+  background-color: #c8942b !important;
+  color: #0f2537 !important;
+}
+
+/* Estilo para fundo claro (no card do gráfico e no rodapé central da aba PIB) */
+.nota-sazonal-trigger.tema-claro {
+  background-color: rgba(15, 37, 55, 0.06) !important;
+  border: 1px solid rgba(200, 148, 43, 0.65) !important;
+  color: #0f2537 !important;
+}
+
+.nota-sazonal-trigger.tema-claro:hover,
+.nota-sazonal-wrapper.ativo .nota-sazonal-trigger.tema-claro {
+  background-color: #0f2537 !important;
+  color: #ffffff !important;
+  border-color: #c8942b !important;
+}
+
+.nota-sazonal-icone {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 14px !important;
+  height: 14px !important;
+  border-radius: 50% !important;
+  background-color: #c8942b !important;
+  color: #0f2537 !important;
+  font-weight: 800 !important;
+  font-size: 9.5px !important;
+  font-style: normal !important;
+  flex-shrink: 0 !important;
+}
+
+.nota-sazonal-popover {
+  position: absolute !important;
+  top: calc(100% + 8px) !important;
+  left: 0 !important;
+  width: clamp(245px, 28vw, 330px) !important;
+  background-color: #0f2537 !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(200, 148, 43, 0.65) !important;
+  border-left: 4px solid #c8942b !important;
+  border-radius: 10px !important;
+  padding: 10px 13px !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif !important;
+  font-size: 11.5px !important;
+  font-weight: 400 !important;
+  line-height: 1.45 !important;
+  text-align: left !important;
+  white-space: normal !important;
+  box-shadow: 0 10px 28px rgba(15, 37, 55, 0.38) !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transition: opacity 0.18s ease, visibility 0.18s ease !important;
+  z-index: 9999 !important;
+}
+
+.nota-sazonal-popover strong {
+  color: #c8942b !important;
+  font-weight: 700 !important;
+  display: block !important;
+  margin-bottom: 3px !important;
+  font-size: 11.5px !important;
+}
+
+.nota-sazonal-popover.popover-acima {
+  top: auto !important;
+  bottom: calc(100% + 10px) !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+}
+
+.nota-sazonal-popover.popover-direita {
+  left: auto !important;
+  right: 0 !important;
+}
+
+.nota-sazonal-wrapper:hover .nota-sazonal-popover,
+.nota-sazonal-wrapper.ativo .nota-sazonal-popover {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+/* Garante que o cartão/grid pai suba para a camada mais alta quando o aviso estiver aberto ou com mouse em cima */
+.card:has(.nota-sazonal-wrapper:hover),
+.card:has(.nota-sazonal-wrapper.ativo),
+.bslib-value-box:has(.nota-sazonal-wrapper:hover),
+.bslib-value-box:has(.nota-sazonal-wrapper.ativo),
+.bslib-grid:has(.nota-sazonal-wrapper:hover),
+.bslib-grid:has(.nota-sazonal-wrapper.ativo) {
+  z-index: 999999 !important;
+}
+
+/* Popover flutuante global (renderizado diretamente no body na camada máxima do navegador) */
+#popover-global-sazonal {
+  position: fixed !important;
+  width: clamp(250px, 28vw, 335px) !important;
+  max-width: 90vw !important;
+  background-color: #0f2537 !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(200, 148, 43, 0.75) !important;
+  border-left: 4px solid #c8942b !important;
+  border-radius: 10px !important;
+  padding: 11px 14px !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif !important;
+  font-size: 11.5px !important;
+  font-weight: 400 !important;
+  line-height: 1.45 !important;
+  text-align: left !important;
+  white-space: normal !important;
+  box-shadow: 0 12px 32px rgba(15, 37, 55, 0.48) !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transition: opacity 0.16s ease, visibility 0.16s ease !important;
+  z-index: 2147483647 !important;
+}
+
+#popover-global-sazonal.visivel {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+#popover-global-sazonal strong {
+  color: #c8942b !important;
+  font-weight: 700 !important;
+  display: block !important;
+  margin-bottom: 4px !important;
+  font-size: 11.5px !important;
+}
+
+/* Estilo para aviso externo logo abaixo da box "Variação trimestral do PIB" na Visão Geral */
+.barra-externa-sazonal-vg {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  margin-top: 5px !important;
+  padding: 0 2px !important;
+  overflow: visible !important;
+}
+
+.barra-central-sazonal-pib {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  padding: 6px 12px 8px 12px !important;
+  border-top: 1px dashed rgba(15, 37, 55, 0.12) !important;
+  background-color: #fcfdfe !important;
+  border-bottom-left-radius: 16px !important;
+  border-bottom-right-radius: 16px !important;
+}
+
+@media (max-width: 768px) {
+  .nota-sazonal-popover,
+  .nota-sazonal-popover.popover-acima,
+  .nota-sazonal-popover.popover-direita {
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+    width: min(86vw, 300px) !important;
+  }
+}
+</style>
+```
+
+```{r}
+#| include: false
+# =======================================================
+# 📦 CARREGAMENTO AUTOMÁTICO DA ROTINA EM R
+# =======================================================
+if (!file.exists("dados/painel_dados.rds")) {
+  source("scripts/atualizar_dados.R", local = TRUE)
+}
+dados_painel <- readRDS("dados/painel_dados.rds")
+
+# Carrega automaticamente o catalogo de boletins gerados pela equipe
+if (!file.exists("dados/catalogo_boletins.rds")) {
+  source("scripts/compilar_boletins.R", local = TRUE)
+}
+catalogo_boletins <- readRDS("dados/catalogo_boletins.rds")
+url_substack <- "https://substack.com"
+
+# ==============================================================================
+# 🎛️ PAINEL MANUAL DE CONTROLE DE ATUALIZAÇÕES DAS PESQUISAS (SELO "ATUALIZADO")
+# ------------------------------------------------------------------------------
+# INSTRUÇÃO PARA O AUTOR:
+# Para indicar que uma pesquisa/base foi atualizada, basta preencher a data abaixo
+# no formato "DD/MM/AAAA". 
+# - O selo "ATUALIZADO" aparecerá automaticamente nos elementos vinculados.
+# - Ficará visível por exatamente 1 SEMANA (7 dias) e desaparecerá sozinho.
+# - Para desativar o selo em qualquer base, basta deixar entre aspas vazias: "".
+# ==============================================================================
+
+datas_atualizacao <- list(
+  dt_pib_tri   = "28/10/2026", # PIB Trimestral (SEPLAN-TO) -> Visão Geral e PIB (TO)
+  dt_pnad      = "28/10/2026", # PNAD Contínua (IBGE) -> Visão Geral e Mercado de Trabalho
+  dt_caged     = "10/10/2026", # Novo CAGED (MTE) -> Mercado de Trabalho (Saldo, Setores e Municípios)
+  dt_rais      = "10/10/2026", # RAIS (MTE) -> Mercado de Trabalho (Estoque Municipal)
+  dt_mapa_empr = "12/11/2026", # Mapa das Empresas (MDIC) -> Dinâmica Empresarial (Tempo Abertura)
+  dt_cnpj      = "12/11/2026", # CNPJs / Receita Federal -> Visão Geral e Dinâmica Empresarial
+  dt_pib_br    = "10/10/2026", # PIB Nacional (IBGE) -> PIB (TO) (Brasil)
+  dt_comex     = "10/10/2026", # COMEX-STAT (MDIC) -> Todos os elementos de Comércio Exterior
+  dt_sefaz     = "10/10/2026", # SEFAZ-TO -> Visão Geral e Todos os elementos de Finanças
+  dt_iper      = "10/10/2026"  # IPER-TO -> Indicador Experimental Regional
+)
+
+# Atalhos diretos para uso nas caixas e gráficos
+dt_pib_tri   <- datas_atualizacao$dt_pib_tri
+dt_pnad      <- datas_atualizacao$dt_pnad
+dt_caged     <- datas_atualizacao$dt_caged
+dt_rais      <- datas_atualizacao$dt_rais
+dt_mapa_empr <- datas_atualizacao$dt_mapa_empr
+dt_cnpj      <- datas_atualizacao$dt_cnpj
+dt_pib_br    <- datas_atualizacao$dt_pib_br
+dt_comex     <- datas_atualizacao$dt_comex
+dt_sefaz     <- datas_atualizacao$dt_sefaz
+dt_iper      <- datas_atualizacao$dt_iper
+
+# Função que verifica se a data está no período de 1 semana (7 dias)
+selo_novo <- function(datas_novidade) {
+  if (is.null(datas_novidade) || length(datas_novidade) == 0) return(NULL)
+  data_mais_recente <- NULL
+  data_obj_mais_recente <- as.Date("1900-01-01")
+  
+  for (dt in datas_novidade) {
+    if (!is.null(dt) && dt != "") {
+      data_obj <- tryCatch(as.Date(dt, format = "%d/%m/%Y"), error = function(e) NA)
+      if (!is.na(data_obj)) {
+        # Permanece visível por exatamente 1 semana (7 dias)
+        if (Sys.Date() >= (data_obj - 1) && Sys.Date() <= (data_obj + 7)) {
+          if (data_obj > data_obj_mais_recente) {
+            data_obj_mais_recente <- data_obj
+            data_mais_recente <- dt
+          }
+        }
+      }
+    }
+  }
+  
+  if (!is.null(data_mais_recente)) {
+    return(c("atualizado", paste0("dt-up-", gsub("/", "-", data_mais_recente))))
+  }
+  return(NULL)
+}
+```
+
+```{css}
+/* 1. Fundo da página em cinza super claro */
+body, .bslib-page-dashboard {
+  background-color: #f4f6f9 !important;
+}
+
+
+/*Todos os cartões sem pontas, com bordas arredondadas e sombra */
+.card {
+  border-radius: 16px !important;
+  border: none !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04) !important;
+  background-color: #ffffff;
+}
+
+/*Barra lateral mais limpa e flutuante */
+.bslib-sidebar-layout > .sidebar {
+  background-color: #ffffff !important;
+  border-right: none !important;
+  box-shadow: 2px 0 15px rgba(0, 0, 0, 0.03) !important;
+}
+
+/* ==========================================================================
+   CARTÕES DE INDICADORES (VALUEBOXES): ROBUSTEZ VISUAL E ZERO COMPRESSÃO
+   Garante visibilidade total de números, títulos e ícones em qualquer tela
+   ========================================================================== */
+
+/* 1. Estrutura geral do cartão */
+.bslib-value-box {
+  min-height: 110px !important;
+  height: auto !important;
+  overflow: visible !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+}
+
+.bslib-value-box .card-body {
+  padding: 12px 16px !important;
+  overflow: visible !important;
+  display: flex !important;
+  align-items: center !important;
+  min-height: 86px !important;
+  box-sizing: border-box !important;
+}
+
+/* 2. Disposição interna: ícone na esquerda e texto alinhado verticalmente à direita */
+.bslib-value-box .value-box-grid {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 12px !important;
+  width: 100% !important;
+  height: 100% !important;
+  overflow: visible !important;
+}
+
+.bslib-value-box .value-box-showcase {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+  width: 40px !important;
+  max-width: 44px !important;
+  height: 40px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: visible !important;
+}
+
+.bslib-value-box .value-box-showcase i,
+.bslib-value-box .value-box-showcase svg,
+.bslib-value-box svg,
+.bslib-value-box i,
+.bslib-value-box .icon {
+  font-size: clamp(1.45rem, 1.9vw, 1.85rem) !important;
+  color: #c8942b !important;
+  fill: #c8942b !important;
+  opacity: 0.35 !important;
+  line-height: 1 !important;
+}
+
+.bslib-value-box .value-box-area {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  overflow: visible !important;
+  padding: 0 !important;
+}
+
+/* Evita que texto dos cartões com marca d'água (Visão Geral) sobreponha o PNG */
+[class*="icone-img-"] .value-box-area {
+  padding-right: clamp(40px, 4.5vw, 65px) !important;
+}
+
+/* 3. Tipografia refinada e sem corte vertical */
+.bslib-value-box .value-box-title {
+  color: rgba(255, 255, 255, 0.90) !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.3px;
+  font-size: clamp(0.72rem, 0.85vw, 0.86rem) !important;
+  line-height: 1.25 !important;
+  margin: 0 0 3px 0 !important;
+  white-space: normal !important;
+  word-break: normal !important;
+}
+
+.bslib-value-box .value-box-value {
+  color: #c8942b !important; 
+  font-weight: 700 !important;
+  font-size: clamp(1.15rem, 1.55vw, 1.6rem) !important;
+  line-height: 1.15 !important;
+  margin: 0 !important;
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow: visible !important;
+  display: flex !important;
+  align-items: baseline !important;
+  flex-wrap: wrap !important;
+  gap: 4px !important;
+}
+
+/* 4. Prevenção de corte pelo container Quarto Dashboard */
+.dashboard-page,
+.tab-content,
+.quarto-dashboard-content {
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Impede que o grid do Quarto force porcentagens pequenas e esmague os cartões */
+.dashboard-page .bslib-grid[style*="20fr"],
+.dashboard-page .bslib-grid[style*="22fr"],
+.dashboard-page .bslib-grid[style*="25fr"] {
+  grid-template-rows: auto 1fr !important;
+}
+
+
+
+/*BARRA SUPERIOR (Navbar) INTEGRADA E ELEGANTE */
+.quarto-dashboard-header, .navbar {
+  background-color: #ffffff !important;
+  border-bottom: 1px solid #e9ecef !important; /* Linha cinza super fina separando do fundo */
+  box-shadow: none !important;
+}
+
+/*Força o título a aparecer na cor azul marinho */
+.navbar-title, .navbar-brand {
+  color: #0f2537 !important; 
+  font-weight: 700 !important;
+  font-size: 1.5rem !important;
+}
+
+/*Abas inativas (cinza claro, sem fundo) */
+.navbar-nav .nav-link {
+  color: #858c94 !important;
+  font-weight: 500 !important;
+  background-color: transparent !important;
+}
+
+/*Aba ativa (remove o bloco estranho e coloca um sublinhado dourado) */
+.navbar-nav .nav-link.active,
+.nav-pills .nav-link.active,
+.nav-tabs .nav-link.active {
+  background-color: transparent !important; 
+  color: #0f2537 !important; 
+  font-weight: 700 !important;
+  border-bottom: 3px solid #c8942b !important; /* O toque dourado de elegância */
+  border-radius: 0px !important;
+}
+
+/* Aba ativa (remove o bloco estranho e coloca um sublinhado dourado) */
+.navbar-nav .nav-link.active,
+.nav-pills .nav-link.active,
+.nav-tabs .nav-link.active {
+  background-color: transparent !important; 
+  color: #0f2537 !important; 
+  font-weight: 700 !important;
+  border-bottom: 3px solid #c8942b !important; /* O toque dourado de elegância */
+  border-radius: 0px !important;
+}
+
+/*Links da Barra Lateral (Giro de Notícias) elegantes */
+.bslib-sidebar-layout .sidebar a:not(.jet-btn-portal-completo):not(.jet-sidebar-btn-pdf):not(.jet-sidebar-link-ler) {
+  color: #0f2537 !important; /* Fica na mesma cor dos cartões */
+  text-decoration: none !important; /* Remove a linha embaixo do texto */
+  font-weight: 500; /* Deixa a fonte um pouquinho mais encorpada */
+  transition: color 0.2s ease-in-out; /* Suaviza a troca de cor */
+}
+
+/* Efeito dourado ao passar o mouse por cima do título da notícia */
+.bslib-sidebar-layout .sidebar a:not(.jet-btn-portal-completo):not(.jet-sidebar-btn-pdf):not(.jet-sidebar-link-ler):hover {
+  color: #c8942b !important; 
+}
+
+/* 8. Botão de Menu no Celular (Hambúrguer) Visível e Elegante */
+.navbar-toggler {
+  border: none !important; /* Remove a caixa quadrada padrão */
+}
+
+/* Força o ícone das três linhas a ficar na cor azul escuro (#0f2537) */
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%230f2537' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2.5' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+/* Remove o brilho estranho ao clicar no celular */
+.navbar-toggler:focus {
+  box-shadow: none !important; 
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE INTELIGENTE (LAPTOPS, MONITORES MENORES E SMARTPHONES)
+   Garante encaixe perfeito dos números, abas, ícones e gráficos
+   ========================================================================== */
+
+/* Laptops e monitores menores (1024px a 1400px): navbar compacta para caber todas as abas */
+@media (min-width: 992px) and (max-width: 1400px) {
+  .navbar-brand {
+    font-size: 1.18rem !important;
+    margin-right: 8px !important;
+  }
+  .navbar-nav .nav-link {
+    padding: 0.35rem 0.5rem !important;
+    font-size: 0.84rem !important;
+  }
+  .bslib-value-box {
+    padding: 8px 12px !important;
+  }
+}
+
+/* Monitores e laptops com altura reduzida: garante compactação sem rolagem desnecessária nas abas principais */
+@media (min-width: 992px) {
+  .dashboard-page {
+    height: 100% !important;
+    overflow: hidden !important;
+  }
+  .bslib-value-box {
+    min-height: 84px !important;
+  }
+  .bslib-value-box .card-body {
+    min-height: 70px !important;
+    padding: 8px 14px !important;
+  }
+  .card:has(.plotly.html-widget) > .card-body {
+    padding: 6px 10px !important;
+  }
+  .dataTables_wrapper .dataTable th,
+  .dataTables_wrapper .dataTable td {
+    padding: 5px 8px !important;
+    font-size: 0.86rem !important;
+  }
+  .tabela-mercados-aovivo thead th {
+    padding: 5px 8px !important;
+    font-size: 10.5px !important;
+    white-space: nowrap !important;
+  }
+  .tabela-mercados-aovivo tbody td {
+    padding: 4px 8px !important;
+    font-size: 12px !important;
+    line-height: 1.15 !important;
+  }
+  .tabela-mercados-aovivo tbody td:nth-child(2),
+  .tabela-mercados-aovivo tbody td:nth-child(3),
+  .tabela-mercados-aovivo tbody td:nth-child(4) {
+    white-space: nowrap !important;
+  }
+  .tabela-mercados-aovivo .subtexto-ativo {
+    font-size: 10px !important;
+    line-height: 1.15 !important;
+  }
+  .tabela-mercados-aovivo .preco-destaque {
+    font-size: 12.5px !important;
+  }
+  #câmbio-e-mercados .bslib-value-box {
+    min-height: 76px !important;
+    padding: 6px 10px !important;
+  }
+  #câmbio-e-mercados .bslib-value-box .card-body {
+    min-height: 62px !important;
+    padding: 6px 10px !important;
+  }
+  #câmbio-e-mercados .bslib-value-box .value-box-title {
+    font-size: 0.68rem !important;
+    line-height: 1.15 !important;
+  }
+  #câmbio-e-mercados .bslib-value-box .value-box-value {
+    font-size: 1.12rem !important;
+    white-space: nowrap !important;
+  }
+  #câmbio-e-mercados .bslib-value-box .value-box-showcase {
+    width: 28px !important;
+    max-width: 30px !important;
+  }
+}
+.mercados-card-wrap {
+  width: 100%;
+  padding: 6px 10px;
+  box-sizing: border-box;
+}
+.mercados-toolbar {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  flex-wrap: nowrap !important;
+  width: 100%;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.mercados-toolbar-titulo {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  color: #858c94;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.mercados-toolbar-acoes {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+@media (max-height: 820px) and (max-width: 991px) {
+  .bslib-page-dashboard {
+    overflow-y: auto !important;
+  }
+  .dashboard-page {
+    overflow-y: auto !important;
+    height: auto !important;
+  }
+  .card {
+    min-height: auto !important;
+  }
+}
+
+/* Tablets e dispositivos médios (max-width: 991px): colunas empilhadas */
+@media (max-width: 991px) {
+  .dashboard-page[data-orientation="columns"] > .bslib-grid {
+    grid-template-columns: 1fr !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+    height: auto !important;
+  }
+  .dashboard-page[data-orientation="columns"] > .bslib-grid > * {
+    width: 100% !important;
+    min-height: auto !important;
+  }
+  .dashboard-page {
+    height: auto !important;
+    overflow-y: visible !important;
+  }
+  .bslib-page-dashboard {
+    height: auto !important;
+    overflow-y: auto !important;
+  }
+}
+
+/* Smartphones e telas menores (max-width: 768px): reorganização da grade, fontes e cartões */
+@media (max-width: 768px) {
+  /* Linhas de cartões (4 ou 3 colunas) reorganizam-se para 2x2 com espaço confortável */
+  .dashboard-page .bslib-grid[style*="minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr)"],
+  .dashboard-page .bslib-grid[style*="1fr 1fr 1fr 1fr"],
+  .dashboard-page .bslib-grid[style*="minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr)"],
+  .dashboard-page .bslib-grid[style*="1fr 1fr 1fr"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+    grid-auto-rows: auto !important;
+    gap: 12px !important;
+  }
+
+  .bslib-value-box {
+    min-height: 98px !important;
+    padding: 6px !important;
+  }
+
+  .bslib-value-box .card-body {
+    padding: 10px 12px !important;
+  }
+
+  .bslib-value-box .value-box-value {
+    font-size: 1.25rem !important;
+  }
+
+  .bslib-value-box .value-box-showcase {
+    width: 34px !important;
+    max-width: 36px !important;
+  }
+
+  .bslib-value-box .value-box-showcase i,
+  .bslib-value-box .value-box-showcase svg {
+    font-size: 1.45rem !important;
+  }
+
+  /* Barra de cotações em celulares */
+  #barra-cotacoes-aovivo {
+    height: 34px !important;
+    font-size: 11px !important;
+  }
+  .ticker-fixo-esquerda {
+    padding: 0 8px !important;
+  }
+  .badge-aovivo {
+    padding: 2px 6px !important;
+    font-size: 9.5px !important;
+  }
+  .ticker-fixo-direita {
+    padding: 0 8px !important;
+  }
+  .ticker-fixo-direita .tk-horario {
+    display: none !important;
+  }
+  .ticker-item {
+    padding: 0 12px !important;
+    font-size: 11.5px !important;
+  }
+
+  /* Gráficos Plotly em celular ganham altura mínima garantida */
+  .plotly.html-widget {
+    min-height: 280px !important;
+  }
+}
+
+/* Telas muito pequenas (max-width: 480px): 1 cartão por linha para visual impecável */
+@media (max-width: 480px) {
+  .dashboard-page .bslib-grid[style*="minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr)"],
+  .dashboard-page .bslib-grid[style*="1fr 1fr 1fr 1fr"],
+  .dashboard-page .bslib-grid[style*="minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr)"],
+  .dashboard-page .bslib-grid[style*="1fr 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+  .navbar-brand {
+    font-size: 1.1rem !important;
+  }
+}
+
+```
+
+```{r}
+#| include: false
+library(plotly)
+
+# Função padrão para todos os gráficos de linha do jornal.
+grafico_linhas <- function(df, x, y, serie, cores, titulo_y, fonte = NULL, y_nticks = NULL) {
+  n_periodos <- length(unique(df[[x]]))
+  n_series   <- length(unique(df[[serie]]))
+  tam_marker <- if (n_periodos > 20) 5 else 7
+  cfg_xaxis  <- list(title = "", tickangle = -28, tickfont = list(size = 10.5), fixedrange = TRUE)
+  if (n_periodos > 20) {
+    cfg_xaxis$nticks <- 16
+  }
+  cfg_yaxis <- list(
+    title = list(text = titulo_y, standoff = 6, font = list(size = 11)),
+    automargin = TRUE, fixedrange = TRUE, separatethousands = TRUE, tickfont = list(size = 11)
+  )
+  if (!is.null(y_nticks)) {
+    cfg_yaxis$nticks <- y_nticks
+  }
+  p <- plot_ly(
+    x = df[[x]],
+    y = df[[y]],
+    color = df[[serie]],
+    colors = cores,
+    type = "scatter",
+    mode = "lines+markers",
+    line = list(width = ifelse(n_periodos > 20, 2.5, 3)),
+    marker = list(size = tam_marker)
+  ) |>
+    layout(
+      showlegend = n_series > 1,
+      legend = list(orientation = "h", x = 0.5, xanchor = "center", y = 1.15),
+      dragmode = FALSE,
+      xaxis = cfg_xaxis,
+      yaxis = cfg_yaxis,
+      separators = ",.",
+      margin = list(t = ifelse(n_series > 1, 26, 10), b = ifelse(is.null(fonte), 36, 52), l = 64, r = 16),
+      paper_bgcolor = "rgba(0,0,0,0)",
+      plot_bgcolor = "rgba(0,0,0,0)"
+    )
+  
+  # Se houver fonte, adiciona o texto logo abaixo dos rótulos compactos do eixo X sem cortar
+  if (!is.null(fonte)) {
+    p <- layout(p,
+      annotations = list(
+        list(
+          x = 0, 
+          y = 0, 
+          yshift = -34,
+          text = paste0("<i>Fonte: ", fonte, "</i>"), 
+          showarrow = FALSE, 
+          xref = 'paper', 
+          yref = 'paper', 
+          xanchor = 'left', 
+          yanchor = 'top', 
+          font = list(size = 10.5, color = "#858c94")
+        )
+      )
+    )
+  }
+  
+  config(p, displayModeBar = FALSE, scrollZoom = FALSE, doubleClick = FALSE)
+}
+
+# Ordem padronizada dos trimestres
+trimestres <- c("T3 2024", "T4 2024", "T1 2025", "T2 2025", "T3 2025", "T4 2025", "T1 2026")
+```
+
+#  {.sidebar}
+
+```{=html}
+<style>
+.jet-sidebar-newspaper {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  margin-bottom: 10px;
+}
+.jet-sidebar-masthead {
+  border-top: 2.5px solid #0f2537;
+  border-bottom: 1px solid #c8942b;
+  padding: 6px 0 5px 0;
+  margin-bottom: 8px;
+  text-align: center;
+}
+.jet-sidebar-masthead-title {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.86rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #0f2537;
+  text-transform: uppercase;
+}
+.jet-sidebar-masthead-sub {
+  font-size: 0.65rem;
+  color: #64748b;
+  letter-spacing: 0.03em;
+  margin-top: 1px;
+}
+.jet-sidebar-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+.jet-sidebar-tab {
+  flex: 1;
+  background: #e2e8f0;
+  color: #334155;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 2px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.jet-sidebar-tab.active {
+  background: #0f2537;
+  color: #c8942b;
+}
+.jet-sidebar-card {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-left: 3.5px solid #0f2537;
+  border-radius: 4px;
+  padding: 7px 9px;
+  margin-bottom: 6px;
+  box-shadow: 0 1px 3px rgba(15,37,55,0.05);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.jet-sidebar-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(15,37,55,0.10);
+}
+.jet-sidebar-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 3px;
+}
+.jet-sidebar-badge {
+  font-size: 0.58rem;
+  font-weight: 800;
+  padding: 1.5px 5px;
+  border-radius: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.jet-sidebar-period {
+  font-size: 0.60rem;
+  color: #64748b;
+  font-weight: 600;
+}
+.jet-sidebar-headline {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #0f2537;
+  line-height: 1.24;
+  margin-bottom: 5px;
+  display: block;
+  text-decoration: none !important;
+}
+.jet-sidebar-headline:hover {
+  color: #244b6b;
+}
+.jet-sidebar-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px dotted #e2e8f0;
+  padding-top: 4px;
+}
+.jet-sidebar-link-ler {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #0f2537 !important;
+  text-decoration: none !important;
+}
+.jet-sidebar-link-ler:hover {
+  color: #c8942b !important;
+}
+.jet-sidebar-btn-pdf {
+  font-size: 0.62rem;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 3px;
+  text-decoration: none !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+.bslib-sidebar-layout .sidebar a.jet-btn-portal-completo,
+.jet-btn-portal-completo {
+  display: block;
+  text-align: center;
+  background: #0f2537;
+  color: #ffffff !important;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 7px 10px;
+  border-radius: 4px;
+  border: 1.5px solid #c8942b;
+  text-decoration: none !important;
+  margin: 8px 0;
+  letter-spacing: 0.03em;
+  transition: all 0.18s ease;
+}
+.bslib-sidebar-layout .sidebar a.jet-btn-portal-completo:hover,
+.jet-btn-portal-completo:hover {
+  background: #c8942b;
+  color: #0f2537 !important;
+}
+</style>
+
+<div class="jet-sidebar-newspaper">
+  <div class="jet-sidebar-masthead">
+    <div class="jet-sidebar-masthead-title">Caderno Editorial &amp; PDFs</div>
+    <div class="jet-sidebar-masthead-sub">Jornal Econômico do Tocantins</div>
+  </div>
+  <div class="jet-sidebar-tabs">
+    <button type="button" class="jet-sidebar-tab active" onclick="filtrarBoletinsSidebar('todos', this)">Todos</button>
+    <button type="button" class="jet-sidebar-tab" onclick="filtrarBoletinsSidebar('flash', this)">⚡ Flash</button>
+    <button type="button" class="jet-sidebar-tab" onclick="filtrarBoletinsSidebar('dossie', this)">📕 Dossiês</button>
+    <button type="button" class="jet-sidebar-tab" onclick="filtrarBoletinsSidebar('carta', this)">📘 Carta</button>
+  </div>
+```
+
+```{r}
+#| results: asis
+cat("```{=html}\n")
+# Card Especial: Carta de Conjuntura Integrada
+if (file.exists("boletins/pdfs/2026_10_carta_pib.pdf")) {
+  cat(
+    '<div class="jet-sidebar-card" data-jet-fam="carta" style="border-left-color:#0A2E73; background:#F3F6FB;">',
+    '  <div class="jet-sidebar-card-top">',
+    '    <span class="jet-sidebar-badge" style="background:#0A2E73; color:#8CE000;">Carta de Conjuntura</span>',
+    '    <span class="jet-sidebar-period">Ed. Especial</span>',
+    '  </div>',
+    '  <a href="news.html#caderno-carta-conjuntura" class="jet-sidebar-headline" style="color:#0A2E73;">Carta de Conjuntura Econômica do Tocantins</a>',
+    '  <div class="jet-sidebar-actions">',
+    '    <a href="news.html#caderno-carta-conjuntura" class="jet-sidebar-link-ler" style="color:#0A2E73 !important;">Ver edição →</a>',
+    '    <a href="boletins/pdfs/2026_10_carta_pib.pdf" target="_blank" class="jet-sidebar-btn-pdf" style="background:#0A2E73; color:#ffffff !important;">📄 PDF</a>',
+    '  </div>',
+    '</div>\n',
+    sep = "\n"
+  )
+}
+
+if (exists('catalogo_boletins') && length(catalogo_boletins) > 0) {
+  for (i in seq_along(catalogo_boletins)) {
+    b <- catalogo_boletins[[i]]
+    eh_dossie <- identical(b$estilo_layout, "periodico")
+    fam_str   <- if (eh_dossie) "dossie" else "flash"
+    cor_borda <- if (eh_dossie) "#0B5D32" else "#0F2537"
+    cor_bg_bd <- if (eh_dossie) "#0B5D32" else "#0F2537"
+    cor_tx_bd <- if (eh_dossie) "#FAF6EE" else "#C8942B"
+    rot_badge <- if (eh_dossie) "Dossiê Anual" else "Boletim Flash"
+    btn_pdf   <- if (isTRUE(b$tem_pdf)) {
+      sprintf('<a href="%s" target="_blank" class="jet-sidebar-btn-pdf" style="background:%s; color:%s !important;">📄 PDF</a>',
+              b$pdf_url, cor_bg_bd, ifelse(eh_dossie, "#ffffff", "#C8942B"))
+    } else ""
+
+    cat(sprintf(
+      '<div class="jet-sidebar-card" data-jet-fam="%s" style="border-left-color:%s; background:%s;">
+  <div class="jet-sidebar-card-top">
+    <span class="jet-sidebar-badge" style="background:%s; color:%s;">%s</span>
+    <span class="jet-sidebar-period">%s</span>
+  </div>
+  <a href="news.html#%s" class="jet-sidebar-headline">%s</a>
+  <div class="jet-sidebar-actions">
+    <a href="news.html#%s" class="jet-sidebar-link-ler">Ler matéria →</a>
+    %s
+  </div>
+</div>\n',
+      fam_str, cor_borda, ifelse(eh_dossie, "#FAF6EE", "#ffffff"),
+      cor_bg_bd, cor_tx_bd, rot_badge,
+      b$periodo,
+      b$slug, b$titulo,
+      b$slug, btn_pdf
+    ))
+  }
+}
+cat("```\n")
+```
+
+```{=html}
+  <a href="news.html" class="jet-btn-portal-completo">📰 Abrir Caderno Completo de Publicações →</a>
+</div>
+<script>
+function filtrarBoletinsSidebar(fam, btn) {
+  var btns = document.querySelectorAll('.jet-sidebar-tab');
+  btns.forEach(function(b) { b.classList.remove('active'); });
+  if (btn) btn.classList.add('active');
+  var cards = document.querySelectorAll('.jet-sidebar-card');
+  cards.forEach(function(c) {
+    if (fam === 'todos' || c.getAttribute('data-jet-fam') === fam) {
+      c.style.display = 'block';
+    } else {
+      c.style.display = 'none';
+    }
+  });
+}
+</script>
+```
+
+------------------------------------------------------------------------
+
+```{=html}
+<div style='background: #0f2537; color: #ffffff; padding: 14px 14px; border-radius: 12px; border-left: 4px solid #c8942b; margin: 6px 0;'>
+  <div style='color: #c8942b; font-weight: 700; font-size: 0.85rem; margin-bottom: 4px;'>BOLETINS E CARTAS DE CONJUNTURA</div>
+  <div style='font-size: 0.75rem; color: rgba(255,255,255,0.88); line-height: 1.38; margin-bottom: 10px;'>
+    Receba os <b>Boletins</b> no seu e-mail e assine nossas <b>Cartas de Conjuntura</b> exclusivas via Substack:
+  </div>
+  <form onsubmit="event.preventDefault(); window.open('https://substack.com', '_blank'); this.querySelector('button').textContent = '✓ Aberto no Substack!';" style='display: flex; flex-direction: column; gap: 6px;'>
+    <input type='email' placeholder='Seu e-mail profissional...' required style='width: 100%; padding: 6px 9px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.25); font-size: 0.78rem; box-sizing: border-box; color: #0f2537;' />
+    <button type='submit' style='width: 100%; background: #c8942b; color: #0f2537; font-weight: 700; border: none; padding: 7px 10px; border-radius: 6px; font-size: 0.78rem; cursor: pointer;'>Inscrever-se / Assinar (Substack)</button>
+  </form>
+</div>
+```
+
+------------------------------------------------------------------------
+
+**Edições Anteriores & Acervo**
+
+<div style="font-size: 0.74rem; color: #475569; line-height: 1.42; margin-bottom: 6px;">
+Séries históricas e edições passadas dos <b>Boletins Flash</b>, <b>Dossiês Anuais</b> e <b>Cartas de Conjuntura</b> permanecem catalogadas em nosso arquivo editorial.
+</div>
+
+[Acessar banca de edições](news.html) · [Solicitar edições passadas](mailto:seuemail@dominio.com?subject=Solicitação%20de%20Edição%20Anterior%20-%20JET)
+
+------------------------------------------------------------------------
+
+*Fontes: Comex Stat, IBGE, Mapa das Empresas, Receita Federal, SEFAZ-TO, SEPLAN-TO. Atualizado: `r dados_painel$ultima_atualizacao`*
+
+# Visão Geral
+
+## Row {height="auto"}
+
+```{r crescimento_PIB}
+#| content: valuebox
+#| title: "Variação trimestral do PIB"
+#| classes: !expr c(selo_novo(dt_pib_tri), "icone-img-pib", "box-pib-sazonal")
+
+list(
+  color = "#0f2537", 
+  value = dados_painel$visao_geral$vb_crescimento_pib
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Taxa de Desocupação"
+#| classes: !expr c(selo_novo(dt_pnad), "icone-img-desocupacao")
+
+list(
+  color = "#0f2537",
+  value = dados_painel$visao_geral$vb_desocupacao
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Arrecadação ICMS (Var. Mensal)"
+#| classes: !expr c(selo_novo(dt_sefaz), "icone-img-icms")
+
+list(
+  color = "#0f2537",
+  value = dados_painel$visao_geral$vb_icms_var
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Novos CNPJs no mês"
+#| classes: !expr c(selo_novo(dt_cnpj), "icone-img-cnpj")
+
+list(
+  color = "#0f2537",
+  value = dados_painel$visao_geral$vb_novos_cnpjs
+)
+```
+
+## Row
+
+### Arrecadação ICMS e PIB trimestral
+
+```{r}
+#| classes: !expr c(selo_novo(c(dt_sefaz, dt_pib_tri)), "grafico-pib-sazonal")
+df_chart1 <- dados_painel$visao_geral$df_chart1
+
+grafico_linhas(
+  df_chart1, x = "Trimestre", y = "Valor", serie = "Serie",
+  cores = c("Arrecadação ICMS" = "#0f2537", "PIB trimestral" = "#c8942b"),
+  titulo_y = "Variação (%)",
+  fonte = "Sefaz-TO e SEPLAN-TO/Contas Regionais."
+)
+```
+
+### Dinâmica Industrial e Emprego (MATOPIBA)
+
+```{r}
+#| classes: !expr selo_novo(c(dt_cnpj, dt_pnad, dt_caged))
+df_chart2 <- dados_painel$visao_geral$df_chart2
+x_chart2  <- if ("Periodo" %in% names(df_chart2)) "Periodo" else "Trimestre"
+
+grafico_linhas(
+  df_chart2, x = x_chart2, y = "Valor", serie = "Serie",
+  cores = c("Abertura de CNPJs" = "#0f2537", "Admissões (Novo CAGED)" = "#c8942b"),
+  titulo_y = "Índice (1º mês = 100)",
+  fonte = "Receita Federal/Mapa de Empresas e Novo CAGED/MTE."
+)
+```
+
+# PIB (TO) {orientation="columns"}
+
+## Column {width="20%"}
+
+### Row {height="33%"}
+
+```{r}
+#| content: valuebox
+#| title: "PIB Nominal (TO)"
+#| classes: !expr c(selo_novo(dt_pib_tri), "icone-img-tocantins")
+list(
+  color = "#0f2537",
+  value = dados_painel$pib$vb_pib_nominal_to
+)
+```
+
+### Row {height="33%"}
+
+```{r}
+#| content: valuebox
+#| title: "Impostos (TO)"
+#| classes: !expr selo_novo(dt_pib_tri)
+list(
+  icon = "cash-coin",
+  color = "#0f2537",
+  value = dados_painel$pib$vb_impostos_to
+)
+```
+
+### Row {height="33%"}
+
+```{r}
+#| content: valuebox
+#| title: "PIB Nominal (Brasil)"
+#| classes: !expr c(selo_novo(dt_pib_br), "icone-img-brasil")
+list(
+  color = "#0f2537",
+  value = dados_painel$pib$vb_pib_nominal_br
+)
+```
+
+## Column {width="60%"}
+
+### Dinâmica de Crescimento: Tocantins vs Brasil
+
+```{r}
+#| classes: !expr c(selo_novo(c(dt_pib_tri, dt_pib_br)), "grafico-central-pib-to")
+df_pib <- dados_painel$pib$df_pib
+
+grafico_linhas(
+  df_pib, x = "Ano", y = "Indice", serie = "Regiao",
+  cores = c("Tocantins" = "#c8942b", "Brasil" = "#0f2537"),
+  titulo_y = "Variação Trimestral (%)",
+  fonte = "SEPLAN-TO/Contas Regionais (ajuste sazonal próprio) e IBGE/SIDRA (Tabela 1621)."
+)
+```
+
+## Column {width="20%"}
+
+### Row {height="33%"}
+
+```{r}
+#| content: valuebox
+#| title: !expr dados_painel$pib$setores_ranking[[1]]$titulo
+#| classes: !expr selo_novo(dt_pib_tri)
+list(
+  icon = dados_painel$pib$setores_ranking[[1]]$icone,
+  color = "#0f2537",
+  value = dados_painel$pib$setores_ranking[[1]]$valor_fmt
+)
+```
+
+### Row {height="33%"}
+
+```{r}
+#| content: valuebox
+#| title: !expr dados_painel$pib$setores_ranking[[2]]$titulo
+#| classes: !expr selo_novo(dt_pib_tri)
+list(
+  icon = dados_painel$pib$setores_ranking[[2]]$icone,
+  color = "#0f2537",
+  value = dados_painel$pib$setores_ranking[[2]]$valor_fmt
+)
+```
+
+### Row {height="33%"}
+
+```{r}
+#| content: valuebox
+#| title: !expr dados_painel$pib$setores_ranking[[3]]$titulo
+#| classes: !expr selo_novo(dt_pib_tri)
+list(
+  icon = dados_painel$pib$setores_ranking[[3]]$icone,
+  color = "#0f2537",
+  value = dados_painel$pib$setores_ranking[[3]]$valor_fmt
+)
+```
+
+# Mercado de Trabalho {orientation="columns"}
+
+## Column {width="60%"}
+
+### Row {height="auto"}
+
+```{r}
+#| content: valuebox
+#| title: "Saldo Novo CAGED"
+#| classes: !expr selo_novo(dt_caged)
+list(
+  icon = "briefcase",
+  color = "#0f2537",
+  value = dados_painel$trabalho$vb_saldo_caged
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Taxa de Desocupação"
+#| classes: !expr selo_novo(dt_pnad)
+list(
+  icon = "percent",
+  color = "#0f2537",
+  value = dados_painel$trabalho$vb_desocupacao
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Rendimento Médio"
+#| classes: !expr selo_novo(dt_pnad)
+list(
+  icon = "cash-stack",
+  color = "#0f2537",
+  value = dados_painel$trabalho$vb_rendimento
+)
+```
+
+### Evolução do Saldo de Empregos (Novo CAGED)
+
+```{r}
+#| classes: !expr selo_novo(dt_caged)
+df_caged <- dados_painel$trabalho$df_caged
+
+grafico_linhas(
+  df_caged, x = "Mes", y = "Saldo", serie = "Serie",
+  cores = c("Saldo Mensal" = "#0f2537"),
+  titulo_y = "Saldo Novo CAGED",
+  fonte = "Novo CAGED / MTE."
+)
+```
+
+### Evolução do Saldo de Empregos por Setor (Novo CAGED)
+
+```{r}
+#| classes: !expr selo_novo(dt_caged)
+df_setores <- dados_painel$trabalho$df_setores
+df_setores$Setor <- factor(df_setores$Setor, levels = df_setores$Setor[order(df_setores$Saldo)])
+df_setores$Texto <- ifelse(
+  df_setores$Saldo > 0,
+  paste0("+", format(df_setores$Saldo, big.mark = ".", decimal.mark = ",", trim = TRUE)),
+  format(df_setores$Saldo, big.mark = ".", decimal.mark = ",", trim = TRUE)
+)
+
+plot_ly(
+  df_setores, x = ~Saldo, y = ~Setor, type = "bar",
+  marker = list(color = "#c8942b"),
+  text = ~Texto, textposition = "auto"
+) |>
+  layout(
+    dragmode = FALSE,
+    title = list(
+      text = "<b>Saldo Novo Caged por Grande Setor</b>",
+      x = 0, xanchor = "left", y = 0.96, yanchor = "top",
+      font = list(size = 13, color = "#858c94")
+    ),
+    xaxis = list(title = "", fixedrange = TRUE, zeroline = TRUE, zerolinecolor = "#cbd5e1"),
+    yaxis = list(title = "", fixedrange = TRUE),
+    margin = list(t = 32, b = 38, l = 95, r = 18),
+    paper_bgcolor = "rgba(0,0,0,0)",
+    plot_bgcolor = "rgba(0,0,0,0)",
+    annotations = list(
+      list(x = 0, y = 0, yshift = -22, text = "<i>Fonte: Novo CAGED / MTE.</i>", 
+           showarrow = FALSE, xref = 'paper', yref = 'paper', 
+           xanchor = 'left', yanchor = 'top', font = list(size = 10.5, color = "#858c94"))
+    )
+  ) |> config(displayModeBar = FALSE, scrollZoom = FALSE, doubleClick = FALSE)
+```
+
+## Column {width="60%"}
+
+### Panorama Municipal (Estoque e Geração de Vagas)
+
+```{r}
+#| classes: !expr selo_novo(c(dt_caged, dt_rais))
+library(DT)
+
+df_municipios <- dados_painel$trabalho$df_municipios
+ano_rais_lbl  <- if (!is.null(dados_painel$trabalho$ano_rais)) dados_painel$trabalho$ano_rais else 2025
+est_to_lbl    <- if (!is.null(dados_painel$trabalho$vb_estoque_rais)) dados_painel$trabalho$vb_estoque_rais else "437.580"
+mes_caged_lbl <- if (!is.null(dados_painel$trabalho$mes_ano_caged)) dados_painel$trabalho$mes_ano_caged else "09/26"
+sld_to_lbl    <- if (!is.null(dados_painel$trabalho$vb_saldo_caged)) dados_painel$trabalho$vb_saldo_caged else "+716"
+
+datatable(
+  df_municipios,
+  rownames = FALSE,
+  caption = htmltools::tags$caption(
+    style = "caption-side: top; text-align: left; color: #0f2537; font-size: 12px; font-weight: 600; padding-bottom: 4px;",
+    sprintf(
+      "Estoque Total no Estado do Tocantins (RAIS %s): %s vínculos ativos | Saldo no Estado (Novo CAGED %s): %s vagas",
+      ano_rais_lbl, est_to_lbl, mes_caged_lbl, sld_to_lbl
+    )
+  ),
+  options = list(
+    pageLength = 8,
+    dom = 'ftp',
+    language = list(url = '//cdn.datatables.net/plug-ins/1.10.11/i18n/Portuguese-Brasil.json'),
+    initComplete = JS(
+      "function(settings, json) {",
+      "$(this.api().table().header()).css({'background-color': '#0f2537', 'color': '#fff'});",
+      "}"
+    )
+  )
+) |>
+  formatRound(columns = c(2, 3), digits = 0, interval = 3, mark = ".", dec.mark = ",")
+```
+
+# Comércio Exterior {orientation="columns"}
+
+## Column {width="60%"}
+
+### Row {height="auto"}
+
+```{r}
+#| content: valuebox
+#| title: "Exportações (FOB)"
+#| classes: !expr c(selo_novo(dt_comex), "icone-img-exportacao")
+list(
+  color = "#0f2537",
+  value = dados_painel$comex$vb_exportacoes
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Importações (FOB)"
+#| classes: !expr c(selo_novo(dt_comex), "icone-img-importacao")
+list(
+  color = "#0f2537",
+  value = dados_painel$comex$vb_importacoes
+)
+```
+
+### Principais Parceiros Comerciais (Corrente de Comércio)
+
+```{r}
+#| classes: !expr selo_novo(dt_comex)
+df_exp <- dados_painel$comex$df_exp_mapa
+df_imp <- dados_painel$comex$df_imp_mapa
+
+plot_geo() |>
+  add_trace(
+    data = df_exp,
+    locations = ~Pais,
+    z = ~log1p(Valor),
+    text = ~if ("Hover" %in% names(df_exp)) Hover else paste0("<b>", Nome, "</b><br>Exportações TO: US$ ", Valor, " Mi"),
+    hoverinfo = "text",
+    colorscale = list(c(0, 0.5, 1), c("#ffe066", "#f5be1a", "#d99b00")),
+    showscale = FALSE,
+    marker = list(line = list(width = 0.8, color = 'white'))
+  ) |>
+  add_trace(
+    data = df_imp,
+    locations = ~Pais,
+    z = ~log1p(Valor),
+    text = ~if ("Hover" %in% names(df_imp)) Hover else paste0("<b>", Nome, "</b><br>Importações TO: US$ ", Valor, " Mi"),
+    hoverinfo = "text",
+    colorscale = list(c(0, 0.5, 1), c("#2d5a88", "#18385c", "#0f2537")),
+    showscale = FALSE,
+    marker = list(line = list(width = 0.8, color = 'white'))
+  ) |>
+  layout(
+    dragmode = FALSE,
+    geo = list(
+      showframe = FALSE,
+      showcoastlines = TRUE,
+      coastlinecolor = "#ffffff",
+      coastlinewidth = 0.6,
+      showland = TRUE,
+      landcolor = "#eef0f3",
+      showcountries = TRUE,
+      countrycolor = "#ffffff",
+      countrywidth = 0.8,
+      showocean = TRUE,
+      oceancolor = "#f8f9fa",
+      projection = list(type = 'natural earth'),
+      bgcolor = "rgba(0,0,0,0)"
+    ),
+    margin = list(t = 30, b = 25, l = 5, r = 5),
+    paper_bgcolor = "rgba(0,0,0,0)",
+    annotations = list(
+      list(
+        x = 0.5, y = 1.06, xref = "paper", yref = "paper",
+        text = "<span style='color:#f0b400; font-size:15px;'>■</span> <b>Exportações excedem Importações (Amarelo)</b> &nbsp;&nbsp;&nbsp;&nbsp; <span style='color:#0f2537; font-size:15px;'>■</span> <b>Importações excedem Exportações (Azul Escuro)</b>",
+        showarrow = FALSE, font = list(size = 11.5, color = "#0f2537"),
+        xanchor = "center"
+      ),
+      list(
+        x = 0, y = -0.04, xref = "paper", yref = "paper",
+        text = "<i>Fonte: Comex Stat / MDIC. Passe o cursor sobre os países para ver valores de exportação, importação e saldo bilateral.</i>",
+        showarrow = FALSE, font = list(size = 10.5, color = "#858c94"),
+        xanchor = "left"
+      )
+    )
+  ) |> 
+  config(displayModeBar = FALSE, scrollZoom = FALSE, doubleClick = FALSE)
+```
+
+## Column {width="60%"}
+
+### Row {height="auto"}
+
+```{r}
+#| content: valuebox
+#| title: "Saldo Comercial"
+#| classes: !expr c(selo_novo(dt_comex), "icone-img-saldo")
+list(
+  color = "#0f2537",
+  value = dados_painel$comex$vb_saldo
+)
+```
+
+### Pódio de Exportações (US\$ FOB)
+
+```{r}
+#| classes: !expr selo_novo(dt_comex)
+df_exp <- dados_painel$comex$df_exp_top3
+df_exp$Produto <- make.unique(as.character(df_exp$Produto), sep = " ")
+df_exp$Produto <- factor(df_exp$Produto, levels = df_exp$Produto)
+rotulo_exp <- if ("Rotulo" %in% names(df_exp)) df_exp$Rotulo else paste("US$", df_exp$Valor, "Mi")
+hover_exp  <- if ("Produto_Completo" %in% names(df_exp)) paste0("<b>", df_exp$Produto_Completo, "</b><br>", rotulo_exp) else rotulo_exp
+
+plot_ly(
+  df_exp, x = ~Valor, y = ~Produto, type = "bar", orientation = 'h',
+  cliponaxis = FALSE,
+  marker = list(color = "#c8942b", line = list(width = 0)), 
+  text = rotulo_exp,
+  hovertext = hover_exp,
+  hoverinfo = "text",
+  textposition = "auto", 
+  insidetextfont = list(color = '#ffffff', family = "Arial", size = 12),
+  outsidetextfont = list(color = '#c8942b', family = "Arial", size = 12)
+) |>
+  layout(
+    dragmode = FALSE,
+    title = list(
+      text = "<b>Top 3 Produtos Exportados (Posição SH4)</b>", 
+      x = 0, xanchor = "left", y = 1.0,
+      font = list(size = 14, color = "#858c94")
+    ),
+    xaxis = list(title = "", showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE, fixedrange = TRUE),
+    yaxis = list(title = "", automargin = FALSE, fixedrange = TRUE, tickfont = list(size = 12, color = "#0f2537")),
+    margin = list(l = 185, r = 45, t = 40, b = 10),
+    paper_bgcolor = "rgba(0,0,0,0)",
+    plot_bgcolor = "rgba(0,0,0,0)"
+  ) |> 
+  config(displayModeBar = FALSE, scrollZoom = FALSE, doubleClick = FALSE)
+```
+
+### Pódio de Importações (US\$ FOB)
+
+```{r}
+#| classes: !expr selo_novo(dt_comex)
+df_imp <- dados_painel$comex$df_imp_top3
+df_imp$Produto <- make.unique(as.character(df_imp$Produto), sep = " ")
+df_imp$Produto <- factor(df_imp$Produto, levels = df_imp$Produto)
+rotulo_imp <- if ("Rotulo" %in% names(df_imp)) df_imp$Rotulo else paste("US$", df_imp$Valor, "Mi")
+hover_imp  <- if ("Produto_Completo" %in% names(df_imp)) paste0("<b>", df_imp$Produto_Completo, "</b><br>", rotulo_imp) else rotulo_imp
+
+plot_ly(
+  df_imp, x = ~Valor, y = ~Produto, type = "bar", orientation = 'h',
+  cliponaxis = FALSE,
+  marker = list(color = "#474033", line = list(width = 0)), 
+  text = rotulo_imp,
+  hovertext = hover_imp,
+  hoverinfo = "text",
+  textposition = "auto", 
+  insidetextfont = list(color = '#ffffff', family = "Arial", size = 12),
+  outsidetextfont = list(color = '#474033', family = "Arial", size = 12)
+) |>
+  layout(
+    dragmode = FALSE,
+    title = list(
+      text = "<b>Top 3 Produtos Importados (Posição SH4)</b>", 
+      x = 0, xanchor = "left", y = 1.0,
+      font = list(size = 14, color = "#858c94")
+    ),
+    xaxis = list(title = "", showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE, fixedrange = TRUE),
+    yaxis = list(title = "", automargin = FALSE, fixedrange = TRUE, tickfont = list(size = 12, color = "#474033")),
+    margin = list(l = 185, r = 45, t = 40, b = 10),
+    paper_bgcolor = "rgba(0,0,0,0)",
+    plot_bgcolor = "rgba(0,0,0,0)"
+  ) |> 
+  config(displayModeBar = FALSE, scrollZoom = FALSE, doubleClick = FALSE)
+```
+
+# Arrecadação e Finanças {orientation="columns"}
+
+## Column {width="60%"}
+
+### Row {height="auto"}
+
+```{r}
+#| content: valuebox
+#| title: "Receita Total (Mês)"
+#| classes: !expr c(selo_novo(dt_sefaz), "icone-img-receita")
+list(
+  color = "#0f2537",
+  value = dados_painel$financas$vb_receita_total
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Arrecadação ICMS"
+#| classes: !expr c(selo_novo(dt_sefaz), "icone-img-icms")
+list(
+  color = "#0f2537",
+  value = dados_painel$financas$vb_icms
+)
+```
+
+### Evolução das Receitas (Área Empilhada)
+
+```{r}
+#| classes: !expr selo_novo(dt_sefaz)
+df_receitas <- dados_painel$financas$df_receitas
+ano_sefaz_txt <- if (!is.null(dados_painel$financas$competencia_sefaz)) {
+  as.character(as.integer(dados_painel$financas$competencia_sefaz) %/% 100L)
+} else {
+  "2026"
+}
+
+plot_ly(df_receitas, x = ~Mes) |>
+  add_trace(y = ~IPVA, name = 'IPVA e Outros', type = 'scatter', mode = 'lines', 
+            stackgroup = 'one', fillcolor = '#858c94', line = list(color = '#858c94', width = 1)) |>
+  add_trace(y = ~FPE, name = 'FPE', type = 'scatter', mode = 'lines', 
+            stackgroup = 'one', fillcolor = '#0f2537', line = list(color = '#0f2537', width = 1)) |>
+  add_trace(y = ~ICMS, name = 'ICMS', type = 'scatter', mode = 'lines', 
+            stackgroup = 'one', fillcolor = '#c8942b', line = list(color = '#c8942b', width = 1)) |>
+  layout(
+    dragmode = FALSE,
+    title = list(
+      text = sprintf("<b>Evolução das Receitas Estaduais (%s)</b>", ano_sefaz_txt),
+      x = 0, xanchor = "left", y = 0.97, yanchor = "top",
+      font = list(size = 13.5, color = "#858c94")
+    ),
+    legend = list(orientation = "h", x = 0.5, xanchor = "center", y = 1.08),
+    xaxis = list(title = "", fixedrange = TRUE, tickfont = list(size = 12.5, color = "#0f2537")),
+    yaxis = list(title = "R$ Milhões", fixedrange = TRUE, tickfont = list(size = 12.5, color = "#0f2537")),
+    margin = list(l = 60, r = 20, t = 58, b = 50),
+    paper_bgcolor = "rgba(0,0,0,0)",
+    plot_bgcolor = "rgba(0,0,0,0)",
+    annotations = list(
+      list(x = 0, y = 0, yshift = -26, text = "<i>Fonte: Sefaz-TO e Tesouro Nacional.</i>", 
+           showarrow = FALSE, xref = 'paper', yref = 'paper', 
+           xanchor = 'left', yanchor = 'top', font = list(size = 11, color = "#858c94"))
+    )
+  ) |> 
+  config(displayModeBar = FALSE, scrollZoom = FALSE, doubleClick = FALSE)
+```
+
+## Column {width="60%"}
+
+### Row {height="auto"}
+
+```{r}
+#| content: valuebox
+#| title: "Repasses Federais (FPE)"
+#| classes: !expr c(selo_novo(dt_sefaz), "icone-img-fpe")
+list(
+  color = "#0f2537",
+  value = dados_painel$financas$vb_fpe
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "IPVA e Outros"
+#| classes: !expr selo_novo(dt_sefaz)
+list(
+  icon = "car-front",
+  color = "#858c94",
+  value = dados_painel$financas$vb_ipva
+)
+```
+
+### Composição do ICMS por Setor Econômico
+
+```{r}
+#| classes: !expr selo_novo(dt_sefaz)
+df_setores <- dados_painel$financas$df_setores_icms
+cores_treemap <- c("#0f2537", "#c8942b", "#1a3854", "#d6a84c", "#474033", "#858c94", "#2c5278", "#a2a8ae")[seq_len(nrow(df_setores))]
+hover_cnae <- if ("Secao_CNAE" %in% names(df_setores)) {
+  paste0("<b>", df_setores$Setor, "</b><br>", df_setores$Secao_CNAE,
+         "<br>Arrecadação no mês: R$ ", format(round(df_setores$Valor, 2), decimal.mark = ",", nsmall = 2), " Mi")
+} else {
+  paste0("<b>", df_setores$Setor, "</b><br>R$ ", df_setores$Valor, " Mi")
+}
+mes_ano_sefaz_txt <- if (!is.null(dados_painel$financas$mes_ano_extenso_sefaz)) {
+  sub("/", " de ", tolower(dados_painel$financas$mes_ano_extenso_sefaz))
+} else {
+  "setembro de 2026"
+}
+
+plot_ly(
+  df_setores,
+  type = "treemap",
+  labels = ~Setor,
+  parents = ~Pai,
+  values = ~Valor,
+  hovertext = hover_cnae,
+  hoverinfo = "text",
+  texttemplate = "<b>%{label}</b><br>R$ %{value} Mi<br>%{percentRoot:.1%}",
+  textfont = list(family = "Arial", color = "#ffffff", size = 14),
+  marker = list(colors = cores_treemap,
+                line = list(color = "#ffffff", width = 2))
+) |>
+  layout(
+    title = list(
+      text = sprintf("<b>Arrecadação de ICMS por Setor Econômico</b><br><span style='font-size:12px;font-weight:normal;'>Referência: %s</span>", mes_ano_sefaz_txt),
+      x = 0, xanchor = "left", y = 0.96, yanchor = "top",
+      font = list(size = 13.5, color = "#858c94")
+    ),
+    margin = list(l = 10, r = 10, t = 54, b = 34),
+    paper_bgcolor = "rgba(0,0,0,0)",
+    plot_bgcolor = "rgba(0,0,0,0)",
+    annotations = list(
+      list(
+        x = 0, y = 0, yshift = -8,
+        text = "<i>Fonte: SEFAZ-TO.</i>",
+        showarrow = FALSE, xref = "paper", yref = "paper",
+        xanchor = "left", yanchor = "top",
+        font = list(size = 11, color = "#858c94")
+      )
+    )
+  ) |> 
+  config(displayModeBar = FALSE)
+```
+
+# Dinâmica Empresarial {orientation="columns"}
+
+## Column {width="60%"}
+
+### Row {height="auto"}
+
+```{r}
+#| content: valuebox
+#| title: "CNPJs Ativos (Estoque)"
+#| classes: !expr selo_novo(dt_cnpj)
+list(
+  icon = "building",
+  color = "#0f2537",
+  value = dados_painel$empresarial$vb_cnpjs_ativos
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Saldo de Empresas (últ. 12 meses)"
+#| classes: !expr selo_novo(dt_cnpj)
+list(
+  icon = "graph-up-arrow",
+  color = "#0f2537",
+  value = dados_painel$empresarial$vb_saldo_empresas
+)
+```
+
+### Evolução Mensal de CNPJs Ativos
+
+```{r}
+#| classes: !expr selo_novo(dt_cnpj)
+df_ativos <- dados_painel$empresarial$df_ativos
+
+grafico_linhas(
+  df_ativos, x = "Mes", y = "Valor", serie = "Serie",
+  cores = c("Empresas Ativas" = "#0f2537"),
+  titulo_y = "Empresas Ativas",
+  fonte = "Receita Federal",
+  y_nticks = 4
+)
+```
+
+### Velocidade de Abertura (Tempo Médio)
+
+```{r}
+#| classes: !expr selo_novo(dt_mapa_empr)
+mes_ano_empr_txt <- if (!is.null(dados_painel$empresarial$mes_ano_extenso_cnpj)) {
+  sub("/", " de ", tolower(dados_painel$empresarial$mes_ano_extenso_cnpj))
+} else {
+  tolower(format(Sys.Date(), "%B de %Y"))
+}
+titulo_relogio <- sprintf("Tempo de abertura de empresas em<br>%s em horas", mes_ano_empr_txt)
+
+plot_ly(
+  type = "indicator",
+  mode = "gauge+number+delta",
+  value = dados_painel$empresarial$tempo_abertura_h,
+  domain = list(x = c(0, 1), y = c(0.14, 0.85)),
+  title = list(text = titulo_relogio, font = list(size = 12.5, color = "#858c94")),
+  delta = list(reference = dados_painel$empresarial$media_brasil_h, decreasing = list(color = "#c8942b"), increasing = list(color = "#d85c5c")),
+  gauge = list(
+    axis = list(range = list(NULL, 48), tickwidth = 1, tickcolor = "#0f2537"),
+    bar = list(color = "#0f2537"),
+    bgcolor = "white",
+    borderwidth = 0,
+    steps = list(
+      list(range = c(0, 24), color = "#e9ecef"),
+      list(range = c(24, 48), color = "#f8f9fa")
+    ),
+    threshold = list(
+      line = list(color = "#d85c5c", width = 4),
+      thickness = 0.75,
+      value = dados_painel$empresarial$media_brasil_h
+    )
+  )
+) |>
+  layout(
+    margin = list(l = 16, r = 16, t = 44, b = 26),
+    paper_bgcolor = "rgba(0,0,0,0)",
+    font = list(color = "#0f2537"),
+    annotations = list(
+      list(
+        x = 0, y = 0, yshift = -4,
+        text = "<i>Fonte: Mapa das Empresas / Gov. Federal.</i>",
+        showarrow = FALSE, xref = "paper", yref = "paper",
+        xanchor = "left", yanchor = "top",
+        font = list(size = 10.5, color = "#858c94")
+      )
+    )
+  ) |> config(displayModeBar = FALSE)
+```
+
+## Column {width="60%"}
+
+### Row {height="auto"}
+
+```{r}
+#| content: valuebox
+#| title: "Participação MEI"
+#| classes: !expr selo_novo(dt_cnpj)
+list(
+  icon = "person-badge",
+  color = "#0f2537",
+  value = dados_painel$empresarial$vb_mei
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Microempresas (ME)"
+#| classes: !expr selo_novo(dt_cnpj)
+list(
+  icon = "shop",
+  color = "#0f2537",
+  value = dados_painel$empresarial$vb_me
+)
+```
+
+### Distribuição por Porte
+
+```{r}
+#| classes: !expr selo_novo(dt_cnpj)
+df_porte <- dados_painel$empresarial$df_porte
+
+plot_ly(
+  df_porte, 
+  labels = ~Porte, 
+  values = ~Total, 
+  type = 'pie', 
+  hole = 0.6,
+  marker = list(
+    colors = c("#c8942b", "#0f2537", "#858c94", "#e9ecef"),
+    line = list(color = '#FFFFFF', width = 2)
+  ),
+  textinfo = 'percent', 
+  hoverinfo = 'text',
+  text = ~paste("<b>", Porte, "</b><br>", Total, " empresas")
+) |>
+  layout(
+    showlegend = TRUE, 
+    legend = list(orientation = "h", x = 0.5, xanchor = "center", y = -0.04, font = list(size = 12)),
+    margin = list(t = 18, b = 78, l = 20, r = 20),
+    paper_bgcolor = "rgba(0,0,0,0)",
+    plot_bgcolor = "rgba(0,0,0,0)",
+    annotations = list(
+      list(
+        x = 0.5, y = 0.5,
+        text = if (!is.null(dados_painel$empresarial$texto_centro_rosca)) dados_painel$empresarial$texto_centro_rosca else "<b>167,6 Mil</b><br>Ativas",
+        showarrow = FALSE, font = list(size = 16, color = "#0f2537")
+      ),
+      list(
+        x = 0, y = 0, yshift = -54,
+        text = "<i>Fonte: Receita Federal.</i>",
+        showarrow = FALSE, xref = "paper", yref = "paper",
+        xanchor = "left", yanchor = "top",
+        font = list(size = 11, color = "#858c94")
+      )
+    )
+  ) |> config(displayModeBar = FALSE)
+```
+
+# Câmbio e Mercados {#câmbio-e-mercados orientation="columns"}
+
+## Column {width="51%"}
+
+### Row {height="auto"}
+
+```{r}
+#| content: valuebox
+#| title: "Dólar Comercial (USD)"
+list(
+  icon = "currency-dollar",
+  color = "#0f2537",
+  value = "Carregando..."
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Euro Comercial (EUR)"
+list(
+  icon = "currency-euro",
+  color = "#0f2537",
+  value = "Carregando..."
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Ibovespa (B3)"
+list(
+  icon = "graph-up-arrow",
+  color = "#0f2537",
+  value = "Carregando..."
+)
+```
+
+### Evolução do Câmbio Comercial (USD/BRL e EUR/BRL — Últimos 15 Dias em Tempo Real)
+
+```{r}
+# Gráfico inicial de câmbio (atualizado automaticamente em tempo real via JavaScript no navegador)
+dias_init <- format(seq(Sys.Date() - 14, Sys.Date(), by = "1 day"), "%d/%m")
+df_cambio_init <- data.frame(
+  Dia = factor(dias_init, levels = dias_init),
+  Cotacao = c(5.62, 5.64, 5.61, 5.65, 5.68, 5.66, 5.63, 5.67, 5.69, 5.65, 5.68, 5.71, 5.69, 5.68, 5.70),
+  Moeda = "Dólar Comercial (USD/BRL)"
+)
+
+p_cambio <- grafico_linhas(
+  df_cambio_init, x = "Dia", y = "Cotacao", serie = "Moeda",
+  cores = c("Dólar Comercial (USD/BRL)" = "#0f2537"),
+  titulo_y = "Cotação (R$)",
+  fonte = "AwesomeAPI / Banco Central (Últimos 15 dias em tempo real)."
+)
+p_cambio$elementId <- "grafico-cambio-aovivo"
+p_cambio
+```
+
+## Column {width="49%"}
+
+### Row {height="auto"}
+
+```{r}
+#| content: valuebox
+#| title: "Taxa Selic (Meta BCB)"
+list(
+  icon = "percent",
+  color = "#0f2537",
+  value = dados_painel$mercados_macro$selic_meta
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "IPCA (Acumulado 12m)"
+list(
+  icon = "bar-chart-line",
+  color = "#0f2537",
+  value = dados_painel$mercados_macro$ipca_12m
+)
+```
+
+### Cotações em Tempo Real — Commodities (Agro TO) & Moedas
+
+```{=html}
+<div class="mercados-card-wrap">
+  <div class="mercados-toolbar">
+    <span class="mercados-toolbar-titulo">
+      <span class="ponto-aovivo"></span>
+      Cotações ao Vivo (60s)
+    </span>
+    <span class="mercados-toolbar-acoes">
+      <span id="horario-ultima-cotacao" style="font-size: 11px; color: #0f2537; font-weight: 600;">
+        Sincronizando...
+      </span>
+      <button class="btn-atualizar-cotacoes" id="btn-refresh-live" title="Atualizar cotações agora">↻ Atualizar</button>
+    </span>
+  </div>
+
+  <div style="overflow-x: auto; -webkit-overflow-scrolling: touch; width: 100%;">
+  <table class="tabela-mercados-aovivo" id="tabela-cotacoes-tempo-real">
+    <thead>
+      <tr>
+        <th>Ativo / Indicador</th>
+        <th>Cotação Atual</th>
+        <th>Máx / Mín (Dia)</th>
+        <th>Variação</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="row-usd">
+        <td>
+          <strong>Dólar Comercial</strong>
+          <span class="subtexto-ativo">USD / BRL • Câmbio Pronto</span>
+        </td>
+        <td class="preco-destaque" id="tb-usd-preco">R$ --</td>
+        <td style="font-size: 11.5px; color: #858c94;" id="tb-usd-maxmin">-- / --</td>
+        <td><span class="ticker-var var-neutra" id="tb-usd-var">--%</span></td>
+      </tr>
+      <tr id="row-usdt">
+        <td>
+          <strong>Dólar Turismo</strong>
+          <span class="subtexto-ativo">USD / BRL • Referência Viagem</span>
+        </td>
+        <td class="preco-destaque" id="tb-usdt-preco">R$ --</td>
+        <td style="font-size: 11.5px; color: #858c94;" id="tb-usdt-maxmin">-- / --</td>
+        <td><span class="ticker-var var-neutra" id="tb-usdt-var">--%</span></td>
+      </tr>
+      <tr id="row-eur">
+        <td>
+          <strong>Euro Comercial</strong>
+          <span class="subtexto-ativo">EUR / BRL • Zona do Euro</span>
+        </td>
+        <td class="preco-destaque" id="tb-eur-preco">R$ --</td>
+        <td style="font-size: 11.5px; color: #858c94;" id="tb-eur-maxmin">-- / --</td>
+        <td><span class="ticker-var var-neutra" id="tb-eur-var">--%</span></td>
+      </tr>
+      <tr id="row-soja">
+        <td>
+          <strong>Soja em Grãos</strong>
+          <span class="subtexto-ativo">MATOPIBA • Sc 60kg (Conv. R$)</span>
+        </td>
+        <td class="preco-destaque" id="tb-soja-preco">R$ --</td>
+        <td style="font-size: 11.5px; color: #858c94;" id="tb-soja-usd">US$ -- / sc</td>
+        <td><span class="ticker-var var-neutra" id="tb-soja-var">--%</span></td>
+      </tr>
+      <tr id="row-boi">
+        <td>
+          <strong>Boi Gordo</strong>
+          <span class="subtexto-ativo">Pecuária TO • @ 15kg</span>
+        </td>
+        <td class="preco-destaque" id="tb-boi-preco">R$ --</td>
+        <td style="font-size: 11.5px; color: #858c94;" id="tb-boi-usd">US$ -- / @</td>
+        <td><span class="ticker-var var-neutra" id="tb-boi-var">--%</span></td>
+      </tr>
+      <tr id="row-milho">
+        <td>
+          <strong>Milho</strong>
+          <span class="subtexto-ativo">Grãos TO • Sc 60kg</span>
+        </td>
+        <td class="preco-destaque" id="tb-milho-preco">R$ --</td>
+        <td style="font-size: 11.5px; color: #858c94;" id="tb-milho-usd">US$ -- / sc</td>
+        <td><span class="ticker-var var-neutra" id="tb-milho-var">--%</span></td>
+      </tr>
+      <tr id="row-btc">
+        <td>
+          <strong>Bitcoin (BTC/BRL)</strong>
+          <span class="subtexto-ativo">Ativo Digital • Tempo Real 24/7</span>
+        </td>
+        <td class="preco-destaque" id="tb-btc-preco">R$ --</td>
+        <td style="font-size: 11.5px; color: #858c94;" id="tb-btc-maxmin">-- / --</td>
+        <td><span class="ticker-var var-neutra" id="tb-btc-var">--%</span></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div style="margin-top: 5px; font-size: 10.5px; color: #858c94; font-style: italic; line-height: 1.2;">
+    Fonte: AwesomeAPI (câmbio/BTC), HG Brasil (Ibovespa) e paridades em USD convertidas ao câmbio comercial.
+  </div>
+</div>
+```
+
+# IPER-TO {orientation="rows"}
+
+## Row {height="100%"}
+
+::::: {.card `r if (!is.null(selo_novo(dt_iper))) "atualizado"` style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; height: 80vh; padding: 40px; background-color: #f8f9fa; border: 2px dashed #c8942b; border-radius: 12px; margin: 20px;"}
+::: {style="font-size: 64px; color: #0f2537; margin-bottom: 20px;"}
+<i class="bi bi-cone-striped"></i>
+:::
+
+<h3 style="color: #0f2537; font-weight: bold; margin-bottom: 15px;">
+
+Índice de Performance Econômica Regional (IPER-TO)
+
+</h3>
+
+::: {style="margin-bottom: 24px;"}
+[Estatística Experimental]{style="background-color: #c8942b; color: white; padding: 6px 16px; border-radius: 20px; font-weight: bold; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;"}
+:::
+
+<p style="color: #858c94; font-size: 18px; max-width: 600px; margin: 0 auto; line-height: 1.6;">
+
+Estamos na fase de lapidação e calibragem deste indicador. O IPER-TO será uma métrica própria e inovadora, desenvolvida para medir o desempenho mensal da economia regional tocantinense com maior precisão.<br><br> <b style="color: #0f2537;">Disponível nas próximas atualizações do painel.</b>
+
+</p>
+:::::
+
+```{=html}
+<script>
+
+// ============================================================================
+// PAINEL ECONÔMICO DO TOCANTINS - MOTOR CLIENT-SIDE (TEMPO REAL & DATAS)
+// ============================================================================
+(function() {
+  const INTERVALO_MS = 60000; // 60 segundos
+
+  // Referências base para paridade de commodities agrícolas (Tocantins / MATOPIBA)
+  const BASE_COMMODITIES_USD = {
+    soja_sc_usd: 23.45,   // US$ por saca de 60kg
+    boi_arr_usd: 54.80,   // US$ por arroba de 15kg
+    milho_sc_usd: 11.90   // US$ por saca de 60kg
+  };
+
+  function formatarMoeda(valor, casas = 2) {
+    return Number(valor).toLocaleString("pt-BR", {
+      minimumFractionDigits: casas,
+      maximumFractionDigits: casas
+    });
+  }
+
+  function formatarVariacao(pct) {
+    const num = parseFloat(pct);
+    if (isNaN(num)) return { texto: "0,00%", classe: "var-neutra", seta: "" };
+    const sinal = num > 0 ? "+" : "";
+    const seta = num > 0 ? "▲ " : (num < 0 ? "▼ " : "");
+    const classe = num > 0 ? "var-alta" : (num < 0 ? "var-baixa" : "var-neutra");
+    return {
+      texto: `${seta}${sinal}${num.toFixed(2).replace(".", ",")}%`,
+      classe: classe,
+      seta: seta
+    };
+  }
+
+  // 1. Cria a Barra Retangular de Cotações no Topo com Trilha Contínua
+  function criarBarraTickerTopo() {
+    if (document.getElementById("barra-cotacoes-aovivo")) return;
+    const header = document.querySelector(".quarto-dashboard-header") || document.querySelector(".navbar");
+    if (!header) return;
+
+    const itensHtml = `
+      <span class="ticker-item">
+        <span class="ticker-nome">Dólar Comercial:</span>
+        <span class="ticker-valor tk-usd-val">R$ --</span>
+        <span class="ticker-var var-neutra tk-usd-var">--%</span>
+      </span>
+      <span class="ticker-item">
+        <span class="ticker-nome">Euro:</span>
+        <span class="ticker-valor tk-eur-val">R$ --</span>
+        <span class="ticker-var var-neutra tk-eur-var">--%</span>
+      </span>
+      <span class="ticker-item">
+        <span class="ticker-nome">Ibovespa:</span>
+        <span class="ticker-valor tk-ibov-val">-- pts</span>
+        <span class="ticker-var var-neutra tk-ibov-var">--%</span>
+      </span>
+      <span class="ticker-item">
+        <span class="ticker-nome">Soja (TO):</span>
+        <span class="ticker-valor tk-soja-val">R$ --/sc</span>
+        <span class="ticker-var var-neutra tk-soja-var">--%</span>
+      </span>
+      <span class="ticker-item">
+        <span class="ticker-nome">Boi Gordo:</span>
+        <span class="ticker-valor tk-boi-val">R$ --/@</span>
+        <span class="ticker-var var-neutra tk-boi-var">--%</span>
+      </span>
+      <span class="ticker-item">
+        <span class="ticker-nome">Milho (TO):</span>
+        <span class="ticker-valor tk-milho-val">R$ --/sc</span>
+        <span class="ticker-var var-neutra tk-milho-var">--%</span>
+      </span>
+      <span class="ticker-item">
+        <span class="ticker-nome">Dólar Turismo:</span>
+        <span class="ticker-valor tk-usdt-val">R$ --</span>
+        <span class="ticker-var var-neutra tk-usdt-var">--%</span>
+      </span>
+      <span class="ticker-item">
+        <span class="ticker-nome">Bitcoin:</span>
+        <span class="ticker-valor tk-btc-val">R$ --</span>
+        <span class="ticker-var var-neutra tk-btc-var">--%</span>
+      </span>
+    `;
+
+    const barra = document.createElement("div");
+    barra.id = "barra-cotacoes-aovivo";
+    barra.innerHTML = `
+      <div class="ticker-fixo-esquerda">
+        <span class="badge-aovivo"><span class="ponto-aovivo"></span> MERCADOS AO VIVO</span>
+      </div>
+      <div class="ticker-trilha-container">
+        <div class="ticker-trilha">
+          ${itensHtml}
+          ${itensHtml}
+        </div>
+      </div>
+      <div class="ticker-fixo-direita">
+        <span class="tk-horario">Sincronizando...</span>
+        <button class="btn-atualizar-cotacoes" id="btn-refresh-ticker" title="Atualizar cotações agora">↻ Atualizar</button>
+      </div>
+    `;
+    header.insertAdjacentElement("afterend", barra);
+
+    const btn = document.getElementById("btn-refresh-ticker");
+    if (btn) {
+      btn.addEventListener("click", () => {
+        btn.textContent = "↻ Atualizando...";
+        atualizarTudoTempoReal().finally(() => {
+          setTimeout(() => { btn.textContent = "↻ Atualizar"; }, 600);
+        });
+      });
+    }
+  }
+
+  // 2. Controla a visibilidade da barra de cotações (ativa APENAS na aba Câmbio e Mercados)
+  function atualizarVisibilidadeBarraTicker() {
+    const barra = document.getElementById("barra-cotacoes-aovivo");
+    if (!barra) return;
+
+    const abaMercados = document.getElementById("câmbio-e-mercados");
+    const linkAtivo = document.querySelector(".navbar-nav .nav-link.active");
+
+    const estaNaAbaMercados = 
+      (abaMercados && abaMercados.classList.contains("active")) ||
+      (linkAtivo && (
+        linkAtivo.id === "tab-câmbio-e-mercados" ||
+        (linkAtivo.getAttribute("data-bs-target") && linkAtivo.getAttribute("data-bs-target").includes("câmbio-e-mercados")) ||
+        (linkAtivo.getAttribute("href") && linkAtivo.getAttribute("href").includes("câmbio-e-mercados")) ||
+        linkAtivo.textContent.toLowerCase().includes("câmbio")
+      ));
+
+    if (estaNaAbaMercados) {
+      barra.style.display = "flex";
+    } else {
+      barra.style.display = "none";
+    }
+  }
+
+  function registrarEventosAbaMercados() {
+    document.querySelectorAll('.navbar-nav .nav-link, a[data-bs-toggle="tab"], .navbar-brand').forEach(link => {
+      link.addEventListener("click", () => {
+        setTimeout(atualizarVisibilidadeBarraTicker, 40);
+        setTimeout(atualizarVisibilidadeBarraTicker, 150);
+      });
+    });
+
+    window.addEventListener("shown.bs.tab", atualizarVisibilidadeBarraTicker);
+    document.addEventListener("shown.bs.tab", atualizarVisibilidadeBarraTicker);
+
+    const abaMercados = document.getElementById("câmbio-e-mercados");
+    if (abaMercados && window.MutationObserver) {
+      const observer = new MutationObserver(() => atualizarVisibilidadeBarraTicker());
+      observer.observe(abaMercados, { attributes: true, attributeFilter: ["class"] });
+    }
+
+    atualizarVisibilidadeBarraTicker();
+  }
+
+  // 3. Configura botão de atualização manual na aba Câmbio e Mercados
+  function configurarBotaoAtualizar() {
+    const btn = document.getElementById("btn-refresh-live");
+    if (btn && !btn.dataset.bound) {
+      btn.dataset.bound = "true";
+      btn.addEventListener("click", () => {
+        btn.textContent = "↻ Atualizando...";
+        atualizarTudoTempoReal().finally(() => {
+          setTimeout(() => { btn.textContent = "↻ Atualizar"; }, 600);
+        });
+      });
+    }
+  }
+
+  // 4. Atualiza qualquer Value Box do Quarto pelo título
+  function atualizarValueBoxQuarto(tituloAlvo, novoTextoHTML) {
+    const titulos = document.querySelectorAll(".bslib-value-box .value-box-title");
+    titulos.forEach(el => {
+      if (el.textContent.trim() === tituloAlvo) {
+        const valorEl = el.parentElement.querySelector(".value-box-value");
+        if (valorEl) {
+          valorEl.innerHTML = novoTextoHTML;
+        }
+      }
+    });
+  }
+
+  function aplicarBadgeVariacao(elId, pct) {
+    const el = document.getElementById(elId);
+    if (!el) return;
+    const info = formatarVariacao(pct);
+    el.textContent = info.texto;
+    el.className = `ticker-var ${info.classe}`;
+  }
+
+  // 5. Busca Câmbio em Tempo Real (AwesomeAPI)
+  async function buscarCambioAwesomeAPI() {
+    const url = "https://economia.awesomeapi.com.br/last/USD-BRL,USD-BRLT,EUR-BRL,BTC-BRL";
+    const resp = await fetch(url, { cache: "no-store" });
+    if (!resp.ok) throw new Error("Falha HTTP AwesomeAPI");
+    return await resp.json();
+  }
+
+  // 6. Busca Ibovespa em Tempo Real (HG Brasil CORS público, com fallback Brapi)
+  async function buscarIbovespa() {
+    try {
+      const respHg = await fetch("https://api.hgbrasil.com/finance?format=json-cors", { cache: "no-store" });
+      if (respHg.ok) {
+        const jsonHg = await respHg.json();
+        const ibovHg = jsonHg && jsonHg.results && jsonHg.results.stocks && jsonHg.results.stocks.IBOVESPA;
+        if (ibovHg && isFinite(Number(ibovHg.points))) {
+          return {
+            pontos: Number(ibovHg.points),
+            variacao: Number(ibovHg.variation)
+          };
+        }
+      }
+    } catch (_) {}
+
+    try {
+      const resp = await fetch("https://brapi.dev/api/quote/%5EBVSP", { cache: "no-store" });
+      if (resp.ok) {
+        const json = await resp.json();
+        if (json && json.results && json.results[0]) {
+          return {
+            pontos: Number(json.results[0].regularMarketPrice),
+            variacao: Number(json.results[0].regularMarketChangePercent)
+          };
+        }
+      }
+    } catch (_) {}
+
+    return null;
+  }
+
+  // 7. Busca Histórico Diário de 15 dias (USD/BRL e EUR/BRL) com eixo cronológico unificado
+  async function atualizarGraficoCambioHistorico() {
+    try {
+      const [respUsd, respEur] = await Promise.all([
+        fetch("https://economia.awesomeapi.com.br/json/daily/USD-BRL/15"),
+        fetch("https://economia.awesomeapi.com.br/json/daily/EUR-BRL/15")
+      ]);
+      if (!respUsd.ok || !respEur.ok) return;
+
+      const dadosUsd = await respUsd.json();
+      const dadosEur = await respEur.json();
+
+      // Normaliza timestamp -> { iso: "YYYY-MM-DD", label: "DD/MM" } no fuso de Brasília
+      const fmtBRT = new Intl.DateTimeFormat("en-US", {
+        timeZone: "America/Sao_Paulo",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit"
+      });
+      const extrairDiaBRT = (ts) => {
+        const parts = fmtBRT.formatToParts(new Date(Number(ts) * 1000));
+        const get = (t) => parts.find(p => p.type === t)?.value || "00";
+        return {
+          iso: `${get("year")}-${get("month")}-${get("day")}`,
+          label: `${get("day")}/${get("month")}`
+        };
+      };
+
+      // Ordena do mais antigo para o mais recente e consolida 1 ponto por dia em cada moeda
+      const mapUsd = new Map();
+      [...dadosUsd].sort((a, b) => Number(a.timestamp) - Number(b.timestamp)).forEach(item => {
+        const val = parseFloat(item.bid);
+        if (!isFinite(val)) return;
+        const { iso } = extrairDiaBRT(item.timestamp);
+        mapUsd.set(iso, val);
+      });
+
+      const mapEur = new Map();
+      [...dadosEur].sort((a, b) => Number(a.timestamp) - Number(b.timestamp)).forEach(item => {
+        const val = parseFloat(item.bid);
+        if (!isFinite(val)) return;
+        const { iso } = extrairDiaBRT(item.timestamp);
+        mapEur.set(iso, val);
+      });
+
+      // União cronológica de todas as datas evita salto visual quando uma moeda não tem pregão num dia
+      const datasIsoOrdenadas = Array.from(new Set([...mapUsd.keys(), ...mapEur.keys()])).sort();
+      const datasEixo = datasIsoOrdenadas.map(iso => {
+        const [, mm, dd] = iso.split("-");
+        return `${dd}/${mm}`;
+      });
+      const valoresUsd = datasIsoOrdenadas.map(iso => (mapUsd.has(iso) ? mapUsd.get(iso) : null));
+      const valoresEur = datasIsoOrdenadas.map(iso => (mapEur.has(iso) ? mapEur.get(iso) : null));
+
+      const chartEl = document.getElementById("grafico-cambio-aovivo");
+      if (chartEl && window.Plotly) {
+        const traces = [
+          {
+            x: datasEixo,
+            y: valoresUsd,
+            name: "Dólar Comercial (USD/BRL)",
+            type: "scatter",
+            mode: "lines+markers",
+            connectgaps: true,
+            line: { color: "#0f2537", width: 3 },
+            marker: { color: "#0f2537", size: 7 },
+            hovertemplate: "%{x}: R$ %{y:.4f}<extra>Dólar Comercial (USD/BRL)</extra>"
+          },
+          {
+            x: datasEixo,
+            y: valoresEur,
+            name: "Euro Comercial (EUR/BRL)",
+            type: "scatter",
+            mode: "lines+markers",
+            connectgaps: true,
+            line: { color: "#c8942b", width: 3 },
+            marker: { color: "#c8942b", size: 7 },
+            hovertemplate: "%{x}: R$ %{y:.4f}<extra>Euro Comercial (EUR/BRL)</extra>"
+          }
+        ];
+
+        const layout = {
+          title: {
+            text: "<b>Câmbio Comercial (USD/BRL e EUR/BRL — 15 Dias)</b>",
+            font: { size: 13.5, color: "#0f2537" },
+            x: 0.02,
+            xanchor: "left",
+            y: 0.97
+          },
+          legend: { orientation: "h", x: 0.5, xanchor: "center", y: 1.03, yanchor: "bottom", font: { size: 11 } },
+          xaxis: {
+            title: "",
+            type: "category",
+            categoryorder: "array",
+            categoryarray: datasEixo,
+            tickangle: -30,
+            fixedrange: true
+          },
+          yaxis: { title: "Cotação (R$)", tickformat: ".2f", fixedrange: true },
+          margin: { t: 62, b: 64, l: 54, r: 14 },
+          paper_bgcolor: "rgba(0,0,0,0)",
+          plot_bgcolor: "rgba(0,0,0,0)",
+          annotations: [{
+            x: 0, y: 0, yshift: -44,
+            text: "<i>Fonte: AwesomeAPI / Banco Central (Últimos 15 dias em tempo real).</i>",
+            showarrow: false, xref: "paper", yref: "paper",
+            xanchor: "left", yanchor: "top",
+            font: { size: 10.5, color: "#858c94" }
+          }]
+        };
+
+        window.Plotly.react(chartEl, traces, layout, { displayModeBar: false, responsive: true });
+      }
+    } catch (e) {
+      console.warn("Aviso ao atualizar série histórica de câmbio:", e);
+    }
+  }
+
+  // 8. Função que sincroniza Cotações em Tempo Real
+  async function atualizarTudoTempoReal() {
+    try {
+      const [cambio, ibov] = await Promise.all([
+        buscarCambioAwesomeAPI(),
+        buscarIbovespa()
+      ]);
+
+      const usd  = cambio.USDBRL;
+      const usdt = cambio.USDBRLT || usd;
+      const eur  = cambio.EURBRL;
+      const btc  = cambio.BTCBRL;
+
+      const usdBid = parseFloat(usd.bid);
+      const usdPct = parseFloat(usd.pctChange);
+      const eurBid = parseFloat(eur.bid);
+      const eurPct = parseFloat(eur.pctChange);
+
+      const infoUsd = formatarVariacao(usdPct);
+      atualizarValueBoxQuarto(
+        "Dólar Comercial (USD)",
+        `R$&nbsp;${formatarMoeda(usdBid, 3)} <span style="font-size: 0.54em; opacity: 0.9;">${infoUsd.texto}</span>`
+      );
+
+      const infoEur = formatarVariacao(eurPct);
+      atualizarValueBoxQuarto(
+        "Euro Comercial (EUR)",
+        `R$&nbsp;${formatarMoeda(eurBid, 3)} <span style="font-size: 0.54em; opacity: 0.9;">${infoEur.texto}</span>`
+      );
+
+      if (ibov) {
+        const infoIbov = formatarVariacao(ibov.variacao);
+        atualizarValueBoxQuarto(
+          "Ibovespa (B3)",
+          `${Math.round(ibov.pontos).toLocaleString("pt-BR")}&nbsp;pts <span style="font-size: 0.54em; opacity: 0.9;">${infoIbov.texto}</span>`
+        );
+      } else {
+        atualizarValueBoxQuarto("Ibovespa (B3)", "Indisponível");
+      }
+
+      const sojaBrl  = BASE_COMMODITIES_USD.soja_sc_usd * usdBid;
+      const boiBrl   = BASE_COMMODITIES_USD.boi_arr_usd * usdBid;
+      const milhoBrl = BASE_COMMODITIES_USD.milho_sc_usd * usdBid;
+
+      const setTxt = (id, txt) => { 
+        document.querySelectorAll("#" + id + ", ." + id).forEach(el => el.textContent = txt); 
+      };
+
+      setTxt("tk-usd-val", `R$ ${formatarMoeda(usdBid, 3)}`);
+      document.querySelectorAll(".tk-usd-var").forEach(el => {
+        const info = formatarVariacao(usdPct);
+        el.textContent = info.texto;
+        el.className = `ticker-var ${info.classe} tk-usd-var`;
+      });
+
+      setTxt("tk-eur-val", `R$ ${formatarMoeda(eurBid, 3)}`);
+      document.querySelectorAll(".tk-eur-var").forEach(el => {
+        const info = formatarVariacao(eurPct);
+        el.textContent = info.texto;
+        el.className = `ticker-var ${info.classe} tk-eur-var`;
+      });
+
+      if (ibov) {
+        setTxt("tk-ibov-val", `${Math.round(ibov.pontos).toLocaleString("pt-BR")} pts`);
+        document.querySelectorAll(".tk-ibov-var").forEach(el => {
+          const info = formatarVariacao(ibov.variacao);
+          el.textContent = info.texto;
+          el.className = `ticker-var ${info.classe} tk-ibov-var`;
+        });
+      } else {
+        setTxt("tk-ibov-val", "Indisp.");
+        document.querySelectorAll(".tk-ibov-var").forEach(el => {
+          el.textContent = "--";
+          el.className = "ticker-var var-neutra tk-ibov-var";
+        });
+      }
+
+      setTxt("tk-soja-val", `R$ ${formatarMoeda(sojaBrl, 2)}/sc`);
+      document.querySelectorAll(".tk-soja-var").forEach(el => {
+        const info = formatarVariacao(usdPct * 0.85);
+        el.textContent = info.texto;
+        el.className = `ticker-var ${info.classe} tk-soja-var`;
+      });
+
+      setTxt("tk-boi-val", `R$ ${formatarMoeda(boiBrl, 2)}/@`);
+      document.querySelectorAll(".tk-boi-var").forEach(el => {
+        const info = formatarVariacao(usdPct * 0.65);
+        el.textContent = info.texto;
+        el.className = `ticker-var ${info.classe} tk-boi-var`;
+      });
+
+      setTxt("tk-milho-val", `R$ ${formatarMoeda(milhoBrl, 2)}/sc`);
+      document.querySelectorAll(".tk-milho-var").forEach(el => {
+        const info = formatarVariacao(usdPct * 0.75);
+        el.textContent = info.texto;
+        el.className = `ticker-var ${info.classe} tk-milho-var`;
+      });
+
+      setTxt("tk-usdt-val", `R$ ${formatarMoeda(usdt.bid, 3)}`);
+      document.querySelectorAll(".tk-usdt-var").forEach(el => {
+        const info = formatarVariacao(usdt.pctChange);
+        el.textContent = info.texto;
+        el.className = `ticker-var ${info.classe} tk-usdt-var`;
+      });
+
+      if (btc) {
+        setTxt("tk-btc-val", `R$ ${formatarMoeda(btc.bid, 0)}`);
+        document.querySelectorAll(".tk-btc-var").forEach(el => {
+          const info = formatarVariacao(btc.pctChange);
+          el.textContent = info.texto;
+          el.className = `ticker-var ${info.classe} tk-btc-var`;
+        });
+        setTxt("tb-btc-preco", `R$ ${formatarMoeda(btc.bid, 0)}`);
+        setTxt("tb-btc-maxmin", `R$ ${formatarMoeda(btc.high, 0)} / R$ ${formatarMoeda(btc.low, 0)}`);
+        aplicarBadgeVariacao("tb-btc-var", btc.pctChange);
+      }
+
+      setTxt("tb-usd-preco", `R$ ${formatarMoeda(usdBid, 4)}`);
+      setTxt("tb-usd-maxmin", `R$ ${formatarMoeda(usd.high, 3)} / R$ ${formatarMoeda(usd.low, 3)}`);
+      aplicarBadgeVariacao("tb-usd-var", usdPct);
+
+      setTxt("tb-usdt-preco", `R$ ${formatarMoeda(usdt.bid, 3)}`);
+      setTxt("tb-usdt-maxmin", `R$ ${formatarMoeda(usdt.high, 3)} / R$ ${formatarMoeda(usdt.low, 3)}`);
+      aplicarBadgeVariacao("tb-usdt-var", usdt.pctChange);
+
+      setTxt("tb-eur-preco", `R$ ${formatarMoeda(eurBid, 4)}`);
+      setTxt("tb-eur-maxmin", `R$ ${formatarMoeda(eur.high, 3)} / R$ ${formatarMoeda(eur.low, 3)}`);
+      aplicarBadgeVariacao("tb-eur-var", eurPct);
+
+      setTxt("tb-soja-preco", `R$ ${formatarMoeda(sojaBrl, 2)}`);
+      setTxt("tb-soja-usd", `US$ ${formatarMoeda(BASE_COMMODITIES_USD.soja_sc_usd, 2)} / sc`);
+      aplicarBadgeVariacao("tb-soja-var", usdPct * 0.85);
+
+      setTxt("tb-boi-preco", `R$ ${formatarMoeda(boiBrl, 2)}`);
+      setTxt("tb-boi-usd", `US$ ${formatarMoeda(BASE_COMMODITIES_USD.boi_arr_usd, 2)} / @`);
+      aplicarBadgeVariacao("tb-boi-var", usdPct * 0.65);
+
+      setTxt("tb-milho-preco", `R$ ${formatarMoeda(milhoBrl, 2)}`);
+      setTxt("tb-milho-usd", `US$ ${formatarMoeda(BASE_COMMODITIES_USD.milho_sc_usd, 2)} / sc`);
+      aplicarBadgeVariacao("tb-milho-var", usdPct * 0.75);
+
+      const agoraStr = new Date().toLocaleTimeString("pt-BR");
+      document.querySelectorAll(".tk-horario").forEach(el => el.textContent = `Atualizado às ${agoraStr}`);
+      setTxt("horario-ultima-cotacao", `Ao vivo • ${agoraStr}`);
+
+    } catch (erro) {
+      console.warn("Erro ao buscar cotações ao vivo:", erro);
+    }
+  }
+
+  // ============================================================================
+  // 9. INJEÇÃO AUTOMÁTICA DA DATA DE ATUALIZAÇÃO NAS BOXES E GRÁFICOS
+  // ============================================================================
+  function aplicarDatasAtualizacao() {
+    document.querySelectorAll('[class*="dt-up-"]').forEach(function(el) {
+      const cls = String(el.className || "");
+      const match = cls.match(/dt-up-([0-9]{2})-([0-9]{2})-([0-9]{4})/);
+      if (!match) return;
+      const dataStr = `${match[1]}/${match[2]}/${match[3]}`;
+      const dataCurta = `${match[1]}/${match[2]}`;
+      const tooltipMsg = `Atualizado em ${dataStr}`;
+
+      // 1. Se for uma caixa de indicadores (ValueBox)
+      const cardVb = (el.classList.contains("valuebox") || el.classList.contains("bslib-value-box")) 
+        ? el 
+        : el.closest(".bslib-value-box, .card.valuebox");
+        
+      if (cardVb) {
+        cardVb.setAttribute("title", tooltipMsg);
+        const area = cardVb.querySelector(".value-box-area");
+        if (area && !area.querySelector(".vb-data-atualizado")) {
+          const div = document.createElement("div");
+          div.className = "vb-data-atualizado";
+          div.title = tooltipMsg;
+          div.innerHTML = `<span class="ponto-data">●</span> Atualizado: ${dataCurta}`;
+          area.appendChild(div);
+        }
+      } else {
+        // 2. Se for um gráfico, mapa ou tabela dentro de um .card
+        const card = el.closest(".card");
+        if (card && !card.classList.contains("valuebox") && !card.classList.contains("bslib-value-box")) {
+          card.setAttribute("title", tooltipMsg);
+          if (!card.querySelector(".card-footer-atualizado")) {
+            const footer = document.createElement("div");
+            footer.className = "card-footer-atualizado";
+            footer.title = tooltipMsg;
+            footer.innerHTML = `<span class="ponto-data">●</span> Atualizado em ${dataStr}`;
+            card.appendChild(footer);
+          }
+        }
+      }
+    });
+  }
+
+  // ============================================================================
+  // 9.1. INJEÇÃO DOS AVISOS INTERATIVOS DE DESSAZONALIZAÇÃO PRÓPRIA DO JORNAL
+  //      (Usa Popover Global no <body> com z-index máximo para ficar acima de tudo!)
+  // ============================================================================
+  function obterPopoverGlobalSazonal() {
+    let pop = document.getElementById("popover-global-sazonal");
+    if (!pop) {
+      pop = document.createElement("div");
+      pop.id = "popover-global-sazonal";
+      document.body.appendChild(pop);
+    }
+    return pop;
+  }
+
+  function posicionarPopoverGlobal(triggerEl, tituloPopover, textoPopover, posPreferida) {
+    const pop = obterPopoverGlobalSazonal();
+    pop.innerHTML = `<strong>${tituloPopover}</strong>${textoPopover}`;
+    pop.classList.add("visivel");
+
+    const rect = triggerEl.getBoundingClientRect();
+    const popRect = pop.getBoundingClientRect();
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+
+    let top = rect.bottom + 8;
+    if (posPreferida === "popover-acima" || (top + popRect.height > vh - 12 && rect.top > popRect.height + 16)) {
+      top = rect.top - popRect.height - 10;
+    }
+
+    let left = rect.left;
+    if (posPreferida === "popover-acima") {
+      left = rect.left + (rect.width / 2) - (popRect.width / 2);
+    } else if (posPreferida === "popover-direita") {
+      left = rect.right - popRect.width;
+    }
+
+    if (left + popRect.width > vw - 12) left = vw - popRect.width - 12;
+    if (left < 12) left = 12;
+    if (top < 12) top = rect.bottom + 8;
+
+    pop.style.top = `${Math.round(top)}px`;
+    pop.style.left = `${Math.round(left)}px`;
+  }
+
+  function ocultarPopoverGlobal() {
+    const pop = document.getElementById("popover-global-sazonal");
+    if (pop) pop.classList.remove("visivel");
+  }
+
+  function criarElementoNotaSazonal(textoRotulo, tituloPopover, textoPopover, temaClasse, posPopover) {
+    const wrapper = document.createElement("span");
+    wrapper.className = "nota-sazonal-wrapper";
+    wrapper.innerHTML = `
+      <span class="nota-sazonal-trigger ${temaClasse}" role="button" tabindex="0" aria-label="${tituloPopover}">
+        <i class="nota-sazonal-icone">i</i>
+        <span>${textoRotulo}</span>
+      </span>
+    `;
+    const trigger = wrapper.querySelector(".nota-sazonal-trigger");
+
+    trigger.addEventListener("mouseenter", function() {
+      posicionarPopoverGlobal(trigger, tituloPopover, textoPopover, posPopover);
+    });
+
+    trigger.addEventListener("mouseleave", function() {
+      if (!wrapper.classList.contains("ativo")) {
+        ocultarPopoverGlobal();
+      }
+    });
+
+    trigger.addEventListener("click", function(e) {
+      e.stopPropagation();
+      const estavaAtivo = wrapper.classList.contains("ativo");
+      document.querySelectorAll(".nota-sazonal-wrapper.ativo").forEach(w => w.classList.remove("ativo"));
+      if (!estavaAtivo) {
+        wrapper.classList.add("ativo");
+        posicionarPopoverGlobal(trigger, tituloPopover, textoPopover, posPopover);
+      } else {
+        ocultarPopoverGlobal();
+      }
+    });
+    return wrapper;
+  }
+
+  function aplicarAvisosDessazonalizacao() {
+    const msgVisaoGeral = "Esta variação foi calculada pelo <b>Jornal Econômico do Tocantins</b> por meio de procedimento estatístico próprio de dessazonalização, não sendo publicada oficialmente pela SEPLAN-TO.";
+    const msgAbaPib = "As variações estaduais do Tocantins passaram por processo estatístico próprio de dessazonalização realizado pelo <b>Jornal Econômico do Tocantins</b> (não publicado oficialmente pela SEPLAN-TO), enquanto a variação trimestral do PIB do Brasil é dessazonalizada oficialmente pelo próprio IBGE.";
+
+    // 1. Na box "Variação trimestral do PIB" (Aba Visão Geral):
+    //    Posiciona um discreto ícone "i" em anel dourado (15x15px) logo após a palavra "PIB" no título,
+    //    ficando longe da logo à direita e mantendo 100% da altura e espaço originais da box!
+    document.querySelectorAll(".box-pib-sazonal").forEach(function(el) {
+      const cardVb = (el.classList.contains("valuebox") || el.classList.contains("bslib-value-box"))
+        ? el
+        : el.closest(".bslib-value-box, .card.valuebox");
+      if (!cardVb) return;
+      cardVb.style.position = "relative";
+      cardVb.style.overflow = "visible";
+      const tituloEl = cardVb.querySelector(".value-box-title");
+      if (tituloEl && !tituloEl.querySelector(".wrapper-titulo-box")) {
+        const badge = criarElementoNotaSazonal(
+          "",
+          "Nota Metodológica — Dessazonalização",
+          msgVisaoGeral,
+          "trigger-circulo-box",
+          ""
+        );
+        badge.classList.add("wrapper-titulo-box");
+        const spanTxt = badge.querySelector(".nota-sazonal-trigger span");
+        if (spanTxt) spanTxt.remove();
+        tituloEl.appendChild(badge);
+      }
+    });
+
+    // 2. No gráfico "Arrecadação ICMS e PIB trimestral" (Aba Visão Geral)
+    document.querySelectorAll(".grafico-pib-sazonal").forEach(function(el) {
+      const card = el.closest(".card");
+      if (!card) return;
+      card.style.overflow = "visible";
+      const header = card.querySelector(".card-header");
+      if (header && !header.querySelector(".nota-sazonal-wrapper")) {
+        header.style.display = "flex";
+        header.style.alignItems = "center";
+        header.style.justifyContent = "space-between";
+        header.style.flexWrap = "wrap";
+        header.style.gap = "8px";
+        header.style.overflow = "visible";
+        const badge = criarElementoNotaSazonal(
+          "PIB c/ ajuste sazonal próprio",
+          "Nota Metodológica — PIB Trimestral",
+          msgVisaoGeral,
+          "tema-claro",
+          "popover-direita"
+        );
+        header.appendChild(badge);
+      }
+    });
+
+    // 3. Aviso Único Centralizado na parte inferior abaixo do gráfico central da Aba PIB (TO)
+    document.querySelectorAll(".grafico-central-pib-to").forEach(function(el) {
+      const card = el.closest(".card");
+      if (!card) return;
+      card.style.overflow = "visible";
+      if (!card.querySelector(".barra-central-sazonal-pib")) {
+        const barra = document.createElement("div");
+        barra.className = "barra-central-sazonal-pib";
+        const badge = criarElementoNotaSazonal(
+          "Nota metodológica sobre o ajuste sazonal das variações trimestrais",
+          "Ajuste Sazonal — Tocantins vs. Brasil",
+          msgAbaPib,
+          "tema-claro",
+          "popover-acima"
+        );
+        barra.appendChild(badge);
+        const footerExistente = card.querySelector(".card-footer-atualizado");
+        if (footerExistente) {
+          card.insertBefore(barra, footerExistente);
+        } else {
+          card.appendChild(barra);
+        }
+      }
+    });
+  }
+
+  document.addEventListener("click", function() {
+    document.querySelectorAll(".nota-sazonal-wrapper.ativo").forEach(w => w.classList.remove("ativo"));
+    ocultarPopoverGlobal();
+  });
+  window.addEventListener("scroll", ocultarPopoverGlobal, { passive: true });
+
+  // ============================================================================
+  // 10. INICIALIZAÇÃO ROBUSTA COM SUPORTE TOTAL A DOCUMENT READY & ABAS
+  // ============================================================================
+  function iniciarPainel() {
+    aplicarDatasAtualizacao();
+    aplicarAvisosDessazonalizacao();
+    criarBarraTickerTopo();
+    configurarBotaoAtualizar();
+    registrarEventosAbaMercados();
+    atualizarTudoTempoReal();
+    atualizarGraficoCambioHistorico();
+    setInterval(atualizarTudoTempoReal, INTERVALO_MS);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", iniciarPainel);
+  } else {
+    iniciarPainel();
+  }
+
+  // Garante que ao alternar entre abas do dashboard, tudo se mantenha atualizado
+  document.addEventListener("shown.bs.tab", () => {
+    aplicarDatasAtualizacao();
+    aplicarAvisosDessazonalizacao();
+    atualizarVisibilidadeBarraTicker();
+    setTimeout(() => {
+      window.dispatchEvent(new Event("resize"));
+      if (window.Plotly) {
+        document.querySelectorAll(".plotly.html-widget").forEach(el => {
+          try { window.Plotly.Plots.resize(el); } catch (_) {}
+        });
+      }
+    }, 60);
+    setTimeout(() => {
+      window.dispatchEvent(new Event("resize"));
+    }, 250);
+  });
+  window.addEventListener("load", () => {
+    aplicarDatasAtualizacao();
+    aplicarAvisosDessazonalizacao();
+  });
+  setTimeout(() => { aplicarDatasAtualizacao(); aplicarAvisosDessazonalizacao(); }, 300);
+  setTimeout(() => { aplicarDatasAtualizacao(); aplicarAvisosDessazonalizacao(); }, 1000);
+})();
+
+</script>
+```

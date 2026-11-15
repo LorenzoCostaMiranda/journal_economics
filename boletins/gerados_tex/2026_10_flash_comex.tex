@@ -1,0 +1,323 @@
+\documentclass[10pt,a4paper]{article}
+
+% ==============================================================================
+% TEMPLATE EDITORIAL — BOLETIM FLASH (JORNAL ECONÔMICO DO TOCANTINS)
+% Estilo: Briefing Executivo de Jornal Econômico (2 Páginas Balanceadas)
+% Paleta FLASH: Azul-Marinho (#0F2537), Azul Secundário (#244B6B),
+%               Dourado Institucional (#C8942B) e Fundo Neutro (#F4F6F9)
+% ==============================================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+
+\usepackage[top=1.35cm, bottom=1.45cm, left=1.40cm, right=1.40cm, headheight=14pt, headsep=8pt, footskip=18pt]{geometry}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{colortbl}
+\usepackage{tikz}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{setspace}
+\usepackage{multicol}
+\usepackage{amssymb}
+\usepackage{hyperref}
+
+% Cores institucionais do Boletim FLASH
+\definecolor{corprimaria}{HTML}{0F2537}
+\definecolor{corsecundaria}{HTML}{244B6B}
+\definecolor{corfundo}{HTML}{F4F6F9}
+\definecolor{douradoto}{HTML}{C8942B}
+\definecolor{coracento}{HTML}{C8942B}
+\definecolor{cinzatexto}{HTML}{1E293B}
+\definecolor{cinzasub}{HTML}{475569}
+\definecolor{cinzaborda}{HTML}{CBD5E1}
+\definecolor{verdealta}{HTML}{15803D}
+\definecolor{vermelhobaixa}{HTML}{B91C1C}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=corprimaria,
+  urlcolor=corsecundaria,
+  pdftitle={Balança comercial do Tocantins mantém superávit robusto no mês puxada pelo complexo soja e carnes},
+  pdfauthor={Jornal Economico do Tocantins}
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3.5pt}
+\setlength{\columnsep}{0.55cm}
+\setlength{\columnseprule}{0.4pt}
+\def\columnseprulecolor{\color{cinzaborda}}
+\renewcommand{\arraystretch}{1.15}
+
+% Cabeçalho e Rodapé de Jornal Econômico (Sem colisão central)
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.5pt}
+\renewcommand{\footrule}{\hbox to\headwidth{\color{douradoto}\leaders\hrule height \footrulewidth\hfill}}
+
+\fancyhead[L]{\ifnum\value{page}>1 \scriptsize\bfseries\color{corprimaria}JORNAL ECONÔMICO DO TOCANTINS \enspace{\color{douradoto}$\vert$}\enspace {\mdseries\color{cinzasub}BOLETIM RÁPIDO (FLASH MENSAL) $\cdot$ Outubro/2026}\fi}
+\fancyhead[R]{\ifnum\value{page}>1 \scriptsize\color{cinzasub}\#04/2026\fi}
+
+\fancyfoot[L]{\scriptsize\color{cinzasub}\textbf{\color{corprimaria}Jornal Econômico do Tocantins} $\cdot$ Comércio Exterior e Inserção Internacional do Tocantins $\cdot$ Publicado em 30/10/2026}
+\fancyfoot[R]{\scriptsize\bfseries\color{corprimaria}Pág. \thepage\ de \pageref*{LastPage}}
+
+% Comando para Títulos de Seção Estilo Jornal Financeiro
+\newcommand{\secaoboletim}[1]{%
+  \par\vspace{0.16cm}%
+  \noindent\begin{tikzpicture}
+    \fill[corprimaria] (0,0) rectangle (\textwidth, 0.52);
+    \fill[douradoto] (0,0) rectangle (0.16, 0.52);
+    \node[anchor=west, font=\small\bfseries, text=white] at (0.30, 0.26) {\MakeUppercase{#1}};
+  \end{tikzpicture}%
+  \par\vspace{0.08cm}%
+}
+
+\newcommand{\subsecaoboletim}[1]{%
+  \par\vspace{0.10cm}%
+  \noindent{\small\bfseries\color{corprimaria}\rule{0.14cm}{0.26cm}\hspace{5pt}#1}%
+  \par\vspace{0.03cm}%
+  {\color{douradoto}\hrule height 0.6pt}%
+  \vspace{0.06cm}%
+}
+
+\begin{document}
+\color{cinzatexto}
+
+% ==============================================================================
+% MASTHEAD DE JORNAL ECONÔMICO (AUTO-AJUSTÁVEL, SEM SOBREPOSIÇÃO DE TEXTO)
+% ==============================================================================
+\noindent\begin{tikzpicture}
+  \node[
+    fill=corprimaria,
+    inner xsep=12pt,
+    inner ysep=10pt,
+    text width=\textwidth-24pt,
+    align=left
+  ] (masthead) {
+    % Linha superior do cabeçalho do jornal
+    \hbox to \linewidth{%
+      {\colorbox{douradoto}{\strut\hspace{4pt}\scriptsize\bfseries\color{corprimaria}BOLETIM RÁPIDO (FLASH MENSAL) $\cdot$ \#04/2026\hspace{4pt}}}%
+      \hfill
+      {\scriptsize\color{white}\textbf{JORNAL ECONÔMICO DO TOCANTINS} \enspace{\color{douradoto}$\vert$}\enspace Ref.: \textbf{Outubro/2026} \enspace{\color{douradoto}$\vert$}\enspace 30/10/2026}%
+    }%
+    \par\vspace{5pt}%
+    {\color{douradoto}\hrule height 0.8pt}%
+    \par\vspace{6pt}%
+    % Título Principal e Subtítulo com quebra automática limpa
+    {\fontsize{13.5}{16.2}\selectfont\bfseries\color{white}Balança comercial do Tocantins mantém superávit robusto no mês puxada pelo complexo soja e carnes\par}%
+    \vspace{3.5pt}%
+    {\footnotesize\color{corfundo}Embarques para o mercado asiático sustentam geração líquida de divisas e compensam importação de fertilizantes\par}%
+  };
+  \fill[douradoto] (masthead.south west) rectangle ([yshift=-2.5pt]masthead.south east);
+\end{tikzpicture}
+
+\vspace{0.14cm}
+
+% ==============================================================================
+% 1. FAIXA DE INDICADORES-CHAVE DO PAINEL (4 CARDS KPI EM LINHA ÚNICA)
+% ==============================================================================
+\noindent\makebox[\textwidth][s]{%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}EXPORTAÇÕES (TO)}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}US\$ 200,89 Mi}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Ref.: 10/2026 (Peso: 289.390 t)}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}\hfill%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}IMPORTAÇÕES (TO)}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}US\$ 63,95 Mi}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Ref.: 10/2026 (Peso: 148.241 t)}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}\hfill%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}SALDO COMERCIAL}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}+ US\$ 136,94 Mi}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Superávit Primário FOB}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}\hfill%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}1\textordmasculine{} DESTINO EXPORTADOR}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}China}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}23,4\% da pauta (US\$ 47,0 Mi)}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}%
+}
+
+
+\vspace{0.10cm}
+
+% ==============================================================================
+% 2. ANÁLISE PRELIMINAR AUTOMATIZADA DO SCRIPT (RASTREAMENTO DE VARIAÇÕES)
+% ==============================================================================
+\noindent\begin{tikzpicture}
+  \node[fill=corfundo, draw=cinzaborda, line width=0.5pt, rounded corners=2pt,
+        inner xsep=8pt, inner ysep=5pt, text width=\textwidth-17pt, font=\scriptsize\color{cinzatexto}] (dbox) {
+    {\footnotesize\bfseries\color{corprimaria}Síntese de Variações entre Períodos Subsequentes}\par\vspace{2pt}
+    \begin{itemize}[leftmargin=11pt, itemsep=1.0pt, topsep=1pt, parsep=0pt]
+       \item \textbf{\color{verdealta}[EXPANSÃO DRÁSTICA / SALTO POSITIVO] Exportações FOB do Tocantins (10/2026):} Exportações FOB do Tocantins (10/2026) registrou aceleração expressiva de +17,97\% (mudança drástica acima do padrão recente). [nível: US\$ 200,89 Mi]
+       \item \textbf{\color{verdealta}[EXPANSÃO DRÁSTICA / SALTO POSITIVO] Importações FOB do Tocantins (10/2026):} Importações FOB do Tocantins (10/2026) registrou aceleração expressiva de +118,57\% (mudança drástica acima do padrão recente). [nível: US\$ 63,95 Mi]
+       \item \textbf{\color{vermelhobaixa}[QUEDA DRÁSTICA / CONTRAÇÃO ACENTUADA] Saldo da Balança Comercial (TO):} Saldo da Balança Comercial (TO) sofreu retração acentuada de -2,91\% (queda drástica que requer atenção conjuntural). [nível: + US\$ 136,94 Mi]
+       \item \textbf{\color{verdealta}[EXPANSÃO DRÁSTICA / SALTO POSITIVO] 1\textordmasculine{} Produto Exportado (Carnes de animais da espécie bovina, congeladas):} 1\textordmasculine{} Produto Exportado (Carnes de animais da espécie bovina, congeladas) registrou aceleração expressiva de +25,03\% (mudança drástica acima do padrão recente). [nível: US\$ 50,28 Mi]
+    \end{itemize}
+  };
+  \fill[corprimaria] (dbox.north west) rectangle ([xshift=3pt]dbox.south west);
+\end{tikzpicture}
+
+
+\vspace{0.08cm}
+
+% ==============================================================================
+% 3. ANÁLISE CONJUNTURAL DA EQUIPE E PERSPECTIVAS (2 COLUNAS DE JORNAL)
+% ==============================================================================
+\secaoboletim{1. Análise Conjuntural da Equipe e Cenários}
+
+\begin{multicols}{2}
+\begin{spacing}{1.06}
+{\small O resultado mensal da balança comercial do Tocantins reforça a posição estratégica do Estado como plataforma agroexportadora da região Norte. O desempenho das vendas externas segue ancorado na competitividade da soja em grãos e da carne bovina in natura, que encontraram janelas favoráveis de embarque nos portos do Arco Norte e demanda firme dos compradores asiáticos.
+
+\medskip
+Pelo lado das importações, o desembolso de US\$ 480 milhões reflete o calendário de aquisição de adubos, fertilizantes e defensivos agrícolas para o plantio da safra. Esse movimento é típico de economias em expansão produtiva, nas quais a compra externa de insumos antecede a geração de excedentes exportáveis nos meses subsequentes.}
+
+\subsecaoboletim{Perspectivas e Cenários}
+{\small Para os próximos meses, a expectativa é de manutenção do saldo comercial amplamente superavitário, favorecido pela taxa de câmbio em patamar competitivo em reais e pelo escoamento dos estoques estaduais de milho e proteína animal.}
+
+\end{spacing}
+\end{multicols}
+
+% ==============================================================================
+% 4. PANORAMA ESTATÍSTICO, GRÁFICO E TABELAS EXECUTIVAS DO PERÍODO
+% ==============================================================================
+\secaoboletim{2. Panorama Estatístico, Gráfico e Tabelas Executivas do Período}
+
+\begin{center}\includegraphics[width=0.95\textwidth]{figuras/2026_10_flash_comex_comex_balanca.pdf}\end{center}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}[t]{0.482\textwidth}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Top 10 Posições SH4 Exportadas pelo Tocantins em Valor FOB e Peso Líquido (Mês 10/2026)}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.5pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{cclrrrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Pos.} & \textbf{\color{white}SH4} & \textbf{\color{white}Produto Exportado (Top 10)} & \textbf{\color{white}Valor FOB} & \textbf{\color{white}Peso Líq. (Ton)} & \textbf{\color{white}US\$/Kg} & \textbf{\color{white}Part. \%} \\
+\midrule
+1\textordmasculine{} & 0202 & Carnes de animais da espécie bovina, c & US\$ 50,28 Mi & 7.887,5 t & US\$ 6,37 & 25,0\% \\
+\rowcolor{corfundo} 2\textordmasculine{} & 1201 & Soja, mesmo triturada & US\$ 36,35 Mi & 78.566,0 t & US\$ 0,46 & 18,1\% \\
+3\textordmasculine{} & 0713 & Legumes de vagem, secos, em grão, mesm & US\$ 32,65 Mi & 38.897,1 t & US\$ 0,84 & 16,2\% \\
+\rowcolor{corfundo} 4\textordmasculine{} & 1005 & Milho & US\$ 24,22 Mi & 112.206,9 t & US\$ 0,22 & 12,1\% \\
+5\textordmasculine{} & 7108 & Ouro & US\$ 23,48 Mi & 0,2 t & US\$ 118.600,72 & 11,7\% \\
+\rowcolor{corfundo} 6\textordmasculine{} & 2304 & Tortas e outros resíduos sólidos da ex & US\$ 15,35 Mi & 39.290,1 t & US\$ 0,39 & 7,6\% \\
+7\textordmasculine{} & 3504 & Peptonas e seus derivados & US\$ 5,77 Mi & 792,5 t & US\$ 7,28 & 2,9\% \\
+\rowcolor{corfundo} 8\textordmasculine{} & 0201 & Carnes de animais da espécie bovina, f & US\$ 3,67 Mi & 534,1 t & US\$ 6,87 & 1,8\% \\
+9\textordmasculine{} & 0206 & Miudezas comestíveis de animais das es & US\$ 1,91 Mi & 830,3 t & US\$ 2,30 & 0,9\% \\
+\rowcolor{corfundo} 10\textordmasculine{} & 1007 & Sorgo de grão & US\$ 1,17 Mi & 5.411,3 t & US\$ 0,22 & 0,6\% \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: Comex Stat / MDIC (metricFOB e metricKG).}}
+\end{minipage}
+\par\vspace{0.08cm}
+\end{minipage}\hfill
+{\color{cinzaborda}\vrule width 0.4pt}\hfill
+\begin{minipage}[t]{0.482\textwidth}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Top 10 Posições SH4 Importadas pelo Tocantins em Valor FOB e Peso Líquido (Mês 10/2026)}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.5pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{cclrrrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Pos.} & \textbf{\color{white}SH4} & \textbf{\color{white}Produto Importado (Top 10)} & \textbf{\color{white}Valor FOB} & \textbf{\color{white}Peso Líq. (Ton)} & \textbf{\color{white}US\$/Kg} & \textbf{\color{white}Part. \%} \\
+\midrule
+1\textordmasculine{} & 3102 & Adubos (fertilizantes) azotados & US\$ 34,82 Mi & 92.798,0 t & US\$ 0,38 & 54,5\% \\
+\rowcolor{corfundo} 2\textordmasculine{} & 3104 & Adubos (fertilizantes) potássicos & US\$ 5,70 Mi & 17.875,8 t & US\$ 0,32 & 8,9\% \\
+3\textordmasculine{} & 7210 & Produtos laminados planos de ferro ou  & US\$ 4,78 Mi & 5.854,2 t & US\$ 0,82 & 7,5\% \\
+\rowcolor{corfundo} 4\textordmasculine{} & 2713 & Coque de petróleo, betume de petróleo  & US\$ 3,00 Mi & 17.662,4 t & US\$ 0,17 & 4,7\% \\
+5\textordmasculine{} & 2715 & Misturas betuminosas à base de asfalto & US\$ 1,39 Mi & 2.561,6 t & US\$ 0,54 & 2,2\% \\
+\rowcolor{corfundo} 6\textordmasculine{} & 3103 & Adubos (fertilizantes) fosfatados & US\$ 1,27 Mi & 5.508,0 t & US\$ 0,23 & 2,0\% \\
+7\textordmasculine{} & 3808 & Insecticidas, rodenticidas, fungicidas & US\$ 1,14 Mi & 309,9 t & US\$ 3,69 & 1,8\% \\
+\rowcolor{corfundo} 8\textordmasculine{} & 2905 & Álcoois acíclicos e seus derivados hal & US\$ 1,02 Mi & 2.000,0 t & US\$ 0,51 & 1,6\% \\
+9\textordmasculine{} & 1513 & Óleos de coco (óleo de copra), de palm & US\$ 0,90 Mi & 447,1 t & US\$ 2,01 & 1,4\% \\
+\rowcolor{corfundo} 10\textordmasculine{} & 9003 & Armações para óculos e artigos semelha & US\$ 0,77 Mi & 2,7 t & US\$ 286,02 & 1,2\% \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: Comex Stat / MDIC (metricFOB e metricKG).}}
+\end{minipage}
+\par\vspace{0.08cm}
+\end{minipage}
+\par\vspace{0.08cm}
+
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Top 10 Países Parceiros do Tocantins: Destinos de Exportação e Origens de Importação (Mês 10/2026)}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.5pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{clrrlrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Pos.} & \textbf{\color{white}Destino Exportação (TO)} & \textbf{\color{white}US\$ FOB Exp.} & \textbf{\color{white}\% Exp.} & \textbf{\color{white}Origem Importação (TO)} & \textbf{\color{white}US\$ FOB Imp.} & \textbf{\color{white}\% Imp.} \\
+\midrule
+1\textordmasculine{} & China & US\$ 46,97 Mi & 23,4\% & China & US\$ 15,98 Mi & 25,0\% \\
+\rowcolor{corfundo} 2\textordmasculine{} & Índia & US\$ 33,59 Mi & 16,7\% & Nigéria & US\$ 14,93 Mi & 23,3\% \\
+3\textordmasculine{} & Canadá & US\$ 16,57 Mi & 8,2\% & Venezuela & US\$ 14,67 Mi & 22,9\% \\
+\rowcolor{corfundo} 4\textordmasculine{} & Egito & US\$ 16,18 Mi & 8,1\% & Canadá & US\$ 5,71 Mi & 8,9\% \\
+5\textordmasculine{} & Espanha & US\$ 10,32 Mi & 5,1\% & Estados Unidos & US\$ 4,48 Mi & 7,0\% \\
+\rowcolor{corfundo} 6\textordmasculine{} & Suíça & US\$ 8,20 Mi & 4,1\% & Vietnã & US\$ 3,90 Mi & 6,1\% \\
+7\textordmasculine{} & Alemanha & US\$ 7,64 Mi & 3,8\% & Egito & US\$ 1,27 Mi & 2,0\% \\
+\rowcolor{corfundo} 8\textordmasculine{} & México & US\$ 6,47 Mi & 3,2\% & Brunei & US\$ 0,92 Mi & 1,4\% \\
+9\textordmasculine{} & Eslovênia & US\$ 5,31 Mi & 2,6\% & Indonésia & US\$ 0,90 Mi & 1,4\% \\
+\rowcolor{corfundo} 10\textordmasculine{} & Estados Unidos & US\$ 4,17 Mi & 2,1\% & África do Sul & US\$ 0,38 Mi & 0,6\% \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: Comex Stat / MDIC.}}
+\end{minipage}
+\par\vspace{0.08cm}
+
+
+
+\vfill
+
+% ==============================================================================
+% EXPEDIENTE EDITORIAL E NOTA METODOLÓGICA
+% ==============================================================================
+\noindent\begin{tikzpicture}
+  \node[
+    fill=corfundo,
+    draw=cinzaborda,
+    line width=0.5pt,
+    rounded corners=2pt,
+    inner sep=6pt,
+    text width=\textwidth-13pt,
+    font=\scriptsize\color{cinzasub}
+  ] {
+    \textbf{\color{corprimaria}Nota Metodológica e Fontes Primárias:} Dados extraídos da API oficial Comex Stat / MDIC por posição SH4 e país parceiro, contemplando simultaneamente Valor FOB (US\$) e Peso Líquido (Quilogramas e Toneladas Métricas).\par\vspace{2pt}
+    \textbf{\color{corprimaria}Expediente Editorial:} Lorenzo Costa e Equipe | Jornal Econômico do Tocantins \enspace$\vert$\enspace \textbf{\color{corprimaria}Publicação:} Núcleo de Conjuntura Econômica — \textit{Jornal Econômico do Tocantins}.
+  };
+\end{tikzpicture}
+
+\end{document}

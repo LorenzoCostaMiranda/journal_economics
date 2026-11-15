@@ -1,0 +1,305 @@
+\documentclass[10pt,a4paper]{article}
+
+% ==============================================================================
+% TEMPLATE EDITORIAL — BOLETIM FLASH (JORNAL ECONÔMICO DO TOCANTINS)
+% Estilo: Briefing Executivo de Jornal Econômico (2 Páginas Balanceadas)
+% Paleta FLASH: Azul-Marinho (#0F2537), Azul Secundário (#244B6B),
+%               Dourado Institucional (#C8942B) e Fundo Neutro (#F4F6F9)
+% ==============================================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+
+\usepackage[top=1.35cm, bottom=1.45cm, left=1.40cm, right=1.40cm, headheight=14pt, headsep=8pt, footskip=18pt]{geometry}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{colortbl}
+\usepackage{tikz}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{setspace}
+\usepackage{multicol}
+\usepackage{amssymb}
+\usepackage{hyperref}
+
+% Cores institucionais do Boletim FLASH
+\definecolor{corprimaria}{HTML}{0F2537}
+\definecolor{corsecundaria}{HTML}{244B6B}
+\definecolor{corfundo}{HTML}{F4F6F9}
+\definecolor{douradoto}{HTML}{C8942B}
+\definecolor{coracento}{HTML}{C8942B}
+\definecolor{cinzatexto}{HTML}{1E293B}
+\definecolor{cinzasub}{HTML}{475569}
+\definecolor{cinzaborda}{HTML}{CBD5E1}
+\definecolor{verdealta}{HTML}{15803D}
+\definecolor{vermelhobaixa}{HTML}{B91C1C}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=corprimaria,
+  urlcolor=corsecundaria,
+  pdftitle={Boletim Flash — Dinâmica Empresarial, Simples Nacional e Quadro Societário (QSA)},
+  pdfauthor={Jornal Economico do Tocantins}
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3.5pt}
+\setlength{\columnsep}{0.55cm}
+\setlength{\columnseprule}{0.4pt}
+\def\columnseprulecolor{\color{cinzaborda}}
+\renewcommand{\arraystretch}{1.15}
+
+% Cabeçalho e Rodapé de Jornal Econômico (Sem colisão central)
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.5pt}
+\renewcommand{\footrule}{\hbox to\headwidth{\color{douradoto}\leaders\hrule height \footrulewidth\hfill}}
+
+\fancyhead[L]{\ifnum\value{page}>1 \scriptsize\bfseries\color{corprimaria}JORNAL ECONÔMICO DO TOCANTINS \enspace{\color{douradoto}$\vert$}\enspace {\mdseries\color{cinzasub}BOLETIM RÁPIDO (FLASH MENSAL) $\cdot$ Outubro/2026}\fi}
+\fancyhead[R]{\ifnum\value{page}>1 \scriptsize\color{cinzasub}\#10/2026\fi}
+
+\fancyfoot[L]{\scriptsize\color{cinzasub}\textbf{\color{corprimaria}Jornal Econômico do Tocantins} $\cdot$ Dinâmica Empresarial, Simples Nacional e Quadro Societário (TO) $\cdot$ Publicado em 14/11/2026}
+\fancyfoot[R]{\scriptsize\bfseries\color{corprimaria}Pág. \thepage\ de \pageref*{LastPage}}
+
+% Comando para Títulos de Seção Estilo Jornal Financeiro
+\newcommand{\secaoboletim}[1]{%
+  \par\vspace{0.16cm}%
+  \noindent\begin{tikzpicture}
+    \fill[corprimaria] (0,0) rectangle (\textwidth, 0.52);
+    \fill[douradoto] (0,0) rectangle (0.16, 0.52);
+    \node[anchor=west, font=\small\bfseries, text=white] at (0.30, 0.26) {\MakeUppercase{#1}};
+  \end{tikzpicture}%
+  \par\vspace{0.08cm}%
+}
+
+\newcommand{\subsecaoboletim}[1]{%
+  \par\vspace{0.10cm}%
+  \noindent{\small\bfseries\color{corprimaria}\rule{0.14cm}{0.26cm}\hspace{5pt}#1}%
+  \par\vspace{0.03cm}%
+  {\color{douradoto}\hrule height 0.6pt}%
+  \vspace{0.06cm}%
+}
+
+\begin{document}
+\color{cinzatexto}
+
+% ==============================================================================
+% MASTHEAD DE JORNAL ECONÔMICO (AUTO-AJUSTÁVEL, SEM SOBREPOSIÇÃO DE TEXTO)
+% ==============================================================================
+\noindent\begin{tikzpicture}
+  \node[
+    fill=corprimaria,
+    inner xsep=12pt,
+    inner ysep=10pt,
+    text width=\textwidth-24pt,
+    align=left
+  ] (masthead) {
+    % Linha superior do cabeçalho do jornal
+    \hbox to \linewidth{%
+      {\colorbox{douradoto}{\strut\hspace{4pt}\scriptsize\bfseries\color{corprimaria}BOLETIM RÁPIDO (FLASH MENSAL) $\cdot$ \#10/2026\hspace{4pt}}}%
+      \hfill
+      {\scriptsize\color{white}\textbf{JORNAL ECONÔMICO DO TOCANTINS} \enspace{\color{douradoto}$\vert$}\enspace Ref.: \textbf{Outubro/2026} \enspace{\color{douradoto}$\vert$}\enspace 14/11/2026}%
+    }%
+    \par\vspace{5pt}%
+    {\color{douradoto}\hrule height 0.8pt}%
+    \par\vspace{6pt}%
+    % Título Principal e Subtítulo com quebra automática limpa
+    {\fontsize{13.5}{16.2}\selectfont\bfseries\color{white}Boletim Flash — Dinâmica Empresarial, Simples Nacional e Quadro Societário (QSA)\par}%
+    \vspace{3.5pt}%
+    {\footnotesize\color{corfundo}Evolução mensal do estoque de CNPJs ativos, participação de MEIs e Microempresas, tempos do Mapa de Empresas e perfil dos sócios no Tocantins\par}%
+  };
+  \fill[douradoto] (masthead.south west) rectangle ([yshift=-2.5pt]masthead.south east);
+\end{tikzpicture}
+
+\vspace{0.14cm}
+
+% ==============================================================================
+% 1. FAIXA DE INDICADORES-CHAVE DO PAINEL (4 CARDS KPI EM LINHA ÚNICA)
+% ==============================================================================
+\noindent\makebox[\textwidth][s]{%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}CNPJS ATIVOS (ESTOQUE)}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}167.565}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Saldo 12m: + 15.608}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}\hfill%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}MEI / MICROEMPRESAS}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}52,9\% / 34,0\%}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Pequenos Negócios: 86,9\%}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}\hfill%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}OPTANTES SIMPLES (SINAC)}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}164.996}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Sócios QSA: 106.471}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}\hfill%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}TEMPO DE ABERTURA (2026)}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}18,5 horas}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Viab.: 15,7h | Reg.: 2,7h}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}%
+}
+
+
+\vspace{0.10cm}
+
+% ==============================================================================
+% 2. ANÁLISE PRELIMINAR AUTOMATIZADA DO SCRIPT (RASTREAMENTO DE VARIAÇÕES)
+% ==============================================================================
+\noindent\begin{tikzpicture}
+  \node[fill=corfundo, draw=cinzaborda, line width=0.5pt, rounded corners=2pt,
+        inner xsep=8pt, inner ysep=5pt, text width=\textwidth-17pt, font=\scriptsize\color{cinzatexto}] (dbox) {
+    {\footnotesize\bfseries\color{corprimaria}Síntese de Variações entre Períodos Subsequentes}\par\vspace{2pt}
+    \begin{itemize}[leftmargin=11pt, itemsep=1.0pt, topsep=1pt, parsep=0pt]
+       \item \textbf{\color{verdealta}[EXPANSÃO DRÁSTICA / SALTO POSITIVO] Estoque de CNPJs Ativos (Out/2026):} Estoque de CNPJs Ativos (Out/2026) registrou aceleração expressiva de +9,65\% (mudança drástica acima do padrão recente). [nível: 167.565]
+       \item \textbf{\color{verdealta}[EXPANSÃO DRÁSTICA / SALTO POSITIVO] Novas Inscrições de CNPJ no Mês:} Novas Inscrições de CNPJ no Mês registrou aceleração expressiva de +5,46\% (mudança drástica acima do padrão recente). [nível: 2.760]
+       \item \textbf{\color{corsecundaria}[ESTABILIDADE (VALOR INALTERADO)] Participação de MEIs + Microempresas (ME):} Participação de MEIs + Microempresas (ME) manteve-se praticamente inalterado (+0,05\%), indicando estabilidade marginal. [nível: 86,9\%]
+       \item \textbf{\color{vermelhobaixa}[QUEDA DRÁSTICA / CONTRAÇÃO ACENTUADA] Tempo Médio de Abertura de Empresas (TO vs. Brasil):} Tempo Médio de Abertura de Empresas (TO vs. Brasil) sofreu retração acentuada de -29,39\% (queda drástica que requer atenção conjuntural). [nível: 18,5h (BR: 26,2h)]
+    \end{itemize}
+  };
+  \fill[corprimaria] (dbox.north west) rectangle ([xshift=3pt]dbox.south west);
+\end{tikzpicture}
+
+
+\vspace{0.08cm}
+
+% ==============================================================================
+% 3. ANÁLISE CONJUNTURAL DA EQUIPE E PERSPECTIVAS (2 COLUNAS DE JORNAL)
+% ==============================================================================
+\secaoboletim{1. Análise Conjuntural da Equipe e Cenários}
+
+\begin{multicols}{2}
+\begin{spacing}{1.06}
+{\small Os dados atualizados da Receita Federal do Brasil e do SERPRO apontam continuidade na expansão da base empresarial ativa no Tocantins, que alcançou 167.565 estabelecimentos em outubro de 2026. Na passagem mensal, as 2.760 novas inscrições superaram com folga as baixas cadastrais, mantendo a trajetória de crescimento monotônico do estoque estadual.
+
+\medskip
+A estrutura do Quadro de Sócios e Administradores (QSA) revela 102.075 vínculos societários ativos (89.307 responsáveis legais únicos), com forte presença de sócios-administradores nas faixas etárias de 31 a 50 anos (mais de 55\% do total), refletindo um perfil empreendedor jovem-adulto em plena fase de acumulação produtiva.}
+
+\subsecaoboletim{Perspectivas e Cenários}
+{\small A agilidade do ambiente de registro mercantil estadual — com tempo médio de abertura de 18,5 horas em 2026 contra 26,2 horas da média nacional — permanece como diferencial competitivo para a formalização de pequenos negócios no Estado.}
+
+\end{spacing}
+\end{multicols}
+
+% ==============================================================================
+% 4. PANORAMA ESTATÍSTICO, GRÁFICO E TABELAS EXECUTIVAS DO PERÍODO
+% ==============================================================================
+\secaoboletim{2. Panorama Estatístico, Gráfico e Tabelas Executivas do Período}
+
+\begin{center}\includegraphics[width=0.95\textwidth]{figuras/2026_11_flash_empresas_emp_ativos.pdf}\end{center}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Distribuição das Empresas Ativas por Porte no Tocantins (Out/2026)}\par\vspace{2pt}
+  {\fontsize{7.0}{8.6}\selectfont\setlength{\tabcolsep}{4.5pt}%
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}Xrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Porte Empresarial (Receita Federal / SINAC)} & \textbf{\color{white}CNPJs Ativos no Tocantins} & \textbf{\color{white}Participação no Estoque (\%)} \\
+\midrule
+MEI & 88.650 & 52,90\% \\
+\rowcolor{corfundo} Microempresa (ME) & 56.958 & 33,99\% \\
+Pequeno Porte (EPP) & 11.896 & 7,10\% \\
+\rowcolor{corfundo} Não Informado / Demais & 10.061 & 6,00\% \\
+\bottomrule
+\end{tabularx}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: Receita Federal / SERPRO e SINAC (Optantes Simples Nacional: 164.996 | Tempo Médio de Abertura 2026: 18,5h).}}
+\end{minipage}
+\par\vspace{0.08cm}
+
+\par\vspace{0.08cm}
+\noindent\begin{minipage}[t]{0.482\textwidth}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Quadro Societário (QSA) por Qualificação (Total: 106.471)}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.0pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Qualificação e Tipo no QSA (RFB)} & \textbf{\color{white}Sócios} & \textbf{\color{white}Empresas} & \textbf{\color{white}Part. \%} \\
+\midrule
+Sócio-Administrador (Pessoa Física) & 61.828 & 54.177 & 55,33\% \\
+\rowcolor{corfundo} Sócio (Pessoa Física) & 18.061 & 13.176 & 16,16\% \\
+Diretor (Pessoa Física) & 14.635 & 1.996 & 13,10\% \\
+\rowcolor{corfundo} Administrador (Pessoa Física) & 7.706 & 5.304 & 6,90\% \\
+Sócio (Pessoa Jurídica) & 4.789 & 3.274 & 4,29\% \\
+\rowcolor{corfundo} Conselheiro de Administração (Pessoa Física) & 1.854 & 515 & 1,66\% \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: RFB/SERPRO. Gênero QSA: Feminino (32,9\%); Masculino (67,0\%); Não informado (0,0\%).}}
+\end{minipage}
+\par\vspace{0.08cm}
+\end{minipage}\hfill
+{\color{cinzaborda}\vrule width 0.4pt}\hfill
+\begin{minipage}[t]{0.482\textwidth}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Perfil Etário do Quadro Societário (QSA — TO)}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.0pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Faixa Etária dos Sócios (QSA)} & \textbf{\color{white}Sócios} & \textbf{\color{white}Empresas} & \textbf{\color{white}Part. \%} \\
+\midrule
+Até 25 anos & 4.821 & 4.331 & 4,5\% \\
+\rowcolor{corfundo} Dos 26 aos 35 anos & 18.579 & 16.230 & 17,4\% \\
+Dos 36 aos 49 anos & 42.435 & 30.040 & 39,9\% \\
+\rowcolor{corfundo} Dos 50+ & 40.635 & 24.007 & 38,2\% \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: Receita Federal do Brasil / SERPRO — Microdados do QSA.}}
+\end{minipage}
+\par\vspace{0.08cm}
+\end{minipage}
+\par\vspace{0.08cm}
+
+
+
+\vfill
+
+% ==============================================================================
+% EXPEDIENTE EDITORIAL E NOTA METODOLÓGICA
+% ==============================================================================
+\noindent\begin{tikzpicture}
+  \node[
+    fill=corfundo,
+    draw=cinzaborda,
+    line width=0.5pt,
+    rounded corners=2pt,
+    inner sep=6pt,
+    text width=\textwidth-13pt,
+    font=\scriptsize\color{cinzasub}
+  ] {
+    \textbf{\color{corprimaria}Nota Metodológica e Fontes Primárias:} Integra os registros de CNPJs ativos por porte (MEI, ME, EPP e Demais), optantes pelo Simples Nacional (SINAC), tempos de abertura (Mapa de Empresas) e o Quadro de Sócios e Administradores (QSA — qualificação, faixa etária e sexo).\par\vspace{2pt}
+    \textbf{\color{corprimaria}Expediente Editorial:} Lorenzo Costa e Equipe | Jornal Econômico do Tocantins \enspace$\vert$\enspace \textbf{\color{corprimaria}Publicação:} Núcleo de Conjuntura Econômica — \textit{Jornal Econômico do Tocantins}.
+  };
+\end{tikzpicture}
+
+\end{document}

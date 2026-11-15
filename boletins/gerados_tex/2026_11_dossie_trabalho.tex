@@ -1,0 +1,382 @@
+\documentclass[10pt,a4paper]{article}
+
+% ==============================================================================
+% TEMPLATE EDITORIAL — PERIÓDICO EM 2 COLUNAS (DOSSIÊ ANUAL E CARTA DE CONJUNTURA)
+% JORNAL ECONÔMICO DO TOCANTINS
+%   - Dossiê Anual (DA): Verde-Floresta (#0B5D32), Marfim (#FAF6EE) e Carmim (#A61C1C)
+%   - Carta de Conjuntura (CC): Azul Cobalto (#0A2E73), Esmeralda (#1B7A43),
+%     Lima Editorial (#8CE000 no selo escuro) e Azul-Gelo (#F3F6FB)
+% ==============================================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+
+\usepackage[top=1.35cm, bottom=1.45cm, left=1.35cm, right=1.35cm, headheight=14pt, headsep=8pt, footskip=18pt]{geometry}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{colortbl}
+\usepackage{tikz}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{setspace}
+\usepackage{multicol}
+\usepackage{amssymb}
+\usepackage{hyperref}
+
+% Paleta Editorial Dinâmica (Proporção 75% Neutro / 20% Primária / 5% Acento)
+\definecolor{corprimaria}{HTML}{0B5D32}
+\definecolor{corsecundaria}{HTML}{146B3A}
+\definecolor{coracento}{HTML}{A61C1C}
+\definecolor{coracentoheader}{HTML}{FAF6EE}
+\definecolor{coracentotexto}{HTML}{0B5D32}
+\definecolor{corfundo}{HTML}{FAF6EE}
+\definecolor{cinzatexto}{HTML}{1E293B}
+\definecolor{cinzasub}{HTML}{475569}
+\definecolor{cinzaborda}{HTML}{CBD5E1}
+\definecolor{verdealta}{HTML}{15803D}
+\definecolor{vermelhobaixa}{HTML}{B91C1C}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=corprimaria,
+  urlcolor=corsecundaria,
+  pdftitle={Dossiê Anual — Mercado de Trabalho Formal (RAIS e Novo CAGED) e PNAD nas 27 UFs},
+  pdfauthor={Jornal Economico do Tocantins}
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3.5pt}
+\setlength{\columnsep}{0.60cm}
+\setlength{\columnseprule}{0.4pt}
+\def\columnseprulecolor{\color{cinzaborda}}
+\renewcommand{\arraystretch}{1.14}
+
+% Cabeçalho e Rodapé de Periódico Econômico (Sem sobreposição central)
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.5pt}
+\renewcommand{\footrule}{\hbox to\headwidth{\color{coracento}\leaders\hrule height \footrulewidth\hfill}}
+
+\fancyhead[L]{\ifnum\value{page}>1 \scriptsize\bfseries\color{corprimaria}JORNAL ECONÔMICO DO TOCANTINS \enspace{\color{coracento}$\vert$}\enspace {\mdseries\color{cinzasub}DOSSIÊ ANUAL / SEMESTRAL (DA)}\fi}
+\fancyhead[R]{\ifnum\value{page}>1 \scriptsize\color{cinzasub}Ref.: \textbf{Balanço Anual / 12 Meses (2025–2026)} $\cdot$ \#09/2026\fi}
+
+\fancyfoot[L]{\scriptsize\color{cinzasub}\textbf{\color{corprimaria}Jornal Econômico do Tocantins} $\cdot$ Lorenzo Costa e Equipe | Núcleo de Conjuntura do Jornal Econômico do Tocantins $\cdot$ Publicado em 14/11/2026}
+\fancyfoot[R]{\scriptsize\bfseries\color{corprimaria}Pág. \thepage\ de \pageref*{LastPage}}
+
+% Banner de Abertura de Seção Principal (Caderno Periódico)
+\newcommand{\bannersecaoperiodico}[3]{%
+  \par\vspace{0.14cm}%
+  \noindent\begin{tikzpicture}
+    \node[
+      fill=corprimaria,
+      inner xsep=10pt,
+      inner ysep=6pt,
+      text width=\textwidth-20pt,
+      align=left
+    ] (bsec) {
+      \hbox to \linewidth{%
+        {\colorbox{coracentoheader}{\strut\hspace{4pt}\scriptsize\bfseries\color{coracentotexto}SEÇÃO #1\hspace{4pt}}}%
+        \hspace{8pt}%
+        {\normalsize\bfseries\color{white}#2}%
+        \hfill
+      }%
+      \par\vspace{2pt}%
+      {\scriptsize\color{corfundo}#3\par}%
+    };
+    \fill[coracento] (bsec.south west) rectangle ([yshift=-2pt]bsec.south east);
+  \end{tikzpicture}%
+  \par\vspace{0.10cm}%
+}
+
+% Subtítulo de Coluna dentro do Layout de 2 Colunas
+\newcommand{\secaoperiodico}[1]{%
+  \par\vspace{0.10cm}%
+  \noindent{\small\bfseries\color{corprimaria}\rule{0.14cm}{0.26cm}\hspace{4pt}{\color{coracento}\rule{0.06cm}{0.26cm}}\hspace{5pt}#1}%
+  \par\vspace{0.03cm}%
+  {\color{coracento}\hrule height 0.7pt}%
+  \vspace{0.06cm}%
+}
+
+\begin{document}
+\color{cinzatexto}
+
+% ==============================================================================
+% MASTHEAD DE CAPA DO PERIÓDICO (AUTO-AJUSTÁVEL, SEM COLISÃO DE TÍTULO/SUBTÍTULO)
+% ==============================================================================
+\noindent\begin{tikzpicture}
+  \node[
+    fill=corprimaria,
+    inner xsep=12pt,
+    inner ysep=9pt,
+    text width=\textwidth-24pt,
+    align=left
+  ] (masthead) {
+    \hbox to \linewidth{%
+      {\colorbox{coracentoheader}{\strut\hspace{5pt}\scriptsize\bfseries\color{coracentotexto}DOSSIÊ ANUAL / SEMESTRAL (DA) $\cdot$ \#09/2026\hspace{5pt}}}%
+      \hfill
+      {\scriptsize\color{white}\textbf{JORNAL ECONÔMICO DO TOCANTINS} \enspace{\color{coracentoheader}$\vert$}\enspace Publicado em 14/11/2026}%
+    }%
+    \par\vspace{4pt}%
+    {\color{coracento}\hrule height 0.9pt}%
+    \par\vspace{5pt}%
+    {\fontsize{13.5}{16.2}\selectfont\bfseries\color{white}Dossiê Anual — Mercado de Trabalho Formal (RAIS e Novo CAGED) e PNAD nas 27 UFs\par}%
+    \vspace{3pt}%
+    {\footnotesize\color{corfundo}Avaliação em perspectiva de 12 meses do estoque de vínculos ativos sem abandonados (RAIS), saldo acumulado de vagas (Novo CAGED), Top 5 municípios e ranking nacional de desocupação (Tabela 4099 IBGE) \enspace{\color{coracentoheader}$\vert$}\enspace \textbf{Ref.: Balanço Anual / 12 Meses (2025–2026)}\par}%
+  };
+  \fill[coracento] (masthead.south west) rectangle ([yshift=-2.6pt]masthead.south east);
+\end{tikzpicture}
+
+\vspace{0.10cm}
+
+% ==============================================================================
+% CORPO COMPLETO DO PERIÓDICO (DOSSIÊ ANUAL OU CARTA DE CONJUNTURA)
+% ==============================================================================
+\noindent\makebox[\textwidth][s]{%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}ESTOQUE RAIS (2025)}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}437.580}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Estab. Ativos: 33.198}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}\hfill%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}SALDO CAGED (09/26)}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}+716}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Adm: 11.263 | Desl: 10.547}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}\hfill%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}DESOCUPAÇÃO (PNAD)}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}4,1\%}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}IBGE Tabela 4099 (27 UFs)}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}\hfill%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}REMUNERAÇÃO RAIS / PNAD}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}R\$ 4.022,93}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}PNAD Habitual: R\$ 3.351}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}%
+}
+
+\vspace{0.03cm}
+\noindent\begin{tikzpicture}
+  \node[fill=corfundo, draw=cinzaborda, line width=0.5pt, rounded corners=2pt,
+        inner xsep=8pt, inner ysep=5pt, text width=\textwidth-17pt, font=\scriptsize\color{cinzatexto}] (dbox) {
+    {\footnotesize\bfseries\color{corprimaria}Síntese de Variações e Desempenho (Ótica Anual / 12 Meses)}\par\vspace{2pt}
+    \begin{itemize}[leftmargin=11pt, itemsep=1.0pt, topsep=1pt, parsep=0pt]
+       \item \textbf{\color{vermelhobaixa}[QUEDA DRÁSTICA / CONTRAÇÃO ACENTUADA] Saldo Mensal do Novo CAGED (09/26):} Saldo Mensal do Novo CAGED (09/26) sofreu retração acentuada de -42,40\% (queda drástica que requer atenção conjuntural). [nível: +716 vagas]
+       \item \textbf{\color{verdealta}[CRESCIMENTO FORTE] Estoque de Vínculos Ativos (RAIS):} Estoque de Vínculos Ativos (RAIS) apresentou crescimento robusto de +5,40\% no período. [nível: 437.580]
+       \item \textbf{\color{vermelhobaixa}[OSCILAÇÃO NEGATIVA LEVE] Taxa de Desocupação PNAD (Tocantins):} Taxa de Desocupação PNAD (Tocantins) apresentou acomodação negativa de -0,30\%. [nível: 4,1\%]
+       \item \textbf{\color{verdealta}[AVANÇO MODERADO] Rendimento Médio Real Habitual (PNAD):} Rendimento Médio Real Habitual (PNAD) avançou +4,20\% em trajetória de expansão gradual. [nível: R\$ 3.351]
+    \end{itemize}
+  };
+  \fill[corprimaria] (dbox.north west) rectangle ([xshift=3pt]dbox.south west);
+\end{tikzpicture}
+
+\vspace{0.03cm}
+\begin{multicols}{2}
+\secaoperiodico{1. Análise Estrutural Anual / Acumulado em 12 Meses}
+{\small A análise anualizada do mercado de trabalho tocantinense — integrando o estoque estrutural da RAIS (depurado de vínculos abandonados em 31/12), o fluxo acumulado em 12 meses do Novo CAGED e a série trimestral da PNAD Contínua (Tabela 4099 do IBGE para todas as 27 Unidades da Federação e Brasil) — revela um processo consistente de formalização e qualificação da força de trabalho estadual.
+
+\medskip
+O perfil educacional dos vínculos ativos na RAIS mostra que trabalhadores com Ensino Médio Completo e Ensino Superior Completo já respondem pela ampla maioria dos postos formais do Estado, impulsionando a remuneração média estadual para R\$ 4.022,93. No recorte territorial dos cinco maiores polos empregadores (Palmas, Araguaína, Gurupi, Porto Nacional e Paraíso do Tocantins), concentra-se a tração dos setores de Serviços, Comércio e Construção Civil.
+
+\medskip
+No comparativo federativo da Tabela 4099 do IBGE, a taxa de desocupação de 4,1\% mantém o Tocantins sistematicamente abaixo da média brasileira e na liderança de ocupação da Região Norte.}
+\end{multicols}
+\begin{center}\includegraphics[width=0.84\textwidth]{figuras/2026_11_dossie_trabalho_trab_caged.pdf}\end{center}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}[t]{0.482\textwidth}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Movimentação Setorial do Novo CAGED no Tocantins (Setembro/2026)}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.5pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrrrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Grande Grupamento Setorial} & \textbf{\color{white}Admissões} & \textbf{\color{white}Desligamentos} & \textbf{\color{white}Saldo Mês} & \textbf{\color{white}Saldo Acum. Ano} & \textbf{\color{white}Salário Médio Adm.} \\
+\midrule
+Serviços & 4.735 & 4.145 & +590 & +2.634 & R\$ 2.055,59 \\
+\rowcolor{corfundo} Construção & 1.212 & 1.001 & +211 & +2.229 & R\$ 2.531,37 \\
+Comércio & 3.033 & 2.912 & +121 & +329 & R\$ 1.900,07 \\
+\rowcolor{corfundo} Agropecuária & 1.179 & 1.366 & -187 & -851 & R\$ 2.438,64 \\
+Indústria & 1.104 & 1.123 & -19 & +788 & R\$ 2.172,38 \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: MTE — Microdados do Novo CAGED (MOV + FOR - EXC).}}
+\end{minipage}
+\par\vspace{0.08cm}
+\end{minipage}\hfill
+{\color{cinzaborda}\vrule width 0.4pt}\hfill
+\begin{minipage}[t]{0.482\textwidth}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Top 5 Municípios do Tocantins em Estoque Formal (RAIS) e Saldo Mensal (Novo CAGED)}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.0pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{clrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Pos.} & \textbf{\color{white}Município (Top 5 TO)} & \textbf{\color{white}Estoque (RAIS) 2025} & \textbf{\color{white}Saldo (Novo CAGED) 09/26} \\
+\midrule
+1\textordmasculine{} & Palmas & 220.673 & +399 \\
+\rowcolor{corfundo} 2\textordmasculine{} & Araguaína & 47.010 & +180 \\
+3\textordmasculine{} & Gurupi & 20.492 & +89 \\
+\rowcolor{corfundo} 4\textordmasculine{} & Porto Nacional & 14.172 & +76 \\
+5\textordmasculine{} & Paraíso do Tocantins & 12.288 & +27 \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: MTE — Microdados da RAIS (vínculos ativos em 31/12 sem abandonados) e Novo CAGED.}}
+\end{minipage}
+\par\vspace{0.08cm}
+\end{minipage}
+\par\vspace{0.08cm}
+
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}PNAD Contínua (IBGE - Tabela 4099): Ranking Completo da Taxa de Desocupação nas 27 UFs e Brasil (1\textordmasculine{} = Menor Desemprego)}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.5pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{clrrclrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Pos.} & \textbf{\color{white}Unidade da Federação} & \textbf{\color{white}Taxa} & \textbf{\color{white}Var.} & \textbf{\color{white}Pos.} & \textbf{\color{white}Unidade da Federação} & \textbf{\color{white}Taxa} & \textbf{\color{white}Var.} \\
+\midrule
+1\textordmasculine{} & Santa Catarina & 2,1\% & -0.1 p.p. (12m) & 15\textordmasculine{} & Maranhão & 6,0\% & -0.6 p.p. (12m) \\
+\rowcolor{corfundo} 2\textordmasculine{} & Mato Grosso & 2,2\% & -0.6 p.p. (12m) & 16\textordmasculine{} & Pará & 6,2\% & -0.7 p.p. (12m) \\
+3\textordmasculine{} & Espírito Santo & 2,3\% & -0.8 p.p. (12m) & 17\textordmasculine{} & Distrito Federal & 6,5\% & -2.2 p.p. (12m) \\
+\rowcolor{corfundo} 4\textordmasculine{} & Rondônia & 2,6\% & +0.3 p.p. (12m) & 18\textordmasculine{} & Acre & 6,6\% & -0.7 p.p. (12m) \\
+5\textordmasculine{} & Mato Grosso do Sul & 2,7\% & -0.2 p.p. (12m) & 19\textordmasculine{} & Ceará & 6,6\% & +0.0 p.p. (12m) \\
+\rowcolor{corfundo} 6\textordmasculine{} & Paraná & 3,1\% & -0.7 p.p. (12m) & 20\textordmasculine{} & Rio de Janeiro & 7,1\% & -1.0 p.p. (12m) \\
+7\textordmasculine{} & Minas Gerais & 3,8\% & -0.2 p.p. (12m) & 21\textordmasculine{} & Amazonas & 7,5\% & -0.2 p.p. (12m) \\
+\rowcolor{corfundo} 8\textordmasculine{} & Goiás & 4,0\% & -0.4 p.p. (12m) & 22\textordmasculine{} & Alagoas & 7,9\% & +0.4 p.p. (12m) \\
+9\textordmasculine{} & * Tocantins (TO) & 4,1\% & -1.2 p.p. (12m) & 23\textordmasculine{} & Sergipe & 7,9\% & -0.2 p.p. (12m) \\
+\rowcolor{corfundo} 10\textordmasculine{} & Rio Grande do Sul & 4,2\% & -0.1 p.p. (12m) & 24\textordmasculine{} & Piauí & 8,3\% & -0.2 p.p. (12m) \\
+11\textordmasculine{} & Roraima & 5,0\% & -0.9 p.p. (12m) & 25\textordmasculine{} & Pernambuco & 8,3\% & -2.1 p.p. (12m) \\
+\rowcolor{corfundo} 12\textordmasculine{} & Paraíba & 5,4\% & -1.6 p.p. (12m) & 26\textordmasculine{} & Bahia & 9,1\% & +0.0 p.p. (12m) \\
+13\textordmasculine{} & São Paulo & 5,4\% & +0.3 p.p. (12m) & 27\textordmasculine{} & Amapá & 9,8\% & +2.9 p.p. (12m) \\
+\rowcolor{corfundo} 14\textordmasculine{} & Rio Grande do Norte & 5,6\% & -1.9 p.p. (12m) & BR & Brasil & 5,4\% & -0.4 p.p. (12m) \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: IBGE — PNAD Contínua Trimestral (Tabela 4099). Nota: Variação em pontos percentuais (p.p.).}}
+\end{minipage}
+\par\vspace{0.08cm}
+
+\bannersecaoperiodico{2}{BALANÇO RETROSPECTIVO (12 MESES) E CENÁRIOS PROSPECTIVOS}{Séries Anualizadas, Consolidação Plurianual, Capilaridade Regional e Perspectivas da Equipe Técnica}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}[t]{0.482\textwidth}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Emprego Formal por Escolaridade (RAIS 2025)}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.0pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Grau de Instrução (RAIS)} & \textbf{\color{white}Vínculos Ativos} & \textbf{\color{white}Part. \%} & \textbf{\color{white}Remuneração (R\$)} \\
+\midrule
+Fundamental Incompleto ou Menos & 31.898 & 7,3\% & R\$ 2.229,08 \\
+\rowcolor{corfundo} Fundamental Completo & 14.612 & 3,3\% & R\$ 2.613,98 \\
+Médio Incompleto & 17.220 & 3,9\% & R\$ 2.166,08 \\
+\rowcolor{corfundo} Médio Completo & 214.334 & 49,0\% & R\$ 2.727,29 \\
+Superior Incompleto & 8.281 & 1,9\% & R\$ 2.869,54 \\
+\rowcolor{corfundo} Superior Completo ou Pós-Graduação & 151.235 & 34,6\% & R\$ 7.015,30 \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: MTE — Microdados da RAIS (sem abandonados).}}
+\end{minipage}
+\par\vspace{0.08cm}
+\end{minipage}\hfill
+{\color{cinzaborda}\vrule width 0.4pt}\hfill
+\begin{minipage}[t]{0.482\textwidth}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Série 12 Meses do Novo CAGED Consolidado (TO)}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.0pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Mês/Ano} & \textbf{\color{white}Admissões} & \textbf{\color{white}Deslig.} & \textbf{\color{white}Saldo Líq.} & \textbf{\color{white}Sal. Adm.} \\
+\midrule
+10/25 & 11.729 & 11.702 & +27 & R\$ 1.973,31 \\
+\rowcolor{corfundo} 11/25 & 9.774 & 10.137 & -363 & R\$ 1.986,90 \\
+12/25 & 7.739 & 12.188 & -4.449 & R\$ 1.985,61 \\
+\rowcolor{corfundo} 01/26 & 12.090 & 10.505 & +1.585 & R\$ 2.124,62 \\
+02/26 & 12.495 & 11.112 & +1.383 & R\$ 2.066,93 \\
+\rowcolor{corfundo} 03/26 & 12.262 & 11.595 & +667 & R\$ 2.042,92 \\
+04/26 & 11.746 & 11.149 & +597 & R\$ 2.082,84 \\
+\rowcolor{corfundo} 05/26 & 11.014 & 11.650 & -636 & R\$ 2.100,71 \\
+06/26 & 11.299 & 11.401 & -102 & R\$ 2.109,84 \\
+\rowcolor{corfundo} 07/26 & 11.794 & 12.118 & -324 & R\$ 2.092,34 \\
+08/26 & 12.610 & 11.367 & +1.243 & R\$ 2.076,50 \\
+\rowcolor{corfundo} 09/26 & 11.263 & 10.547 & +716 & R\$ 2.117,32 \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: MTE — Microdados do Novo CAGED (MOV+FOR-EXC).}}
+\end{minipage}
+\par\vspace{0.08cm}
+\end{minipage}
+\par\vspace{0.08cm}
+
+\vspace{0.03cm}
+\begin{multicols}{2}
+\secaoperiodico{2.1. Vetores Estruturais e Perspectivas para o Próximo Ciclo}
+{\small A manutenção da taxa de desocupação próxima ao pleno emprego friccional tende a sustentar ganhos reais de rendimento habitual no setor de serviços e exigir investimentos crescentes das empresas em treinamento técnico e retenção de talentos.}
+
+\secaoperiodico{2.2. Transmissão Intersetorial e Capilaridade Municipal}
+{\small O acompanhamento sob a ótica acumulada em 12 meses evidencia que a dinâmica econômica do Tocantins apoia-se na complementaridade entre os polos regionais consolidados (Palmas, Araguaína, Gurupi, Porto Nacional, Paraíso do Tocantins e Colinas do Tocantins) e os municípios de expansão agroindustrial e logística ao longo do corredor da BR-153 e da Ferrovia Norte-Sul. A depuração de efeitos sazonais de curto prazo permite identificar ganhos persistentes de escala produtiva, formalização empresarial e densidade salarial.}
+
+\secaoperiodico{2.3. Síntese Institucional e Metodológica (Ótica de 12 Meses)}
+{\small A leitura conjunta das séries acumuladas em quatro trimestres e das comparações interanuais confirma a solidez dos fundamentos regionais do Tocantins neste eixo temático. O monitoramento contínuo das bases oficiais pelo Jornal Econômico do Tocantins — integrando extração automatizada via APIs públicas, tratamento de microdados e revisão analítica da equipe — permite distinguir oscilações transitórias de mudanças estruturais de tendência, subsidiando decisões de investimento privado e formulação de políticas públicas estaduais e municipais.}
+\end{multicols}
+
+
+\vspace{0.12cm}
+
+% ==============================================================================
+% EXPEDIENTE INSTITUCIONAL E NOTA METODOLÓGICA
+% ==============================================================================
+\noindent\begin{tikzpicture}
+  \node[
+    fill=corfundo,
+    draw=cinzaborda,
+    line width=0.5pt,
+    rounded corners=2pt,
+    inner sep=6pt,
+    text width=\textwidth-13pt,
+    font=\scriptsize\color{cinzasub}
+  ] {
+    \textbf{\color{corprimaria}Expediente e Nota Metodológica:} Consolida os microdados mensais do Novo CAGED (MOV + FOR - EXC), o estoque anual de vínculos ativos da RAIS em 31/12 (excluídos vínculos abandonados) para os Top 5 municípios e o ranking completo da taxa de desocupação nas 27 UFs e Brasil (Tabela 4099 do IBGE).\par\vspace{2pt}
+    \textbf{\color{corprimaria}Equipe Responsável:} Lorenzo Costa e Equipe | Núcleo de Conjuntura do Jornal Econômico do Tocantins \enspace$\vert$\enspace \textbf{\color{corprimaria}Publicação Institucional:} Núcleo de Conjuntura Econômica — \textit{Jornal Econômico do Tocantins}.
+  };
+\end{tikzpicture}
+
+\end{document}

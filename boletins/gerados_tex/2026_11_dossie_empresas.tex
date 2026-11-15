@@ -1,0 +1,336 @@
+\documentclass[10pt,a4paper]{article}
+
+% ==============================================================================
+% TEMPLATE EDITORIAL — PERIÓDICO EM 2 COLUNAS (DOSSIÊ ANUAL E CARTA DE CONJUNTURA)
+% JORNAL ECONÔMICO DO TOCANTINS
+%   - Dossiê Anual (DA): Verde-Floresta (#0B5D32), Marfim (#FAF6EE) e Carmim (#A61C1C)
+%   - Carta de Conjuntura (CC): Azul Cobalto (#0A2E73), Esmeralda (#1B7A43),
+%     Lima Editorial (#8CE000 no selo escuro) e Azul-Gelo (#F3F6FB)
+% ==============================================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+
+\usepackage[top=1.35cm, bottom=1.45cm, left=1.35cm, right=1.35cm, headheight=14pt, headsep=8pt, footskip=18pt]{geometry}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{colortbl}
+\usepackage{tikz}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{setspace}
+\usepackage{multicol}
+\usepackage{amssymb}
+\usepackage{hyperref}
+
+% Paleta Editorial Dinâmica (Proporção 75% Neutro / 20% Primária / 5% Acento)
+\definecolor{corprimaria}{HTML}{0B5D32}
+\definecolor{corsecundaria}{HTML}{146B3A}
+\definecolor{coracento}{HTML}{A61C1C}
+\definecolor{coracentoheader}{HTML}{FAF6EE}
+\definecolor{coracentotexto}{HTML}{0B5D32}
+\definecolor{corfundo}{HTML}{FAF6EE}
+\definecolor{cinzatexto}{HTML}{1E293B}
+\definecolor{cinzasub}{HTML}{475569}
+\definecolor{cinzaborda}{HTML}{CBD5E1}
+\definecolor{verdealta}{HTML}{15803D}
+\definecolor{vermelhobaixa}{HTML}{B91C1C}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=corprimaria,
+  urlcolor=corsecundaria,
+  pdftitle={Dossiê Anual — Demografia Empresarial, Simples Nacional e Quadro Societário (QSA)},
+  pdfauthor={Jornal Economico do Tocantins}
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3.5pt}
+\setlength{\columnsep}{0.60cm}
+\setlength{\columnseprule}{0.4pt}
+\def\columnseprulecolor{\color{cinzaborda}}
+\renewcommand{\arraystretch}{1.14}
+
+% Cabeçalho e Rodapé de Periódico Econômico (Sem sobreposição central)
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.5pt}
+\renewcommand{\footrule}{\hbox to\headwidth{\color{coracento}\leaders\hrule height \footrulewidth\hfill}}
+
+\fancyhead[L]{\ifnum\value{page}>1 \scriptsize\bfseries\color{corprimaria}JORNAL ECONÔMICO DO TOCANTINS \enspace{\color{coracento}$\vert$}\enspace {\mdseries\color{cinzasub}DOSSIÊ ANUAL / SEMESTRAL (DA)}\fi}
+\fancyhead[R]{\ifnum\value{page}>1 \scriptsize\color{cinzasub}Ref.: \textbf{Acumulado em 12 Meses (Novembro/2025 a Outubro/2026)} $\cdot$ \#06/2026\fi}
+
+\fancyfoot[L]{\scriptsize\color{cinzasub}\textbf{\color{corprimaria}Jornal Econômico do Tocantins} $\cdot$ Lorenzo Costa e Equipe | Núcleo de Conjuntura do Jornal Econômico do Tocantins $\cdot$ Publicado em 14/11/2026}
+\fancyfoot[R]{\scriptsize\bfseries\color{corprimaria}Pág. \thepage\ de \pageref*{LastPage}}
+
+% Banner de Abertura de Seção Principal (Caderno Periódico)
+\newcommand{\bannersecaoperiodico}[3]{%
+  \par\vspace{0.14cm}%
+  \noindent\begin{tikzpicture}
+    \node[
+      fill=corprimaria,
+      inner xsep=10pt,
+      inner ysep=6pt,
+      text width=\textwidth-20pt,
+      align=left
+    ] (bsec) {
+      \hbox to \linewidth{%
+        {\colorbox{coracentoheader}{\strut\hspace{4pt}\scriptsize\bfseries\color{coracentotexto}SEÇÃO #1\hspace{4pt}}}%
+        \hspace{8pt}%
+        {\normalsize\bfseries\color{white}#2}%
+        \hfill
+      }%
+      \par\vspace{2pt}%
+      {\scriptsize\color{corfundo}#3\par}%
+    };
+    \fill[coracento] (bsec.south west) rectangle ([yshift=-2pt]bsec.south east);
+  \end{tikzpicture}%
+  \par\vspace{0.10cm}%
+}
+
+% Subtítulo de Coluna dentro do Layout de 2 Colunas
+\newcommand{\secaoperiodico}[1]{%
+  \par\vspace{0.10cm}%
+  \noindent{\small\bfseries\color{corprimaria}\rule{0.14cm}{0.26cm}\hspace{4pt}{\color{coracento}\rule{0.06cm}{0.26cm}}\hspace{5pt}#1}%
+  \par\vspace{0.03cm}%
+  {\color{coracento}\hrule height 0.7pt}%
+  \vspace{0.06cm}%
+}
+
+\begin{document}
+\color{cinzatexto}
+
+% ==============================================================================
+% MASTHEAD DE CAPA DO PERIÓDICO (AUTO-AJUSTÁVEL, SEM COLISÃO DE TÍTULO/SUBTÍTULO)
+% ==============================================================================
+\noindent\begin{tikzpicture}
+  \node[
+    fill=corprimaria,
+    inner xsep=12pt,
+    inner ysep=9pt,
+    text width=\textwidth-24pt,
+    align=left
+  ] (masthead) {
+    \hbox to \linewidth{%
+      {\colorbox{coracentoheader}{\strut\hspace{5pt}\scriptsize\bfseries\color{coracentotexto}DOSSIÊ ANUAL / SEMESTRAL (DA) $\cdot$ \#06/2026\hspace{5pt}}}%
+      \hfill
+      {\scriptsize\color{white}\textbf{JORNAL ECONÔMICO DO TOCANTINS} \enspace{\color{coracentoheader}$\vert$}\enspace Publicado em 14/11/2026}%
+    }%
+    \par\vspace{4pt}%
+    {\color{coracento}\hrule height 0.9pt}%
+    \par\vspace{5pt}%
+    {\fontsize{13.5}{16.2}\selectfont\bfseries\color{white}Dossiê Anual — Demografia Empresarial, Simples Nacional e Quadro Societário (QSA)\par}%
+    \vspace{3pt}%
+    {\footnotesize\color{corfundo}Balanço de 12 meses das aberturas, baixas e estoque de CNPJs ativos por porte (MEI, ME e EPP), adesão ao Simples Nacional, perfil societário (QSA) e eficiência da REDESIM no Tocantins \enspace{\color{coracentoheader}$\vert$}\enspace \textbf{Ref.: Acumulado em 12 Meses (Novembro/2025 a Outubro/2026)}\par}%
+  };
+  \fill[coracento] (masthead.south west) rectangle ([yshift=-2.6pt]masthead.south east);
+\end{tikzpicture}
+
+\vspace{0.10cm}
+
+% ==============================================================================
+% CORPO COMPLETO DO PERIÓDICO (DOSSIÊ ANUAL OU CARTA DE CONJUNTURA)
+% ==============================================================================
+\noindent\makebox[\textwidth][s]{%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}CNPJS ATIVOS (ESTOQUE)}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}167.565}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Saldo 12m: + 15.608}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}\hfill%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}MEI / MICROEMPRESAS}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}52,9\% / 34,0\%}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Pequenos Negócios: 86,9\%}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}\hfill%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}OPTANTES SIMPLES (SINAC)}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}164.996}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Sócios QSA: 106.471}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}\hfill%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}TEMPO DE ABERTURA (2026)}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}18,5 horas}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Viab.: 15,7h | Reg.: 2,7h}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}%
+}
+
+\vspace{0.03cm}
+\noindent\begin{tikzpicture}
+  \node[fill=corfundo, draw=cinzaborda, line width=0.5pt, rounded corners=2pt,
+        inner xsep=8pt, inner ysep=5pt, text width=\textwidth-17pt, font=\scriptsize\color{cinzatexto}] (dbox) {
+    {\footnotesize\bfseries\color{corprimaria}Síntese de Variações e Desempenho (Ótica Anual / 12 Meses)}\par\vspace{2pt}
+    \begin{itemize}[leftmargin=11pt, itemsep=1.0pt, topsep=1pt, parsep=0pt]
+       \item \textbf{\color{verdealta}[EXPANSÃO DRÁSTICA / SALTO POSITIVO] Estoque de CNPJs Ativos (Out/2026):} Estoque de CNPJs Ativos (Out/2026) registrou aceleração expressiva de +9,65\% (mudança drástica acima do padrão recente). [nível: 167.565]
+       \item \textbf{\color{verdealta}[EXPANSÃO DRÁSTICA / SALTO POSITIVO] Novas Inscrições de CNPJ no Mês:} Novas Inscrições de CNPJ no Mês registrou aceleração expressiva de +5,46\% (mudança drástica acima do padrão recente). [nível: 2.760]
+       \item \textbf{\color{corsecundaria}[ESTABILIDADE (VALOR INALTERADO)] Participação de MEIs + Microempresas (ME):} Participação de MEIs + Microempresas (ME) manteve-se praticamente inalterado (+0,05\%), indicando estabilidade marginal. [nível: 86,9\%]
+       \item \textbf{\color{vermelhobaixa}[QUEDA DRÁSTICA / CONTRAÇÃO ACENTUADA] Tempo Médio de Abertura de Empresas (TO vs. Brasil):} Tempo Médio de Abertura de Empresas (TO vs. Brasil) sofreu retração acentuada de -29,39\% (queda drástica que requer atenção conjuntural). [nível: 18,5h (BR: 26,2h)]
+    \end{itemize}
+  };
+  \fill[corprimaria] (dbox.north west) rectangle ([xshift=3pt]dbox.south west);
+\end{tikzpicture}
+
+\vspace{0.03cm}
+\begin{multicols}{2}
+\secaoperiodico{1. Análise Estrutural Anual / Acumulado em 12 Meses}
+{\small A avaliação do ciclo de 12 meses da dinâmica empresarial no Tocantins revela uma expansão líquida robusta de 15.608 estabelecimentos ativos, equivalente a um avanço superior a 10\% no estoque empresarial do Estado em apenas um ano. Em todos os doze meses da janela analisada, o volume de novas inscrições superou amplamente o número de baixas cadastrais, confirmando um ambiente favorável ao nascimento e sobrevivência de negócios.
+
+\medskip
+Os pequenos negócios constituem a espinha dorsal dessa expansão: somados, os Microempreendedores Individuais (52,9\%) e as Microempresas (34,0\%) representam 86,9\% das empresas ativas no Estado, às quais se somam 7,1\% de Empresas de Pequeno Porte (EPP). No Quadro de Sócios e Administradores (QSA), o predomínio da figura do Sócio-Administrador (86,7\% das qualificações) e a concentração etária entre 31 e 50 anos atestam a gestão direta dos proprietários sobre os empreendimentos locais.}
+\end{multicols}
+\begin{center}\includegraphics[width=0.84\textwidth]{figuras/2026_11_dossie_empresas_emp_ativos.pdf}\end{center}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Distribuição das Empresas Ativas por Porte no Tocantins (Out/2026)}\par\vspace{2pt}
+  {\fontsize{7.0}{8.6}\selectfont\setlength{\tabcolsep}{4.5pt}%
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}Xrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Porte Empresarial (Receita Federal / SINAC)} & \textbf{\color{white}CNPJs Ativos no Tocantins} & \textbf{\color{white}Participação no Estoque (\%)} \\
+\midrule
+MEI & 88.650 & 52,90\% \\
+\rowcolor{corfundo} Microempresa (ME) & 56.958 & 33,99\% \\
+Pequeno Porte (EPP) & 11.896 & 7,10\% \\
+\rowcolor{corfundo} Não Informado / Demais & 10.061 & 6,00\% \\
+\bottomrule
+\end{tabularx}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: Receita Federal / SERPRO e SINAC (Optantes Simples Nacional: 164.996 | Tempo Médio de Abertura 2026: 18,5h).}}
+\end{minipage}
+\par\vspace{0.08cm}
+
+\par\vspace{0.08cm}
+\noindent\begin{minipage}[t]{0.482\textwidth}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Quadro Societário (QSA) por Qualificação (Total: 106.471)}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.0pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Qualificação e Tipo no QSA (RFB)} & \textbf{\color{white}Sócios} & \textbf{\color{white}Empresas} & \textbf{\color{white}Part. \%} \\
+\midrule
+Sócio-Administrador (Pessoa Física) & 61.828 & 54.177 & 55,33\% \\
+\rowcolor{corfundo} Sócio (Pessoa Física) & 18.061 & 13.176 & 16,16\% \\
+Diretor (Pessoa Física) & 14.635 & 1.996 & 13,10\% \\
+\rowcolor{corfundo} Administrador (Pessoa Física) & 7.706 & 5.304 & 6,90\% \\
+Sócio (Pessoa Jurídica) & 4.789 & 3.274 & 4,29\% \\
+\rowcolor{corfundo} Conselheiro de Administração (Pessoa Física) & 1.854 & 515 & 1,66\% \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: RFB/SERPRO. Gênero QSA: Feminino (32,9\%); Masculino (67,0\%); Não informado (0,0\%).}}
+\end{minipage}
+\par\vspace{0.08cm}
+\end{minipage}\hfill
+{\color{cinzaborda}\vrule width 0.4pt}\hfill
+\begin{minipage}[t]{0.482\textwidth}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Perfil Etário do Quadro Societário (QSA — TO)}\par\vspace{2pt}
+  {\scriptsize\setlength{\tabcolsep}{4.0pt}%
+\noindent\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Faixa Etária dos Sócios (QSA)} & \textbf{\color{white}Sócios} & \textbf{\color{white}Empresas} & \textbf{\color{white}Part. \%} \\
+\midrule
+Até 25 anos & 4.821 & 4.331 & 4,5\% \\
+\rowcolor{corfundo} Dos 26 aos 35 anos & 18.579 & 16.230 & 17,4\% \\
+Dos 36 aos 49 anos & 42.435 & 30.040 & 39,9\% \\
+\rowcolor{corfundo} Dos 50+ & 40.635 & 24.007 & 38,2\% \\
+\bottomrule
+\end{tabular}%
+}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: Receita Federal do Brasil / SERPRO — Microdados do QSA.}}
+\end{minipage}
+\par\vspace{0.08cm}
+\end{minipage}
+\par\vspace{0.08cm}
+
+\bannersecaoperiodico{2}{BALANÇO RETROSPECTIVO (12 MESES) E CENÁRIOS PROSPECTIVOS}{Séries Anualizadas, Consolidação Plurianual, Capilaridade Regional e Perspectivas da Equipe Técnica}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Balanço Demográfico Empresarial nos Últimos 12 Meses no Tocantins (Aberturas, Baixas e Estoque)}\par\vspace{2pt}
+  {\fontsize{7.0}{8.6}\selectfont\setlength{\tabcolsep}{4.5pt}%
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}Xrrrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Competência} & \textbf{\color{white}Novas Inscrições (Aberturas)} & \textbf{\color{white}Baixas / Extinções} & \textbf{\color{white}Saldo Líquido Mensal} & \textbf{\color{white}Estoque de CNPJs Ativos} \\
+\midrule
+Nov/25 & 2.168 & 1.306 & +862 & 152.819 \\
+\rowcolor{corfundo} Dez/25 & 2.007 & 1.441 & +566 & 153.385 \\
+Jan/26 & 3.845 & 2.042 & +1.803 & 155.188 \\
+\rowcolor{corfundo} Fev/26 & 3.241 & 1.781 & +1.460 & 156.648 \\
+Mar/26 & 3.518 & 1.790 & +1.728 & 158.376 \\
+\rowcolor{corfundo} Abr/26 & 3.086 & 1.636 & +1.450 & 159.826 \\
+Mai/26 & 2.973 & 1.798 & +1.175 & 161.001 \\
+\rowcolor{corfundo} Jun/26 & 3.009 & 1.690 & +1.319 & 162.320 \\
+Jul/26 & 2.781 & 1.468 & +1.313 & 163.633 \\
+\rowcolor{corfundo} Ago/26 & 2.989 & 1.562 & +1.427 & 165.060 \\
+Set/26 & 2.617 & 1.416 & +1.201 & 166.261 \\
+\rowcolor{corfundo} Out/26 & 2.760 & 1.456 & +1.304 & 167.565 \\
+\bottomrule
+\end{tabularx}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: Receita Federal do Brasil / SERPRO.}}
+\end{minipage}
+\par\vspace{0.08cm}
+
+\vspace{0.03cm}
+\begin{multicols}{2}
+\secaoperiodico{2.1. Vetores Estruturais e Perspectivas para o Próximo Ciclo}
+{\small A consolidação do tempo médio de abertura em 18,5 horas no Mapa de Empresas (REDESIM) e a elevada adesão ao Simples Nacional (164.996 optantes) projetam continuidade do ciclo de formalização empresarial ao longo do próximo exercício.}
+
+\secaoperiodico{2.2. Transmissão Intersetorial e Capilaridade Municipal}
+{\small O acompanhamento sob a ótica acumulada em 12 meses evidencia que a dinâmica econômica do Tocantins apoia-se na complementaridade entre os polos regionais consolidados (Palmas, Araguaína, Gurupi, Porto Nacional, Paraíso do Tocantins e Colinas do Tocantins) e os municípios de expansão agroindustrial e logística ao longo do corredor da BR-153 e da Ferrovia Norte-Sul. A depuração de efeitos sazonais de curto prazo permite identificar ganhos persistentes de escala produtiva, formalização empresarial e densidade salarial.}
+
+\secaoperiodico{2.3. Síntese Institucional e Metodológica (Ótica de 12 Meses)}
+{\small A leitura conjunta das séries acumuladas em quatro trimestres e das comparações interanuais confirma a solidez dos fundamentos regionais do Tocantins neste eixo temático. O monitoramento contínuo das bases oficiais pelo Jornal Econômico do Tocantins — integrando extração automatizada via APIs públicas, tratamento de microdados e revisão analítica da equipe — permite distinguir oscilações transitórias de mudanças estruturais de tendência, subsidiando decisões de investimento privado e formulação de políticas públicas estaduais e municipais.}
+\end{multicols}
+
+
+\vspace{0.12cm}
+
+% ==============================================================================
+% EXPEDIENTE INSTITUCIONAL E NOTA METODOLÓGICA
+% ==============================================================================
+\noindent\begin{tikzpicture}
+  \node[
+    fill=corfundo,
+    draw=cinzaborda,
+    line width=0.5pt,
+    rounded corners=2pt,
+    inner sep=6pt,
+    text width=\textwidth-13pt,
+    font=\scriptsize\color{cinzasub}
+  ] {
+    \textbf{\color{corprimaria}Expediente e Nota Metodológica:} Integra os registros de CNPJs ativos por porte (MEI, ME, EPP e Demais), optantes pelo Simples Nacional (SINAC), tempos de abertura (Mapa de Empresas) e o Quadro de Sócios e Administradores (QSA — qualificação, faixa etária e sexo).\par\vspace{2pt}
+    \textbf{\color{corprimaria}Equipe Responsável:} Lorenzo Costa e Equipe | Núcleo de Conjuntura do Jornal Econômico do Tocantins \enspace$\vert$\enspace \textbf{\color{corprimaria}Publicação Institucional:} Núcleo de Conjuntura Econômica — \textit{Jornal Econômico do Tocantins}.
+  };
+\end{tikzpicture}
+
+\end{document}

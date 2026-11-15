@@ -1,0 +1,14 @@
+TIPO: dossie_empresas
+TITULO: Dossiê Anual — Demografia Empresarial, Simples Nacional e Quadro Societário (QSA)
+SUBTITULO: Balanço de 12 meses das aberturas, baixas e estoque de CNPJs ativos por porte (MEI, ME e EPP), adesão ao Simples Nacional, perfil societário (QSA) e eficiência da REDESIM no Tocantins
+AUTOR: Lorenzo Costa e Equipe | Núcleo de Conjuntura do Jornal Econômico do Tocantins
+DATA: 14/11/2026
+PERIODO: Acumulado em 12 Meses (Novembro/2025 a Outubro/2026)
+DESTAQUE_CURTO: Nos últimos 12 meses, o Tocantins acumulou saldo líquido positivo de +15.608 empresas (32.893 aberturas contra 17.285 baixas), elevando o parque ativo para 167.565 CNPJs e 102.075 sócios ativos no QSA.
+=== ANALISE_CONJUNTURA ===
+A avaliação do ciclo de 12 meses da dinâmica empresarial no Tocantins revela uma expansão líquida robusta de 15.608 estabelecimentos ativos, equivalente a um avanço superior a 10% no estoque empresarial do Estado em apenas um ano. Em todos os doze meses da janela analisada, o volume de novas inscrições superou amplamente o número de baixas cadastrais, confirmando um ambiente favorável ao nascimento e sobrevivência de negócios.
+
+Os pequenos negócios constituem a espinha dorsal dessa expansão: somados, os Microempreendedores Individuais (52,9%) e as Microempresas (34,0%) representam 86,9% das empresas ativas no Estado, às quais se somam 7,1% de Empresas de Pequeno Porte (EPP). No Quadro de Sócios e Administradores (QSA), o predomínio da figura do Sócio-Administrador (86,7% das qualificações) e a concentração etária entre 31 e 50 anos atestam a gestão direta dos proprietários sobre os empreendimentos locais.
+
+=== PERSPECTIVAS ===
+A consolidação do tempo médio de abertura em 18,5 horas no Mapa de Empresas (REDESIM) e a elevada adesão ao Simples Nacional (164.996 optantes) projetam continuidade do ciclo de formalização empresarial ao longo do próximo exercício.

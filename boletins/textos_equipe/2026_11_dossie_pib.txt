@@ -1,0 +1,16 @@
+TIPO: dossie_pib
+TITULO: Dossiê Anual — PIB do Tocantins, Séries Dessazonalizadas e Contas Regionais
+SUBTITULO: Balanço estrutural sob a ótica acumulada em 4 trimestres e plurianual: comparação entre o ajuste sazonal X-13ARIMA-SEATS (TO), a Tabela 1621 do IBGE (Brasil) e o PIB Municipal (Tabela 5938)
+AUTOR: Lorenzo Costa e Equipe | Núcleo de Conjuntura do Jornal Econômico do Tocantins
+DATA: 14/11/2026
+PERIODO: Consolidado Anual / Últimos 4 Trimestres (2025–2026)
+DESTAQUE_CURTO: Sob a ótica anualizada de quatro trimestres e das Contas Regionais do IBGE (Tabela 5938), o Tocantins sustenta ganho consistente de participação na Região Norte e no Brasil, combinando pujança primária com densificação industrial e de serviços nos dez maiores municípios.
+=== ANALISE_CONJUNTURA ===
+Enquanto os boletins mensais e trimestrais capturam oscilações de curtíssimo prazo, a ótica anual e acumulada em quatro trimestres permite enxergar a tendência estrutural da economia tocantinense livre de ruídos sazonais. O pareamento histórico entre o índice de volume ajustado sazonalmente (X-13ARIMA-SEATS) da SEPLAN-TO e a Tabela 1621 do IBGE confirma que o Tocantins mantém diferencial positivo de crescimento frente à média nacional ao longo do ciclo recente.
+
+Nas Contas Regionais do Brasil (Tabela 5938 do IBGE), observa-se a consolidação de uma rede urbana policêntrica: Palmas lidera a geração de Valor Adicionado em serviços e administração pública, enquanto Araguaína, Porto Nacional, Gurupi e Paraíso do Tocantins ancoram o processamento agroindustrial, o comércio atacadista e os corredores multimodais da Ferrovia Norte-Sul e da BR-153.
+
+Por sua vez, os municípios de fronteira agrícola altamente tecnificada — como Campos Lindos, Formoso do Araguaia e Lagoa da Confusão — figuram no Top 10 estadual graças à escala produtiva das lavouras de soja, milho e arroz irrigado.
+
+=== PERSPECTIVAS ===
+Para o horizonte plurianual, a maturação de investimentos em armazenagem, esmagamento de grãos e plantas frigoríficas aponta para a elevação da retenção interna de Valor Adicionado Industrial no território tocantinense.

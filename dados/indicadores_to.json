@@ -1,0 +1,2545 @@
+{
+  "ultima_atualizacao": "14/11/2026",
+  "datas": {
+    "dt_pib_tri": "04/11/2026",
+    "dt_pib_br": "10/10/2026",
+    "dt_caged": "10/11/2026",
+    "dt_rais": "10/11/2026",
+    "dt_pnad": "10/10/2026",
+    "dt_comex": "09/11/2026",
+    "dt_fazenda": "11/11/2026",
+    "dt_receita": "12/11/2026",
+    "dt_mapa_empr": "12/11/2026"
+  },
+  "visao_geral": {
+    "vb_crescimento_pib": "-1,3%",
+    "vb_desocupacao": "4,1%",
+    "vb_icms_var": "-5,25%",
+    "vb_novos_cnpjs": "2.760",
+    "df_chart1": [
+      {
+        "Trimestre": "T3 2024",
+        "Valor": 12.88,
+        "Serie": "Arrecadação ICMS"
+      },
+      {
+        "Trimestre": "T4 2024",
+        "Valor": 1.17,
+        "Serie": "Arrecadação ICMS"
+      },
+      {
+        "Trimestre": "T1 2025",
+        "Valor": 7.85,
+        "Serie": "Arrecadação ICMS"
+      },
+      {
+        "Trimestre": "T2 2025",
+        "Valor": 11.36,
+        "Serie": "Arrecadação ICMS"
+      },
+      {
+        "Trimestre": "T3 2025",
+        "Valor": 5.9,
+        "Serie": "Arrecadação ICMS"
+      },
+      {
+        "Trimestre": "T4 2025",
+        "Valor": 6.18,
+        "Serie": "Arrecadação ICMS"
+      },
+      {
+        "Trimestre": "T1 2026",
+        "Valor": 3.18,
+        "Serie": "Arrecadação ICMS"
+      },
+      {
+        "Trimestre": "T3 2024",
+        "Valor": 0.71,
+        "Serie": "PIB trimestral"
+      },
+      {
+        "Trimestre": "T4 2024",
+        "Valor": 1.64,
+        "Serie": "PIB trimestral"
+      },
+      {
+        "Trimestre": "T1 2025",
+        "Valor": 3.54,
+        "Serie": "PIB trimestral"
+      },
+      {
+        "Trimestre": "T2 2025",
+        "Valor": -1.85,
+        "Serie": "PIB trimestral"
+      },
+      {
+        "Trimestre": "T3 2025",
+        "Valor": -0.2,
+        "Serie": "PIB trimestral"
+      },
+      {
+        "Trimestre": "T4 2025",
+        "Valor": 1.01,
+        "Serie": "PIB trimestral"
+      },
+      {
+        "Trimestre": "T1 2026",
+        "Valor": -1.28,
+        "Serie": "PIB trimestral"
+      }
+    ],
+    "df_chart2": [
+      {
+        "Periodo": "Out/25",
+        "Valor": 100,
+        "Serie": "Abertura de CNPJs"
+      },
+      {
+        "Periodo": "Nov/25",
+        "Valor": 83,
+        "Serie": "Abertura de CNPJs"
+      },
+      {
+        "Periodo": "Dez/25",
+        "Valor": 76.8,
+        "Serie": "Abertura de CNPJs"
+      },
+      {
+        "Periodo": "Jan/26",
+        "Valor": 147.1,
+        "Serie": "Abertura de CNPJs"
+      },
+      {
+        "Periodo": "Fev/26",
+        "Valor": 124,
+        "Serie": "Abertura de CNPJs"
+      },
+      {
+        "Periodo": "Mar/26",
+        "Valor": 134.6,
+        "Serie": "Abertura de CNPJs"
+      },
+      {
+        "Periodo": "Abr/26",
+        "Valor": 118.1,
+        "Serie": "Abertura de CNPJs"
+      },
+      {
+        "Periodo": "Mai/26",
+        "Valor": 113.8,
+        "Serie": "Abertura de CNPJs"
+      },
+      {
+        "Periodo": "Jun/26",
+        "Valor": 115.2,
+        "Serie": "Abertura de CNPJs"
+      },
+      {
+        "Periodo": "Jul/26",
+        "Valor": 106.4,
+        "Serie": "Abertura de CNPJs"
+      },
+      {
+        "Periodo": "Ago/26",
+        "Valor": 114.4,
+        "Serie": "Abertura de CNPJs"
+      },
+      {
+        "Periodo": "Set/26",
+        "Valor": 100.2,
+        "Serie": "Abertura de CNPJs"
+      },
+      {
+        "Periodo": "Out/25",
+        "Valor": 100,
+        "Serie": "Admissões (Novo CAGED)"
+      },
+      {
+        "Periodo": "Nov/25",
+        "Valor": 83.3,
+        "Serie": "Admissões (Novo CAGED)"
+      },
+      {
+        "Periodo": "Dez/25",
+        "Valor": 66,
+        "Serie": "Admissões (Novo CAGED)"
+      },
+      {
+        "Periodo": "Jan/26",
+        "Valor": 103.1,
+        "Serie": "Admissões (Novo CAGED)"
+      },
+      {
+        "Periodo": "Fev/26",
+        "Valor": 106.5,
+        "Serie": "Admissões (Novo CAGED)"
+      },
+      {
+        "Periodo": "Mar/26",
+        "Valor": 104.5,
+        "Serie": "Admissões (Novo CAGED)"
+      },
+      {
+        "Periodo": "Abr/26",
+        "Valor": 100.1,
+        "Serie": "Admissões (Novo CAGED)"
+      },
+      {
+        "Periodo": "Mai/26",
+        "Valor": 93.9,
+        "Serie": "Admissões (Novo CAGED)"
+      },
+      {
+        "Periodo": "Jun/26",
+        "Valor": 96.3,
+        "Serie": "Admissões (Novo CAGED)"
+      },
+      {
+        "Periodo": "Jul/26",
+        "Valor": 100.6,
+        "Serie": "Admissões (Novo CAGED)"
+      },
+      {
+        "Periodo": "Ago/26",
+        "Valor": 107.5,
+        "Serie": "Admissões (Novo CAGED)"
+      },
+      {
+        "Periodo": "Set/26",
+        "Valor": 96,
+        "Serie": "Admissões (Novo CAGED)"
+      }
+    ]
+  },
+  "pib": {
+    "periodo_referencia": "T1 2026",
+    "vb_pib_nominal_to": "R$ 25,8 Bi ▼ 1,3%",
+    "vb_impostos_to": "R$ 2,26 Bi ▼ 0,2%",
+    "vb_pib_nominal_br": "R$ 3,43 Tri ▲ 0,5%",
+    "vb_setor_agro": "▼ - 7,2%",
+    "vb_setor_servicos": "▲ + 1,5%",
+    "vb_setor_industria": "▲ + 3,1%",
+    "setores_ranking": [
+      {
+        "posicao": 1,
+        "setor": "Indústria",
+        "titulo": "1º Indústria",
+        "valor_num": 3.0677,
+        "valor_fmt": "▲ + 3,1%",
+        "icone": "chevron-double-up"
+      },
+      {
+        "posicao": 2,
+        "setor": "Serviços",
+        "titulo": "2º Serviços",
+        "valor_num": 1.529,
+        "valor_fmt": "▲ + 1,5%",
+        "icone": "chevron-up"
+      },
+      {
+        "posicao": 3,
+        "setor": "Agropecuária",
+        "titulo": "3º Agropecuária",
+        "valor_num": -7.1625,
+        "valor_fmt": "▼ - 7,2%",
+        "icone": "chevron-down"
+      }
+    ],
+    "df_pib": [
+      {
+        "Ano": "T3 2024",
+        "Indice": 0.71,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T4 2024",
+        "Indice": 1.64,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T1 2025",
+        "Indice": 3.54,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T2 2025",
+        "Indice": -1.85,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T3 2025",
+        "Indice": -0.2,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T4 2025",
+        "Indice": 1.01,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T1 2026",
+        "Indice": -1.28,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T3 2024",
+        "Indice": 0.9,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T4 2024",
+        "Indice": 0.08,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T1 2025",
+        "Indice": 1.26,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T2 2025",
+        "Indice": 0.36,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T3 2025",
+        "Indice": 0.11,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T4 2025",
+        "Indice": 0.25,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T1 2026",
+        "Indice": 1.07,
+        "Regiao": "Brasil"
+      }
+    ],
+    "df_pib_historico": [
+      {
+        "Ano": "T2 2010",
+        "Indice": 2.31,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T3 2010",
+        "Indice": 2.61,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T4 2010",
+        "Indice": 1.78,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T1 2011",
+        "Indice": 4.05,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T2 2011",
+        "Indice": 9.43,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T3 2011",
+        "Indice": -7.64,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T4 2011",
+        "Indice": 2.89,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T1 2012",
+        "Indice": 2.14,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T2 2012",
+        "Indice": -0.71,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T3 2012",
+        "Indice": 0.88,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T4 2012",
+        "Indice": 2.06,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T1 2013",
+        "Indice": -2.39,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T2 2013",
+        "Indice": 1.48,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T3 2013",
+        "Indice": 3.45,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T4 2013",
+        "Indice": 2.49,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T1 2014",
+        "Indice": 0.23,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T2 2014",
+        "Indice": 3,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T3 2014",
+        "Indice": -0.66,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T4 2014",
+        "Indice": -0.22,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T1 2015",
+        "Indice": 2.77,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T2 2015",
+        "Indice": -3.06,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T3 2015",
+        "Indice": -1.69,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T4 2015",
+        "Indice": -1.32,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T1 2016",
+        "Indice": -5.23,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T2 2016",
+        "Indice": 3.35,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T3 2016",
+        "Indice": 2.95,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T4 2016",
+        "Indice": 0.78,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T1 2017",
+        "Indice": -0.08,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T2 2017",
+        "Indice": -0.05,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T3 2017",
+        "Indice": -0.12,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T4 2017",
+        "Indice": 1.56,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T1 2018",
+        "Indice": -0.95,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T2 2018",
+        "Indice": 0.27,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T3 2018",
+        "Indice": 2.19,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T4 2018",
+        "Indice": 3.58,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T1 2019",
+        "Indice": -3,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T2 2019",
+        "Indice": 3.23,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T3 2019",
+        "Indice": 2.35,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T4 2019",
+        "Indice": 3.95,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T1 2020",
+        "Indice": -15.22,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T2 2020",
+        "Indice": 8.4,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T3 2020",
+        "Indice": 4.24,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T4 2020",
+        "Indice": 2.98,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T1 2021",
+        "Indice": 2.95,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T2 2021",
+        "Indice": -2.78,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T3 2021",
+        "Indice": 1.04,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T4 2021",
+        "Indice": 2.79,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T1 2022",
+        "Indice": 7.87,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T2 2022",
+        "Indice": -4.63,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T3 2022",
+        "Indice": -0.55,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T4 2022",
+        "Indice": -0.81,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T1 2023",
+        "Indice": 10.97,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T2 2023",
+        "Indice": -2.68,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T3 2023",
+        "Indice": 2.76,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T4 2023",
+        "Indice": 0.56,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T1 2024",
+        "Indice": 1.63,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T2 2024",
+        "Indice": 4.87,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T3 2024",
+        "Indice": 0.71,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T4 2024",
+        "Indice": 1.64,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T1 2025",
+        "Indice": 3.54,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T2 2025",
+        "Indice": -1.85,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T3 2025",
+        "Indice": -0.2,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T4 2025",
+        "Indice": 1.01,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T1 2026",
+        "Indice": -1.28,
+        "Regiao": "Tocantins"
+      },
+      {
+        "Ano": "T2 2010",
+        "Indice": 1.28,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T3 2010",
+        "Indice": 0.88,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T4 2010",
+        "Indice": 1.43,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T1 2011",
+        "Indice": 1.34,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T2 2011",
+        "Indice": 1.01,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T3 2011",
+        "Indice": -0.22,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T4 2011",
+        "Indice": 0.91,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T1 2012",
+        "Indice": -1.43,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T2 2012",
+        "Indice": 1.8,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T3 2012",
+        "Indice": 1.72,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T4 2012",
+        "Indice": 0.03,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T1 2013",
+        "Indice": 0.54,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T2 2013",
+        "Indice": 1.38,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T3 2013",
+        "Indice": 0.48,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T4 2013",
+        "Indice": 0.16,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T1 2014",
+        "Indice": 0.84,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T2 2014",
+        "Indice": -1.47,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T3 2014",
+        "Indice": -0.06,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T4 2014",
+        "Indice": 0.53,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T1 2015",
+        "Indice": -0.79,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T2 2015",
+        "Indice": -2.36,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T3 2015",
+        "Indice": -1.64,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T4 2015",
+        "Indice": -0.77,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T1 2016",
+        "Indice": -1.44,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T2 2016",
+        "Indice": 0.28,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T3 2016",
+        "Indice": -0.54,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T4 2016",
+        "Indice": -0.11,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T1 2017",
+        "Indice": 1.03,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T2 2017",
+        "Indice": 0.83,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T3 2017",
+        "Indice": 0.23,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T4 2017",
+        "Indice": 0.54,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T1 2018",
+        "Indice": 0.61,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T2 2018",
+        "Indice": -0.11,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T3 2018",
+        "Indice": 0.95,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T4 2018",
+        "Indice": -0.25,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T1 2019",
+        "Indice": 0.3,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T2 2019",
+        "Indice": 0.58,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T3 2019",
+        "Indice": 0.02,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T4 2019",
+        "Indice": 0.88,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T1 2020",
+        "Indice": -2.29,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T2 2020",
+        "Indice": -8.88,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T3 2020",
+        "Indice": 7.92,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T4 2020",
+        "Indice": 3.84,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T1 2021",
+        "Indice": 0.87,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T2 2021",
+        "Indice": -0.7,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T3 2021",
+        "Indice": 0.15,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T4 2021",
+        "Indice": 1.33,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T1 2022",
+        "Indice": 0.69,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T2 2022",
+        "Indice": 1.14,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T3 2022",
+        "Indice": 1.05,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T4 2022",
+        "Indice": 0.43,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T1 2023",
+        "Indice": 1.33,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T2 2023",
+        "Indice": 0.79,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T3 2023",
+        "Indice": 0.14,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T4 2023",
+        "Indice": 0.37,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T1 2024",
+        "Indice": 0.66,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T2 2024",
+        "Indice": 1.71,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T3 2024",
+        "Indice": 0.9,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T4 2024",
+        "Indice": 0.08,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T1 2025",
+        "Indice": 1.26,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T2 2025",
+        "Indice": 0.36,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T3 2025",
+        "Indice": 0.11,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T4 2025",
+        "Indice": 0.25,
+        "Regiao": "Brasil"
+      },
+      {
+        "Ano": "T1 2026",
+        "Indice": 1.07,
+        "Regiao": "Brasil"
+      }
+    ]
+  },
+  "trabalho": {
+    "ano_rais": 2025,
+    "nome_coluna_estoque_mun": "Estoque (RAIS) 2025",
+    "vb_estoque_rais": "437.580",
+    "vb_estab_ativos_rais": "33.198",
+    "vb_remuneracao_rais": "R$ 4.022,93",
+    "competencia_caged": 202609,
+    "mes_ano_caged": "09/26",
+    "mes_ano_extenso_caged": "Setembro/2026",
+    "nome_coluna_saldo_mun": "Saldo (Novo CAGED) 09/26",
+    "vb_saldo_caged": "+716",
+    "vb_admitidos_caged": "11.263",
+    "vb_desligados_caged": "10.547",
+    "vb_salario_medio_caged": "R$ 2.117,32",
+    "vb_desocupacao": "4,1%",
+    "vb_rendimento": "R$ 3.351",
+    "df_caged": [
+      {
+        "Mes": "Out/25",
+        "Saldo": 27,
+        "Serie": "Saldo Mensal"
+      },
+      {
+        "Mes": "Nov/25",
+        "Saldo": -363,
+        "Serie": "Saldo Mensal"
+      },
+      {
+        "Mes": "Dez/25",
+        "Saldo": -4449,
+        "Serie": "Saldo Mensal"
+      },
+      {
+        "Mes": "Jan/26",
+        "Saldo": 1585,
+        "Serie": "Saldo Mensal"
+      },
+      {
+        "Mes": "Fev/26",
+        "Saldo": 1383,
+        "Serie": "Saldo Mensal"
+      },
+      {
+        "Mes": "Mar/26",
+        "Saldo": 667,
+        "Serie": "Saldo Mensal"
+      },
+      {
+        "Mes": "Abr/26",
+        "Saldo": 597,
+        "Serie": "Saldo Mensal"
+      },
+      {
+        "Mes": "Mai/26",
+        "Saldo": -636,
+        "Serie": "Saldo Mensal"
+      },
+      {
+        "Mes": "Jun/26",
+        "Saldo": -102,
+        "Serie": "Saldo Mensal"
+      },
+      {
+        "Mes": "Jul/26",
+        "Saldo": -324,
+        "Serie": "Saldo Mensal"
+      },
+      {
+        "Mes": "Ago/26",
+        "Saldo": 1243,
+        "Serie": "Saldo Mensal"
+      },
+      {
+        "Mes": "Set/26",
+        "Saldo": 716,
+        "Serie": "Saldo Mensal"
+      }
+    ],
+    "df_setores": [
+      {
+        "Setor": "Serviços",
+        "Saldo": 590
+      },
+      {
+        "Setor": "Construção",
+        "Saldo": 211
+      },
+      {
+        "Setor": "Comércio",
+        "Saldo": 121
+      },
+      {
+        "Setor": "Agropecuária",
+        "Saldo": -187
+      },
+      {
+        "Setor": "Indústria",
+        "Saldo": -19
+      }
+    ],
+    "df_municipios": [
+      {
+        "Município": "Palmas",
+        "Estoque (RAIS) 2025": 220673,
+        "Saldo (Novo CAGED) 09/26": 399
+      },
+      {
+        "Município": "Araguaína",
+        "Estoque (RAIS) 2025": 47010,
+        "Saldo (Novo CAGED) 09/26": 180
+      },
+      {
+        "Município": "Gurupi",
+        "Estoque (RAIS) 2025": 20492,
+        "Saldo (Novo CAGED) 09/26": 89
+      },
+      {
+        "Município": "Porto Nacional",
+        "Estoque (RAIS) 2025": 14172,
+        "Saldo (Novo CAGED) 09/26": 76
+      },
+      {
+        "Município": "Paraíso do Tocantins",
+        "Estoque (RAIS) 2025": 12288,
+        "Saldo (Novo CAGED) 09/26": 27
+      },
+      {
+        "Município": "Colinas do Tocantins",
+        "Estoque (RAIS) 2025": 5707,
+        "Saldo (Novo CAGED) 09/26": 9
+      },
+      {
+        "Município": "Guaraí",
+        "Estoque (RAIS) 2025": 3608,
+        "Saldo (Novo CAGED) 09/26": -9
+      },
+      {
+        "Município": "Formoso do Araguaia",
+        "Estoque (RAIS) 2025": 3387,
+        "Saldo (Novo CAGED) 09/26": -85
+      },
+      {
+        "Município": "Lagoa da Confusão",
+        "Estoque (RAIS) 2025": 3137,
+        "Saldo (Novo CAGED) 09/26": -36
+      },
+      {
+        "Município": "Dianópolis",
+        "Estoque (RAIS) 2025": 3122,
+        "Saldo (Novo CAGED) 09/26": -17
+      },
+      {
+        "Município": "Tocantinópolis",
+        "Estoque (RAIS) 2025": 3014,
+        "Saldo (Novo CAGED) 09/26": -19
+      },
+      {
+        "Município": "Araguatins",
+        "Estoque (RAIS) 2025": 2891,
+        "Saldo (Novo CAGED) 09/26": 3
+      },
+      {
+        "Município": "Pedro Afonso",
+        "Estoque (RAIS) 2025": 2788,
+        "Saldo (Novo CAGED) 09/26": 29
+      },
+      {
+        "Município": "Miracema do Tocantins",
+        "Estoque (RAIS) 2025": 2578,
+        "Saldo (Novo CAGED) 09/26": 13
+      },
+      {
+        "Município": "Augustinópolis",
+        "Estoque (RAIS) 2025": 2335,
+        "Saldo (Novo CAGED) 09/26": 25
+      },
+      {
+        "Município": "Xambioá",
+        "Estoque (RAIS) 2025": 2192,
+        "Saldo (Novo CAGED) 09/26": -7
+      },
+      {
+        "Município": "Alvorada",
+        "Estoque (RAIS) 2025": 2013,
+        "Saldo (Novo CAGED) 09/26": -35
+      },
+      {
+        "Município": "Almas",
+        "Estoque (RAIS) 2025": 1911,
+        "Saldo (Novo CAGED) 09/26": 20
+      },
+      {
+        "Município": "Aguiarnópolis",
+        "Estoque (RAIS) 2025": 1896,
+        "Saldo (Novo CAGED) 09/26": 1
+      },
+      {
+        "Município": "Miranorte",
+        "Estoque (RAIS) 2025": 1820,
+        "Saldo (Novo CAGED) 09/26": -1
+      },
+      {
+        "Município": "Nova Olinda",
+        "Estoque (RAIS) 2025": 1752,
+        "Saldo (Novo CAGED) 09/26": -12
+      },
+      {
+        "Município": "Taguatinga",
+        "Estoque (RAIS) 2025": 1675,
+        "Saldo (Novo CAGED) 09/26": 3
+      },
+      {
+        "Município": "Cariri do Tocantins",
+        "Estoque (RAIS) 2025": 1659,
+        "Saldo (Novo CAGED) 09/26": -17
+      },
+      {
+        "Município": "Pium",
+        "Estoque (RAIS) 2025": 1625,
+        "Saldo (Novo CAGED) 09/26": 2
+      },
+      {
+        "Município": "Peixe",
+        "Estoque (RAIS) 2025": 1582,
+        "Saldo (Novo CAGED) 09/26": -3
+      },
+      {
+        "Município": "São Bento do Tocantins",
+        "Estoque (RAIS) 2025": 1563,
+        "Saldo (Novo CAGED) 09/26": 10
+      },
+      {
+        "Município": "Campos Lindos",
+        "Estoque (RAIS) 2025": 1540,
+        "Saldo (Novo CAGED) 09/26": 14
+      },
+      {
+        "Município": "Sítio Novo do Tocantins",
+        "Estoque (RAIS) 2025": 1430,
+        "Saldo (Novo CAGED) 09/26": -3
+      },
+      {
+        "Município": "Araguaçu",
+        "Estoque (RAIS) 2025": 1397,
+        "Saldo (Novo CAGED) 09/26": -3
+      },
+      {
+        "Município": "Divinópolis do Tocantins",
+        "Estoque (RAIS) 2025": 1379,
+        "Saldo (Novo CAGED) 09/26": -12
+      },
+      {
+        "Município": "Palmeirópolis",
+        "Estoque (RAIS) 2025": 1299,
+        "Saldo (Novo CAGED) 09/26": -12
+      },
+      {
+        "Município": "Natividade",
+        "Estoque (RAIS) 2025": 1292,
+        "Saldo (Novo CAGED) 09/26": -10
+      },
+      {
+        "Município": "Darcinópolis",
+        "Estoque (RAIS) 2025": 1260,
+        "Saldo (Novo CAGED) 09/26": -1
+      },
+      {
+        "Município": "Aliança do Tocantins",
+        "Estoque (RAIS) 2025": 1206,
+        "Saldo (Novo CAGED) 09/26": 4
+      },
+      {
+        "Município": "Paranã",
+        "Estoque (RAIS) 2025": 1177,
+        "Saldo (Novo CAGED) 09/26": 8
+      },
+      {
+        "Município": "Cristalândia",
+        "Estoque (RAIS) 2025": 1172,
+        "Saldo (Novo CAGED) 09/26": -2
+      },
+      {
+        "Município": "Marianópolis do Tocantins",
+        "Estoque (RAIS) 2025": 1082,
+        "Saldo (Novo CAGED) 09/26": 12
+      },
+      {
+        "Município": "Ananás",
+        "Estoque (RAIS) 2025": 1048,
+        "Saldo (Novo CAGED) 09/26": 1
+      },
+      {
+        "Município": "Caseara",
+        "Estoque (RAIS) 2025": 1029,
+        "Saldo (Novo CAGED) 09/26": -10
+      },
+      {
+        "Município": "Santa Fé do Araguaia",
+        "Estoque (RAIS) 2025": 1028,
+        "Saldo (Novo CAGED) 09/26": 5
+      },
+      {
+        "Município": "Dueré",
+        "Estoque (RAIS) 2025": 1014,
+        "Saldo (Novo CAGED) 09/26": 3
+      },
+      {
+        "Município": "Goiatins",
+        "Estoque (RAIS) 2025": 1011,
+        "Saldo (Novo CAGED) 09/26": 6
+      },
+      {
+        "Município": "Arraias",
+        "Estoque (RAIS) 2025": 1011,
+        "Saldo (Novo CAGED) 09/26": -10
+      },
+      {
+        "Município": "Axixá do Tocantins",
+        "Estoque (RAIS) 2025": 1000,
+        "Saldo (Novo CAGED) 09/26": 1
+      },
+      {
+        "Município": "Araguacema",
+        "Estoque (RAIS) 2025": 992,
+        "Saldo (Novo CAGED) 09/26": -8
+      },
+      {
+        "Município": "Wanderlândia",
+        "Estoque (RAIS) 2025": 977,
+        "Saldo (Novo CAGED) 09/26": -36
+      },
+      {
+        "Município": "São Valério",
+        "Estoque (RAIS) 2025": 971,
+        "Saldo (Novo CAGED) 09/26": -4
+      },
+      {
+        "Município": "Silvanópolis",
+        "Estoque (RAIS) 2025": 964,
+        "Saldo (Novo CAGED) 09/26": 2
+      },
+      {
+        "Município": "Aparecida do Rio Negro",
+        "Estoque (RAIS) 2025": 952,
+        "Saldo (Novo CAGED) 09/26": 6
+      },
+      {
+        "Município": "Babaçulândia",
+        "Estoque (RAIS) 2025": 944,
+        "Saldo (Novo CAGED) 09/26": -8
+      },
+      {
+        "Município": "Monte do Carmo",
+        "Estoque (RAIS) 2025": 911,
+        "Saldo (Novo CAGED) 09/26": -1
+      },
+      {
+        "Município": "Colméia",
+        "Estoque (RAIS) 2025": 909,
+        "Saldo (Novo CAGED) 09/26": 1
+      },
+      {
+        "Município": "Palmeirante",
+        "Estoque (RAIS) 2025": 909,
+        "Saldo (Novo CAGED) 09/26": -4
+      },
+      {
+        "Município": "Bandeirantes do Tocantins",
+        "Estoque (RAIS) 2025": 885,
+        "Saldo (Novo CAGED) 09/26": -17
+      },
+      {
+        "Município": "Filadélfia",
+        "Estoque (RAIS) 2025": 854,
+        "Saldo (Novo CAGED) 09/26": -8
+      },
+      {
+        "Município": "Sandolândia",
+        "Estoque (RAIS) 2025": 846,
+        "Saldo (Novo CAGED) 09/26": -2
+      },
+      {
+        "Município": "Arapoema",
+        "Estoque (RAIS) 2025": 821,
+        "Saldo (Novo CAGED) 09/26": -1
+      },
+      {
+        "Município": "Aragominas",
+        "Estoque (RAIS) 2025": 778,
+        "Saldo (Novo CAGED) 09/26": -1
+      },
+      {
+        "Município": "Santa Rosa do Tocantins",
+        "Estoque (RAIS) 2025": 747,
+        "Saldo (Novo CAGED) 09/26": -5
+      },
+      {
+        "Município": "Itacajá",
+        "Estoque (RAIS) 2025": 729,
+        "Saldo (Novo CAGED) 09/26": -1
+      },
+      {
+        "Município": "Ponte Alta do Tocantins",
+        "Estoque (RAIS) 2025": 725,
+        "Saldo (Novo CAGED) 09/26": 5
+      },
+      {
+        "Município": "Figueirópolis",
+        "Estoque (RAIS) 2025": 713,
+        "Saldo (Novo CAGED) 09/26": 10
+      },
+      {
+        "Município": "Dois Irmãos do Tocantins",
+        "Estoque (RAIS) 2025": 713,
+        "Saldo (Novo CAGED) 09/26": 0
+      },
+      {
+        "Município": "Tabocão",
+        "Estoque (RAIS) 2025": 703,
+        "Saldo (Novo CAGED) 09/26": 3
+      },
+      {
+        "Município": "Novo Acordo",
+        "Estoque (RAIS) 2025": 702,
+        "Saldo (Novo CAGED) 09/26": 127
+      },
+      {
+        "Município": "Couto Magalhães",
+        "Estoque (RAIS) 2025": 689,
+        "Saldo (Novo CAGED) 09/26": -8
+      },
+      {
+        "Município": "Brejinho de Nazaré",
+        "Estoque (RAIS) 2025": 688,
+        "Saldo (Novo CAGED) 09/26": -21
+      },
+      {
+        "Município": "Itaguatins",
+        "Estoque (RAIS) 2025": 686,
+        "Saldo (Novo CAGED) 09/26": 5
+      },
+      {
+        "Município": "Buriti do Tocantins",
+        "Estoque (RAIS) 2025": 668,
+        "Saldo (Novo CAGED) 09/26": -1
+      },
+      {
+        "Município": "Santa Rita do Tocantins",
+        "Estoque (RAIS) 2025": 657,
+        "Saldo (Novo CAGED) 09/26": 3
+      },
+      {
+        "Município": "São Miguel do Tocantins",
+        "Estoque (RAIS) 2025": 641,
+        "Saldo (Novo CAGED) 09/26": 4
+      },
+      {
+        "Município": "Mateiros",
+        "Estoque (RAIS) 2025": 622,
+        "Saldo (Novo CAGED) 09/26": 7
+      },
+      {
+        "Município": "Talismã",
+        "Estoque (RAIS) 2025": 600,
+        "Saldo (Novo CAGED) 09/26": -6
+      },
+      {
+        "Município": "Piraquê",
+        "Estoque (RAIS) 2025": 599,
+        "Saldo (Novo CAGED) 09/26": -8
+      },
+      {
+        "Município": "Luzinópolis",
+        "Estoque (RAIS) 2025": 585,
+        "Saldo (Novo CAGED) 09/26": 14
+      },
+      {
+        "Município": "Araguanã",
+        "Estoque (RAIS) 2025": 584,
+        "Saldo (Novo CAGED) 09/26": 3
+      },
+      {
+        "Município": "São Salvador do Tocantins",
+        "Estoque (RAIS) 2025": 584,
+        "Saldo (Novo CAGED) 09/26": -1
+      },
+      {
+        "Município": "Fátima",
+        "Estoque (RAIS) 2025": 577,
+        "Saldo (Novo CAGED) 09/26": 6
+      },
+      {
+        "Município": "Rio dos Bois",
+        "Estoque (RAIS) 2025": 564,
+        "Saldo (Novo CAGED) 09/26": -3
+      },
+      {
+        "Município": "Barrolândia",
+        "Estoque (RAIS) 2025": 562,
+        "Saldo (Novo CAGED) 09/26": -4
+      },
+      {
+        "Município": "Jaú do Tocantins",
+        "Estoque (RAIS) 2025": 541,
+        "Saldo (Novo CAGED) 09/26": 1
+      },
+      {
+        "Município": "Santa Tereza do Tocantins",
+        "Estoque (RAIS) 2025": 541,
+        "Saldo (Novo CAGED) 09/26": -1
+      },
+      {
+        "Município": "Pugmil",
+        "Estoque (RAIS) 2025": 533,
+        "Saldo (Novo CAGED) 09/26": -3
+      },
+      {
+        "Município": "Pindorama do Tocantins",
+        "Estoque (RAIS) 2025": 529,
+        "Saldo (Novo CAGED) 09/26": 1
+      },
+      {
+        "Município": "Pequizeiro",
+        "Estoque (RAIS) 2025": 525,
+        "Saldo (Novo CAGED) 09/26": 5
+      },
+      {
+        "Município": "Muricilândia",
+        "Estoque (RAIS) 2025": 524,
+        "Saldo (Novo CAGED) 09/26": 2
+      },
+      {
+        "Município": "Itapiratins",
+        "Estoque (RAIS) 2025": 506,
+        "Saldo (Novo CAGED) 09/26": -4
+      },
+      {
+        "Município": "Lajeado",
+        "Estoque (RAIS) 2025": 505,
+        "Saldo (Novo CAGED) 09/26": -3
+      },
+      {
+        "Município": "Sucupira",
+        "Estoque (RAIS) 2025": 504,
+        "Saldo (Novo CAGED) 09/26": 1
+      },
+      {
+        "Município": "Rio da Conceição",
+        "Estoque (RAIS) 2025": 501,
+        "Saldo (Novo CAGED) 09/26": -11
+      },
+      {
+        "Município": "Pau D'Arco",
+        "Estoque (RAIS) 2025": 497,
+        "Saldo (Novo CAGED) 09/26": 10
+      },
+      {
+        "Município": "Barra do Ouro",
+        "Estoque (RAIS) 2025": 495,
+        "Saldo (Novo CAGED) 09/26": -1
+      },
+      {
+        "Município": "Bernardo Sayão",
+        "Estoque (RAIS) 2025": 491,
+        "Saldo (Novo CAGED) 09/26": -4
+      },
+      {
+        "Município": "Nova Rosalândia",
+        "Estoque (RAIS) 2025": 485,
+        "Saldo (Novo CAGED) 09/26": 6
+      },
+      {
+        "Município": "Goianorte",
+        "Estoque (RAIS) 2025": 485,
+        "Saldo (Novo CAGED) 09/26": -5
+      },
+      {
+        "Município": "Santa Maria do Tocantins",
+        "Estoque (RAIS) 2025": 460,
+        "Saldo (Novo CAGED) 09/26": 6
+      },
+      {
+        "Município": "Carmolândia",
+        "Estoque (RAIS) 2025": 446,
+        "Saldo (Novo CAGED) 09/26": 5
+      },
+      {
+        "Município": "Itaporã do Tocantins",
+        "Estoque (RAIS) 2025": 445,
+        "Saldo (Novo CAGED) 09/26": 0
+      },
+      {
+        "Município": "Ipueiras",
+        "Estoque (RAIS) 2025": 441,
+        "Saldo (Novo CAGED) 09/26": 1
+      },
+      {
+        "Município": "Palmeiras do Tocantins",
+        "Estoque (RAIS) 2025": 423,
+        "Saldo (Novo CAGED) 09/26": 2
+      },
+      {
+        "Município": "Rio Sono",
+        "Estoque (RAIS) 2025": 417,
+        "Saldo (Novo CAGED) 09/26": -4
+      },
+      {
+        "Município": "Chapada da Natividade",
+        "Estoque (RAIS) 2025": 415,
+        "Saldo (Novo CAGED) 09/26": -3
+      },
+      {
+        "Município": "Combinado",
+        "Estoque (RAIS) 2025": 411,
+        "Saldo (Novo CAGED) 09/26": 2
+      },
+      {
+        "Município": "Monte Santo do Tocantins",
+        "Estoque (RAIS) 2025": 405,
+        "Saldo (Novo CAGED) 09/26": 2
+      },
+      {
+        "Município": "Abreulândia",
+        "Estoque (RAIS) 2025": 405,
+        "Saldo (Novo CAGED) 09/26": 1
+      },
+      {
+        "Município": "Esperantina",
+        "Estoque (RAIS) 2025": 403,
+        "Saldo (Novo CAGED) 09/26": 3
+      },
+      {
+        "Município": "São Félix do Tocantins",
+        "Estoque (RAIS) 2025": 402,
+        "Saldo (Novo CAGED) 09/26": 7
+      },
+      {
+        "Município": "São Sebastião do Tocantins",
+        "Estoque (RAIS) 2025": 394,
+        "Saldo (Novo CAGED) 09/26": -3
+      },
+      {
+        "Município": "Bom Jesus do Tocantins",
+        "Estoque (RAIS) 2025": 389,
+        "Saldo (Novo CAGED) 09/26": 1
+      },
+      {
+        "Município": "Presidente Kennedy",
+        "Estoque (RAIS) 2025": 387,
+        "Saldo (Novo CAGED) 09/26": 3
+      },
+      {
+        "Município": "Riachinho",
+        "Estoque (RAIS) 2025": 375,
+        "Saldo (Novo CAGED) 09/26": -1
+      },
+      {
+        "Município": "Praia Norte",
+        "Estoque (RAIS) 2025": 369,
+        "Saldo (Novo CAGED) 09/26": 1
+      },
+      {
+        "Município": "Tocantínia",
+        "Estoque (RAIS) 2025": 369,
+        "Saldo (Novo CAGED) 09/26": -6
+      },
+      {
+        "Município": "Juarina",
+        "Estoque (RAIS) 2025": 366,
+        "Saldo (Novo CAGED) 09/26": 0
+      },
+      {
+        "Município": "Conceição do Tocantins",
+        "Estoque (RAIS) 2025": 366,
+        "Saldo (Novo CAGED) 09/26": -6
+      },
+      {
+        "Município": "Crixás do Tocantins",
+        "Estoque (RAIS) 2025": 363,
+        "Saldo (Novo CAGED) 09/26": -2
+      },
+      {
+        "Município": "Tupiratins",
+        "Estoque (RAIS) 2025": 357,
+        "Saldo (Novo CAGED) 09/26": 0
+      },
+      {
+        "Município": "Lagoa do Tocantins",
+        "Estoque (RAIS) 2025": 346,
+        "Saldo (Novo CAGED) 09/26": 9
+      },
+      {
+        "Município": "Maurilândia do Tocantins",
+        "Estoque (RAIS) 2025": 338,
+        "Saldo (Novo CAGED) 09/26": 3
+      },
+      {
+        "Município": "Novo Jardim",
+        "Estoque (RAIS) 2025": 327,
+        "Saldo (Novo CAGED) 09/26": 7
+      },
+      {
+        "Município": "Brasilândia do Tocantins",
+        "Estoque (RAIS) 2025": 327,
+        "Saldo (Novo CAGED) 09/26": 2
+      },
+      {
+        "Município": "Nazaré",
+        "Estoque (RAIS) 2025": 321,
+        "Saldo (Novo CAGED) 09/26": 0
+      },
+      {
+        "Município": "Chapada de Areia",
+        "Estoque (RAIS) 2025": 319,
+        "Saldo (Novo CAGED) 09/26": 0
+      },
+      {
+        "Município": "Aurora do Tocantins",
+        "Estoque (RAIS) 2025": 292,
+        "Saldo (Novo CAGED) 09/26": 4
+      },
+      {
+        "Município": "Recursolândia",
+        "Estoque (RAIS) 2025": 286,
+        "Saldo (Novo CAGED) 09/26": 0
+      },
+      {
+        "Município": "Ponte Alta do Bom Jesus",
+        "Estoque (RAIS) 2025": 285,
+        "Saldo (Novo CAGED) 09/26": -5
+      },
+      {
+        "Município": "Taipas do Tocantins",
+        "Estoque (RAIS) 2025": 269,
+        "Saldo (Novo CAGED) 09/26": 1
+      },
+      {
+        "Município": "Novo Alegre",
+        "Estoque (RAIS) 2025": 265,
+        "Saldo (Novo CAGED) 09/26": -1
+      },
+      {
+        "Município": "Angico",
+        "Estoque (RAIS) 2025": 263,
+        "Saldo (Novo CAGED) 09/26": 3
+      },
+      {
+        "Município": "Porto Alegre do Tocantins",
+        "Estoque (RAIS) 2025": 259,
+        "Saldo (Novo CAGED) 09/26": 2
+      },
+      {
+        "Município": "Oliveira de Fátima",
+        "Estoque (RAIS) 2025": 258,
+        "Saldo (Novo CAGED) 09/26": 4
+      },
+      {
+        "Município": "Carrasco Bonito",
+        "Estoque (RAIS) 2025": 239,
+        "Saldo (Novo CAGED) 09/26": -3
+      },
+      {
+        "Município": "Lizarda",
+        "Estoque (RAIS) 2025": 224,
+        "Saldo (Novo CAGED) 09/26": -2
+      },
+      {
+        "Município": "Centenário",
+        "Estoque (RAIS) 2025": 217,
+        "Saldo (Novo CAGED) 09/26": -3
+      },
+      {
+        "Município": "Sampaio",
+        "Estoque (RAIS) 2025": 214,
+        "Saldo (Novo CAGED) 09/26": 1
+      },
+      {
+        "Município": "Cachoeirinha",
+        "Estoque (RAIS) 2025": 206,
+        "Saldo (Novo CAGED) 09/26": -1
+      },
+      {
+        "Município": "Lavandeira",
+        "Estoque (RAIS) 2025": 198,
+        "Saldo (Novo CAGED) 09/26": 0
+      },
+      {
+        "Município": "Tupirama",
+        "Estoque (RAIS) 2025": 189,
+        "Saldo (Novo CAGED) 09/26": 4
+      },
+      {
+        "Município": "Santa Terezinha do Tocantins",
+        "Estoque (RAIS) 2025": 152,
+        "Saldo (Novo CAGED) 09/26": 4
+      }
+    ]
+  },
+  "comex": {
+    "periodo_referencia": "10/2026",
+    "vb_exportacoes": "US$ 200,89 Mi",
+    "vb_importacoes": "US$ 63,95 Mi",
+    "vb_saldo": "+ US$ 136,94 Mi",
+    "df_exp_mapa": [
+      {
+        "Pais": "CHN",
+        "Nome": "China",
+        "Valor": 46.97,
+        "Valor_FOB_USD": 46968789,
+        "Hover": "<b>China<\/b><br>Exportações TO: US$ 46,97 Mi<br>Importações TO: US$ 15,98 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 30,99 Mi (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "IND",
+        "Nome": "Índia",
+        "Valor": 33.59,
+        "Valor_FOB_USD": 33592380,
+        "Hover": "<b>Índia<\/b><br>Exportações TO: US$ 33,59 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 33,59 Mi (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "CAN",
+        "Nome": "Canadá",
+        "Valor": 16.57,
+        "Valor_FOB_USD": 16567612,
+        "Hover": "<b>Canadá<\/b><br>Exportações TO: US$ 16,57 Mi<br>Importações TO: US$ 5,71 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 10,86 Mi (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "EGY",
+        "Nome": "Egito",
+        "Valor": 16.18,
+        "Valor_FOB_USD": 16180170,
+        "Hover": "<b>Egito<\/b><br>Exportações TO: US$ 16,18 Mi<br>Importações TO: US$ 1,27 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 14,91 Mi (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "ESP",
+        "Nome": "Espanha",
+        "Valor": 10.32,
+        "Valor_FOB_USD": 10323767,
+        "Hover": "<b>Espanha<\/b><br>Exportações TO: US$ 10,32 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 10,32 Mi (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "CHE",
+        "Nome": "Suíça",
+        "Valor": 8.2,
+        "Valor_FOB_USD": 8196437,
+        "Hover": "<b>Suíça<\/b><br>Exportações TO: US$ 8,20 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 8,20 Mi (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "DEU",
+        "Nome": "Alemanha",
+        "Valor": 7.64,
+        "Valor_FOB_USD": 7643043,
+        "Hover": "<b>Alemanha<\/b><br>Exportações TO: US$ 7,64 Mi<br>Importações TO: US$ 154,2 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 7,49 Mi (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "MEX",
+        "Nome": "México",
+        "Valor": 6.47,
+        "Valor_FOB_USD": 6470712,
+        "Hover": "<b>México<\/b><br>Exportações TO: US$ 6,47 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 6,47 Mi (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "SVN",
+        "Nome": "Eslovênia",
+        "Valor": 5.31,
+        "Valor_FOB_USD": 5312678,
+        "Hover": "<b>Eslovênia<\/b><br>Exportações TO: US$ 5,31 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 5,31 Mi (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "TUR",
+        "Nome": "Turquia",
+        "Valor": 3.99,
+        "Valor_FOB_USD": 3985742,
+        "Hover": "<b>Turquia<\/b><br>Exportações TO: US$ 3,99 Mi<br>Importações TO: US$ 54,7 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 3,93 Mi (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "RUS",
+        "Nome": "Rússia",
+        "Valor": 3.34,
+        "Valor_FOB_USD": 3338859,
+        "Hover": "<b>Rússia<\/b><br>Exportações TO: US$ 3,34 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 3,34 Mi (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "BEL",
+        "Nome": "Bélgica",
+        "Valor": 3.31,
+        "Valor_FOB_USD": 3305291,
+        "Hover": "<b>Bélgica<\/b><br>Exportações TO: US$ 3,31 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 3,31 Mi (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "GBR",
+        "Nome": "Reino Unido",
+        "Valor": 3.27,
+        "Valor_FOB_USD": 3270446,
+        "Hover": "<b>Reino Unido<\/b><br>Exportações TO: US$ 3,27 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 3,27 Mi (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "IRQ",
+        "Nome": "Iraque",
+        "Valor": 3.1,
+        "Valor_FOB_USD": 3098321,
+        "Hover": "<b>Iraque<\/b><br>Exportações TO: US$ 3,10 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 3,10 Mi (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "HKG",
+        "Nome": "Hong Kong",
+        "Valor": 3.05,
+        "Valor_FOB_USD": 3045969,
+        "Hover": "<b>Hong Kong<\/b><br>Exportações TO: US$ 3,05 Mi<br>Importações TO: US$ 2,4 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 3,04 Mi (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "NLD",
+        "Nome": "Países Baixos (Holanda)",
+        "Valor": 2.57,
+        "Valor_FOB_USD": 2567259,
+        "Hover": "<b>Países Baixos (Holanda)<\/b><br>Exportações TO: US$ 2,57 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 2,57 Mi (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "SGP",
+        "Nome": "Singapura",
+        "Valor": 2.32,
+        "Valor_FOB_USD": 2319420,
+        "Hover": "<b>Singapura<\/b><br>Exportações TO: US$ 2,32 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 2,32 Mi (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "LBY",
+        "Nome": "Líbia",
+        "Valor": 2.28,
+        "Valor_FOB_USD": 2280507,
+        "Hover": "<b>Líbia<\/b><br>Exportações TO: US$ 2,28 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 2,28 Mi (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "PHL",
+        "Nome": "Filipinas",
+        "Valor": 2.02,
+        "Valor_FOB_USD": 2015603,
+        "Hover": "<b>Filipinas<\/b><br>Exportações TO: US$ 2,02 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 2,02 Mi (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "SAU",
+        "Nome": "Arábia Saudita",
+        "Valor": 1.89,
+        "Valor_FOB_USD": 1887999,
+        "Hover": "<b>Arábia Saudita<\/b><br>Exportações TO: US$ 1,89 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 1,89 Mi (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "ISR",
+        "Nome": "Israel",
+        "Valor": 1.51,
+        "Valor_FOB_USD": 1510499,
+        "Hover": "<b>Israel<\/b><br>Exportações TO: US$ 1,51 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 1,51 Mi (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "MAR",
+        "Nome": "Marrocos",
+        "Valor": 1.39,
+        "Valor_FOB_USD": 1392154,
+        "Hover": "<b>Marrocos<\/b><br>Exportações TO: US$ 1,39 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 1,39 Mi (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "JOR",
+        "Nome": "Jordânia",
+        "Valor": 1.32,
+        "Valor_FOB_USD": 1318780,
+        "Hover": "<b>Jordânia<\/b><br>Exportações TO: US$ 1,32 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 1,32 Mi (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "MYS",
+        "Nome": "Malásia",
+        "Valor": 1.22,
+        "Valor_FOB_USD": 1216368,
+        "Hover": "<b>Malásia<\/b><br>Exportações TO: US$ 1,22 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 1,22 Mi (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "AUS",
+        "Nome": "Austrália",
+        "Valor": 1.13,
+        "Valor_FOB_USD": 1127285,
+        "Hover": "<b>Austrália<\/b><br>Exportações TO: US$ 1,13 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 1,13 Mi (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "LBN",
+        "Nome": "Líbano",
+        "Valor": 0.84,
+        "Valor_FOB_USD": 840807,
+        "Hover": "<b>Líbano<\/b><br>Exportações TO: US$ 840,8 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 840,8 mil (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "ALB",
+        "Nome": "Albânia",
+        "Valor": 0.46,
+        "Valor_FOB_USD": 458677,
+        "Hover": "<b>Albânia<\/b><br>Exportações TO: US$ 458,7 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 458,7 mil (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "CHL",
+        "Nome": "Chile",
+        "Valor": 0.45,
+        "Valor_FOB_USD": 450382,
+        "Hover": "<b>Chile<\/b><br>Exportações TO: US$ 450,4 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 450,4 mil (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "PSE",
+        "Nome": "Palestina",
+        "Valor": 0.45,
+        "Valor_FOB_USD": 449992,
+        "Hover": "<b>Palestina<\/b><br>Exportações TO: US$ 450,0 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 450,0 mil (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "ARG",
+        "Nome": "Argentina",
+        "Valor": 0.33,
+        "Valor_FOB_USD": 325283,
+        "Hover": "<b>Argentina<\/b><br>Exportações TO: US$ 325,3 mil<br>Importações TO: US$ 40,3 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 285,0 mil (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "SRB",
+        "Nome": "Sérvia",
+        "Valor": 0.3,
+        "Valor_FOB_USD": 301925,
+        "Hover": "<b>Sérvia<\/b><br>Exportações TO: US$ 301,9 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 301,9 mil (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "PER",
+        "Nome": "Peru",
+        "Valor": 0.28,
+        "Valor_FOB_USD": 278065,
+        "Hover": "<b>Peru<\/b><br>Exportações TO: US$ 278,1 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 278,1 mil (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "BGD",
+        "Nome": "Bangladesh",
+        "Valor": 0.28,
+        "Valor_FOB_USD": 275357,
+        "Hover": "<b>Bangladesh<\/b><br>Exportações TO: US$ 275,4 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 275,4 mil (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "GAB",
+        "Nome": "Gabão",
+        "Valor": 0.26,
+        "Valor_FOB_USD": 261417,
+        "Hover": "<b>Gabão<\/b><br>Exportações TO: US$ 261,4 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 261,4 mil (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "TKM",
+        "Nome": "Turcomenistão",
+        "Valor": 0.24,
+        "Valor_FOB_USD": 236498,
+        "Hover": "<b>Turcomenistão<\/b><br>Exportações TO: US$ 236,5 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 236,5 mil (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "KWT",
+        "Nome": "Coveite (Kuweit)",
+        "Valor": 0.23,
+        "Valor_FOB_USD": 230087,
+        "Hover": "<b>Coveite (Kuweit)<\/b><br>Exportações TO: US$ 230,1 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 230,1 mil (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "COL",
+        "Nome": "Colômbia",
+        "Valor": 0.2,
+        "Valor_FOB_USD": 204155,
+        "Hover": "<b>Colômbia<\/b><br>Exportações TO: US$ 204,2 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 204,2 mil (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "URY",
+        "Nome": "Uruguai",
+        "Valor": 0.17,
+        "Valor_FOB_USD": 172045,
+        "Hover": "<b>Uruguai<\/b><br>Exportações TO: US$ 172,0 mil<br>Importações TO: US$ 165,5 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 6,6 mil (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "DZA",
+        "Nome": "Argélia",
+        "Valor": 0.16,
+        "Valor_FOB_USD": 163377,
+        "Hover": "<b>Argélia<\/b><br>Exportações TO: US$ 163,4 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 163,4 mil (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "BHR",
+        "Nome": "Barein",
+        "Valor": 0.14,
+        "Valor_FOB_USD": 142579,
+        "Hover": "<b>Barein<\/b><br>Exportações TO: US$ 142,6 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 142,6 mil (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "NZL",
+        "Nome": "Nova Zelândia",
+        "Valor": 0.13,
+        "Valor_FOB_USD": 133814,
+        "Hover": "<b>Nova Zelândia<\/b><br>Exportações TO: US$ 133,8 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 133,8 mil (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "MOZ",
+        "Nome": "Moçambique",
+        "Valor": 0.13,
+        "Valor_FOB_USD": 131469,
+        "Hover": "<b>Moçambique<\/b><br>Exportações TO: US$ 131,5 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 131,5 mil (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "GHA",
+        "Nome": "Gana",
+        "Valor": 0.12,
+        "Valor_FOB_USD": 120109,
+        "Hover": "<b>Gana<\/b><br>Exportações TO: US$ 120,1 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 120,1 mil (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "KAZ",
+        "Nome": "Cazaquistão",
+        "Valor": 0.12,
+        "Valor_FOB_USD": 119894,
+        "Hover": "<b>Cazaquistão<\/b><br>Exportações TO: US$ 119,9 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 119,9 mil (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "PAK",
+        "Nome": "Paquistão",
+        "Valor": 0.1,
+        "Valor_FOB_USD": 99723,
+        "Hover": "<b>Paquistão<\/b><br>Exportações TO: US$ 99,7 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 99,7 mil (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "CIV",
+        "Nome": "Costa do Marfim",
+        "Valor": 0.09,
+        "Valor_FOB_USD": 93381,
+        "Hover": "<b>Costa do Marfim<\/b><br>Exportações TO: US$ 93,4 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 93,4 mil (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "PRY",
+        "Nome": "Paraguai",
+        "Valor": 0.09,
+        "Valor_FOB_USD": 89321,
+        "Hover": "<b>Paraguai<\/b><br>Exportações TO: US$ 89,3 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 89,3 mil (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "GEO",
+        "Nome": "Geórgia",
+        "Valor": 0.07,
+        "Valor_FOB_USD": 72542,
+        "Hover": "<b>Geórgia<\/b><br>Exportações TO: US$ 72,5 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 72,5 mil (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "SYR",
+        "Nome": "Síria",
+        "Valor": 0.06,
+        "Valor_FOB_USD": 62645,
+        "Hover": "<b>Síria<\/b><br>Exportações TO: US$ 62,6 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 62,6 mil (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "SLE",
+        "Nome": "Serra Leoa",
+        "Valor": 0.04,
+        "Valor_FOB_USD": 37581,
+        "Hover": "<b>Serra Leoa<\/b><br>Exportações TO: US$ 37,6 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 37,6 mil (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "ARE",
+        "Nome": "Emirados Árabes Unidos",
+        "Valor": 0.04,
+        "Valor_FOB_USD": 36287,
+        "Hover": "<b>Emirados Árabes Unidos<\/b><br>Exportações TO: US$ 36,3 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 36,3 mil (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "COD",
+        "Nome": "Congo, República Democrática",
+        "Valor": 0.03,
+        "Valor_FOB_USD": 28661,
+        "Hover": "<b>Congo, República Democrática<\/b><br>Exportações TO: US$ 28,7 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 28,7 mil (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "LBR",
+        "Nome": "Libéria",
+        "Valor": 0,
+        "Valor_FOB_USD": 3804,
+        "Hover": "<b>Libéria<\/b><br>Exportações TO: US$ 3,8 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 3,8 mil (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "AGO",
+        "Nome": "Angola",
+        "Valor": 0,
+        "Valor_FOB_USD": 2395,
+        "Hover": "<b>Angola<\/b><br>Exportações TO: US$ 2,4 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 2,4 mil (Exportações superam)<\/span>"
+      },
+      {
+        "Pais": "FRA",
+        "Nome": "França",
+        "Valor": 0,
+        "Valor_FOB_USD": 1761,
+        "Hover": "<b>França<\/b><br>Exportações TO: US$ 1,8 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 1,8 mil (Exportações superam)<\/span>"
+      }
+    ],
+    "df_imp_mapa": [
+      {
+        "Pais": "NGA",
+        "Nome": "Nigéria",
+        "Valor": 14.92,
+        "Valor_FOB_USD": 14924855,
+        "Hover": "<b>Nigéria<\/b><br>Importações TO: US$ 14,92 Mi<br><span style='color:#0f2537;'><b>Saldo:<\/b> - US$ 14,92 Mi (Importações superam)<\/span>"
+      },
+      {
+        "Pais": "VEN",
+        "Nome": "Venezuela",
+        "Valor": 14.67,
+        "Valor_FOB_USD": 14665519,
+        "Hover": "<b>Venezuela<\/b><br>Importações TO: US$ 14,67 Mi<br><span style='color:#0f2537;'><b>Saldo:<\/b> - US$ 14,67 Mi (Importações superam)<\/span>"
+      },
+      {
+        "Pais": "USA",
+        "Nome": "Estados Unidos",
+        "Valor": 4.48,
+        "Valor_FOB_USD": 4480131,
+        "Hover": "<b>Estados Unidos<\/b><br>Exportações TO: US$ 4,17 Mi<br>Importações TO: US$ 4,48 Mi<br><span style='color:#0f2537;'><b>Saldo:<\/b> - US$ 313,3 mil (Importações superam)<\/span>"
+      },
+      {
+        "Pais": "VNM",
+        "Nome": "Vietnã",
+        "Valor": 3.9,
+        "Valor_FOB_USD": 3902236,
+        "Hover": "<b>Vietnã<\/b><br>Exportações TO: US$ 1,64 Mi<br>Importações TO: US$ 3,90 Mi<br><span style='color:#0f2537;'><b>Saldo:<\/b> - US$ 2,26 Mi (Importações superam)<\/span>"
+      },
+      {
+        "Pais": "BRN",
+        "Nome": "Brunei",
+        "Valor": 0.92,
+        "Valor_FOB_USD": 919152,
+        "Hover": "<b>Brunei<\/b><br>Importações TO: US$ 919,2 mil<br><span style='color:#0f2537;'><b>Saldo:<\/b> - US$ 919,2 mil (Importações superam)<\/span>"
+      },
+      {
+        "Pais": "IDN",
+        "Nome": "Indonésia",
+        "Valor": 0.9,
+        "Valor_FOB_USD": 900338,
+        "Hover": "<b>Indonésia<\/b><br>Exportações TO: US$ 274,3 mil<br>Importações TO: US$ 900,3 mil<br><span style='color:#0f2537;'><b>Saldo:<\/b> - US$ 626,0 mil (Importações superam)<\/span>"
+      },
+      {
+        "Pais": "ZAF",
+        "Nome": "África do Sul",
+        "Valor": 0.39,
+        "Valor_FOB_USD": 385233,
+        "Hover": "<b>África do Sul<\/b><br>Importações TO: US$ 385,2 mil<br><span style='color:#0f2537;'><b>Saldo:<\/b> - US$ 385,2 mil (Importações superam)<\/span>"
+      },
+      {
+        "Pais": "QAT",
+        "Nome": "Catar",
+        "Valor": 0.19,
+        "Valor_FOB_USD": 189720,
+        "Hover": "<b>Catar<\/b><br>Exportações TO: US$ 45,1 mil<br>Importações TO: US$ 189,7 mil<br><span style='color:#0f2537;'><b>Saldo:<\/b> - US$ 144,6 mil (Importações superam)<\/span>"
+      },
+      {
+        "Pais": "KHM",
+        "Nome": "Camboja",
+        "Valor": 0.08,
+        "Valor_FOB_USD": 75630,
+        "Hover": "<b>Camboja<\/b><br>Importações TO: US$ 75,6 mil<br><span style='color:#0f2537;'><b>Saldo:<\/b> - US$ 75,6 mil (Importações superam)<\/span>"
+      },
+      {
+        "Pais": "SWE",
+        "Nome": "Suécia",
+        "Valor": 0.07,
+        "Valor_FOB_USD": 68976,
+        "Hover": "<b>Suécia<\/b><br>Importações TO: US$ 69,0 mil<br><span style='color:#0f2537;'><b>Saldo:<\/b> - US$ 69,0 mil (Importações superam)<\/span>"
+      },
+      {
+        "Pais": "TWN",
+        "Nome": "Taiwan (Formosa)",
+        "Valor": 0.06,
+        "Valor_FOB_USD": 59328,
+        "Hover": "<b>Taiwan (Formosa)<\/b><br>Importações TO: US$ 59,3 mil<br><span style='color:#0f2537;'><b>Saldo:<\/b> - US$ 59,3 mil (Importações superam)<\/span>"
+      },
+      {
+        "Pais": "PRI",
+        "Nome": "Porto Rico",
+        "Valor": 0,
+        "Valor_FOB_USD": 4180,
+        "Hover": "<b>Porto Rico<\/b><br>Importações TO: US$ 4,2 mil<br><span style='color:#0f2537;'><b>Saldo:<\/b> - US$ 4,2 mil (Importações superam)<\/span>"
+      }
+    ],
+    "df_exp_top3": [
+      {
+        "Produto": "Legumes de vagem, secos, em<br>grão, mesmo pelados ou...",
+        "Produto_Completo": "Legumes de vagem, secos, em grão, mesmo pelados ou partidos",
+        "Valor": 32.65,
+        "Valor_FOB_USD": 32646622,
+        "Rotulo": "US$ 32,65 Mi"
+      },
+      {
+        "Produto": "Soja, mesmo triturada",
+        "Produto_Completo": "Soja, mesmo triturada",
+        "Valor": 36.35,
+        "Valor_FOB_USD": 36351196,
+        "Rotulo": "US$ 36,35 Mi"
+      },
+      {
+        "Produto": "Carnes de animais da<br>espécie bovina, congeladas",
+        "Produto_Completo": "Carnes de animais da espécie bovina, congeladas",
+        "Valor": 50.28,
+        "Valor_FOB_USD": 50278186,
+        "Rotulo": "US$ 50,28 Mi"
+      }
+    ],
+    "df_imp_top3": [
+      {
+        "Produto": "Produtos laminados planos<br>de ferro ou aço não ligado",
+        "Produto_Completo": "Produtos laminados planos de ferro ou aço não ligado, de largura igual ou superior a 600 mm, folheados ou chapeados, ou revestidos",
+        "Valor": 4.78,
+        "Valor_FOB_USD": 4783617,
+        "Rotulo": "US$ 4,78 Mi"
+      },
+      {
+        "Produto": "Adubos (fertilizantes)<br>potássicos",
+        "Produto_Completo": "Adubos (fertilizantes) minerais ou químicos, potássicos",
+        "Valor": 5.7,
+        "Valor_FOB_USD": 5704902,
+        "Rotulo": "US$ 5,70 Mi"
+      },
+      {
+        "Produto": "Adubos (fertilizantes)<br>azotados",
+        "Produto_Completo": "Adubos (fertilizantes) minerais ou químicos, azotados",
+        "Valor": 34.82,
+        "Valor_FOB_USD": 34821925,
+        "Rotulo": "US$ 34,82 Mi"
+      }
+    ]
+  },
+  "financas": {
+    "competencia_sefaz": 202609,
+    "mes_ano_sefaz": "09/26",
+    "mes_ano_extenso_sefaz": "Setembro/2026",
+    "data_emissao_sefaz": {},
+    "vb_receita_total": "R$ 1,19 Bi",
+    "vb_icms": "R$ 566,48 Mi",
+    "vb_icms_var_mensal": "-5,25%",
+    "vb_icms_var_anual": {},
+    "vb_fpe": "R$ 438,14 Mi",
+    "vb_ipva": "R$ 189,35 Mi",
+    "vb_ipva_puro": "R$ 53,89 Mi",
+    "df_receitas": [
+      {
+        "Mes": "Jan",
+        "ICMS": 531.6,
+        "FPE": 608.22,
+        "IPVA": 199.28,
+        "IPVA_Puro": 96.89,
+        "Receita_Total": 1339.03
+      },
+      {
+        "Mes": "Fev",
+        "ICMS": 465.76,
+        "FPE": 721.45,
+        "IPVA": 171.72,
+        "IPVA_Puro": 26.67,
+        "Receita_Total": 1358.93
+      },
+      {
+        "Mes": "Mar",
+        "ICMS": 494.71,
+        "FPE": 458.07,
+        "IPVA": 167.87,
+        "IPVA_Puro": 28.6,
+        "Receita_Total": 1120.22
+      },
+      {
+        "Mes": "Abr",
+        "ICMS": 562.91,
+        "FPE": 525.78,
+        "IPVA": 155.18,
+        "IPVA_Puro": 25.39,
+        "Receita_Total": 1243.39
+      },
+      {
+        "Mes": "Mai",
+        "ICMS": 520.81,
+        "FPE": 638.69,
+        "IPVA": 195.65,
+        "IPVA_Puro": 28.87,
+        "Receita_Total": 1354.93
+      },
+      {
+        "Mes": "Jun",
+        "ICMS": 557.93,
+        "FPE": 640.98,
+        "IPVA": 162.83,
+        "IPVA_Puro": 37.63,
+        "Receita_Total": 1361.73
+      },
+      {
+        "Mes": "Jul",
+        "ICMS": 572.89,
+        "FPE": 419.66,
+        "IPVA": 206.02,
+        "IPVA_Puro": 35.35,
+        "Receita_Total": 1197.94
+      },
+      {
+        "Mes": "Ago",
+        "ICMS": 597.87,
+        "FPE": 543.05,
+        "IPVA": 211.15,
+        "IPVA_Puro": 31.24,
+        "Receita_Total": 1351.99
+      },
+      {
+        "Mes": "Set",
+        "ICMS": 566.48,
+        "FPE": 438.14,
+        "IPVA": 189.35,
+        "IPVA_Puro": 53.89,
+        "Receita_Total": 1193.94
+      }
+    ],
+    "df_setores_icms": [
+      {
+        "Setor": "Combustíveis",
+        "Secao_CNAE": "Combustíveis e Lubrificantes (Divisão 19 / Seção G CNAE 2.0)",
+        "Pai": "",
+        "Valor": 172.81,
+        "Valor_RS": 172807815,
+        "Participacao_Pct": 30.51
+      },
+      {
+        "Setor": "Comércio",
+        "Secao_CNAE": "Comércio Atacadista e Varejista (Seção G CNAE 2.0)",
+        "Pai": "",
+        "Valor": 172.77,
+        "Valor_RS": 172769125,
+        "Participacao_Pct": 30.5
+      },
+      {
+        "Setor": "Indústria",
+        "Secao_CNAE": "Indústria Geral e Construção (Seções B, C e F CNAE 2.0)",
+        "Pai": "",
+        "Valor": 103.08,
+        "Valor_RS": 103079144,
+        "Participacao_Pct": 18.2
+      },
+      {
+        "Setor": "Energia Elétrica",
+        "Secao_CNAE": "Eletricidade e Gás (Seção D CNAE 2.0)",
+        "Pai": "",
+        "Valor": 63.73,
+        "Valor_RS": 63729500,
+        "Participacao_Pct": 11.25
+      },
+      {
+        "Setor": "Demais Atividades",
+        "Secao_CNAE": "Demais Serviços e Outras Atividades (Seções I, K-S CNAE 2.0)",
+        "Pai": "",
+        "Valor": 30.11,
+        "Valor_RS": 30106272,
+        "Participacao_Pct": 5.31
+      },
+      {
+        "Setor": "Comunicação",
+        "Secao_CNAE": "Informação e Comunicação (Seção J CNAE 2.0)",
+        "Pai": "",
+        "Valor": 9.2,
+        "Valor_RS": 9195114,
+        "Participacao_Pct": 1.62
+      },
+      {
+        "Setor": "Transportes",
+        "Secao_CNAE": "Transporte, Armazenagem e Correio (Seção H CNAE 2.0)",
+        "Pai": "",
+        "Valor": 8.27,
+        "Valor_RS": 8274606,
+        "Participacao_Pct": 1.46
+      },
+      {
+        "Setor": "Agropecuária",
+        "Secao_CNAE": "Agropecuária (Seção A CNAE 2.0)",
+        "Pai": "",
+        "Valor": 6.52,
+        "Valor_RS": 6521401,
+        "Participacao_Pct": 1.15
+      }
+    ]
+  },
+  "empresarial": {
+    "competencia_cnpj": "Out/2026",
+    "mes_ano_extenso_cnpj": "Outubro/2026",
+    "ano_referencia_cnpj": 2026,
+    "vb_cnpjs_ativos": "167.565",
+    "vb_saldo_empresas": "+ 15.608",
+    "vb_mei": "52,9%",
+    "vb_me": "34,0%",
+    "vb_me_com_mei": "86,9%",
+    "vb_optantes_simples": "164.996",
+    "texto_centro_rosca": "<b>167,6 Mil<\/b><br>Ativas",
+    "tempo_abertura_h": 18.5,
+    "tempo_viabilidade_h": 15.7,
+    "tempo_registro_h": 2.7,
+    "media_brasil_h": 26.2,
+    "media_brasil_viabilidade_h": 11.4,
+    "media_brasil_registro_h": 14.8,
+    "df_ativos": [
+      {
+        "Mes": "Nov/25",
+        "Valor": 152819,
+        "Serie": "Empresas Ativas"
+      },
+      {
+        "Mes": "Dez/25",
+        "Valor": 153385,
+        "Serie": "Empresas Ativas"
+      },
+      {
+        "Mes": "Jan/26",
+        "Valor": 155188,
+        "Serie": "Empresas Ativas"
+      },
+      {
+        "Mes": "Fev/26",
+        "Valor": 156648,
+        "Serie": "Empresas Ativas"
+      },
+      {
+        "Mes": "Mar/26",
+        "Valor": 158376,
+        "Serie": "Empresas Ativas"
+      },
+      {
+        "Mes": "Abr/26",
+        "Valor": 159826,
+        "Serie": "Empresas Ativas"
+      },
+      {
+        "Mes": "Mai/26",
+        "Valor": 161001,
+        "Serie": "Empresas Ativas"
+      },
+      {
+        "Mes": "Jun/26",
+        "Valor": 162320,
+        "Serie": "Empresas Ativas"
+      },
+      {
+        "Mes": "Jul/26",
+        "Valor": 163633,
+        "Serie": "Empresas Ativas"
+      },
+      {
+        "Mes": "Ago/26",
+        "Valor": 165060,
+        "Serie": "Empresas Ativas"
+      },
+      {
+        "Mes": "Set/26",
+        "Valor": 166261,
+        "Serie": "Empresas Ativas"
+      },
+      {
+        "Mes": "Out/26",
+        "Valor": 167565,
+        "Serie": "Empresas Ativas"
+      }
+    ],
+    "df_porte": [
+      {
+        "Porte": "MEI",
+        "Total": 88650,
+        "Participacao_Pct": 52.9
+      },
+      {
+        "Porte": "Microempresa (ME)",
+        "Total": 56958,
+        "Participacao_Pct": 33.99
+      },
+      {
+        "Porte": "Pequeno Porte (EPP)",
+        "Total": 11896,
+        "Participacao_Pct": 7.1
+      },
+      {
+        "Porte": "Não Informado / Demais",
+        "Total": 10061,
+        "Participacao_Pct": 6
+      }
+    ]
+  },
+  "mercados_macro": {
+    "selic_meta": "13,75% a.a.",
+    "ipca_12m": "4,63%"
+  }
+}

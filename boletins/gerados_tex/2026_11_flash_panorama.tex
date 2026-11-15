@@ -1,0 +1,260 @@
+\documentclass[10pt,a4paper]{article}
+
+% ==============================================================================
+% TEMPLATE EDITORIAL — BOLETIM FLASH (JORNAL ECONÔMICO DO TOCANTINS)
+% Estilo: Briefing Executivo de Jornal Econômico (2 Páginas Balanceadas)
+% Paleta FLASH: Azul-Marinho (#0F2537), Azul Secundário (#244B6B),
+%               Dourado Institucional (#C8942B) e Fundo Neutro (#F4F6F9)
+% ==============================================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+
+\usepackage[top=1.35cm, bottom=1.45cm, left=1.40cm, right=1.40cm, headheight=14pt, headsep=8pt, footskip=18pt]{geometry}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{colortbl}
+\usepackage{tikz}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{setspace}
+\usepackage{multicol}
+\usepackage{amssymb}
+\usepackage{hyperref}
+
+% Cores institucionais do Boletim FLASH
+\definecolor{corprimaria}{HTML}{0F2537}
+\definecolor{corsecundaria}{HTML}{244B6B}
+\definecolor{corfundo}{HTML}{F4F6F9}
+\definecolor{douradoto}{HTML}{C8942B}
+\definecolor{coracento}{HTML}{C8942B}
+\definecolor{cinzatexto}{HTML}{1E293B}
+\definecolor{cinzasub}{HTML}{475569}
+\definecolor{cinzaborda}{HTML}{CBD5E1}
+\definecolor{verdealta}{HTML}{15803D}
+\definecolor{vermelhobaixa}{HTML}{B91C1C}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=corprimaria,
+  urlcolor=corsecundaria,
+  pdftitle={Boletim Flash — Visão Geral: Pulso Macroeconômico de Curto Prazo do Tocantins},
+  pdfauthor={Jornal Economico do Tocantins}
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3.5pt}
+\setlength{\columnsep}{0.55cm}
+\setlength{\columnseprule}{0.4pt}
+\def\columnseprulecolor{\color{cinzaborda}}
+\renewcommand{\arraystretch}{1.15}
+
+% Cabeçalho e Rodapé de Jornal Econômico (Sem colisão central)
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.5pt}
+\renewcommand{\footrule}{\hbox to\headwidth{\color{douradoto}\leaders\hrule height \footrulewidth\hfill}}
+
+\fancyhead[L]{\ifnum\value{page}>1 \scriptsize\bfseries\color{corprimaria}JORNAL ECONÔMICO DO TOCANTINS \enspace{\color{douradoto}$\vert$}\enspace {\mdseries\color{cinzasub}BOLETIM RÁPIDO (FLASH MENSAL) $\cdot$ Novembro/2026}\fi}
+\fancyhead[R]{\ifnum\value{page}>1 \scriptsize\color{cinzasub}\#11/2026\fi}
+
+\fancyfoot[L]{\scriptsize\color{cinzasub}\textbf{\color{corprimaria}Jornal Econômico do Tocantins} $\cdot$ Panorama Macroeconômico do Tocantins $\cdot$ Publicado em 14/11/2026}
+\fancyfoot[R]{\scriptsize\bfseries\color{corprimaria}Pág. \thepage\ de \pageref*{LastPage}}
+
+% Comando para Títulos de Seção Estilo Jornal Financeiro
+\newcommand{\secaoboletim}[1]{%
+  \par\vspace{0.16cm}%
+  \noindent\begin{tikzpicture}
+    \fill[corprimaria] (0,0) rectangle (\textwidth, 0.52);
+    \fill[douradoto] (0,0) rectangle (0.16, 0.52);
+    \node[anchor=west, font=\small\bfseries, text=white] at (0.30, 0.26) {\MakeUppercase{#1}};
+  \end{tikzpicture}%
+  \par\vspace{0.08cm}%
+}
+
+\newcommand{\subsecaoboletim}[1]{%
+  \par\vspace{0.10cm}%
+  \noindent{\small\bfseries\color{corprimaria}\rule{0.14cm}{0.26cm}\hspace{5pt}#1}%
+  \par\vspace{0.03cm}%
+  {\color{douradoto}\hrule height 0.6pt}%
+  \vspace{0.06cm}%
+}
+
+\begin{document}
+\color{cinzatexto}
+
+% ==============================================================================
+% MASTHEAD DE JORNAL ECONÔMICO (AUTO-AJUSTÁVEL, SEM SOBREPOSIÇÃO DE TEXTO)
+% ==============================================================================
+\noindent\begin{tikzpicture}
+  \node[
+    fill=corprimaria,
+    inner xsep=12pt,
+    inner ysep=10pt,
+    text width=\textwidth-24pt,
+    align=left
+  ] (masthead) {
+    % Linha superior do cabeçalho do jornal
+    \hbox to \linewidth{%
+      {\colorbox{douradoto}{\strut\hspace{4pt}\scriptsize\bfseries\color{corprimaria}BOLETIM RÁPIDO (FLASH MENSAL) $\cdot$ \#11/2026\hspace{4pt}}}%
+      \hfill
+      {\scriptsize\color{white}\textbf{JORNAL ECONÔMICO DO TOCANTINS} \enspace{\color{douradoto}$\vert$}\enspace Ref.: \textbf{Novembro/2026} \enspace{\color{douradoto}$\vert$}\enspace 14/11/2026}%
+    }%
+    \par\vspace{5pt}%
+    {\color{douradoto}\hrule height 0.8pt}%
+    \par\vspace{6pt}%
+    % Título Principal e Subtítulo com quebra automática limpa
+    {\fontsize{13.5}{16.2}\selectfont\bfseries\color{white}Boletim Flash — Visão Geral: Pulso Macroeconômico de Curto Prazo do Tocantins\par}%
+    \vspace{3.5pt}%
+    {\footnotesize\color{corfundo}Monitoramento integrado das variações entre períodos subsequentes em atividade, mercado de trabalho, arrecadação de ICMS e abertura de empresas\par}%
+  };
+  \fill[douradoto] (masthead.south west) rectangle ([yshift=-2.5pt]masthead.south east);
+\end{tikzpicture}
+
+\vspace{0.14cm}
+
+% ==============================================================================
+% 1. FAIXA DE INDICADORES-CHAVE DO PAINEL (4 CARDS KPI EM LINHA ÚNICA)
+% ==============================================================================
+\noindent\makebox[\textwidth][s]{%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}VAR. PIB TRIMESTRAL (TO)}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}-1,3\%}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Série c/ Ajuste Sazonal X-13}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}\hfill%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}TAXA DE DESOCUPAÇÃO}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}4,1\%}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}PNAD Contínua Trimestral / IBGE}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}\hfill%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}VARIAÇÃO MENSAL ICMS}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}-5,25\%}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Ref.: 09/26}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}\hfill%
+\begin{tikzpicture}[baseline=(box.base)]
+  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
+    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}NOVOS CNPJS NO MÊS}\par\vspace{1.2pt}%
+    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}2.760}\par\vspace{1pt}%
+    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Ref.: Out/2026}%
+  };
+  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+\end{tikzpicture}%
+}
+
+
+\vspace{0.10cm}
+
+% ==============================================================================
+% 2. ANÁLISE PRELIMINAR AUTOMATIZADA DO SCRIPT (RASTREAMENTO DE VARIAÇÕES)
+% ==============================================================================
+\noindent\begin{tikzpicture}
+  \node[fill=corfundo, draw=cinzaborda, line width=0.5pt, rounded corners=2pt,
+        inner xsep=8pt, inner ysep=5pt, text width=\textwidth-17pt, font=\scriptsize\color{cinzatexto}] (dbox) {
+    {\footnotesize\bfseries\color{corprimaria}Síntese de Variações entre Períodos Subsequentes}\par\vspace{2pt}
+    \begin{itemize}[leftmargin=11pt, itemsep=1.0pt, topsep=1pt, parsep=0pt]
+       \item \textbf{\color{vermelhobaixa}[OSCILAÇÃO NEGATIVA LEVE] PIB Trimestral (TO - Ajuste Sazonal):} PIB Trimestral (TO - Ajuste Sazonal) apresentou acomodação negativa de -1,28\%. [nível: -1,3\%]
+       \item \textbf{\color{vermelhobaixa}[QUEDA DRÁSTICA / CONTRAÇÃO ACENTUADA] Arrecadação Mensal de ICMS (TO):} Arrecadação Mensal de ICMS (TO) sofreu retração acentuada de -5,25\% (queda drástica que requer atenção conjuntural). [nível: -5,25\%]
+       \item \textbf{\color{vermelhobaixa}[OSCILAÇÃO NEGATIVA LEVE] Taxa de Desocupação PNAD (TO):} Taxa de Desocupação PNAD (TO) apresentou acomodação negativa de -0,30\%. [nível: 4,1\%]
+       \item \textbf{\color{verdealta}[AVANÇO MODERADO] Novas Inscrições de CNPJ no Mês:} Novas Inscrições de CNPJ no Mês avançou +0,20\% em trajetória de expansão gradual. [nível: 2.760]
+    \end{itemize}
+  };
+  \fill[corprimaria] (dbox.north west) rectangle ([xshift=3pt]dbox.south west);
+\end{tikzpicture}
+
+
+\vspace{0.08cm}
+
+% ==============================================================================
+% 3. ANÁLISE CONJUNTURAL DA EQUIPE E PERSPECTIVAS (2 COLUNAS DE JORNAL)
+% ==============================================================================
+\secaoboletim{1. Análise Conjuntural da Equipe e Cenários}
+
+\begin{multicols}{2}
+\begin{spacing}{1.06}
+{\small A leitura conjunta dos quatro indicadores-síntese do painel revela um quadro de resiliência do ciclo doméstico tocantinense na passagem entre períodos subsequentes. Embora a variação trimestral dessazonalizada do PIB reflita a acomodação natural da safra agrícola após o pico de colheita, os indicadores mensais de alta frequência — especialmente a abertura de novos CNPJs e o fluxo de contratações formais — seguem operando acima da linha de base histórica.
+
+\medskip
+O pareamento em índice (Base 100) entre novas inscrições empresariais na Receita Federal e admissões declaradas no Novo CAGED confirma a elevada elasticidade entre o empreendedorismo local e a absorção de mão de obra nos centros urbanos de Palmas, Araguaína e Gurupi.}
+
+\subsecaoboletim{Perspectivas e Cenários}
+{\small Para os próximos meses, a sazonalidade de final de ano no comércio varejista e nos serviços pessoais tende a impulsionar tanto a arrecadação própria de ICMS quanto as contratações temporárias e efetivas no setor terciário estadual.}
+
+\end{spacing}
+\end{multicols}
+
+% ==============================================================================
+% 4. PANORAMA ESTATÍSTICO, GRÁFICO E TABELAS EXECUTIVAS DO PERÍODO
+% ==============================================================================
+\secaoboletim{2. Panorama Estatístico, Gráfico e Tabelas Executivas do Período}
+
+\begin{center}
+\includegraphics[width=0.95\textwidth]{figuras/2026_11_flash_panorama_vg_icms_pib.pdf}\\[3pt]
+\includegraphics[width=0.95\textwidth]{figuras/2026_11_flash_panorama_vg_cnpj_caged.pdf}
+\end{center}
+\par\vspace{0.08cm}
+\noindent\begin{minipage}{\linewidth}
+  \noindent{\fontsize{7.8}{9.5}\selectfont\bfseries\color{corprimaria}\rule{0.10cm}{0.20cm}\hspace{4pt}Evolução Comparada: Variação do PIB Trimestral vs. Arrecadação de ICMS no Tocantins}\par\vspace{2pt}
+  {\fontsize{7.0}{8.6}\selectfont\setlength{\tabcolsep}{4.5pt}%
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}Xrrr}
+\toprule
+\rowcolor{corprimaria} \textbf{\color{white}Trimestre} & \textbf{\color{white}PIB Trimestral Dessaz. (\%)} & \textbf{\color{white}Arrecadação ICMS (\%)} & \textbf{\color{white}Diferencial (p.p.)} \\
+\midrule
+T3 2024 & +0,71\% & +12,88\% & +12,17 p.p. \\
+\rowcolor{corfundo} T4 2024 & +1,64\% & +1,17\% & -0,47 p.p. \\
+T1 2025 & +3,54\% & +7,85\% & +4,31 p.p. \\
+\rowcolor{corfundo} T2 2025 & -1,85\% & +11,36\% & +13,21 p.p. \\
+T3 2025 & -0,20\% & +5,90\% & +6,10 p.p. \\
+\rowcolor{corfundo} T4 2025 & +1,01\% & +6,18\% & +5,17 p.p. \\
+T1 2026 & -1,28\% & +3,18\% & +4,46 p.p. \\
+\bottomrule
+\end{tabularx}%
+}
+  \par\vspace{1.5pt}{\fontsize{6.0}{7.2}\selectfont\color{cinzasub}\textit{Fonte: SEPLAN-TO (X-13ARIMA-SEATS) e SEFAZ-TO. Elaboração: Jornal Econômico do Tocantins.}}
+\end{minipage}
+\par\vspace{0.08cm}
+
+
+\vfill
+
+% ==============================================================================
+% EXPEDIENTE EDITORIAL E NOTA METODOLÓGICA
+% ==============================================================================
+\noindent\begin{tikzpicture}
+  \node[
+    fill=corfundo,
+    draw=cinzaborda,
+    line width=0.5pt,
+    rounded corners=2pt,
+    inner sep=6pt,
+    text width=\textwidth-13pt,
+    font=\scriptsize\color{cinzasub}
+  ] {
+    \textbf{\color{corprimaria}Nota Metodológica e Fontes Primárias:} Síntese dos indicadores antecedentes e coincidentes do painel online: PIB Trimestral dessazonalizado via X-13ARIMA-SEATS, PNAD Contínua (Tabela 4099), ICMS (SEFAZ-TO), Novos CNPJs (SERPRO/RFB) e Admissões (Novo CAGED).\par\vspace{2pt}
+    \textbf{\color{corprimaria}Expediente Editorial:} Lorenzo Costa e Equipe | Jornal Econômico do Tocantins \enspace$\vert$\enspace \textbf{\color{corprimaria}Publicação:} Núcleo de Conjuntura Econômica — \textit{Jornal Econômico do Tocantins}.
+  };
+\end{tikzpicture}
+
+\end{document}
