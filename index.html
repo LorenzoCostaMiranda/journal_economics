@@ -7743,13 +7743,13 @@ padding: 5px 8px !important;
 font-size: 0.86rem !important;
 }
 .tabela-mercados-aovivo thead th {
-padding: 5px 8px !important;
-font-size: 10.5px !important;
+padding: 5px 6px !important;
+font-size: 10px !important;
 white-space: nowrap !important;
 }
 .tabela-mercados-aovivo tbody td {
-padding: 4px 8px !important;
-font-size: 12px !important;
+padding: 4px 6px !important;
+font-size: 11.5px !important;
 line-height: 1.15 !important;
 }
 .tabela-mercados-aovivo tbody td:nth-child(2),
@@ -7817,6 +7817,58 @@ align-items: center;
 gap: 8px;
 white-space: nowrap;
 flex-shrink: 0;
+}
+
+.mercados-chart-controls {
+display: flex;
+justify-content: space-between;
+align-items: center;
+flex-wrap: wrap;
+gap: 8px;
+padding: 6px 10px 4px 10px;
+border-bottom: 1px solid #edf0f2;
+background-color: #fafbfc;
+}
+.mercados-btn-group {
+display: inline-flex;
+align-items: center;
+gap: 4px;
+flex-wrap: wrap;
+}
+.mercados-ctl-btn {
+border: 1px solid #cbd5e1;
+background: #ffffff;
+color: #0f2537;
+font-size: 11px;
+font-weight: 700;
+padding: 4px 10px;
+border-radius: 6px;
+cursor: pointer;
+transition: all 0.16s ease;
+}
+.mercados-ctl-btn:hover {
+border-color: #0f2537;
+background: #f1f5f9;
+}
+.mercados-ctl-btn.active {
+background: #0f2537;
+color: #ffffff;
+border-color: #0f2537;
+border-bottom: 2px solid #c8942b;
+}
+@keyframes jetPriceFlashUp {
+0% { background-color: rgba(21, 128, 61, 0.24); }
+100% { background-color: transparent; }
+}
+@keyframes jetPriceFlashDown {
+0% { background-color: rgba(185, 28, 28, 0.22); }
+100% { background-color: transparent; }
+}
+.jet-flash-up {
+animation: jetPriceFlashUp 1.1s ease-out;
+}
+.jet-flash-down {
+animation: jetPriceFlashDown 1.1s ease-out;
 }
 @media (max-height: 820px) and (max-width: 991.98px) {
 .bslib-page-dashboard {
@@ -7948,9 +8000,24 @@ border-radius: 6px !important;
 box-shadow: 0 2px 8px rgba(15, 37, 55, 0.2) !important;
 }
 
+.card,
+.card-body,
+.mercados-card-wrap,
+#barra-cotacoes-aovivo,
+.ticker-trilha-container,
+.mercados-chart-controls {
+max-width: 100% !important;
+min-width: 0 !important;
+box-sizing: border-box !important;
+}
+#barra-cotacoes-aovivo {
+width: 100% !important;
+overflow: hidden !important;
+}
 .card:not(.bslib-value-box) {
 height: auto !important;
 min-height: 0 !important;
+overflow: hidden !important;
 }
 .card:not(.bslib-value-box) > .card-body {
 height: auto !important;
@@ -8829,8 +8896,8 @@ grid-auto-rows: minmax(0, 1fr);">
 <div class="card cell grafico-pib-sazonal html-fill-item html-fill-container bslib-card" data-bslib-card-init data-require-bs-caller="card()" data-full-screen="false">
 <div class="card-body html-fill-item html-fill-container">
 <div class="cell-output-display html-fill-item html-fill-container">
-<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-d9cc03f14f7e62581fe4" style="width:100%;height:406px;"></div>
-<script type="application/json" data-for="htmlwidget-d9cc03f14f7e62581fe4">{"x":{"visdat":{"299c3d557773":["function () ","plotlyVisDat"]},"cur_data":"299c3d557773","attrs":{"299c3d557773":{"x":["T3 2024","T4 2024","T1 2025","T2 2025","T3 2025","T4 2025","T1 2026","T3 2024","T4 2024","T1 2025","T2 2025","T3 2025","T4 2025","T1 2026"],"y":[12.880000000000001,1.1699999999999999,7.8499999999999996,11.359999999999999,5.9000000000000004,6.1799999999999997,3.1800000000000002,0.70999999999999996,1.6399999999999999,3.54,-1.8500000000000001,-0.20000000000000001,1.01,-1.28],"mode":"lines+markers","line":{"width":3},"marker":{"size":7},"color":["Arrecadação ICMS","Arrecadação ICMS","Arrecadação ICMS","Arrecadação ICMS","Arrecadação ICMS","Arrecadação ICMS","Arrecadação ICMS","PIB trimestral","PIB trimestral","PIB trimestral","PIB trimestral","PIB trimestral","PIB trimestral","PIB trimestral"],"colors":["#0f2537","#c8942b"],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":52,"l":64,"t":26,"r":16},"showlegend":true,"legend":{"orientation":"h","x":0.5,"xanchor":"center","y":1.1499999999999999},"dragmode":false,"xaxis":{"domain":[0,1],"automargin":true,"title":"","tickangle":-28,"tickfont":{"size":10.5},"fixedrange":true,"type":"category","categoryorder":"array","categoryarray":["T3 2024","T4 2024","T1 2025","T2 2025","T3 2025","T4 2025","T1 2026"]},"yaxis":{"domain":[0,1],"automargin":true,"title":{"text":"Variação (%)","standoff":6,"font":{"size":11}},"fixedrange":true,"separatethousands":true,"tickfont":{"size":11}},"separators":",.","paper_bgcolor":"rgba(0,0,0,0)","plot_bgcolor":"rgba(0,0,0,0)","annotations":[{"x":0,"y":0,"yshift":-34,"text":"<i>Fonte: Sefaz-TO e SEPLAN-TO/Contas Regionais.<\/i>","showarrow":false,"xref":"paper","yref":"paper","xanchor":"left","yanchor":"top","font":{"size":10.5,"color":"#858c94"}}],"hovermode":"closest"},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false,"scrollZoom":false,"doubleClick":false},"data":[{"x":["T3 2024","T4 2024","T1 2025","T2 2025","T3 2025","T4 2025","T1 2026"],"y":[12.880000000000001,1.1699999999999999,7.8499999999999996,11.359999999999999,5.9000000000000004,6.1799999999999997,3.1800000000000002],"mode":"lines+markers","line":{"color":"rgba(15,37,55,1)","width":3},"marker":{"color":"rgba(15,37,55,1)","size":7,"line":{"color":"rgba(15,37,55,1)"}},"type":"scatter","name":"Arrecadação ICMS","textfont":{"color":"rgba(15,37,55,1)"},"error_y":{"color":"rgba(15,37,55,1)"},"error_x":{"color":"rgba(15,37,55,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["T3 2024","T4 2024","T1 2025","T2 2025","T3 2025","T4 2025","T1 2026"],"y":[0.70999999999999996,1.6399999999999999,3.54,-1.8500000000000001,-0.20000000000000001,1.01,-1.28],"mode":"lines+markers","line":{"color":"rgba(200,148,43,1)","width":3},"marker":{"color":"rgba(200,148,43,1)","size":7,"line":{"color":"rgba(200,148,43,1)"}},"type":"scatter","name":"PIB trimestral","textfont":{"color":"rgba(200,148,43,1)"},"error_y":{"color":"rgba(200,148,43,1)"},"error_x":{"color":"rgba(200,148,43,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-9f50e4230898a03f92fc" style="width:100%;height:406px;"></div>
+<script type="application/json" data-for="htmlwidget-9f50e4230898a03f92fc">{"x":{"visdat":{"3d34702b2591":["function () ","plotlyVisDat"]},"cur_data":"3d34702b2591","attrs":{"3d34702b2591":{"x":["T3 2024","T4 2024","T1 2025","T2 2025","T3 2025","T4 2025","T1 2026","T3 2024","T4 2024","T1 2025","T2 2025","T3 2025","T4 2025","T1 2026"],"y":[12.880000000000001,1.1699999999999999,7.8499999999999996,11.359999999999999,5.9000000000000004,6.1799999999999997,3.1800000000000002,0.70999999999999996,1.6399999999999999,3.54,-1.8500000000000001,-0.20000000000000001,1.01,-1.28],"mode":"lines+markers","line":{"width":3},"marker":{"size":7},"color":["Arrecadação ICMS","Arrecadação ICMS","Arrecadação ICMS","Arrecadação ICMS","Arrecadação ICMS","Arrecadação ICMS","Arrecadação ICMS","PIB trimestral","PIB trimestral","PIB trimestral","PIB trimestral","PIB trimestral","PIB trimestral","PIB trimestral"],"colors":["#0f2537","#c8942b"],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":52,"l":64,"t":26,"r":16},"showlegend":true,"legend":{"orientation":"h","x":0.5,"xanchor":"center","y":1.1499999999999999},"dragmode":false,"xaxis":{"domain":[0,1],"automargin":true,"title":"","tickangle":-28,"tickfont":{"size":10.5},"fixedrange":true,"type":"category","categoryorder":"array","categoryarray":["T3 2024","T4 2024","T1 2025","T2 2025","T3 2025","T4 2025","T1 2026"]},"yaxis":{"domain":[0,1],"automargin":true,"title":{"text":"Variação (%)","standoff":6,"font":{"size":11}},"fixedrange":true,"separatethousands":true,"tickfont":{"size":11}},"separators":",.","paper_bgcolor":"rgba(0,0,0,0)","plot_bgcolor":"rgba(0,0,0,0)","annotations":[{"x":0,"y":0,"yshift":-34,"text":"<i>Fonte: Sefaz-TO e SEPLAN-TO/Contas Regionais.<\/i>","showarrow":false,"xref":"paper","yref":"paper","xanchor":"left","yanchor":"top","font":{"size":10.5,"color":"#858c94"}}],"hovermode":"closest"},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false,"scrollZoom":false,"doubleClick":false},"data":[{"x":["T3 2024","T4 2024","T1 2025","T2 2025","T3 2025","T4 2025","T1 2026"],"y":[12.880000000000001,1.1699999999999999,7.8499999999999996,11.359999999999999,5.9000000000000004,6.1799999999999997,3.1800000000000002],"mode":"lines+markers","line":{"color":"rgba(15,37,55,1)","width":3},"marker":{"color":"rgba(15,37,55,1)","size":7,"line":{"color":"rgba(15,37,55,1)"}},"type":"scatter","name":"Arrecadação ICMS","textfont":{"color":"rgba(15,37,55,1)"},"error_y":{"color":"rgba(15,37,55,1)"},"error_x":{"color":"rgba(15,37,55,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["T3 2024","T4 2024","T1 2025","T2 2025","T3 2025","T4 2025","T1 2026"],"y":[0.70999999999999996,1.6399999999999999,3.54,-1.8500000000000001,-0.20000000000000001,1.01,-1.28],"mode":"lines+markers","line":{"color":"rgba(200,148,43,1)","width":3},"marker":{"color":"rgba(200,148,43,1)","size":7,"line":{"color":"rgba(200,148,43,1)"}},"type":"scatter","name":"PIB trimestral","textfont":{"color":"rgba(200,148,43,1)"},"error_y":{"color":"rgba(200,148,43,1)"},"error_x":{"color":"rgba(200,148,43,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
@@ -8843,8 +8910,8 @@ grid-auto-rows: minmax(0, 1fr);">
 <div class="card cell atualizado dt-up-12-11-2026 html-fill-item html-fill-container bslib-card" data-bslib-card-init data-require-bs-caller="card()" data-full-screen="false">
 <div class="card-body html-fill-item html-fill-container">
 <div class="cell-output-display html-fill-item html-fill-container">
-<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-98e748295caa59f34565" style="width:100%;height:406px;"></div>
-<script type="application/json" data-for="htmlwidget-98e748295caa59f34565">{"x":{"visdat":{"299c55b1224c":["function () ","plotlyVisDat"]},"cur_data":"299c55b1224c","attrs":{"299c55b1224c":{"x":["Out/25","Nov/25","Dez/25","Jan/26","Fev/26","Mar/26","Abr/26","Mai/26","Jun/26","Jul/26","Ago/26","Set/26","Out/25","Nov/25","Dez/25","Jan/26","Fev/26","Mar/26","Abr/26","Mai/26","Jun/26","Jul/26","Ago/26","Set/26"],"y":[100,83,76.799999999999997,147.09999999999999,124,134.59999999999999,118.09999999999999,113.8,115.2,106.40000000000001,114.40000000000001,100.2,100,83.299999999999997,66,103.09999999999999,106.5,104.5,100.09999999999999,93.900000000000006,96.299999999999997,100.59999999999999,107.5,96],"mode":"lines+markers","line":{"width":3},"marker":{"size":7},"color":["Abertura de CNPJs","Abertura de CNPJs","Abertura de CNPJs","Abertura de CNPJs","Abertura de CNPJs","Abertura de CNPJs","Abertura de CNPJs","Abertura de CNPJs","Abertura de CNPJs","Abertura de CNPJs","Abertura de CNPJs","Abertura de CNPJs","Admissões (Novo CAGED)","Admissões (Novo CAGED)","Admissões (Novo CAGED)","Admissões (Novo CAGED)","Admissões (Novo CAGED)","Admissões (Novo CAGED)","Admissões (Novo CAGED)","Admissões (Novo CAGED)","Admissões (Novo CAGED)","Admissões (Novo CAGED)","Admissões (Novo CAGED)","Admissões (Novo CAGED)"],"colors":["#0f2537","#c8942b"],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":52,"l":64,"t":26,"r":16},"showlegend":true,"legend":{"orientation":"h","x":0.5,"xanchor":"center","y":1.1499999999999999},"dragmode":false,"xaxis":{"domain":[0,1],"automargin":true,"title":"","tickangle":-28,"tickfont":{"size":10.5},"fixedrange":true,"type":"category","categoryorder":"array","categoryarray":["Out/25","Nov/25","Dez/25","Jan/26","Fev/26","Mar/26","Abr/26","Mai/26","Jun/26","Jul/26","Ago/26","Set/26"]},"yaxis":{"domain":[0,1],"automargin":true,"title":{"text":"Índice (1º mês = 100)","standoff":6,"font":{"size":11}},"fixedrange":true,"separatethousands":true,"tickfont":{"size":11}},"separators":",.","paper_bgcolor":"rgba(0,0,0,0)","plot_bgcolor":"rgba(0,0,0,0)","annotations":[{"x":0,"y":0,"yshift":-34,"text":"<i>Fonte: Receita Federal/Mapa de Empresas e Novo CAGED/MTE.<\/i>","showarrow":false,"xref":"paper","yref":"paper","xanchor":"left","yanchor":"top","font":{"size":10.5,"color":"#858c94"}}],"hovermode":"closest"},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false,"scrollZoom":false,"doubleClick":false},"data":[{"x":["Out/25","Nov/25","Dez/25","Jan/26","Fev/26","Mar/26","Abr/26","Mai/26","Jun/26","Jul/26","Ago/26","Set/26"],"y":[100,83,76.799999999999997,147.09999999999999,124,134.59999999999999,118.09999999999999,113.8,115.2,106.40000000000001,114.40000000000001,100.2],"mode":"lines+markers","line":{"color":"rgba(15,37,55,1)","width":3},"marker":{"color":"rgba(15,37,55,1)","size":7,"line":{"color":"rgba(15,37,55,1)"}},"type":"scatter","name":"Abertura de CNPJs","textfont":{"color":"rgba(15,37,55,1)"},"error_y":{"color":"rgba(15,37,55,1)"},"error_x":{"color":"rgba(15,37,55,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["Out/25","Nov/25","Dez/25","Jan/26","Fev/26","Mar/26","Abr/26","Mai/26","Jun/26","Jul/26","Ago/26","Set/26"],"y":[100,83.299999999999997,66,103.09999999999999,106.5,104.5,100.09999999999999,93.900000000000006,96.299999999999997,100.59999999999999,107.5,96],"mode":"lines+markers","line":{"color":"rgba(200,148,43,1)","width":3},"marker":{"color":"rgba(200,148,43,1)","size":7,"line":{"color":"rgba(200,148,43,1)"}},"type":"scatter","name":"Admissões (Novo CAGED)","textfont":{"color":"rgba(200,148,43,1)"},"error_y":{"color":"rgba(200,148,43,1)"},"error_x":{"color":"rgba(200,148,43,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-39d78cb494205d359824" style="width:100%;height:406px;"></div>
+<script type="application/json" data-for="htmlwidget-39d78cb494205d359824">{"x":{"visdat":{"3d347d367984":["function () ","plotlyVisDat"]},"cur_data":"3d347d367984","attrs":{"3d347d367984":{"x":["Out/25","Nov/25","Dez/25","Jan/26","Fev/26","Mar/26","Abr/26","Mai/26","Jun/26","Jul/26","Ago/26","Set/26","Out/25","Nov/25","Dez/25","Jan/26","Fev/26","Mar/26","Abr/26","Mai/26","Jun/26","Jul/26","Ago/26","Set/26"],"y":[100,83,76.799999999999997,147.09999999999999,124,134.59999999999999,118.09999999999999,113.8,115.2,106.40000000000001,114.40000000000001,100.2,100,83.299999999999997,66,103.09999999999999,106.5,104.5,100.09999999999999,93.900000000000006,96.299999999999997,100.59999999999999,107.5,96],"mode":"lines+markers","line":{"width":3},"marker":{"size":7},"color":["Abertura de CNPJs","Abertura de CNPJs","Abertura de CNPJs","Abertura de CNPJs","Abertura de CNPJs","Abertura de CNPJs","Abertura de CNPJs","Abertura de CNPJs","Abertura de CNPJs","Abertura de CNPJs","Abertura de CNPJs","Abertura de CNPJs","Admissões (Novo CAGED)","Admissões (Novo CAGED)","Admissões (Novo CAGED)","Admissões (Novo CAGED)","Admissões (Novo CAGED)","Admissões (Novo CAGED)","Admissões (Novo CAGED)","Admissões (Novo CAGED)","Admissões (Novo CAGED)","Admissões (Novo CAGED)","Admissões (Novo CAGED)","Admissões (Novo CAGED)"],"colors":["#0f2537","#c8942b"],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":52,"l":64,"t":26,"r":16},"showlegend":true,"legend":{"orientation":"h","x":0.5,"xanchor":"center","y":1.1499999999999999},"dragmode":false,"xaxis":{"domain":[0,1],"automargin":true,"title":"","tickangle":-28,"tickfont":{"size":10.5},"fixedrange":true,"type":"category","categoryorder":"array","categoryarray":["Out/25","Nov/25","Dez/25","Jan/26","Fev/26","Mar/26","Abr/26","Mai/26","Jun/26","Jul/26","Ago/26","Set/26"]},"yaxis":{"domain":[0,1],"automargin":true,"title":{"text":"Índice (1º mês = 100)","standoff":6,"font":{"size":11}},"fixedrange":true,"separatethousands":true,"tickfont":{"size":11}},"separators":",.","paper_bgcolor":"rgba(0,0,0,0)","plot_bgcolor":"rgba(0,0,0,0)","annotations":[{"x":0,"y":0,"yshift":-34,"text":"<i>Fonte: Receita Federal/Mapa de Empresas e Novo CAGED/MTE.<\/i>","showarrow":false,"xref":"paper","yref":"paper","xanchor":"left","yanchor":"top","font":{"size":10.5,"color":"#858c94"}}],"hovermode":"closest"},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false,"scrollZoom":false,"doubleClick":false},"data":[{"x":["Out/25","Nov/25","Dez/25","Jan/26","Fev/26","Mar/26","Abr/26","Mai/26","Jun/26","Jul/26","Ago/26","Set/26"],"y":[100,83,76.799999999999997,147.09999999999999,124,134.59999999999999,118.09999999999999,113.8,115.2,106.40000000000001,114.40000000000001,100.2],"mode":"lines+markers","line":{"color":"rgba(15,37,55,1)","width":3},"marker":{"color":"rgba(15,37,55,1)","size":7,"line":{"color":"rgba(15,37,55,1)"}},"type":"scatter","name":"Abertura de CNPJs","textfont":{"color":"rgba(15,37,55,1)"},"error_y":{"color":"rgba(15,37,55,1)"},"error_x":{"color":"rgba(15,37,55,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["Out/25","Nov/25","Dez/25","Jan/26","Fev/26","Mar/26","Abr/26","Mai/26","Jun/26","Jul/26","Ago/26","Set/26"],"y":[100,83.299999999999997,66,103.09999999999999,106.5,104.5,100.09999999999999,93.900000000000006,96.299999999999997,100.59999999999999,107.5,96],"mode":"lines+markers","line":{"color":"rgba(200,148,43,1)","width":3},"marker":{"color":"rgba(200,148,43,1)","size":7,"line":{"color":"rgba(200,148,43,1)"}},"type":"scatter","name":"Admissões (Novo CAGED)","textfont":{"color":"rgba(200,148,43,1)"},"error_y":{"color":"rgba(200,148,43,1)"},"error_x":{"color":"rgba(200,148,43,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
@@ -8920,8 +8987,8 @@ grid-auto-rows: minmax(0, 1fr);">
 <div class="card cell grafico-central-pib-to html-fill-item html-fill-container bslib-card" data-bslib-card-init data-require-bs-caller="card()" data-full-screen="false">
 <div class="card-body html-fill-item html-fill-container">
 <div class="cell-output-display html-fill-item html-fill-container">
-<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-13d15881b3f5127b7ef8" style="width:100%;height:406px;"></div>
-<script type="application/json" data-for="htmlwidget-13d15881b3f5127b7ef8">{"x":{"visdat":{"299c5ff03e28":["function () ","plotlyVisDat"]},"cur_data":"299c5ff03e28","attrs":{"299c5ff03e28":{"x":["T3 2024","T4 2024","T1 2025","T2 2025","T3 2025","T4 2025","T1 2026","T3 2024","T4 2024","T1 2025","T2 2025","T3 2025","T4 2025","T1 2026"],"y":[0.70999999999999996,1.6399999999999999,3.54,-1.8500000000000001,-0.20000000000000001,1.01,-1.28,0.90000000000000002,0.080000000000000002,1.26,0.35999999999999999,0.11,0.25,1.0700000000000001],"mode":"lines+markers","line":{"width":3},"marker":{"size":7},"color":["Tocantins","Tocantins","Tocantins","Tocantins","Tocantins","Tocantins","Tocantins","Brasil","Brasil","Brasil","Brasil","Brasil","Brasil","Brasil"],"colors":["#c8942b","#0f2537"],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":52,"l":64,"t":26,"r":16},"showlegend":true,"legend":{"orientation":"h","x":0.5,"xanchor":"center","y":1.1499999999999999},"dragmode":false,"xaxis":{"domain":[0,1],"automargin":true,"title":"","tickangle":-28,"tickfont":{"size":10.5},"fixedrange":true,"type":"category","categoryorder":"array","categoryarray":["T3 2024","T4 2024","T1 2025","T2 2025","T3 2025","T4 2025","T1 2026"]},"yaxis":{"domain":[0,1],"automargin":true,"title":{"text":"Variação Trimestral (%)","standoff":6,"font":{"size":11}},"fixedrange":true,"separatethousands":true,"tickfont":{"size":11}},"separators":",.","paper_bgcolor":"rgba(0,0,0,0)","plot_bgcolor":"rgba(0,0,0,0)","annotations":[{"x":0,"y":0,"yshift":-34,"text":"<i>Fonte: SEPLAN-TO/Contas Regionais (ajuste sazonal próprio) e IBGE/SIDRA (Tabela 1621).<\/i>","showarrow":false,"xref":"paper","yref":"paper","xanchor":"left","yanchor":"top","font":{"size":10.5,"color":"#858c94"}}],"hovermode":"closest"},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false,"scrollZoom":false,"doubleClick":false},"data":[{"x":["T3 2024","T4 2024","T1 2025","T2 2025","T3 2025","T4 2025","T1 2026"],"y":[0.90000000000000002,0.080000000000000002,1.26,0.35999999999999999,0.11,0.25,1.0700000000000001],"mode":"lines+markers","line":{"color":"rgba(15,37,55,1)","width":3},"marker":{"color":"rgba(15,37,55,1)","size":7,"line":{"color":"rgba(15,37,55,1)"}},"type":"scatter","name":"Brasil","textfont":{"color":"rgba(15,37,55,1)"},"error_y":{"color":"rgba(15,37,55,1)"},"error_x":{"color":"rgba(15,37,55,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["T3 2024","T4 2024","T1 2025","T2 2025","T3 2025","T4 2025","T1 2026"],"y":[0.70999999999999996,1.6399999999999999,3.54,-1.8500000000000001,-0.20000000000000001,1.01,-1.28],"mode":"lines+markers","line":{"color":"rgba(200,148,43,1)","width":3},"marker":{"color":"rgba(200,148,43,1)","size":7,"line":{"color":"rgba(200,148,43,1)"}},"type":"scatter","name":"Tocantins","textfont":{"color":"rgba(200,148,43,1)"},"error_y":{"color":"rgba(200,148,43,1)"},"error_x":{"color":"rgba(200,148,43,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-1a0885eabbdf67244f7a" style="width:100%;height:406px;"></div>
+<script type="application/json" data-for="htmlwidget-1a0885eabbdf67244f7a">{"x":{"visdat":{"3d3463908f3":["function () ","plotlyVisDat"]},"cur_data":"3d3463908f3","attrs":{"3d3463908f3":{"x":["T3 2024","T4 2024","T1 2025","T2 2025","T3 2025","T4 2025","T1 2026","T3 2024","T4 2024","T1 2025","T2 2025","T3 2025","T4 2025","T1 2026"],"y":[0.70999999999999996,1.6399999999999999,3.54,-1.8500000000000001,-0.20000000000000001,1.01,-1.28,0.90000000000000002,0.080000000000000002,1.26,0.35999999999999999,0.11,0.25,1.0700000000000001],"mode":"lines+markers","line":{"width":3},"marker":{"size":7},"color":["Tocantins","Tocantins","Tocantins","Tocantins","Tocantins","Tocantins","Tocantins","Brasil","Brasil","Brasil","Brasil","Brasil","Brasil","Brasil"],"colors":["#c8942b","#0f2537"],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":52,"l":64,"t":26,"r":16},"showlegend":true,"legend":{"orientation":"h","x":0.5,"xanchor":"center","y":1.1499999999999999},"dragmode":false,"xaxis":{"domain":[0,1],"automargin":true,"title":"","tickangle":-28,"tickfont":{"size":10.5},"fixedrange":true,"type":"category","categoryorder":"array","categoryarray":["T3 2024","T4 2024","T1 2025","T2 2025","T3 2025","T4 2025","T1 2026"]},"yaxis":{"domain":[0,1],"automargin":true,"title":{"text":"Variação Trimestral (%)","standoff":6,"font":{"size":11}},"fixedrange":true,"separatethousands":true,"tickfont":{"size":11}},"separators":",.","paper_bgcolor":"rgba(0,0,0,0)","plot_bgcolor":"rgba(0,0,0,0)","annotations":[{"x":0,"y":0,"yshift":-34,"text":"<i>Fonte: SEPLAN-TO/Contas Regionais (ajuste sazonal próprio) e IBGE/SIDRA (Tabela 1621).<\/i>","showarrow":false,"xref":"paper","yref":"paper","xanchor":"left","yanchor":"top","font":{"size":10.5,"color":"#858c94"}}],"hovermode":"closest"},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false,"scrollZoom":false,"doubleClick":false},"data":[{"x":["T3 2024","T4 2024","T1 2025","T2 2025","T3 2025","T4 2025","T1 2026"],"y":[0.90000000000000002,0.080000000000000002,1.26,0.35999999999999999,0.11,0.25,1.0700000000000001],"mode":"lines+markers","line":{"color":"rgba(15,37,55,1)","width":3},"marker":{"color":"rgba(15,37,55,1)","size":7,"line":{"color":"rgba(15,37,55,1)"}},"type":"scatter","name":"Brasil","textfont":{"color":"rgba(15,37,55,1)"},"error_y":{"color":"rgba(15,37,55,1)"},"error_x":{"color":"rgba(15,37,55,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["T3 2024","T4 2024","T1 2025","T2 2025","T3 2025","T4 2025","T1 2026"],"y":[0.70999999999999996,1.6399999999999999,3.54,-1.8500000000000001,-0.20000000000000001,1.01,-1.28],"mode":"lines+markers","line":{"color":"rgba(200,148,43,1)","width":3},"marker":{"color":"rgba(200,148,43,1)","size":7,"line":{"color":"rgba(200,148,43,1)"}},"type":"scatter","name":"Tocantins","textfont":{"color":"rgba(200,148,43,1)"},"error_y":{"color":"rgba(200,148,43,1)"},"error_x":{"color":"rgba(200,148,43,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
@@ -9055,8 +9122,8 @@ grid-auto-rows: minmax(0, 1fr);">
 <div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init data-require-bs-caller="card()" data-full-screen="false">
 <div class="card-body html-fill-item html-fill-container">
 <div class="cell-output-display html-fill-item html-fill-container">
-<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-ed8335909a52bbdf7143" style="width:100%;height:406px;"></div>
-<script type="application/json" data-for="htmlwidget-ed8335909a52bbdf7143">{"x":{"visdat":{"299c3b2842e2":["function () ","plotlyVisDat"]},"cur_data":"299c3b2842e2","attrs":{"299c3b2842e2":{"x":["Out/25","Nov/25","Dez/25","Jan/26","Fev/26","Mar/26","Abr/26","Mai/26","Jun/26","Jul/26","Ago/26","Set/26"],"y":[27,-363,-4449,1585,1383,667,597,-636,-102,-324,1243,716],"mode":"lines+markers","line":{"width":3},"marker":{"size":7},"color":["Saldo Mensal","Saldo Mensal","Saldo Mensal","Saldo Mensal","Saldo Mensal","Saldo Mensal","Saldo Mensal","Saldo Mensal","Saldo Mensal","Saldo Mensal","Saldo Mensal","Saldo Mensal"],"colors":"#0f2537","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":52,"l":64,"t":10,"r":16},"showlegend":false,"legend":{"orientation":"h","x":0.5,"xanchor":"center","y":1.1499999999999999},"dragmode":false,"xaxis":{"domain":[0,1],"automargin":true,"title":"","tickangle":-28,"tickfont":{"size":10.5},"fixedrange":true,"type":"category","categoryorder":"array","categoryarray":["Out/25","Nov/25","Dez/25","Jan/26","Fev/26","Mar/26","Abr/26","Mai/26","Jun/26","Jul/26","Ago/26","Set/26"]},"yaxis":{"domain":[0,1],"automargin":true,"title":{"text":"Saldo Novo CAGED","standoff":6,"font":{"size":11}},"fixedrange":true,"separatethousands":true,"tickfont":{"size":11}},"separators":",.","paper_bgcolor":"rgba(0,0,0,0)","plot_bgcolor":"rgba(0,0,0,0)","annotations":[{"x":0,"y":0,"yshift":-34,"text":"<i>Fonte: Novo CAGED / MTE.<\/i>","showarrow":false,"xref":"paper","yref":"paper","xanchor":"left","yanchor":"top","font":{"size":10.5,"color":"#858c94"}}],"hovermode":"closest"},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false,"scrollZoom":false,"doubleClick":false},"data":[{"x":["Out/25","Nov/25","Dez/25","Jan/26","Fev/26","Mar/26","Abr/26","Mai/26","Jun/26","Jul/26","Ago/26","Set/26"],"y":[27,-363,-4449,1585,1383,667,597,-636,-102,-324,1243,716],"mode":"lines+markers","line":{"color":"rgba(15,37,55,1)","width":3},"marker":{"color":"rgba(15,37,55,1)","size":7,"line":{"color":"rgba(15,37,55,1)"}},"type":"scatter","name":"Saldo Mensal","textfont":{"color":"rgba(15,37,55,1)"},"error_y":{"color":"rgba(15,37,55,1)"},"error_x":{"color":"rgba(15,37,55,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-2aaa2b2e31591b074247" style="width:100%;height:406px;"></div>
+<script type="application/json" data-for="htmlwidget-2aaa2b2e31591b074247">{"x":{"visdat":{"3d344a957e4e":["function () ","plotlyVisDat"]},"cur_data":"3d344a957e4e","attrs":{"3d344a957e4e":{"x":["Out/25","Nov/25","Dez/25","Jan/26","Fev/26","Mar/26","Abr/26","Mai/26","Jun/26","Jul/26","Ago/26","Set/26"],"y":[27,-363,-4449,1585,1383,667,597,-636,-102,-324,1243,716],"mode":"lines+markers","line":{"width":3},"marker":{"size":7},"color":["Saldo Mensal","Saldo Mensal","Saldo Mensal","Saldo Mensal","Saldo Mensal","Saldo Mensal","Saldo Mensal","Saldo Mensal","Saldo Mensal","Saldo Mensal","Saldo Mensal","Saldo Mensal"],"colors":"#0f2537","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":52,"l":64,"t":10,"r":16},"showlegend":false,"legend":{"orientation":"h","x":0.5,"xanchor":"center","y":1.1499999999999999},"dragmode":false,"xaxis":{"domain":[0,1],"automargin":true,"title":"","tickangle":-28,"tickfont":{"size":10.5},"fixedrange":true,"type":"category","categoryorder":"array","categoryarray":["Out/25","Nov/25","Dez/25","Jan/26","Fev/26","Mar/26","Abr/26","Mai/26","Jun/26","Jul/26","Ago/26","Set/26"]},"yaxis":{"domain":[0,1],"automargin":true,"title":{"text":"Saldo Novo CAGED","standoff":6,"font":{"size":11}},"fixedrange":true,"separatethousands":true,"tickfont":{"size":11}},"separators":",.","paper_bgcolor":"rgba(0,0,0,0)","plot_bgcolor":"rgba(0,0,0,0)","annotations":[{"x":0,"y":0,"yshift":-34,"text":"<i>Fonte: Novo CAGED / MTE.<\/i>","showarrow":false,"xref":"paper","yref":"paper","xanchor":"left","yanchor":"top","font":{"size":10.5,"color":"#858c94"}}],"hovermode":"closest"},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false,"scrollZoom":false,"doubleClick":false},"data":[{"x":["Out/25","Nov/25","Dez/25","Jan/26","Fev/26","Mar/26","Abr/26","Mai/26","Jun/26","Jul/26","Ago/26","Set/26"],"y":[27,-363,-4449,1585,1383,667,597,-636,-102,-324,1243,716],"mode":"lines+markers","line":{"color":"rgba(15,37,55,1)","width":3},"marker":{"color":"rgba(15,37,55,1)","size":7,"line":{"color":"rgba(15,37,55,1)"}},"type":"scatter","name":"Saldo Mensal","textfont":{"color":"rgba(15,37,55,1)"},"error_y":{"color":"rgba(15,37,55,1)"},"error_x":{"color":"rgba(15,37,55,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
@@ -9071,8 +9138,8 @@ grid-auto-rows: minmax(0, 1fr);">
 <div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init data-require-bs-caller="card()" data-full-screen="false">
 <div class="card-body html-fill-item html-fill-container">
 <div class="cell-output-display html-fill-item html-fill-container">
-<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-8ce9fa83335bc56fda81" style="width:100%;height:406px;"></div>
-<script type="application/json" data-for="htmlwidget-8ce9fa83335bc56fda81">{"x":{"visdat":{"299c665520fe":["function () ","plotlyVisDat"]},"cur_data":"299c665520fe","attrs":{"299c665520fe":{"x":{},"y":{},"marker":{"color":"#c8942b"},"text":{},"textposition":"auto","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"margin":{"b":38,"l":95,"t":32,"r":18},"dragmode":false,"title":{"text":"<b>Saldo Novo Caged por Grande Setor<\/b>","x":0,"xanchor":"left","y":0.95999999999999996,"yanchor":"top","font":{"size":13,"color":"#858c94"}},"xaxis":{"domain":[0,1],"automargin":true,"title":"","fixedrange":true,"zeroline":true,"zerolinecolor":"#cbd5e1"},"yaxis":{"domain":[0,1],"automargin":true,"title":"","fixedrange":true,"type":"category","categoryorder":"array","categoryarray":["Agropecuária","Indústria","Comércio","Construção","Serviços"]},"paper_bgcolor":"rgba(0,0,0,0)","plot_bgcolor":"rgba(0,0,0,0)","annotations":[{"x":0,"y":0,"yshift":-22,"text":"<i>Fonte: Novo CAGED / MTE.<\/i>","showarrow":false,"xref":"paper","yref":"paper","xanchor":"left","yanchor":"top","font":{"size":10.5,"color":"#858c94"}}],"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false,"scrollZoom":false,"doubleClick":false},"data":[{"x":[590,211,121,-187,-19],"y":["Serviços","Construção","Comércio","Agropecuária","Indústria"],"marker":{"color":"#c8942b","line":{"color":"rgba(31,119,180,1)"}},"text":["+590","+211","+121","-187","-19"],"textposition":["auto","auto","auto","auto","auto"],"type":"bar","orientation":"h","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-6eaf9751e715c47a40df" style="width:100%;height:406px;"></div>
+<script type="application/json" data-for="htmlwidget-6eaf9751e715c47a40df">{"x":{"visdat":{"3d343c226446":["function () ","plotlyVisDat"]},"cur_data":"3d343c226446","attrs":{"3d343c226446":{"x":{},"y":{},"marker":{"color":"#c8942b"},"text":{},"textposition":"auto","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"margin":{"b":38,"l":95,"t":32,"r":18},"dragmode":false,"title":{"text":"<b>Saldo Novo Caged por Grande Setor<\/b>","x":0,"xanchor":"left","y":0.95999999999999996,"yanchor":"top","font":{"size":13,"color":"#858c94"}},"xaxis":{"domain":[0,1],"automargin":true,"title":"","fixedrange":true,"zeroline":true,"zerolinecolor":"#cbd5e1"},"yaxis":{"domain":[0,1],"automargin":true,"title":"","fixedrange":true,"type":"category","categoryorder":"array","categoryarray":["Agropecuária","Indústria","Comércio","Construção","Serviços"]},"paper_bgcolor":"rgba(0,0,0,0)","plot_bgcolor":"rgba(0,0,0,0)","annotations":[{"x":0,"y":0,"yshift":-22,"text":"<i>Fonte: Novo CAGED / MTE.<\/i>","showarrow":false,"xref":"paper","yref":"paper","xanchor":"left","yanchor":"top","font":{"size":10.5,"color":"#858c94"}}],"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false,"scrollZoom":false,"doubleClick":false},"data":[{"x":[590,211,121,-187,-19],"y":["Serviços","Construção","Comércio","Agropecuária","Indústria"],"marker":{"color":"#c8942b","line":{"color":"rgba(31,119,180,1)"}},"text":["+590","+211","+121","-187","-19"],"textposition":["auto","auto","auto","auto","auto"],"type":"bar","orientation":"h","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
@@ -9088,8 +9155,8 @@ grid-auto-rows: minmax(0, 1fr);">
 <div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init data-require-bs-caller="card()" data-full-screen="false">
 <div class="card-body html-fill-item html-fill-container">
 <div class="cell-output-display html-fill-item html-fill-container">
-<div class="datatables html-widget html-fill-item html-fill-container" id="htmlwidget-58d13e7de8fdb4ef45e3" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-58d13e7de8fdb4ef45e3">{"x":{"filter":"none","vertical":false,"caption":"<caption style=\"caption-side: top; text-align: left; color: #0f2537; font-size: 12px; font-weight: 600; padding-bottom: 4px;\">Estoque Total no Estado do Tocantins (RAIS 2025): 437.580 vínculos ativos | Saldo no Estado (Novo CAGED 09/26): +716 vagas<\/caption>","data":[["Palmas","Araguaína","Gurupi","Porto Nacional","Paraíso do Tocantins","Colinas do Tocantins","Guaraí","Formoso do Araguaia","Lagoa da Confusão","Dianópolis","Tocantinópolis","Araguatins","Pedro Afonso","Miracema do Tocantins","Augustinópolis","Xambioá","Alvorada","Almas","Aguiarnópolis","Miranorte","Nova Olinda","Taguatinga","Cariri do Tocantins","Pium","Peixe","São Bento do Tocantins","Campos Lindos","Sítio Novo do Tocantins","Araguaçu","Divinópolis do Tocantins","Palmeirópolis","Natividade","Darcinópolis","Aliança do Tocantins","Paranã","Cristalândia","Marianópolis do Tocantins","Ananás","Caseara","Santa Fé do Araguaia","Dueré","Goiatins","Arraias","Axixá do Tocantins","Araguacema","Wanderlândia","São Valério","Silvanópolis","Aparecida do Rio Negro","Babaçulândia","Monte do Carmo","Colméia","Palmeirante","Bandeirantes do Tocantins","Filadélfia","Sandolândia","Arapoema","Aragominas","Santa Rosa do Tocantins","Itacajá","Ponte Alta do Tocantins","Figueirópolis","Dois Irmãos do Tocantins","Tabocão","Novo Acordo","Couto Magalhães","Brejinho de Nazaré","Itaguatins","Buriti do Tocantins","Santa Rita do Tocantins","São Miguel do Tocantins","Mateiros","Talismã","Piraquê","Luzinópolis","Araguanã","São Salvador do Tocantins","Fátima","Rio dos Bois","Barrolândia","Jaú do Tocantins","Santa Tereza do Tocantins","Pugmil","Pindorama do Tocantins","Pequizeiro","Muricilândia","Itapiratins","Lajeado","Sucupira","Rio da Conceição","Pau D'Arco","Barra do Ouro","Bernardo Sayão","Nova Rosalândia","Goianorte","Santa Maria do Tocantins","Carmolândia","Itaporã do Tocantins","Ipueiras","Palmeiras do Tocantins","Rio Sono","Chapada da Natividade","Combinado","Monte Santo do Tocantins","Abreulândia","Esperantina","São Félix do Tocantins","São Sebastião do Tocantins","Bom Jesus do Tocantins","Presidente Kennedy","Riachinho","Praia Norte","Tocantínia","Juarina","Conceição do Tocantins","Crixás do Tocantins","Tupiratins","Lagoa do Tocantins","Maurilândia do Tocantins","Novo Jardim","Brasilândia do Tocantins","Nazaré","Chapada de Areia","Aurora do Tocantins","Recursolândia","Ponte Alta do Bom Jesus","Taipas do Tocantins","Novo Alegre","Angico","Porto Alegre do Tocantins","Oliveira de Fátima","Carrasco Bonito","Lizarda","Centenário","Sampaio","Cachoeirinha","Lavandeira","Tupirama","Santa Terezinha do Tocantins"],[220673,47010,20492,14172,12288,5707,3608,3387,3137,3122,3014,2891,2788,2578,2335,2192,2013,1911,1896,1820,1752,1675,1659,1625,1582,1563,1540,1430,1397,1379,1299,1292,1260,1206,1177,1172,1082,1048,1029,1028,1014,1011,1011,1000,992,977,971,964,952,944,911,909,909,885,854,846,821,778,747,729,725,713,713,703,702,689,688,686,668,657,641,622,600,599,585,584,584,577,564,562,541,541,533,529,525,524,506,505,504,501,497,495,491,485,485,460,446,445,441,423,417,415,411,405,405,403,402,394,389,387,375,369,369,366,366,363,357,346,338,327,327,321,319,292,286,285,269,265,263,259,258,239,224,217,214,206,198,189,152],[399,180,89,76,27,9,-9,-85,-36,-17,-19,3,29,13,25,-7,-35,20,1,-1,-12,3,-17,2,-3,10,14,-3,-3,-12,-12,-10,-1,4,8,-2,12,1,-10,5,3,6,-10,1,-8,-36,-4,2,6,-8,-1,1,-4,-17,-8,-2,-1,-1,-5,-1,5,10,0,3,127,-8,-21,5,-1,3,4,7,-6,-8,14,3,-1,6,-3,-4,1,-1,-3,1,5,2,-4,-3,1,-11,10,-1,-4,6,-5,6,5,0,1,2,-4,-3,2,2,1,3,7,-3,1,3,-1,1,-6,0,-6,-2,0,9,3,7,2,0,0,4,0,-5,1,-1,3,2,4,-3,-2,-3,1,-1,0,4,4]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Município<\/th>\n      <th>Estoque (RAIS) 2025<\/th>\n      <th>Saldo (Novo CAGED) 09/26<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"bPaginate":false,"dom":"ftp","language":{"info":"Showing _TOTAL_ entries","search":"Buscar:","zeroRecords":"Nenhum registro encontrado","infoEmpty":"Sem registros","paginate":{"previous":"Anterior","next":"Próximo"}},"pageLength":8,"initComplete":"function(settings, json) {\n$(this.api().table().header()).css({'background-color': '#0f2537', 'color': '#fff'});\n}","columnDefs":[{"targets":1,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 0, 3, \".\", \",\", null);\n  }"},{"targets":2,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 0, 3, \".\", \",\", null);\n  }"},{"className":"dt-right","targets":[1,2]},{"name":"Município","targets":0},{"name":"Estoque (RAIS) 2025","targets":1},{"name":"Saldo (Novo CAGED) 09/26","targets":2}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[8,10,25,50,100]}},"evals":["options.initComplete","options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item html-fill-container" id="htmlwidget-be4c9165000f9e6ff199" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-be4c9165000f9e6ff199">{"x":{"filter":"none","vertical":false,"caption":"<caption style=\"caption-side: top; text-align: left; color: #0f2537; font-size: 12px; font-weight: 600; padding-bottom: 4px;\">Estoque Total no Estado do Tocantins (RAIS 2025): 437.580 vínculos ativos | Saldo no Estado (Novo CAGED 09/26): +716 vagas<\/caption>","data":[["Palmas","Araguaína","Gurupi","Porto Nacional","Paraíso do Tocantins","Colinas do Tocantins","Guaraí","Formoso do Araguaia","Lagoa da Confusão","Dianópolis","Tocantinópolis","Araguatins","Pedro Afonso","Miracema do Tocantins","Augustinópolis","Xambioá","Alvorada","Almas","Aguiarnópolis","Miranorte","Nova Olinda","Taguatinga","Cariri do Tocantins","Pium","Peixe","São Bento do Tocantins","Campos Lindos","Sítio Novo do Tocantins","Araguaçu","Divinópolis do Tocantins","Palmeirópolis","Natividade","Darcinópolis","Aliança do Tocantins","Paranã","Cristalândia","Marianópolis do Tocantins","Ananás","Caseara","Santa Fé do Araguaia","Dueré","Goiatins","Arraias","Axixá do Tocantins","Araguacema","Wanderlândia","São Valério","Silvanópolis","Aparecida do Rio Negro","Babaçulândia","Monte do Carmo","Colméia","Palmeirante","Bandeirantes do Tocantins","Filadélfia","Sandolândia","Arapoema","Aragominas","Santa Rosa do Tocantins","Itacajá","Ponte Alta do Tocantins","Figueirópolis","Dois Irmãos do Tocantins","Tabocão","Novo Acordo","Couto Magalhães","Brejinho de Nazaré","Itaguatins","Buriti do Tocantins","Santa Rita do Tocantins","São Miguel do Tocantins","Mateiros","Talismã","Piraquê","Luzinópolis","Araguanã","São Salvador do Tocantins","Fátima","Rio dos Bois","Barrolândia","Jaú do Tocantins","Santa Tereza do Tocantins","Pugmil","Pindorama do Tocantins","Pequizeiro","Muricilândia","Itapiratins","Lajeado","Sucupira","Rio da Conceição","Pau D'Arco","Barra do Ouro","Bernardo Sayão","Nova Rosalândia","Goianorte","Santa Maria do Tocantins","Carmolândia","Itaporã do Tocantins","Ipueiras","Palmeiras do Tocantins","Rio Sono","Chapada da Natividade","Combinado","Monte Santo do Tocantins","Abreulândia","Esperantina","São Félix do Tocantins","São Sebastião do Tocantins","Bom Jesus do Tocantins","Presidente Kennedy","Riachinho","Praia Norte","Tocantínia","Juarina","Conceição do Tocantins","Crixás do Tocantins","Tupiratins","Lagoa do Tocantins","Maurilândia do Tocantins","Novo Jardim","Brasilândia do Tocantins","Nazaré","Chapada de Areia","Aurora do Tocantins","Recursolândia","Ponte Alta do Bom Jesus","Taipas do Tocantins","Novo Alegre","Angico","Porto Alegre do Tocantins","Oliveira de Fátima","Carrasco Bonito","Lizarda","Centenário","Sampaio","Cachoeirinha","Lavandeira","Tupirama","Santa Terezinha do Tocantins"],[220673,47010,20492,14172,12288,5707,3608,3387,3137,3122,3014,2891,2788,2578,2335,2192,2013,1911,1896,1820,1752,1675,1659,1625,1582,1563,1540,1430,1397,1379,1299,1292,1260,1206,1177,1172,1082,1048,1029,1028,1014,1011,1011,1000,992,977,971,964,952,944,911,909,909,885,854,846,821,778,747,729,725,713,713,703,702,689,688,686,668,657,641,622,600,599,585,584,584,577,564,562,541,541,533,529,525,524,506,505,504,501,497,495,491,485,485,460,446,445,441,423,417,415,411,405,405,403,402,394,389,387,375,369,369,366,366,363,357,346,338,327,327,321,319,292,286,285,269,265,263,259,258,239,224,217,214,206,198,189,152],[399,180,89,76,27,9,-9,-85,-36,-17,-19,3,29,13,25,-7,-35,20,1,-1,-12,3,-17,2,-3,10,14,-3,-3,-12,-12,-10,-1,4,8,-2,12,1,-10,5,3,6,-10,1,-8,-36,-4,2,6,-8,-1,1,-4,-17,-8,-2,-1,-1,-5,-1,5,10,0,3,127,-8,-21,5,-1,3,4,7,-6,-8,14,3,-1,6,-3,-4,1,-1,-3,1,5,2,-4,-3,1,-11,10,-1,-4,6,-5,6,5,0,1,2,-4,-3,2,2,1,3,7,-3,1,3,-1,1,-6,0,-6,-2,0,9,3,7,2,0,0,4,0,-5,1,-1,3,2,4,-3,-2,-3,1,-1,0,4,4]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Município<\/th>\n      <th>Estoque (RAIS) 2025<\/th>\n      <th>Saldo (Novo CAGED) 09/26<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"bPaginate":false,"dom":"ftp","language":{"info":"Showing _TOTAL_ entries","search":"Buscar:","zeroRecords":"Nenhum registro encontrado","infoEmpty":"Sem registros","paginate":{"previous":"Anterior","next":"Próximo"}},"pageLength":8,"initComplete":"function(settings, json) {\n$(this.api().table().header()).css({'background-color': '#0f2537', 'color': '#fff'});\n}","columnDefs":[{"targets":1,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 0, 3, \".\", \",\", null);\n  }"},{"targets":2,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 0, 3, \".\", \",\", null);\n  }"},{"className":"dt-right","targets":[1,2]},{"name":"Município","targets":0},{"name":"Estoque (RAIS) 2025","targets":1},{"name":"Saldo (Novo CAGED) 09/26","targets":2}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[8,10,25,50,100]}},"evals":["options.initComplete","options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
 </div>
 </div>
 <bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
@@ -9140,8 +9207,8 @@ grid-auto-rows: minmax(0, 1fr);">
 <div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init data-require-bs-caller="card()" data-full-screen="false">
 <div class="card-body html-fill-item html-fill-container">
 <div class="cell-output-display html-fill-item html-fill-container">
-<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-2177790f4954aee6bb1c" style="width:100%;height:406px;"></div>
-<script type="application/json" data-for="htmlwidget-2177790f4954aee6bb1c">{"x":{"visdat":{"299c2bd6999":["function () ","plotlyVisDat"],"299c54f86d6":["function () ","data"],"299c2f814c1f":["function () ","data"]},"cur_data":"299c2f814c1f","attrs":{"299c54f86d6":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"locations":{},"z":{},"text":{},"hoverinfo":"text","colorscale":[[0,0.5,1],["#ffe066","#f5be1a","#d99b00"]],"showscale":false,"marker":{"line":{"width":0.80000000000000004,"color":"white"}},"inherit":true},"299c2f814c1f":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"locations":{},"z":{},"text":{},"hoverinfo":"text","colorscale":[[0,0.5,1],["#2d5a88","#18385c","#0f2537"]],"showscale":false,"marker":{"line":{"width":0.80000000000000004,"color":"white"}},"inherit":true}},"layout":{"margin":{"b":25,"l":5,"t":44,"r":5},"mapType":"geo","dragmode":false,"geo":{"domain":{"x":[0,1],"y":[0,1]},"showframe":false,"showcoastlines":true,"coastlinecolor":"#ffffff","coastlinewidth":0.59999999999999998,"showland":true,"landcolor":"#eef0f3","showcountries":true,"countrycolor":"#ffffff","countrywidth":0.80000000000000004,"showocean":true,"oceancolor":"#f8f9fa","projection":{"type":"natural earth"},"bgcolor":"rgba(0,0,0,0)"},"paper_bgcolor":"rgba(0,0,0,0)","annotations":[{"x":0.5,"y":1.1299999999999999,"xref":"paper","yref":"paper","text":"<span style='color:#f0b400; font-size:14px;'>■<\/span> <b>Exportações excedem Importações (Amarelo)<\/b><br><span style='color:#0f2537; font-size:14px;'>■<\/span> <b>Importações excedem Exportações (Azul Escuro)<\/b>","showarrow":false,"font":{"size":11,"color":"#0f2537"},"xanchor":"center"},{"x":0,"y":-0.040000000000000001,"xref":"paper","yref":"paper","text":"<i>Fonte: Comex Stat / MDIC. Passe o cursor sobre os países para ver valores de exportação, importação e saldo bilateral.<\/i>","showarrow":false,"font":{"size":10.5,"color":"#858c94"},"xanchor":"left"}],"scene":{"zaxis":{"title":"log1p(Valor)"}},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false,"scrollZoom":false,"doubleClick":false},"data":[{"colorbar":{"title":"log1p(Valor)<br />log1p(Valor)","ticklen":2},"colorscale":[[0,"#ffe066"],[0.5,"#f5be1a"],[1,"#d99b00"]],"showscale":false,"locations":["CHN","IND","CAN","EGY","ESP","CHE","DEU","MEX","SVN","TUR","RUS","BEL","GBR","IRQ","HKG","NLD","SGP","LBY","PHL","SAU","ISR","MAR","JOR","MYS","AUS","LBN","ALB","CHL","PSE","ARG","SRB","PER","BGD","GAB","TKM","KWT","COL","URY","DZA","BHR","NZL","MOZ","GHA","KAZ","PAK","CIV","PRY","GEO","SYR","SLE","ARE","COD","LBR","AGO","FRA"],"z":[3.8705758155139725,3.5435646229490776,2.866192902199006,2.8437459165561094,2.4265710727750367,2.2192034840549946,2.1564025828159643,2.010894999144726,1.8421356765531218,1.6074359097634274,1.4678743481123135,1.4609379041156565,1.4516138272405332,1.410986973710262,1.3987168811184478,1.2725655957915476,1.199964782928397,1.1878434223960523,1.1052568313867783,1.0612565021243408,0.92028275314369257,0.87129336594341922,0.84156718567821864,0.79750719588418806,0.75612197972133366,0.60976557162089429,0.3784364357202451,0.37156355643248307,0.37156355643248307,0.28517894223366241,0.26236426446749106,0.24686007793152581,0.24686007793152581,0.23111172096338664,0.21511137961694549,0.20701416938432612,0.18232155679395465,0.15700374880966475,0.14842000511827327,0.13102826240640411,0.12221763272424921,0.12221763272424921,0.11332868530700317,0.11332868530700317,0.095310179804324865,0.086177696241052329,0.086177696241052329,0.067658648473814809,0.058268908123975775,0.039220713153281295,0.039220713153281295,0.029558802241544401,0,0,0],"text":["<b>China<\/b><br>Exportações TO: US$ 46,97 Mi<br>Importações TO: US$ 15,98 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 30,99 Mi (Exportações superam)<\/span>","<b>Índia<\/b><br>Exportações TO: US$ 33,59 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 33,59 Mi (Exportações superam)<\/span>","<b>Canadá<\/b><br>Exportações TO: US$ 16,57 Mi<br>Importações TO: US$ 5,71 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 10,86 Mi (Exportações superam)<\/span>","<b>Egito<\/b><br>Exportações TO: US$ 16,18 Mi<br>Importações TO: US$ 1,27 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 14,91 Mi (Exportações superam)<\/span>","<b>Espanha<\/b><br>Exportações TO: US$ 10,32 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 10,32 Mi (Exportações superam)<\/span>","<b>Suíça<\/b><br>Exportações TO: US$ 8,20 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 8,20 Mi (Exportações superam)<\/span>","<b>Alemanha<\/b><br>Exportações TO: US$ 7,64 Mi<br>Importações TO: US$ 154,2 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 7,49 Mi (Exportações superam)<\/span>","<b>México<\/b><br>Exportações TO: US$ 6,47 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 6,47 Mi (Exportações superam)<\/span>","<b>Eslovênia<\/b><br>Exportações TO: US$ 5,31 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 5,31 Mi (Exportações superam)<\/span>","<b>Turquia<\/b><br>Exportações TO: US$ 3,99 Mi<br>Importações TO: US$ 54,7 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 3,93 Mi (Exportações superam)<\/span>","<b>Rússia<\/b><br>Exportações TO: US$ 3,34 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 3,34 Mi (Exportações superam)<\/span>","<b>Bélgica<\/b><br>Exportações TO: US$ 3,31 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 3,31 Mi (Exportações superam)<\/span>","<b>Reino Unido<\/b><br>Exportações TO: US$ 3,27 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 3,27 Mi (Exportações superam)<\/span>","<b>Iraque<\/b><br>Exportações TO: US$ 3,10 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 3,10 Mi (Exportações superam)<\/span>","<b>Hong Kong<\/b><br>Exportações TO: US$ 3,05 Mi<br>Importações TO: US$ 2,4 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 3,04 Mi (Exportações superam)<\/span>","<b>Países Baixos (Holanda)<\/b><br>Exportações TO: US$ 2,57 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 2,57 Mi (Exportações superam)<\/span>","<b>Singapura<\/b><br>Exportações TO: US$ 2,32 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 2,32 Mi (Exportações superam)<\/span>","<b>Líbia<\/b><br>Exportações TO: US$ 2,28 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 2,28 Mi (Exportações superam)<\/span>","<b>Filipinas<\/b><br>Exportações TO: US$ 2,02 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 2,02 Mi (Exportações superam)<\/span>","<b>Arábia Saudita<\/b><br>Exportações TO: US$ 1,89 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 1,89 Mi (Exportações superam)<\/span>","<b>Israel<\/b><br>Exportações TO: US$ 1,51 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 1,51 Mi (Exportações superam)<\/span>","<b>Marrocos<\/b><br>Exportações TO: US$ 1,39 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 1,39 Mi (Exportações superam)<\/span>","<b>Jordânia<\/b><br>Exportações TO: US$ 1,32 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 1,32 Mi (Exportações superam)<\/span>","<b>Malásia<\/b><br>Exportações TO: US$ 1,22 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 1,22 Mi (Exportações superam)<\/span>","<b>Austrália<\/b><br>Exportações TO: US$ 1,13 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 1,13 Mi (Exportações superam)<\/span>","<b>Líbano<\/b><br>Exportações TO: US$ 840,8 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 840,8 mil (Exportações superam)<\/span>","<b>Albânia<\/b><br>Exportações TO: US$ 458,7 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 458,7 mil (Exportações superam)<\/span>","<b>Chile<\/b><br>Exportações TO: US$ 450,4 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 450,4 mil (Exportações superam)<\/span>","<b>Palestina<\/b><br>Exportações TO: US$ 450,0 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 450,0 mil (Exportações superam)<\/span>","<b>Argentina<\/b><br>Exportações TO: US$ 325,3 mil<br>Importações TO: US$ 40,3 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 285,0 mil (Exportações superam)<\/span>","<b>Sérvia<\/b><br>Exportações TO: US$ 301,9 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 301,9 mil (Exportações superam)<\/span>","<b>Peru<\/b><br>Exportações TO: US$ 278,1 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 278,1 mil (Exportações superam)<\/span>","<b>Bangladesh<\/b><br>Exportações TO: US$ 275,4 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 275,4 mil (Exportações superam)<\/span>","<b>Gabão<\/b><br>Exportações TO: US$ 261,4 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 261,4 mil (Exportações superam)<\/span>","<b>Turcomenistão<\/b><br>Exportações TO: US$ 236,5 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 236,5 mil (Exportações superam)<\/span>","<b>Coveite (Kuweit)<\/b><br>Exportações TO: US$ 230,1 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 230,1 mil (Exportações superam)<\/span>","<b>Colômbia<\/b><br>Exportações TO: US$ 204,2 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 204,2 mil (Exportações superam)<\/span>","<b>Uruguai<\/b><br>Exportações TO: US$ 172,0 mil<br>Importações TO: US$ 165,5 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 6,6 mil (Exportações superam)<\/span>","<b>Argélia<\/b><br>Exportações TO: US$ 163,4 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 163,4 mil (Exportações superam)<\/span>","<b>Barein<\/b><br>Exportações TO: US$ 142,6 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 142,6 mil (Exportações superam)<\/span>","<b>Nova Zelândia<\/b><br>Exportações TO: US$ 133,8 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 133,8 mil (Exportações superam)<\/span>","<b>Moçambique<\/b><br>Exportações TO: US$ 131,5 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 131,5 mil (Exportações superam)<\/span>","<b>Gana<\/b><br>Exportações TO: US$ 120,1 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 120,1 mil (Exportações superam)<\/span>","<b>Cazaquistão<\/b><br>Exportações TO: US$ 119,9 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 119,9 mil (Exportações superam)<\/span>","<b>Paquistão<\/b><br>Exportações TO: US$ 99,7 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 99,7 mil (Exportações superam)<\/span>","<b>Costa do Marfim<\/b><br>Exportações TO: US$ 93,4 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 93,4 mil (Exportações superam)<\/span>","<b>Paraguai<\/b><br>Exportações TO: US$ 89,3 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 89,3 mil (Exportações superam)<\/span>","<b>Geórgia<\/b><br>Exportações TO: US$ 72,5 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 72,5 mil (Exportações superam)<\/span>","<b>Síria<\/b><br>Exportações TO: US$ 62,6 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 62,6 mil (Exportações superam)<\/span>","<b>Serra Leoa<\/b><br>Exportações TO: US$ 37,6 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 37,6 mil (Exportações superam)<\/span>","<b>Emirados Árabes Unidos<\/b><br>Exportações TO: US$ 36,3 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 36,3 mil (Exportações superam)<\/span>","<b>Congo, República Democrática<\/b><br>Exportações TO: US$ 28,7 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 28,7 mil (Exportações superam)<\/span>","<b>Libéria<\/b><br>Exportações TO: US$ 3,8 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 3,8 mil (Exportações superam)<\/span>","<b>Angola<\/b><br>Exportações TO: US$ 2,4 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 2,4 mil (Exportações superam)<\/span>","<b>França<\/b><br>Exportações TO: US$ 1,8 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 1,8 mil (Exportações superam)<\/span>"],"hoverinfo":["text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text"],"marker":{"line":{"color":"white","width":0.80000000000000004}},"type":"choropleth","geo":"geo","frame":null},{"colorbar":{"title":"log1p(Valor)<br />log1p(Valor)","ticklen":2},"colorscale":[[0,"#2d5a88"],[0.5,"#18385c"],[1,"#0f2537"]],"showscale":false,"locations":["NGA","VEN","USA","VNM","BRN","IDN","ZAF","QAT","KHM","SWE","TWN","PRI"],"z":[2.7675761804162371,2.7517480563679295,1.7011051009599243,1.589235205116581,0.65232518603969025,0.64185388617239481,0.32930374714260041,0.17395330712343801,0.076961041136128325,0.067658648473814809,0.058268908123975775,0],"text":["<b>Nigéria<\/b><br>Importações TO: US$ 14,92 Mi<br><span style='color:#0f2537;'><b>Saldo:<\/b> - US$ 14,92 Mi (Importações superam)<\/span>","<b>Venezuela<\/b><br>Importações TO: US$ 14,67 Mi<br><span style='color:#0f2537;'><b>Saldo:<\/b> - US$ 14,67 Mi (Importações superam)<\/span>","<b>Estados Unidos<\/b><br>Exportações TO: US$ 4,17 Mi<br>Importações TO: US$ 4,48 Mi<br><span style='color:#0f2537;'><b>Saldo:<\/b> - US$ 313,3 mil (Importações superam)<\/span>","<b>Vietnã<\/b><br>Exportações TO: US$ 1,64 Mi<br>Importações TO: US$ 3,90 Mi<br><span style='color:#0f2537;'><b>Saldo:<\/b> - US$ 2,26 Mi (Importações superam)<\/span>","<b>Brunei<\/b><br>Importações TO: US$ 919,2 mil<br><span style='color:#0f2537;'><b>Saldo:<\/b> - US$ 919,2 mil (Importações superam)<\/span>","<b>Indonésia<\/b><br>Exportações TO: US$ 274,3 mil<br>Importações TO: US$ 900,3 mil<br><span style='color:#0f2537;'><b>Saldo:<\/b> - US$ 626,0 mil (Importações superam)<\/span>","<b>África do Sul<\/b><br>Importações TO: US$ 385,2 mil<br><span style='color:#0f2537;'><b>Saldo:<\/b> - US$ 385,2 mil (Importações superam)<\/span>","<b>Catar<\/b><br>Exportações TO: US$ 45,1 mil<br>Importações TO: US$ 189,7 mil<br><span style='color:#0f2537;'><b>Saldo:<\/b> - US$ 144,6 mil (Importações superam)<\/span>","<b>Camboja<\/b><br>Importações TO: US$ 75,6 mil<br><span style='color:#0f2537;'><b>Saldo:<\/b> - US$ 75,6 mil (Importações superam)<\/span>","<b>Suécia<\/b><br>Importações TO: US$ 69,0 mil<br><span style='color:#0f2537;'><b>Saldo:<\/b> - US$ 69,0 mil (Importações superam)<\/span>","<b>Taiwan (Formosa)<\/b><br>Importações TO: US$ 59,3 mil<br><span style='color:#0f2537;'><b>Saldo:<\/b> - US$ 59,3 mil (Importações superam)<\/span>","<b>Porto Rico<\/b><br>Importações TO: US$ 4,2 mil<br><span style='color:#0f2537;'><b>Saldo:<\/b> - US$ 4,2 mil (Importações superam)<\/span>"],"hoverinfo":["text","text","text","text","text","text","text","text","text","text","text","text"],"marker":{"line":{"color":"white","width":0.80000000000000004}},"type":"choropleth","geo":"geo","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-432c13213d761352d670" style="width:100%;height:406px;"></div>
+<script type="application/json" data-for="htmlwidget-432c13213d761352d670">{"x":{"visdat":{"3d348e077de":["function () ","plotlyVisDat"],"3d3445d75dbc":["function () ","data"],"3d34588a8dd":["function () ","data"]},"cur_data":"3d34588a8dd","attrs":{"3d3445d75dbc":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"locations":{},"z":{},"text":{},"hoverinfo":"text","colorscale":[[0,0.5,1],["#ffe066","#f5be1a","#d99b00"]],"showscale":false,"marker":{"line":{"width":0.80000000000000004,"color":"white"}},"inherit":true},"3d34588a8dd":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"locations":{},"z":{},"text":{},"hoverinfo":"text","colorscale":[[0,0.5,1],["#2d5a88","#18385c","#0f2537"]],"showscale":false,"marker":{"line":{"width":0.80000000000000004,"color":"white"}},"inherit":true}},"layout":{"margin":{"b":25,"l":5,"t":44,"r":5},"mapType":"geo","dragmode":false,"geo":{"domain":{"x":[0,1],"y":[0,1]},"showframe":false,"showcoastlines":true,"coastlinecolor":"#ffffff","coastlinewidth":0.59999999999999998,"showland":true,"landcolor":"#eef0f3","showcountries":true,"countrycolor":"#ffffff","countrywidth":0.80000000000000004,"showocean":true,"oceancolor":"#f8f9fa","projection":{"type":"natural earth"},"bgcolor":"rgba(0,0,0,0)"},"paper_bgcolor":"rgba(0,0,0,0)","annotations":[{"x":0.5,"y":1.1299999999999999,"xref":"paper","yref":"paper","text":"<span style='color:#f0b400; font-size:14px;'>■<\/span> <b>Exportações excedem Importações (Amarelo)<\/b><br><span style='color:#0f2537; font-size:14px;'>■<\/span> <b>Importações excedem Exportações (Azul Escuro)<\/b>","showarrow":false,"font":{"size":11,"color":"#0f2537"},"xanchor":"center"},{"x":0,"y":-0.040000000000000001,"xref":"paper","yref":"paper","text":"<i>Fonte: Comex Stat / MDIC. Passe o cursor sobre os países para ver valores de exportação, importação e saldo bilateral.<\/i>","showarrow":false,"font":{"size":10.5,"color":"#858c94"},"xanchor":"left"}],"scene":{"zaxis":{"title":"log1p(Valor)"}},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false,"scrollZoom":false,"doubleClick":false},"data":[{"colorbar":{"title":"log1p(Valor)<br />log1p(Valor)","ticklen":2},"colorscale":[[0,"#ffe066"],[0.5,"#f5be1a"],[1,"#d99b00"]],"showscale":false,"locations":["CHN","IND","CAN","EGY","ESP","CHE","DEU","MEX","SVN","TUR","RUS","BEL","GBR","IRQ","HKG","NLD","SGP","LBY","PHL","SAU","ISR","MAR","JOR","MYS","AUS","LBN","ALB","CHL","PSE","ARG","SRB","PER","BGD","GAB","TKM","KWT","COL","URY","DZA","BHR","NZL","MOZ","GHA","KAZ","PAK","CIV","PRY","GEO","SYR","SLE","ARE","COD","LBR","AGO","FRA"],"z":[3.8705758155139725,3.5435646229490776,2.866192902199006,2.8437459165561094,2.4265710727750367,2.2192034840549946,2.1564025828159643,2.010894999144726,1.8421356765531218,1.6074359097634274,1.4678743481123135,1.4609379041156565,1.4516138272405332,1.410986973710262,1.3987168811184478,1.2725655957915476,1.199964782928397,1.1878434223960523,1.1052568313867783,1.0612565021243408,0.92028275314369257,0.87129336594341922,0.84156718567821864,0.79750719588418806,0.75612197972133366,0.60976557162089429,0.3784364357202451,0.37156355643248307,0.37156355643248307,0.28517894223366241,0.26236426446749106,0.24686007793152581,0.24686007793152581,0.23111172096338664,0.21511137961694549,0.20701416938432612,0.18232155679395465,0.15700374880966475,0.14842000511827327,0.13102826240640411,0.12221763272424921,0.12221763272424921,0.11332868530700317,0.11332868530700317,0.095310179804324865,0.086177696241052329,0.086177696241052329,0.067658648473814809,0.058268908123975775,0.039220713153281295,0.039220713153281295,0.029558802241544401,0,0,0],"text":["<b>China<\/b><br>Exportações TO: US$ 46,97 Mi<br>Importações TO: US$ 15,98 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 30,99 Mi (Exportações superam)<\/span>","<b>Índia<\/b><br>Exportações TO: US$ 33,59 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 33,59 Mi (Exportações superam)<\/span>","<b>Canadá<\/b><br>Exportações TO: US$ 16,57 Mi<br>Importações TO: US$ 5,71 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 10,86 Mi (Exportações superam)<\/span>","<b>Egito<\/b><br>Exportações TO: US$ 16,18 Mi<br>Importações TO: US$ 1,27 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 14,91 Mi (Exportações superam)<\/span>","<b>Espanha<\/b><br>Exportações TO: US$ 10,32 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 10,32 Mi (Exportações superam)<\/span>","<b>Suíça<\/b><br>Exportações TO: US$ 8,20 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 8,20 Mi (Exportações superam)<\/span>","<b>Alemanha<\/b><br>Exportações TO: US$ 7,64 Mi<br>Importações TO: US$ 154,2 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 7,49 Mi (Exportações superam)<\/span>","<b>México<\/b><br>Exportações TO: US$ 6,47 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 6,47 Mi (Exportações superam)<\/span>","<b>Eslovênia<\/b><br>Exportações TO: US$ 5,31 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 5,31 Mi (Exportações superam)<\/span>","<b>Turquia<\/b><br>Exportações TO: US$ 3,99 Mi<br>Importações TO: US$ 54,7 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 3,93 Mi (Exportações superam)<\/span>","<b>Rússia<\/b><br>Exportações TO: US$ 3,34 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 3,34 Mi (Exportações superam)<\/span>","<b>Bélgica<\/b><br>Exportações TO: US$ 3,31 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 3,31 Mi (Exportações superam)<\/span>","<b>Reino Unido<\/b><br>Exportações TO: US$ 3,27 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 3,27 Mi (Exportações superam)<\/span>","<b>Iraque<\/b><br>Exportações TO: US$ 3,10 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 3,10 Mi (Exportações superam)<\/span>","<b>Hong Kong<\/b><br>Exportações TO: US$ 3,05 Mi<br>Importações TO: US$ 2,4 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 3,04 Mi (Exportações superam)<\/span>","<b>Países Baixos (Holanda)<\/b><br>Exportações TO: US$ 2,57 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 2,57 Mi (Exportações superam)<\/span>","<b>Singapura<\/b><br>Exportações TO: US$ 2,32 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 2,32 Mi (Exportações superam)<\/span>","<b>Líbia<\/b><br>Exportações TO: US$ 2,28 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 2,28 Mi (Exportações superam)<\/span>","<b>Filipinas<\/b><br>Exportações TO: US$ 2,02 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 2,02 Mi (Exportações superam)<\/span>","<b>Arábia Saudita<\/b><br>Exportações TO: US$ 1,89 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 1,89 Mi (Exportações superam)<\/span>","<b>Israel<\/b><br>Exportações TO: US$ 1,51 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 1,51 Mi (Exportações superam)<\/span>","<b>Marrocos<\/b><br>Exportações TO: US$ 1,39 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 1,39 Mi (Exportações superam)<\/span>","<b>Jordânia<\/b><br>Exportações TO: US$ 1,32 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 1,32 Mi (Exportações superam)<\/span>","<b>Malásia<\/b><br>Exportações TO: US$ 1,22 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 1,22 Mi (Exportações superam)<\/span>","<b>Austrália<\/b><br>Exportações TO: US$ 1,13 Mi<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 1,13 Mi (Exportações superam)<\/span>","<b>Líbano<\/b><br>Exportações TO: US$ 840,8 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 840,8 mil (Exportações superam)<\/span>","<b>Albânia<\/b><br>Exportações TO: US$ 458,7 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 458,7 mil (Exportações superam)<\/span>","<b>Chile<\/b><br>Exportações TO: US$ 450,4 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 450,4 mil (Exportações superam)<\/span>","<b>Palestina<\/b><br>Exportações TO: US$ 450,0 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 450,0 mil (Exportações superam)<\/span>","<b>Argentina<\/b><br>Exportações TO: US$ 325,3 mil<br>Importações TO: US$ 40,3 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 285,0 mil (Exportações superam)<\/span>","<b>Sérvia<\/b><br>Exportações TO: US$ 301,9 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 301,9 mil (Exportações superam)<\/span>","<b>Peru<\/b><br>Exportações TO: US$ 278,1 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 278,1 mil (Exportações superam)<\/span>","<b>Bangladesh<\/b><br>Exportações TO: US$ 275,4 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 275,4 mil (Exportações superam)<\/span>","<b>Gabão<\/b><br>Exportações TO: US$ 261,4 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 261,4 mil (Exportações superam)<\/span>","<b>Turcomenistão<\/b><br>Exportações TO: US$ 236,5 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 236,5 mil (Exportações superam)<\/span>","<b>Coveite (Kuweit)<\/b><br>Exportações TO: US$ 230,1 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 230,1 mil (Exportações superam)<\/span>","<b>Colômbia<\/b><br>Exportações TO: US$ 204,2 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 204,2 mil (Exportações superam)<\/span>","<b>Uruguai<\/b><br>Exportações TO: US$ 172,0 mil<br>Importações TO: US$ 165,5 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 6,6 mil (Exportações superam)<\/span>","<b>Argélia<\/b><br>Exportações TO: US$ 163,4 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 163,4 mil (Exportações superam)<\/span>","<b>Barein<\/b><br>Exportações TO: US$ 142,6 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 142,6 mil (Exportações superam)<\/span>","<b>Nova Zelândia<\/b><br>Exportações TO: US$ 133,8 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 133,8 mil (Exportações superam)<\/span>","<b>Moçambique<\/b><br>Exportações TO: US$ 131,5 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 131,5 mil (Exportações superam)<\/span>","<b>Gana<\/b><br>Exportações TO: US$ 120,1 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 120,1 mil (Exportações superam)<\/span>","<b>Cazaquistão<\/b><br>Exportações TO: US$ 119,9 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 119,9 mil (Exportações superam)<\/span>","<b>Paquistão<\/b><br>Exportações TO: US$ 99,7 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 99,7 mil (Exportações superam)<\/span>","<b>Costa do Marfim<\/b><br>Exportações TO: US$ 93,4 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 93,4 mil (Exportações superam)<\/span>","<b>Paraguai<\/b><br>Exportações TO: US$ 89,3 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 89,3 mil (Exportações superam)<\/span>","<b>Geórgia<\/b><br>Exportações TO: US$ 72,5 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 72,5 mil (Exportações superam)<\/span>","<b>Síria<\/b><br>Exportações TO: US$ 62,6 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 62,6 mil (Exportações superam)<\/span>","<b>Serra Leoa<\/b><br>Exportações TO: US$ 37,6 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 37,6 mil (Exportações superam)<\/span>","<b>Emirados Árabes Unidos<\/b><br>Exportações TO: US$ 36,3 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 36,3 mil (Exportações superam)<\/span>","<b>Congo, República Democrática<\/b><br>Exportações TO: US$ 28,7 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 28,7 mil (Exportações superam)<\/span>","<b>Libéria<\/b><br>Exportações TO: US$ 3,8 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 3,8 mil (Exportações superam)<\/span>","<b>Angola<\/b><br>Exportações TO: US$ 2,4 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 2,4 mil (Exportações superam)<\/span>","<b>França<\/b><br>Exportações TO: US$ 1,8 mil<br><span style='color:#b8860b;'><b>Saldo:<\/b> + US$ 1,8 mil (Exportações superam)<\/span>"],"hoverinfo":["text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text"],"marker":{"line":{"color":"white","width":0.80000000000000004}},"type":"choropleth","geo":"geo","frame":null},{"colorbar":{"title":"log1p(Valor)<br />log1p(Valor)","ticklen":2},"colorscale":[[0,"#2d5a88"],[0.5,"#18385c"],[1,"#0f2537"]],"showscale":false,"locations":["NGA","VEN","USA","VNM","BRN","IDN","ZAF","QAT","KHM","SWE","TWN","PRI"],"z":[2.7675761804162371,2.7517480563679295,1.7011051009599243,1.589235205116581,0.65232518603969025,0.64185388617239481,0.32930374714260041,0.17395330712343801,0.076961041136128325,0.067658648473814809,0.058268908123975775,0],"text":["<b>Nigéria<\/b><br>Importações TO: US$ 14,92 Mi<br><span style='color:#0f2537;'><b>Saldo:<\/b> - US$ 14,92 Mi (Importações superam)<\/span>","<b>Venezuela<\/b><br>Importações TO: US$ 14,67 Mi<br><span style='color:#0f2537;'><b>Saldo:<\/b> - US$ 14,67 Mi (Importações superam)<\/span>","<b>Estados Unidos<\/b><br>Exportações TO: US$ 4,17 Mi<br>Importações TO: US$ 4,48 Mi<br><span style='color:#0f2537;'><b>Saldo:<\/b> - US$ 313,3 mil (Importações superam)<\/span>","<b>Vietnã<\/b><br>Exportações TO: US$ 1,64 Mi<br>Importações TO: US$ 3,90 Mi<br><span style='color:#0f2537;'><b>Saldo:<\/b> - US$ 2,26 Mi (Importações superam)<\/span>","<b>Brunei<\/b><br>Importações TO: US$ 919,2 mil<br><span style='color:#0f2537;'><b>Saldo:<\/b> - US$ 919,2 mil (Importações superam)<\/span>","<b>Indonésia<\/b><br>Exportações TO: US$ 274,3 mil<br>Importações TO: US$ 900,3 mil<br><span style='color:#0f2537;'><b>Saldo:<\/b> - US$ 626,0 mil (Importações superam)<\/span>","<b>África do Sul<\/b><br>Importações TO: US$ 385,2 mil<br><span style='color:#0f2537;'><b>Saldo:<\/b> - US$ 385,2 mil (Importações superam)<\/span>","<b>Catar<\/b><br>Exportações TO: US$ 45,1 mil<br>Importações TO: US$ 189,7 mil<br><span style='color:#0f2537;'><b>Saldo:<\/b> - US$ 144,6 mil (Importações superam)<\/span>","<b>Camboja<\/b><br>Importações TO: US$ 75,6 mil<br><span style='color:#0f2537;'><b>Saldo:<\/b> - US$ 75,6 mil (Importações superam)<\/span>","<b>Suécia<\/b><br>Importações TO: US$ 69,0 mil<br><span style='color:#0f2537;'><b>Saldo:<\/b> - US$ 69,0 mil (Importações superam)<\/span>","<b>Taiwan (Formosa)<\/b><br>Importações TO: US$ 59,3 mil<br><span style='color:#0f2537;'><b>Saldo:<\/b> - US$ 59,3 mil (Importações superam)<\/span>","<b>Porto Rico<\/b><br>Importações TO: US$ 4,2 mil<br><span style='color:#0f2537;'><b>Saldo:<\/b> - US$ 4,2 mil (Importações superam)<\/span>"],"hoverinfo":["text","text","text","text","text","text","text","text","text","text","text","text"],"marker":{"line":{"color":"white","width":0.80000000000000004}},"type":"choropleth","geo":"geo","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
@@ -9174,8 +9241,8 @@ grid-auto-rows: minmax(0, 1fr);">
 <div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init data-require-bs-caller="card()" data-full-screen="false">
 <div class="card-body html-fill-item html-fill-container">
 <div class="cell-output-display html-fill-item html-fill-container">
-<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-100783911d054405bce1" style="width:100%;height:406px;"></div>
-<script type="application/json" data-for="htmlwidget-100783911d054405bce1">{"x":{"visdat":{"299ce4a7c91":["function () ","plotlyVisDat"]},"cur_data":"299ce4a7c91","attrs":{"299ce4a7c91":{"x":{},"y":{},"orientation":"h","cliponaxis":false,"marker":{"color":"#c8942b","line":{"width":0}},"text":["US$ 32,65 Mi","US$ 36,35 Mi","US$ 50,28 Mi"],"hovertext":["<b>Legumes de vagem, secos, em grão, mesmo pelados ou partidos<\/b><br>US$ 32,65 Mi","<b>Soja, mesmo triturada<\/b><br>US$ 36,35 Mi","<b>Carnes de animais da espécie bovina, congeladas<\/b><br>US$ 50,28 Mi"],"hoverinfo":"text","textposition":"auto","insidetextfont":{"color":"#ffffff","family":"Arial","size":12},"outsidetextfont":{"color":"#c8942b","family":"Arial","size":12},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"margin":{"b":10,"l":10,"t":40,"r":45},"dragmode":false,"title":{"text":"<b>Top 3 Produtos Exportados (Posição SH4)<\/b>","x":0,"xanchor":"left","y":1,"font":{"size":14,"color":"#858c94"}},"xaxis":{"domain":[0,1],"automargin":true,"title":"","showgrid":false,"zeroline":false,"showticklabels":false,"fixedrange":true},"yaxis":{"domain":[0,1],"automargin":true,"title":"","fixedrange":true,"tickfont":{"size":11.5,"color":"#0f2537"},"type":"category","categoryorder":"array","categoryarray":["Legumes de vagem, secos, em<br>grão, mesmo pelados ou...","Soja, mesmo triturada","Carnes de animais da<br>espécie bovina, congeladas"]},"paper_bgcolor":"rgba(0,0,0,0)","plot_bgcolor":"rgba(0,0,0,0)","hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false,"scrollZoom":false,"doubleClick":false},"data":[{"x":[32.649999999999999,36.350000000000001,50.280000000000001],"y":["Legumes de vagem, secos, em<br>grão, mesmo pelados ou...","Soja, mesmo triturada","Carnes de animais da<br>espécie bovina, congeladas"],"orientation":"h","cliponaxis":false,"marker":{"color":"#c8942b","line":{"color":"rgba(31,119,180,1)","width":0}},"text":["US$ 32,65 Mi","US$ 36,35 Mi","US$ 50,28 Mi"],"hovertext":["<b>Legumes de vagem, secos, em grão, mesmo pelados ou partidos<\/b><br>US$ 32,65 Mi","<b>Soja, mesmo triturada<\/b><br>US$ 36,35 Mi","<b>Carnes de animais da espécie bovina, congeladas<\/b><br>US$ 50,28 Mi"],"hoverinfo":["text","text","text"],"textposition":["auto","auto","auto"],"insidetextfont":{"color":"#ffffff","family":"Arial","size":12},"outsidetextfont":{"color":"#c8942b","family":"Arial","size":12},"type":"bar","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-7bb2cf11039b4e8dcd1f" style="width:100%;height:406px;"></div>
+<script type="application/json" data-for="htmlwidget-7bb2cf11039b4e8dcd1f">{"x":{"visdat":{"3d3462ca4c23":["function () ","plotlyVisDat"]},"cur_data":"3d3462ca4c23","attrs":{"3d3462ca4c23":{"x":{},"y":{},"orientation":"h","cliponaxis":false,"marker":{"color":"#c8942b","line":{"width":0}},"text":["US$ 32,65 Mi","US$ 36,35 Mi","US$ 50,28 Mi"],"hovertext":["<b>Legumes de vagem, secos, em grão, mesmo pelados ou partidos<\/b><br>US$ 32,65 Mi","<b>Soja, mesmo triturada<\/b><br>US$ 36,35 Mi","<b>Carnes de animais da espécie bovina, congeladas<\/b><br>US$ 50,28 Mi"],"hoverinfo":"text","textposition":"auto","insidetextfont":{"color":"#ffffff","family":"Arial","size":12},"outsidetextfont":{"color":"#c8942b","family":"Arial","size":12},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"margin":{"b":10,"l":10,"t":40,"r":45},"dragmode":false,"title":{"text":"<b>Top 3 Produtos Exportados (Posição SH4)<\/b>","x":0,"xanchor":"left","y":1,"font":{"size":14,"color":"#858c94"}},"xaxis":{"domain":[0,1],"automargin":true,"title":"","showgrid":false,"zeroline":false,"showticklabels":false,"fixedrange":true},"yaxis":{"domain":[0,1],"automargin":true,"title":"","fixedrange":true,"tickfont":{"size":11.5,"color":"#0f2537"},"type":"category","categoryorder":"array","categoryarray":["Legumes de vagem, secos, em<br>grão, mesmo pelados ou...","Soja, mesmo triturada","Carnes de animais da<br>espécie bovina, congeladas"]},"paper_bgcolor":"rgba(0,0,0,0)","plot_bgcolor":"rgba(0,0,0,0)","hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false,"scrollZoom":false,"doubleClick":false},"data":[{"x":[32.649999999999999,36.350000000000001,50.280000000000001],"y":["Legumes de vagem, secos, em<br>grão, mesmo pelados ou...","Soja, mesmo triturada","Carnes de animais da<br>espécie bovina, congeladas"],"orientation":"h","cliponaxis":false,"marker":{"color":"#c8942b","line":{"color":"rgba(31,119,180,1)","width":0}},"text":["US$ 32,65 Mi","US$ 36,35 Mi","US$ 50,28 Mi"],"hovertext":["<b>Legumes de vagem, secos, em grão, mesmo pelados ou partidos<\/b><br>US$ 32,65 Mi","<b>Soja, mesmo triturada<\/b><br>US$ 36,35 Mi","<b>Carnes de animais da espécie bovina, congeladas<\/b><br>US$ 50,28 Mi"],"hoverinfo":["text","text","text"],"textposition":["auto","auto","auto"],"insidetextfont":{"color":"#ffffff","family":"Arial","size":12},"outsidetextfont":{"color":"#c8942b","family":"Arial","size":12},"type":"bar","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
@@ -9190,8 +9257,8 @@ grid-auto-rows: minmax(0, 1fr);">
 <div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init data-require-bs-caller="card()" data-full-screen="false">
 <div class="card-body html-fill-item html-fill-container">
 <div class="cell-output-display html-fill-item html-fill-container">
-<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-66f03bd5849e3b8fa5d9" style="width:100%;height:406px;"></div>
-<script type="application/json" data-for="htmlwidget-66f03bd5849e3b8fa5d9">{"x":{"visdat":{"299c63636646":["function () ","plotlyVisDat"]},"cur_data":"299c63636646","attrs":{"299c63636646":{"x":{},"y":{},"orientation":"h","cliponaxis":false,"marker":{"color":"#474033","line":{"width":0}},"text":["US$ 4,78 Mi","US$ 5,70 Mi","US$ 34,82 Mi"],"hovertext":["<b>Produtos laminados planos de ferro ou aço não ligado, de largura igual ou superior a 600 mm, folheados ou chapeados, ou revestidos<\/b><br>US$ 4,78 Mi","<b>Adubos (fertilizantes) minerais ou químicos, potássicos<\/b><br>US$ 5,70 Mi","<b>Adubos (fertilizantes) minerais ou químicos, azotados<\/b><br>US$ 34,82 Mi"],"hoverinfo":"text","textposition":"auto","insidetextfont":{"color":"#ffffff","family":"Arial","size":12},"outsidetextfont":{"color":"#474033","family":"Arial","size":12},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"margin":{"b":10,"l":10,"t":40,"r":45},"dragmode":false,"title":{"text":"<b>Top 3 Produtos Importados (Posição SH4)<\/b>","x":0,"xanchor":"left","y":1,"font":{"size":14,"color":"#858c94"}},"xaxis":{"domain":[0,1],"automargin":true,"title":"","showgrid":false,"zeroline":false,"showticklabels":false,"fixedrange":true},"yaxis":{"domain":[0,1],"automargin":true,"title":"","fixedrange":true,"tickfont":{"size":11.5,"color":"#474033"},"type":"category","categoryorder":"array","categoryarray":["Produtos laminados planos<br>de ferro ou aço não ligado","Adubos (fertilizantes)<br>potássicos","Adubos (fertilizantes)<br>azotados"]},"paper_bgcolor":"rgba(0,0,0,0)","plot_bgcolor":"rgba(0,0,0,0)","hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false,"scrollZoom":false,"doubleClick":false},"data":[{"x":[4.7800000000000002,5.7000000000000002,34.82],"y":["Produtos laminados planos<br>de ferro ou aço não ligado","Adubos (fertilizantes)<br>potássicos","Adubos (fertilizantes)<br>azotados"],"orientation":"h","cliponaxis":false,"marker":{"color":"#474033","line":{"color":"rgba(31,119,180,1)","width":0}},"text":["US$ 4,78 Mi","US$ 5,70 Mi","US$ 34,82 Mi"],"hovertext":["<b>Produtos laminados planos de ferro ou aço não ligado, de largura igual ou superior a 600 mm, folheados ou chapeados, ou revestidos<\/b><br>US$ 4,78 Mi","<b>Adubos (fertilizantes) minerais ou químicos, potássicos<\/b><br>US$ 5,70 Mi","<b>Adubos (fertilizantes) minerais ou químicos, azotados<\/b><br>US$ 34,82 Mi"],"hoverinfo":["text","text","text"],"textposition":["auto","auto","auto"],"insidetextfont":{"color":"#ffffff","family":"Arial","size":12},"outsidetextfont":{"color":"#474033","family":"Arial","size":12},"type":"bar","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-f83a956fa1d11fcde65a" style="width:100%;height:406px;"></div>
+<script type="application/json" data-for="htmlwidget-f83a956fa1d11fcde65a">{"x":{"visdat":{"3d34eb35858":["function () ","plotlyVisDat"]},"cur_data":"3d34eb35858","attrs":{"3d34eb35858":{"x":{},"y":{},"orientation":"h","cliponaxis":false,"marker":{"color":"#474033","line":{"width":0}},"text":["US$ 4,78 Mi","US$ 5,70 Mi","US$ 34,82 Mi"],"hovertext":["<b>Produtos laminados planos de ferro ou aço não ligado, de largura igual ou superior a 600 mm, folheados ou chapeados, ou revestidos<\/b><br>US$ 4,78 Mi","<b>Adubos (fertilizantes) minerais ou químicos, potássicos<\/b><br>US$ 5,70 Mi","<b>Adubos (fertilizantes) minerais ou químicos, azotados<\/b><br>US$ 34,82 Mi"],"hoverinfo":"text","textposition":"auto","insidetextfont":{"color":"#ffffff","family":"Arial","size":12},"outsidetextfont":{"color":"#474033","family":"Arial","size":12},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"margin":{"b":10,"l":10,"t":40,"r":45},"dragmode":false,"title":{"text":"<b>Top 3 Produtos Importados (Posição SH4)<\/b>","x":0,"xanchor":"left","y":1,"font":{"size":14,"color":"#858c94"}},"xaxis":{"domain":[0,1],"automargin":true,"title":"","showgrid":false,"zeroline":false,"showticklabels":false,"fixedrange":true},"yaxis":{"domain":[0,1],"automargin":true,"title":"","fixedrange":true,"tickfont":{"size":11.5,"color":"#474033"},"type":"category","categoryorder":"array","categoryarray":["Produtos laminados planos<br>de ferro ou aço não ligado","Adubos (fertilizantes)<br>potássicos","Adubos (fertilizantes)<br>azotados"]},"paper_bgcolor":"rgba(0,0,0,0)","plot_bgcolor":"rgba(0,0,0,0)","hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false,"scrollZoom":false,"doubleClick":false},"data":[{"x":[4.7800000000000002,5.7000000000000002,34.82],"y":["Produtos laminados planos<br>de ferro ou aço não ligado","Adubos (fertilizantes)<br>potássicos","Adubos (fertilizantes)<br>azotados"],"orientation":"h","cliponaxis":false,"marker":{"color":"#474033","line":{"color":"rgba(31,119,180,1)","width":0}},"text":["US$ 4,78 Mi","US$ 5,70 Mi","US$ 34,82 Mi"],"hovertext":["<b>Produtos laminados planos de ferro ou aço não ligado, de largura igual ou superior a 600 mm, folheados ou chapeados, ou revestidos<\/b><br>US$ 4,78 Mi","<b>Adubos (fertilizantes) minerais ou químicos, potássicos<\/b><br>US$ 5,70 Mi","<b>Adubos (fertilizantes) minerais ou químicos, azotados<\/b><br>US$ 34,82 Mi"],"hoverinfo":["text","text","text"],"textposition":["auto","auto","auto"],"insidetextfont":{"color":"#ffffff","family":"Arial","size":12},"outsidetextfont":{"color":"#474033","family":"Arial","size":12},"type":"bar","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
@@ -9242,8 +9309,8 @@ grid-auto-rows: minmax(0, 1fr);">
 <div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init data-require-bs-caller="card()" data-full-screen="false">
 <div class="card-body html-fill-item html-fill-container">
 <div class="cell-output-display html-fill-item html-fill-container">
-<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-7458dfc75b097f0940a0" style="width:100%;height:406px;"></div>
-<script type="application/json" data-for="htmlwidget-7458dfc75b097f0940a0">{"x":{"visdat":{"299c5b873283":["function () ","plotlyVisDat"]},"cur_data":"299c5b873283","attrs":{"299c5b873283":{"x":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"y":{},"name":"IPVA e Outros","type":"scatter","mode":"lines","stackgroup":"one","fillcolor":"#858c94","line":{"color":"#858c94","width":1},"inherit":true},"299c5b873283.1":{"x":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"y":{},"name":"FPE","type":"scatter","mode":"lines","stackgroup":"one","fillcolor":"#0f2537","line":{"color":"#0f2537","width":1},"inherit":true},"299c5b873283.2":{"x":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"y":{},"name":"ICMS","type":"scatter","mode":"lines","stackgroup":"one","fillcolor":"#c8942b","line":{"color":"#c8942b","width":1},"inherit":true}},"layout":{"margin":{"b":50,"l":60,"t":58,"r":20},"dragmode":false,"title":{"text":"<b>Evolução das Receitas Estaduais (2026)<\/b>","x":0,"xanchor":"left","y":0.96999999999999997,"yanchor":"top","font":{"size":13.5,"color":"#858c94"}},"legend":{"orientation":"h","x":0.5,"xanchor":"center","y":1.0800000000000001},"xaxis":{"domain":[0,1],"automargin":true,"title":"","fixedrange":true,"tickfont":{"size":12.5,"color":"#0f2537"},"type":"category","categoryorder":"array","categoryarray":["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set"]},"yaxis":{"domain":[0,1],"automargin":true,"title":"R$ Milhões","fixedrange":true,"tickfont":{"size":12.5,"color":"#0f2537"}},"paper_bgcolor":"rgba(0,0,0,0)","plot_bgcolor":"rgba(0,0,0,0)","annotations":[{"x":0,"y":0,"yshift":-26,"text":"<i>Fonte: Sefaz-TO e Tesouro Nacional.<\/i>","showarrow":false,"xref":"paper","yref":"paper","xanchor":"left","yanchor":"top","font":{"size":11,"color":"#858c94"}}],"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false,"scrollZoom":false,"doubleClick":false},"data":[{"x":["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set"],"y":[199.28,171.72,167.87,155.18000000000001,195.65000000000001,162.83000000000001,206.02000000000001,211.15000000000001,189.34999999999999],"name":"IPVA e Outros","type":"scatter","mode":"lines","stackgroup":"one","fillcolor":"#858c94","line":{"color":"#858c94","width":1},"marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set"],"y":[608.22000000000003,721.45000000000005,458.06999999999999,525.77999999999997,638.69000000000005,640.98000000000002,419.66000000000003,543.04999999999995,438.13999999999999],"name":"FPE","type":"scatter","mode":"lines","stackgroup":"one","fillcolor":"#0f2537","line":{"color":"#0f2537","width":1},"marker":{"color":"rgba(255,127,14,1)","line":{"color":"rgba(255,127,14,1)"}},"error_y":{"color":"rgba(255,127,14,1)"},"error_x":{"color":"rgba(255,127,14,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set"],"y":[531.60000000000002,465.75999999999999,494.70999999999998,562.90999999999997,520.80999999999995,557.92999999999995,572.88999999999999,597.87,566.48000000000002],"name":"ICMS","type":"scatter","mode":"lines","stackgroup":"one","fillcolor":"#c8942b","line":{"color":"#c8942b","width":1},"marker":{"color":"rgba(44,160,44,1)","line":{"color":"rgba(44,160,44,1)"}},"error_y":{"color":"rgba(44,160,44,1)"},"error_x":{"color":"rgba(44,160,44,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-ca3e073b0282d7df4979" style="width:100%;height:406px;"></div>
+<script type="application/json" data-for="htmlwidget-ca3e073b0282d7df4979">{"x":{"visdat":{"3d341d824b99":["function () ","plotlyVisDat"]},"cur_data":"3d341d824b99","attrs":{"3d341d824b99":{"x":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"y":{},"name":"IPVA e Outros","type":"scatter","mode":"lines","stackgroup":"one","fillcolor":"#858c94","line":{"color":"#858c94","width":1},"inherit":true},"3d341d824b99.1":{"x":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"y":{},"name":"FPE","type":"scatter","mode":"lines","stackgroup":"one","fillcolor":"#0f2537","line":{"color":"#0f2537","width":1},"inherit":true},"3d341d824b99.2":{"x":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"y":{},"name":"ICMS","type":"scatter","mode":"lines","stackgroup":"one","fillcolor":"#c8942b","line":{"color":"#c8942b","width":1},"inherit":true}},"layout":{"margin":{"b":50,"l":60,"t":58,"r":20},"dragmode":false,"title":{"text":"<b>Evolução das Receitas Estaduais (2026)<\/b>","x":0,"xanchor":"left","y":0.96999999999999997,"yanchor":"top","font":{"size":13.5,"color":"#858c94"}},"legend":{"orientation":"h","x":0.5,"xanchor":"center","y":1.0800000000000001},"xaxis":{"domain":[0,1],"automargin":true,"title":"","fixedrange":true,"tickfont":{"size":12.5,"color":"#0f2537"},"type":"category","categoryorder":"array","categoryarray":["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set"]},"yaxis":{"domain":[0,1],"automargin":true,"title":"R$ Milhões","fixedrange":true,"tickfont":{"size":12.5,"color":"#0f2537"}},"paper_bgcolor":"rgba(0,0,0,0)","plot_bgcolor":"rgba(0,0,0,0)","annotations":[{"x":0,"y":0,"yshift":-26,"text":"<i>Fonte: Sefaz-TO e Tesouro Nacional.<\/i>","showarrow":false,"xref":"paper","yref":"paper","xanchor":"left","yanchor":"top","font":{"size":11,"color":"#858c94"}}],"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false,"scrollZoom":false,"doubleClick":false},"data":[{"x":["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set"],"y":[199.28,171.72,167.87,155.18000000000001,195.65000000000001,162.83000000000001,206.02000000000001,211.15000000000001,189.34999999999999],"name":"IPVA e Outros","type":"scatter","mode":"lines","stackgroup":"one","fillcolor":"#858c94","line":{"color":"#858c94","width":1},"marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set"],"y":[608.22000000000003,721.45000000000005,458.06999999999999,525.77999999999997,638.69000000000005,640.98000000000002,419.66000000000003,543.04999999999995,438.13999999999999],"name":"FPE","type":"scatter","mode":"lines","stackgroup":"one","fillcolor":"#0f2537","line":{"color":"#0f2537","width":1},"marker":{"color":"rgba(255,127,14,1)","line":{"color":"rgba(255,127,14,1)"}},"error_y":{"color":"rgba(255,127,14,1)"},"error_x":{"color":"rgba(255,127,14,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set"],"y":[531.60000000000002,465.75999999999999,494.70999999999998,562.90999999999997,520.80999999999995,557.92999999999995,572.88999999999999,597.87,566.48000000000002],"name":"ICMS","type":"scatter","mode":"lines","stackgroup":"one","fillcolor":"#c8942b","line":{"color":"#c8942b","width":1},"marker":{"color":"rgba(44,160,44,1)","line":{"color":"rgba(44,160,44,1)"}},"error_y":{"color":"rgba(44,160,44,1)"},"error_x":{"color":"rgba(44,160,44,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
@@ -9292,8 +9359,8 @@ grid-auto-rows: minmax(0, 1fr);">
 <div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init data-require-bs-caller="card()" data-full-screen="false">
 <div class="card-body html-fill-item html-fill-container">
 <div class="cell-output-display html-fill-item html-fill-container">
-<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-ed9b822cf60ee1b50814" style="width:100%;height:406px;"></div>
-<script type="application/json" data-for="htmlwidget-ed9b822cf60ee1b50814">{"x":{"visdat":{"299c29881414":["function () ","plotlyVisDat"]},"cur_data":"299c29881414","attrs":{"299c29881414":{"labels":{},"parents":{},"values":{},"hovertext":["<b>Combustíveis<\/b><br>Combustíveis e Lubrificantes (Divisão 19 / Seção G CNAE 2.0)<br>Arrecadação no mês: R$ 172,81 Mi","<b>Comércio<\/b><br>Comércio Atacadista e Varejista (Seção G CNAE 2.0)<br>Arrecadação no mês: R$ 172,77 Mi","<b>Indústria<\/b><br>Indústria Geral e Construção (Seções B, C e F CNAE 2.0)<br>Arrecadação no mês: R$ 103,08 Mi","<b>Energia Elétrica<\/b><br>Eletricidade e Gás (Seção D CNAE 2.0)<br>Arrecadação no mês: R$  63,73 Mi","<b>Demais Atividades<\/b><br>Demais Serviços e Outras Atividades (Seções I, K-S CNAE 2.0)<br>Arrecadação no mês: R$  30,11 Mi","<b>Comunicação<\/b><br>Informação e Comunicação (Seção J CNAE 2.0)<br>Arrecadação no mês: R$   9,20 Mi","<b>Transportes<\/b><br>Transporte, Armazenagem e Correio (Seção H CNAE 2.0)<br>Arrecadação no mês: R$   8,27 Mi","<b>Agropecuária<\/b><br>Agropecuária (Seção A CNAE 2.0)<br>Arrecadação no mês: R$   6,52 Mi"],"hoverinfo":"text","texttemplate":"<b>%{label}<\/b><br>R$ %{value} Mi<br>%{percentRoot:.1%}","textfont":{"family":"Arial","color":"#ffffff","size":14},"marker":{"colors":["#0f2537","#c8942b","#1a3854","#d6a84c","#474033","#858c94","#2c5278","#a2a8ae"],"line":{"color":"#ffffff","width":2}},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"treemap"}},"layout":{"margin":{"b":34,"l":10,"t":54,"r":10},"title":{"text":"<b>Arrecadação de ICMS por Setor Econômico<\/b><br><span style='font-size:12px;font-weight:normal;'>Referência: setembro de 2026<\/span>","x":0,"xanchor":"left","y":0.95999999999999996,"yanchor":"top","font":{"size":13.5,"color":"#858c94"}},"paper_bgcolor":"rgba(0,0,0,0)","plot_bgcolor":"rgba(0,0,0,0)","annotations":[{"x":0,"y":0,"yshift":-8,"text":"<i>Fonte: SEFAZ-TO.<\/i>","showarrow":false,"xref":"paper","yref":"paper","xanchor":"left","yanchor":"top","font":{"size":11,"color":"#858c94"}}],"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false},"data":[{"labels":["Combustíveis","Comércio","Indústria","Energia Elétrica","Demais Atividades","Comunicação","Transportes","Agropecuária"],"parents":["","","","","","","",""],"values":[172.81,172.77000000000001,103.08,63.729999999999997,30.109999999999999,9.1999999999999993,8.2699999999999996,6.5199999999999996],"hovertext":["<b>Combustíveis<\/b><br>Combustíveis e Lubrificantes (Divisão 19 / Seção G CNAE 2.0)<br>Arrecadação no mês: R$ 172,81 Mi","<b>Comércio<\/b><br>Comércio Atacadista e Varejista (Seção G CNAE 2.0)<br>Arrecadação no mês: R$ 172,77 Mi","<b>Indústria<\/b><br>Indústria Geral e Construção (Seções B, C e F CNAE 2.0)<br>Arrecadação no mês: R$ 103,08 Mi","<b>Energia Elétrica<\/b><br>Eletricidade e Gás (Seção D CNAE 2.0)<br>Arrecadação no mês: R$  63,73 Mi","<b>Demais Atividades<\/b><br>Demais Serviços e Outras Atividades (Seções I, K-S CNAE 2.0)<br>Arrecadação no mês: R$  30,11 Mi","<b>Comunicação<\/b><br>Informação e Comunicação (Seção J CNAE 2.0)<br>Arrecadação no mês: R$   9,20 Mi","<b>Transportes<\/b><br>Transporte, Armazenagem e Correio (Seção H CNAE 2.0)<br>Arrecadação no mês: R$   8,27 Mi","<b>Agropecuária<\/b><br>Agropecuária (Seção A CNAE 2.0)<br>Arrecadação no mês: R$   6,52 Mi"],"hoverinfo":["text","text","text","text","text","text","text","text"],"texttemplate":["<b>%{label}<\/b><br>R$ %{value} Mi<br>%{percentRoot:.1%}","<b>%{label}<\/b><br>R$ %{value} Mi<br>%{percentRoot:.1%}","<b>%{label}<\/b><br>R$ %{value} Mi<br>%{percentRoot:.1%}","<b>%{label}<\/b><br>R$ %{value} Mi<br>%{percentRoot:.1%}","<b>%{label}<\/b><br>R$ %{value} Mi<br>%{percentRoot:.1%}","<b>%{label}<\/b><br>R$ %{value} Mi<br>%{percentRoot:.1%}","<b>%{label}<\/b><br>R$ %{value} Mi<br>%{percentRoot:.1%}","<b>%{label}<\/b><br>R$ %{value} Mi<br>%{percentRoot:.1%}"],"textfont":{"family":"Arial","color":"#ffffff","size":14},"marker":{"color":"rgba(31,119,180,1)","colors":["#0f2537","#c8942b","#1a3854","#d6a84c","#474033","#858c94","#2c5278","#a2a8ae"],"line":{"color":"#ffffff","width":2}},"type":"treemap","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-179e440a92f5ccab597e" style="width:100%;height:406px;"></div>
+<script type="application/json" data-for="htmlwidget-179e440a92f5ccab597e">{"x":{"visdat":{"3d3417fdee1":["function () ","plotlyVisDat"]},"cur_data":"3d3417fdee1","attrs":{"3d3417fdee1":{"labels":{},"parents":{},"values":{},"hovertext":["<b>Combustíveis<\/b><br>Combustíveis e Lubrificantes (Divisão 19 / Seção G CNAE 2.0)<br>Arrecadação no mês: R$ 172,81 Mi","<b>Comércio<\/b><br>Comércio Atacadista e Varejista (Seção G CNAE 2.0)<br>Arrecadação no mês: R$ 172,77 Mi","<b>Indústria<\/b><br>Indústria Geral e Construção (Seções B, C e F CNAE 2.0)<br>Arrecadação no mês: R$ 103,08 Mi","<b>Energia Elétrica<\/b><br>Eletricidade e Gás (Seção D CNAE 2.0)<br>Arrecadação no mês: R$  63,73 Mi","<b>Demais Atividades<\/b><br>Demais Serviços e Outras Atividades (Seções I, K-S CNAE 2.0)<br>Arrecadação no mês: R$  30,11 Mi","<b>Comunicação<\/b><br>Informação e Comunicação (Seção J CNAE 2.0)<br>Arrecadação no mês: R$   9,20 Mi","<b>Transportes<\/b><br>Transporte, Armazenagem e Correio (Seção H CNAE 2.0)<br>Arrecadação no mês: R$   8,27 Mi","<b>Agropecuária<\/b><br>Agropecuária (Seção A CNAE 2.0)<br>Arrecadação no mês: R$   6,52 Mi"],"hoverinfo":"text","texttemplate":"<b>%{label}<\/b><br>R$ %{value} Mi<br>%{percentRoot:.1%}","textfont":{"family":"Arial","color":"#ffffff","size":14},"marker":{"colors":["#0f2537","#c8942b","#1a3854","#d6a84c","#474033","#858c94","#2c5278","#a2a8ae"],"line":{"color":"#ffffff","width":2}},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"treemap"}},"layout":{"margin":{"b":34,"l":10,"t":54,"r":10},"title":{"text":"<b>Arrecadação de ICMS por Setor Econômico<\/b><br><span style='font-size:12px;font-weight:normal;'>Referência: setembro de 2026<\/span>","x":0,"xanchor":"left","y":0.95999999999999996,"yanchor":"top","font":{"size":13.5,"color":"#858c94"}},"paper_bgcolor":"rgba(0,0,0,0)","plot_bgcolor":"rgba(0,0,0,0)","annotations":[{"x":0,"y":0,"yshift":-8,"text":"<i>Fonte: SEFAZ-TO.<\/i>","showarrow":false,"xref":"paper","yref":"paper","xanchor":"left","yanchor":"top","font":{"size":11,"color":"#858c94"}}],"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false},"data":[{"labels":["Combustíveis","Comércio","Indústria","Energia Elétrica","Demais Atividades","Comunicação","Transportes","Agropecuária"],"parents":["","","","","","","",""],"values":[172.81,172.77000000000001,103.08,63.729999999999997,30.109999999999999,9.1999999999999993,8.2699999999999996,6.5199999999999996],"hovertext":["<b>Combustíveis<\/b><br>Combustíveis e Lubrificantes (Divisão 19 / Seção G CNAE 2.0)<br>Arrecadação no mês: R$ 172,81 Mi","<b>Comércio<\/b><br>Comércio Atacadista e Varejista (Seção G CNAE 2.0)<br>Arrecadação no mês: R$ 172,77 Mi","<b>Indústria<\/b><br>Indústria Geral e Construção (Seções B, C e F CNAE 2.0)<br>Arrecadação no mês: R$ 103,08 Mi","<b>Energia Elétrica<\/b><br>Eletricidade e Gás (Seção D CNAE 2.0)<br>Arrecadação no mês: R$  63,73 Mi","<b>Demais Atividades<\/b><br>Demais Serviços e Outras Atividades (Seções I, K-S CNAE 2.0)<br>Arrecadação no mês: R$  30,11 Mi","<b>Comunicação<\/b><br>Informação e Comunicação (Seção J CNAE 2.0)<br>Arrecadação no mês: R$   9,20 Mi","<b>Transportes<\/b><br>Transporte, Armazenagem e Correio (Seção H CNAE 2.0)<br>Arrecadação no mês: R$   8,27 Mi","<b>Agropecuária<\/b><br>Agropecuária (Seção A CNAE 2.0)<br>Arrecadação no mês: R$   6,52 Mi"],"hoverinfo":["text","text","text","text","text","text","text","text"],"texttemplate":["<b>%{label}<\/b><br>R$ %{value} Mi<br>%{percentRoot:.1%}","<b>%{label}<\/b><br>R$ %{value} Mi<br>%{percentRoot:.1%}","<b>%{label}<\/b><br>R$ %{value} Mi<br>%{percentRoot:.1%}","<b>%{label}<\/b><br>R$ %{value} Mi<br>%{percentRoot:.1%}","<b>%{label}<\/b><br>R$ %{value} Mi<br>%{percentRoot:.1%}","<b>%{label}<\/b><br>R$ %{value} Mi<br>%{percentRoot:.1%}","<b>%{label}<\/b><br>R$ %{value} Mi<br>%{percentRoot:.1%}","<b>%{label}<\/b><br>R$ %{value} Mi<br>%{percentRoot:.1%}"],"textfont":{"family":"Arial","color":"#ffffff","size":14},"marker":{"color":"rgba(31,119,180,1)","colors":["#0f2537","#c8942b","#1a3854","#d6a84c","#474033","#858c94","#2c5278","#a2a8ae"],"line":{"color":"#ffffff","width":2}},"type":"treemap","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
@@ -9350,8 +9417,8 @@ grid-auto-rows: minmax(0, 1fr);">
 <div class="card cell atualizado dt-up-12-11-2026 html-fill-item html-fill-container bslib-card" data-bslib-card-init data-require-bs-caller="card()" data-full-screen="false">
 <div class="card-body html-fill-item html-fill-container">
 <div class="cell-output-display html-fill-item html-fill-container">
-<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-d079426559cd43ee827a" style="width:100%;height:406px;"></div>
-<script type="application/json" data-for="htmlwidget-d079426559cd43ee827a">{"x":{"visdat":{"299c19064d7f":["function () ","plotlyVisDat"]},"cur_data":"299c19064d7f","attrs":{"299c19064d7f":{"x":["Nov/25","Dez/25","Jan/26","Fev/26","Mar/26","Abr/26","Mai/26","Jun/26","Jul/26","Ago/26","Set/26","Out/26"],"y":[152819,153385,155188,156648,158376,159826,161001,162320,163633,165060,166261,167565],"mode":"lines+markers","line":{"width":3},"marker":{"size":7},"color":["Empresas Ativas","Empresas Ativas","Empresas Ativas","Empresas Ativas","Empresas Ativas","Empresas Ativas","Empresas Ativas","Empresas Ativas","Empresas Ativas","Empresas Ativas","Empresas Ativas","Empresas Ativas"],"colors":"#0f2537","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":52,"l":64,"t":10,"r":16},"showlegend":false,"legend":{"orientation":"h","x":0.5,"xanchor":"center","y":1.1499999999999999},"dragmode":false,"xaxis":{"domain":[0,1],"automargin":true,"title":"","tickangle":-28,"tickfont":{"size":10.5},"fixedrange":true,"type":"category","categoryorder":"array","categoryarray":["Nov/25","Dez/25","Jan/26","Fev/26","Mar/26","Abr/26","Mai/26","Jun/26","Jul/26","Ago/26","Set/26","Out/26"]},"yaxis":{"domain":[0,1],"automargin":true,"title":{"text":"Empresas Ativas","standoff":6,"font":{"size":11}},"fixedrange":true,"separatethousands":true,"tickfont":{"size":11},"nticks":4},"separators":",.","paper_bgcolor":"rgba(0,0,0,0)","plot_bgcolor":"rgba(0,0,0,0)","annotations":[{"x":0,"y":0,"yshift":-34,"text":"<i>Fonte: Receita Federal<\/i>","showarrow":false,"xref":"paper","yref":"paper","xanchor":"left","yanchor":"top","font":{"size":10.5,"color":"#858c94"}}],"hovermode":"closest"},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false,"scrollZoom":false,"doubleClick":false},"data":[{"x":["Nov/25","Dez/25","Jan/26","Fev/26","Mar/26","Abr/26","Mai/26","Jun/26","Jul/26","Ago/26","Set/26","Out/26"],"y":[152819,153385,155188,156648,158376,159826,161001,162320,163633,165060,166261,167565],"mode":"lines+markers","line":{"color":"rgba(15,37,55,1)","width":3},"marker":{"color":"rgba(15,37,55,1)","size":7,"line":{"color":"rgba(15,37,55,1)"}},"type":"scatter","name":"Empresas Ativas","textfont":{"color":"rgba(15,37,55,1)"},"error_y":{"color":"rgba(15,37,55,1)"},"error_x":{"color":"rgba(15,37,55,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-bf60c2b730977d4ac2eb" style="width:100%;height:406px;"></div>
+<script type="application/json" data-for="htmlwidget-bf60c2b730977d4ac2eb">{"x":{"visdat":{"3d343b302507":["function () ","plotlyVisDat"]},"cur_data":"3d343b302507","attrs":{"3d343b302507":{"x":["Nov/25","Dez/25","Jan/26","Fev/26","Mar/26","Abr/26","Mai/26","Jun/26","Jul/26","Ago/26","Set/26","Out/26"],"y":[152819,153385,155188,156648,158376,159826,161001,162320,163633,165060,166261,167565],"mode":"lines+markers","line":{"width":3},"marker":{"size":7},"color":["Empresas Ativas","Empresas Ativas","Empresas Ativas","Empresas Ativas","Empresas Ativas","Empresas Ativas","Empresas Ativas","Empresas Ativas","Empresas Ativas","Empresas Ativas","Empresas Ativas","Empresas Ativas"],"colors":"#0f2537","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":52,"l":64,"t":10,"r":16},"showlegend":false,"legend":{"orientation":"h","x":0.5,"xanchor":"center","y":1.1499999999999999},"dragmode":false,"xaxis":{"domain":[0,1],"automargin":true,"title":"","tickangle":-28,"tickfont":{"size":10.5},"fixedrange":true,"type":"category","categoryorder":"array","categoryarray":["Nov/25","Dez/25","Jan/26","Fev/26","Mar/26","Abr/26","Mai/26","Jun/26","Jul/26","Ago/26","Set/26","Out/26"]},"yaxis":{"domain":[0,1],"automargin":true,"title":{"text":"Empresas Ativas","standoff":6,"font":{"size":11}},"fixedrange":true,"separatethousands":true,"tickfont":{"size":11},"nticks":4},"separators":",.","paper_bgcolor":"rgba(0,0,0,0)","plot_bgcolor":"rgba(0,0,0,0)","annotations":[{"x":0,"y":0,"yshift":-34,"text":"<i>Fonte: Receita Federal<\/i>","showarrow":false,"xref":"paper","yref":"paper","xanchor":"left","yanchor":"top","font":{"size":10.5,"color":"#858c94"}}],"hovermode":"closest"},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false,"scrollZoom":false,"doubleClick":false},"data":[{"x":["Nov/25","Dez/25","Jan/26","Fev/26","Mar/26","Abr/26","Mai/26","Jun/26","Jul/26","Ago/26","Set/26","Out/26"],"y":[152819,153385,155188,156648,158376,159826,161001,162320,163633,165060,166261,167565],"mode":"lines+markers","line":{"color":"rgba(15,37,55,1)","width":3},"marker":{"color":"rgba(15,37,55,1)","size":7,"line":{"color":"rgba(15,37,55,1)"}},"type":"scatter","name":"Empresas Ativas","textfont":{"color":"rgba(15,37,55,1)"},"error_y":{"color":"rgba(15,37,55,1)"},"error_x":{"color":"rgba(15,37,55,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
@@ -9366,8 +9433,8 @@ grid-auto-rows: minmax(0, 1fr);">
 <div class="card cell atualizado dt-up-12-11-2026 html-fill-item html-fill-container bslib-card" data-bslib-card-init data-require-bs-caller="card()" data-full-screen="false">
 <div class="card-body html-fill-item html-fill-container">
 <div class="cell-output-display html-fill-item html-fill-container">
-<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-13bd7764be95b9dd7792" style="width:100%;height:406px;"></div>
-<script type="application/json" data-for="htmlwidget-13bd7764be95b9dd7792">{"x":{"visdat":{"299c197424e3":["function () ","plotlyVisDat"]},"cur_data":"299c197424e3","attrs":{"299c197424e3":{"mode":"gauge+number+delta","value":18.5,"domain":{"x":[0,1],"y":[0.14000000000000001,0.84999999999999998]},"title":{"text":"Tempo de abertura de empresas em<br>outubro de 2026 em horas","font":{"size":12.5,"color":"#858c94"}},"delta":{"reference":26.199999999999999,"decreasing":{"color":"#c8942b"},"increasing":{"color":"#d85c5c"}},"gauge":{"axis":{"range":[null,48],"tickwidth":1,"tickcolor":"#0f2537"},"bar":{"color":"#0f2537"},"bgcolor":"white","borderwidth":0,"steps":[{"range":[0,24],"color":"#e9ecef"},{"range":[24,48],"color":"#f8f9fa"}],"threshold":{"line":{"color":"#d85c5c","width":4},"thickness":0.75,"value":26.199999999999999}},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"indicator"}},"layout":{"margin":{"b":26,"l":16,"t":44,"r":16},"paper_bgcolor":"rgba(0,0,0,0)","font":{"color":"#0f2537"},"annotations":[{"x":0,"y":0,"yshift":-4,"text":"<i>Fonte: Mapa das Empresas / Gov. Federal.<\/i>","showarrow":false,"xref":"paper","yref":"paper","xanchor":"left","yanchor":"top","font":{"size":10.5,"color":"#858c94"}}],"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false},"data":[{"mode":"gauge+number+delta","value":18.5,"domain":{"x":[0,1],"y":[0.14000000000000001,0.84999999999999998]},"title":{"text":"Tempo de abertura de empresas em<br>outubro de 2026 em horas","font":{"size":12.5,"color":"#858c94"}},"delta":{"reference":26.199999999999999,"decreasing":{"color":"#c8942b"},"increasing":{"color":"#d85c5c"}},"gauge":{"axis":{"range":[[],48],"tickwidth":1,"tickcolor":"#0f2537"},"bar":{"color":"#0f2537"},"bgcolor":"white","borderwidth":0,"steps":[{"range":[0,24],"color":"#e9ecef"},{"range":[24,48],"color":"#f8f9fa"}],"threshold":{"line":{"color":"#d85c5c","width":4},"thickness":0.75,"value":26.199999999999999}},"type":"indicator","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-c6fa06f1f889d9aa3a59" style="width:100%;height:406px;"></div>
+<script type="application/json" data-for="htmlwidget-c6fa06f1f889d9aa3a59">{"x":{"visdat":{"3d3418d966b2":["function () ","plotlyVisDat"]},"cur_data":"3d3418d966b2","attrs":{"3d3418d966b2":{"mode":"gauge+number+delta","value":18.5,"domain":{"x":[0,1],"y":[0.14000000000000001,0.84999999999999998]},"title":{"text":"Tempo de abertura de empresas em<br>outubro de 2026 em horas","font":{"size":12.5,"color":"#858c94"}},"delta":{"reference":26.199999999999999,"decreasing":{"color":"#c8942b"},"increasing":{"color":"#d85c5c"}},"gauge":{"axis":{"range":[null,48],"tickwidth":1,"tickcolor":"#0f2537"},"bar":{"color":"#0f2537"},"bgcolor":"white","borderwidth":0,"steps":[{"range":[0,24],"color":"#e9ecef"},{"range":[24,48],"color":"#f8f9fa"}],"threshold":{"line":{"color":"#d85c5c","width":4},"thickness":0.75,"value":26.199999999999999}},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"indicator"}},"layout":{"margin":{"b":26,"l":16,"t":44,"r":16},"paper_bgcolor":"rgba(0,0,0,0)","font":{"color":"#0f2537"},"annotations":[{"x":0,"y":0,"yshift":-4,"text":"<i>Fonte: Mapa das Empresas / Gov. Federal.<\/i>","showarrow":false,"xref":"paper","yref":"paper","xanchor":"left","yanchor":"top","font":{"size":10.5,"color":"#858c94"}}],"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false},"data":[{"mode":"gauge+number+delta","value":18.5,"domain":{"x":[0,1],"y":[0.14000000000000001,0.84999999999999998]},"title":{"text":"Tempo de abertura de empresas em<br>outubro de 2026 em horas","font":{"size":12.5,"color":"#858c94"}},"delta":{"reference":26.199999999999999,"decreasing":{"color":"#c8942b"},"increasing":{"color":"#d85c5c"}},"gauge":{"axis":{"range":[[],48],"tickwidth":1,"tickcolor":"#0f2537"},"bar":{"color":"#0f2537"},"bgcolor":"white","borderwidth":0,"steps":[{"range":[0,24],"color":"#e9ecef"},{"range":[24,48],"color":"#f8f9fa"}],"threshold":{"line":{"color":"#d85c5c","width":4},"thickness":0.75,"value":26.199999999999999}},"type":"indicator","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
@@ -9419,8 +9486,8 @@ grid-auto-rows: minmax(0, 1fr);">
 <div class="card cell atualizado dt-up-12-11-2026 html-fill-item html-fill-container bslib-card" data-bslib-card-init data-require-bs-caller="card()" data-full-screen="false">
 <div class="card-body html-fill-item html-fill-container">
 <div class="cell-output-display html-fill-item html-fill-container">
-<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-2a4cb95169b8a15eabda" style="width:100%;height:406px;"></div>
-<script type="application/json" data-for="htmlwidget-2a4cb95169b8a15eabda">{"x":{"visdat":{"299c2ccd3530":["function () ","plotlyVisDat"]},"cur_data":"299c2ccd3530","attrs":{"299c2ccd3530":{"labels":{},"values":{},"hole":0.59999999999999998,"marker":{"colors":["#c8942b","#0f2537","#858c94","#e9ecef"],"line":{"color":"#FFFFFF","width":2}},"textinfo":"percent","hoverinfo":"text","text":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"pie"}},"layout":{"margin":{"b":78,"l":20,"t":18,"r":20},"showlegend":true,"legend":{"orientation":"h","x":0.5,"xanchor":"center","y":-0.040000000000000001,"font":{"size":12}},"paper_bgcolor":"rgba(0,0,0,0)","plot_bgcolor":"rgba(0,0,0,0)","annotations":[{"x":0.5,"y":0.5,"text":"<b>167,6 Mil<\/b><br>Ativas","showarrow":false,"font":{"size":16,"color":"#0f2537"}},{"x":0,"y":0,"yshift":-54,"text":"<i>Fonte: Receita Federal.<\/i>","showarrow":false,"xref":"paper","yref":"paper","xanchor":"left","yanchor":"top","font":{"size":11,"color":"#858c94"}}],"hovermode":"closest"},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false},"data":[{"labels":["MEI","Microempresa (ME)","Pequeno Porte (EPP)","Não Informado / Demais"],"values":[88650,56958,11896,10061],"hole":0.59999999999999998,"marker":{"color":"rgba(31,119,180,1)","colors":["#c8942b","#0f2537","#858c94","#e9ecef"],"line":{"color":"#FFFFFF","width":2}},"textinfo":"percent","hoverinfo":["text","text","text","text"],"text":["<b> MEI <\/b><br> 88650  empresas","<b> Microempresa (ME) <\/b><br> 56958  empresas","<b> Pequeno Porte (EPP) <\/b><br> 11896  empresas","<b> Não Informado / Demais <\/b><br> 10061  empresas"],"type":"pie","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-be598f9c5a4a4cc7a923" style="width:100%;height:406px;"></div>
+<script type="application/json" data-for="htmlwidget-be598f9c5a4a4cc7a923">{"x":{"visdat":{"3d34253c758d":["function () ","plotlyVisDat"]},"cur_data":"3d34253c758d","attrs":{"3d34253c758d":{"labels":{},"values":{},"hole":0.59999999999999998,"marker":{"colors":["#c8942b","#0f2537","#858c94","#e9ecef"],"line":{"color":"#FFFFFF","width":2}},"textinfo":"percent","hoverinfo":"text","text":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"pie"}},"layout":{"margin":{"b":78,"l":20,"t":18,"r":20},"showlegend":true,"legend":{"orientation":"h","x":0.5,"xanchor":"center","y":-0.040000000000000001,"font":{"size":12}},"paper_bgcolor":"rgba(0,0,0,0)","plot_bgcolor":"rgba(0,0,0,0)","annotations":[{"x":0.5,"y":0.5,"text":"<b>167,6 Mil<\/b><br>Ativas","showarrow":false,"font":{"size":16,"color":"#0f2537"}},{"x":0,"y":0,"yshift":-54,"text":"<i>Fonte: Receita Federal.<\/i>","showarrow":false,"xref":"paper","yref":"paper","xanchor":"left","yanchor":"top","font":{"size":11,"color":"#858c94"}}],"hovermode":"closest"},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false},"data":[{"labels":["MEI","Microempresa (ME)","Pequeno Porte (EPP)","Não Informado / Demais"],"values":[88650,56958,11896,10061],"hole":0.59999999999999998,"marker":{"color":"rgba(31,119,180,1)","colors":["#c8942b","#0f2537","#858c94","#e9ecef"],"line":{"color":"#FFFFFF","width":2}},"textinfo":"percent","hoverinfo":["text","text","text","text"],"text":["<b> MEI <\/b><br> 88650  empresas","<b> Microempresa (ME) <\/b><br> 56958  empresas","<b> Pequeno Porte (EPP) <\/b><br> 11896  empresas","<b> Não Informado / Demais <\/b><br> 10061  empresas"],"type":"pie","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
@@ -9449,7 +9516,7 @@ grid-auto-rows: minmax(0, 1fr);">
 Dólar Comercial (USD)
 </p>
 <p class="value-box-value">
-Carregando...
+R$ 5,784 (▲ +2,05%)
 </p>
 </div>
 </div>
@@ -9465,7 +9532,7 @@ Carregando...
 Euro Comercial (EUR)
 </p>
 <p class="value-box-value">
-Carregando...
+R$ 6,359 (▲ +1,79%)
 </p>
 </div>
 </div>
@@ -9481,7 +9548,7 @@ Carregando...
 Ibovespa (B3)
 </p>
 <p class="value-box-value">
-Carregando...
+169.295 pts (▼ -1,83%)
 </p>
 </div>
 </div>
@@ -9494,7 +9561,7 @@ grid-auto-rows: minmax(0, 1fr);">
 <div class="card-body html-fill-item html-fill-container">
 <div class="cell-output-display html-fill-item html-fill-container">
 <div class="plotly html-widget html-fill-item html-fill-container" id="grafico-cambio-aovivo" style="width:100%;height:406px;"></div>
-<script type="application/json" data-for="grafico-cambio-aovivo">{"x":{"visdat":{"299cc481f16":["function () ","plotlyVisDat"]},"cur_data":"299cc481f16","attrs":{"299cc481f16":{"x":["02/11","03/11","04/11","05/11","06/11","07/11","08/11","09/11","10/11","11/11","12/11","13/11","14/11","15/11","16/11"],"y":[5.6200000000000001,5.6399999999999997,5.6100000000000003,5.6500000000000004,5.6799999999999997,5.6600000000000001,5.6299999999999999,5.6699999999999999,5.6900000000000004,5.6500000000000004,5.6799999999999997,5.71,5.6900000000000004,5.6799999999999997,5.7000000000000002],"mode":"lines+markers","line":{"width":3},"marker":{"size":7},"color":["Dólar Comercial (USD/BRL)","Dólar Comercial (USD/BRL)","Dólar Comercial (USD/BRL)","Dólar Comercial (USD/BRL)","Dólar Comercial (USD/BRL)","Dólar Comercial (USD/BRL)","Dólar Comercial (USD/BRL)","Dólar Comercial (USD/BRL)","Dólar Comercial (USD/BRL)","Dólar Comercial (USD/BRL)","Dólar Comercial (USD/BRL)","Dólar Comercial (USD/BRL)","Dólar Comercial (USD/BRL)","Dólar Comercial (USD/BRL)","Dólar Comercial (USD/BRL)"],"colors":"#0f2537","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":52,"l":64,"t":10,"r":16},"showlegend":false,"legend":{"orientation":"h","x":0.5,"xanchor":"center","y":1.1499999999999999},"dragmode":false,"xaxis":{"domain":[0,1],"automargin":true,"title":"","tickangle":-28,"tickfont":{"size":10.5},"fixedrange":true,"type":"category","categoryorder":"array","categoryarray":["02/11","03/11","04/11","05/11","06/11","07/11","08/11","09/11","10/11","11/11","12/11","13/11","14/11","15/11","16/11"]},"yaxis":{"domain":[0,1],"automargin":true,"title":{"text":"Cotação (R$)","standoff":6,"font":{"size":11}},"fixedrange":true,"separatethousands":true,"tickfont":{"size":11}},"separators":",.","paper_bgcolor":"rgba(0,0,0,0)","plot_bgcolor":"rgba(0,0,0,0)","annotations":[{"x":0,"y":0,"yshift":-34,"text":"<i>Fonte: AwesomeAPI / Banco Central (Últimos 15 dias em tempo real).<\/i>","showarrow":false,"xref":"paper","yref":"paper","xanchor":"left","yanchor":"top","font":{"size":10.5,"color":"#858c94"}}],"hovermode":"closest"},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false,"scrollZoom":false,"doubleClick":false},"data":[{"x":["02/11","03/11","04/11","05/11","06/11","07/11","08/11","09/11","10/11","11/11","12/11","13/11","14/11","15/11","16/11"],"y":[5.6200000000000001,5.6399999999999997,5.6100000000000003,5.6500000000000004,5.6799999999999997,5.6600000000000001,5.6299999999999999,5.6699999999999999,5.6900000000000004,5.6500000000000004,5.6799999999999997,5.71,5.6900000000000004,5.6799999999999997,5.7000000000000002],"mode":"lines+markers","line":{"color":"rgba(15,37,55,1)","width":3},"marker":{"color":"rgba(15,37,55,1)","size":7,"line":{"color":"rgba(15,37,55,1)"}},"type":"scatter","name":"Dólar Comercial (USD/BRL)","textfont":{"color":"rgba(15,37,55,1)"},"error_y":{"color":"rgba(15,37,55,1)"},"error_x":{"color":"rgba(15,37,55,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="grafico-cambio-aovivo">{"x":{"visdat":{"3d3462021ce":["function () ","plotlyVisDat"]},"cur_data":"3d3462021ce","attrs":{"3d3462021ce":{"x":["28/10","29/10","30/10","02/11","03/11","04/11","05/11","06/11","08/11","09/11","10/11","11/11","12/11","13/11","16/11"],"y":[5.3461999999999996,5.3849,5.4397000000000002,5.4366000000000003,5.4882999999999997,5.4596999999999998,5.5038,5.5030000000000001,5.5049999999999999,5.5086000000000004,5.5829000000000004,5.5830000000000002,5.6418999999999997,5.6673999999999998,5.7843999999999998],"mode":"lines+markers","line":{"width":3},"marker":{"size":7},"color":["Dólar Comercial (USD/BRL)","Dólar Comercial (USD/BRL)","Dólar Comercial (USD/BRL)","Dólar Comercial (USD/BRL)","Dólar Comercial (USD/BRL)","Dólar Comercial (USD/BRL)","Dólar Comercial (USD/BRL)","Dólar Comercial (USD/BRL)","Dólar Comercial (USD/BRL)","Dólar Comercial (USD/BRL)","Dólar Comercial (USD/BRL)","Dólar Comercial (USD/BRL)","Dólar Comercial (USD/BRL)","Dólar Comercial (USD/BRL)","Dólar Comercial (USD/BRL)"],"colors":"#0f2537","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":52,"l":64,"t":10,"r":16},"showlegend":false,"legend":{"orientation":"h","x":0.5,"xanchor":"center","y":1.1499999999999999},"dragmode":false,"xaxis":{"domain":[0,1],"automargin":true,"title":"","tickangle":-28,"tickfont":{"size":10.5},"fixedrange":true,"type":"category","categoryorder":"array","categoryarray":["28/10","29/10","30/10","02/11","03/11","04/11","05/11","06/11","08/11","09/11","10/11","11/11","12/11","13/11","16/11"]},"yaxis":{"domain":[0,1],"automargin":true,"title":{"text":"Cotação (R$)","standoff":6,"font":{"size":11}},"fixedrange":true,"separatethousands":true,"tickfont":{"size":11}},"separators":",.","paper_bgcolor":"rgba(0,0,0,0)","plot_bgcolor":"rgba(0,0,0,0)","annotations":[{"x":0,"y":0,"yshift":-34,"text":"<i>Fonte: AwesomeAPI / Yahoo Finance / Banco Central (Tempo Real).<\/i>","showarrow":false,"xref":"paper","yref":"paper","xanchor":"left","yanchor":"top","font":{"size":10.5,"color":"#858c94"}}],"hovermode":"closest"},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false,"scrollZoom":false,"doubleClick":false},"data":[{"x":["28/10","29/10","30/10","02/11","03/11","04/11","05/11","06/11","08/11","09/11","10/11","11/11","12/11","13/11","16/11"],"y":[5.3461999999999996,5.3849,5.4397000000000002,5.4366000000000003,5.4882999999999997,5.4596999999999998,5.5038,5.5030000000000001,5.5049999999999999,5.5086000000000004,5.5829000000000004,5.5830000000000002,5.6418999999999997,5.6673999999999998,5.7843999999999998],"mode":"lines+markers","line":{"color":"rgba(15,37,55,1)","width":3},"marker":{"color":"rgba(15,37,55,1)","size":7,"line":{"color":"rgba(15,37,55,1)"}},"type":"scatter","name":"Dólar Comercial (USD/BRL)","textfont":{"color":"rgba(15,37,55,1)"},"error_y":{"color":"rgba(15,37,55,1)"},"error_x":{"color":"rgba(15,37,55,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
@@ -9549,7 +9616,7 @@ grid-auto-rows: minmax(0, 1fr);">
   <div class="mercados-toolbar html-fill-item html-fill-container">
     <span class="mercados-toolbar-titulo">
       <span class="ponto-aovivo"></span>
-      Cotações ao Vivo (60s)
+      Cotações ao Vivo (30s)
     </span>
     <span class="mercados-toolbar-acoes">
       <span id="horario-ultima-cotacao" style="font-size: 11px; color: #0f2537; font-weight: 600;">
@@ -9590,19 +9657,19 @@ grid-auto-rows: minmax(0, 1fr);">
 <td><span id="tb-eur-var" class="ticker-var var-neutra">--%</span></td>
 </tr>
 <tr id="row-soja" class="even">
-<td><strong>Soja em Grãos</strong> <span class="subtexto-ativo">MATOPIBA • Sc 60kg (Conv. R$)</span></td>
+<td><strong>Soja em Grãos</strong> <span class="subtexto-ativo">CBOT (ZS=F) • Conv. Sc 60kg</span></td>
 <td id="tb-soja-preco" class="preco-destaque">R$ --</td>
 <td id="tb-soja-usd" style="font-size: 11.5px; color: #858c94">US$ -- / sc</td>
 <td><span id="tb-soja-var" class="ticker-var var-neutra">--%</span></td>
 </tr>
 <tr id="row-boi" class="odd">
-<td><strong>Boi Gordo</strong> <span class="subtexto-ativo">Pecuária TO • @ 15kg</span></td>
+<td><strong>Boi Gordo</strong> <span class="subtexto-ativo">CME (LE=F) • Conv. 15kg</span></td>
 <td id="tb-boi-preco" class="preco-destaque">R$ --</td>
-<td id="tb-boi-usd" style="font-size: 11.5px; color: #858c94">US$ -- / @</td>
+<td id="tb-boi-usd" style="font-size: 11.5px; color: #858c94">US$ -- / 15kg</td>
 <td><span id="tb-boi-var" class="ticker-var var-neutra">--%</span></td>
 </tr>
 <tr id="row-milho" class="even">
-<td><strong>Milho</strong> <span class="subtexto-ativo">Grãos TO • Sc 60kg</span></td>
+<td><strong>Milho</strong> <span class="subtexto-ativo">CBOT (ZC=F) • Conv. Sc 60kg</span></td>
 <td id="tb-milho-preco" class="preco-destaque">R$ --</td>
 <td id="tb-milho-usd" style="font-size: 11.5px; color: #858c94">US$ -- / sc</td>
 <td><span id="tb-milho-var" class="ticker-var var-neutra">--%</span></td>
@@ -9618,8 +9685,8 @@ grid-auto-rows: minmax(0, 1fr);">
 
   </div>
 
-  <div style="margin-top: 5px; font-size: 10.5px; color: #858c94; font-style: italic; line-height: 1.2;" class="html-fill-item html-fill-container">
-    Fonte: AwesomeAPI (câmbio/BTC), HG Brasil (Ibovespa) e paridades em USD convertidas ao câmbio comercial.
+  <div id="fonte-mercados-status" style="margin-top: 5px; font-size: 10.5px; color: #858c94; font-style: italic; line-height: 1.25;" class="html-fill-item html-fill-container">
+    Fonte: AwesomeAPI (câmbio), Banco Central SGS (Selic/IPCA), Yahoo Finance / B3 / CBOT-CME (Ibovespa e commodities) e CoinGecko (BTC).
   </div>
 </div>
 </div>
@@ -9658,20 +9725,53 @@ grid-auto-rows: minmax(0, 1fr);">
     </span>
 </bslib-tooltip><script data-bslib-card-init>bslib.Card.initializeAllCards();</script></div><script>
 window.JET_GATEWAY_STATS = { pib_to: "R$ 25,8 Bi ▼ 1,3%", desocupacao: "4,1%", saldo_comex: "+ US$ 136,94 Mi", cnpjs_ativos: "167.565", atualizado: "14/11/2026" };
+window.JET_MERCADOS_INIT = {"atualizado_iso":"2026-11-16T22:04:22-0300","atualizado_brt":"16/11/2026 22:04:22","cotacoes":{"usd":{"bid":5.7838,"high":5.7939,"low":5.6558,"pct":2.053854},"usdt":{"bid":5.73993,"high":5.74995,"low":5.6129,"pct":2.053902},"eur":{"bid":6.359,"high":6.3707,"low":6.221,"pct":1.786346},"btc":{"bid":374854,"high":380629,"low":364293,"pct":1.029},"ibov":{"pontos":169295.4,"variacao":-1.834,"high":172457.56,"low":168490.95}},"commodities":{"soja":{"usd_unit":27.05,"pct":-1.307,"futuro_raw":1226.75,"symbol":"ZS=F"},"boi":{"usd_unit":74.2,"pct":1.688,"futuro_raw":224.375,"symbol":"LE=F"},"milho":{"usd_unit":10.59,"pct":0.673,"futuro_raw":448.5,"symbol":"ZC=F"}},"macro":{"selic_meta":"13,75% a.a.","ipca_12m":"4,63%"},"series_90d":{"usd":{"dates":["2026-07-26","2026-07-27","2026-07-28","2026-07-29","2026-07-30","2026-07-31","2026-08-02","2026-08-03","2026-08-04","2026-08-05","2026-08-06","2026-08-07","2026-08-10","2026-08-11","2026-08-12","2026-08-13","2026-08-14","2026-08-16","2026-08-17","2026-08-18","2026-08-19","2026-08-20","2026-08-21","2026-08-23","2026-08-24","2026-08-25","2026-08-26","2026-08-27","2026-08-28","2026-08-31","2026-09-01","2026-09-02","2026-09-03","2026-09-04","2026-09-07","2026-09-08","2026-09-09","2026-09-10","2026-09-11","2026-09-14","2026-09-15","2026-09-16","2026-09-17","2026-09-18","2026-09-20","2026-09-21","2026-09-22","2026-09-23","2026-09-24","2026-09-25","2026-09-28","2026-09-29","2026-09-30","2026-10-01","2026-10-02","2026-10-04","2026-10-05","2026-10-06","2026-10-07","2026-10-08","2026-10-09","2026-10-11","2026-10-12","2026-10-13","2026-10-14","2026-10-15","2026-10-16","2026-10-18","2026-10-19","2026-10-20","2026-10-21","2026-10-22","2026-10-23","2026-10-26","2026-10-27","2026-10-28","2026-10-29","2026-10-30","2026-11-02","2026-11-03","2026-11-04","2026-11-05","2026-11-06","2026-11-08","2026-11-09","2026-11-10","2026-11-11","2026-11-12","2026-11-13","2026-11-16"],"values":[5.0825,5.1286,5.137,5.1271,5.0774,5.0736,5.0789,5.0894,5.1237,5.1216,5.1099,5.0808,5.1066,5.1573,5.1904,5.1795,5.2225,5.2192,5.2042,5.2133,5.1788,5.1929,5.138,5.1364,5.1572,5.1472,5.1465,5.1621,5.185,5.1837,5.1539,5.0932,5.0998,5.1249,5.1259,5.0867,5.1048,5.1033,5.1262,5.1435,5.1529,5.1499,5.1245,5.1432,5.1442,5.1115,5.1018,5.1641,5.1916,5.1894,5.223,5.2031,5.184,5.2271,5.2162,5.222,4.9988,4.9825,5.0221,5.0179,4.9918,4.9918,4.9863,5.0266,5.0479,5.098,5.0622,5.0645,5.0402,5.0238,5.0236,5.0523,4.9648,5.3712,5.3514,5.3462,5.3849,5.4397,5.4366,5.4883,5.4597,5.5038,5.503,5.505,5.5086,5.5829,5.583,5.6419,5.6674,5.7844]},"eur":{"dates":["2026-08-06","2026-08-07","2026-08-08","2026-08-09","2026-08-10","2026-08-11","2026-08-12","2026-08-13","2026-08-14","2026-08-15","2026-08-16","2026-08-17","2026-08-18","2026-08-19","2026-08-20","2026-08-21","2026-08-23","2026-08-24","2026-08-25","2026-08-26","2026-08-27","2026-08-28","2026-08-30","2026-08-31","2026-09-01","2026-09-02","2026-09-03","2026-09-04","2026-09-06","2026-09-07","2026-09-08","2026-09-09","2026-09-10","2026-09-11","2026-09-13","2026-09-14","2026-09-15","2026-09-16","2026-09-17","2026-09-18","2026-09-20","2026-09-21","2026-09-22","2026-09-23","2026-09-24","2026-09-25","2026-09-27","2026-09-28","2026-09-29","2026-09-30","2026-10-01","2026-10-02","2026-10-04","2026-10-05","2026-10-06","2026-10-07","2026-10-08","2026-10-09","2026-10-11","2026-10-12","2026-10-13","2026-10-14","2026-10-15","2026-10-16","2026-10-18","2026-10-19","2026-10-20","2026-10-21","2026-10-22","2026-10-23","2026-10-25","2026-10-26","2026-10-27","2026-10-28","2026-10-29","2026-10-30","2026-11-01","2026-11-02","2026-11-03","2026-11-04","2026-11-05","2026-11-06","2026-11-08","2026-11-09","2026-11-10","2026-11-11","2026-11-12","2026-11-13","2026-11-15","2026-11-16"],"values":[5.8886,5.8713,5.8713,5.871,5.8959,5.9531,5.983,5.9737,6.0408,6.0405,6.0458,6.0272,6.0369,6.0438,6.07,6.0008,5.9982,6.0096,6.0085,5.9952,6.0153,6.0056,6.0058,6.0213,5.9733,5.9022,5.9322,5.9509,5.9522,5.9611,5.9132,5.9378,5.9253,5.9425,5.9511,5.9355,5.9383,5.908,5.8863,5.9059,5.9106,5.8589,5.8386,5.8788,5.9057,5.9091,5.9006,5.9396,5.9012,5.8687,5.8752,5.8702,5.8765,5.6061,5.6066,5.6217,5.6275,5.5831,5.5776,5.5633,5.6299,5.6444,5.7153,5.7041,5.6959,5.6483,5.6392,5.6436,5.6678,5.5617,5.6144,6.0044,5.954,5.9654,6.0211,6.0846,6.0117,6.0852,6.1487,6.1334,6.1789,6.1303,6.1335,6.182,6.2351,6.1935,6.2336,6.2462,6.2474,6.3597]},"ibov":{"dates":["2026-08-17","2026-08-18","2026-08-19","2026-08-20","2026-08-21","2026-08-24","2026-08-25","2026-08-26","2026-08-27","2026-08-28","2026-08-31","2026-09-01","2026-09-02","2026-09-03","2026-09-04","2026-09-08","2026-09-09","2026-09-10","2026-09-11","2026-09-14","2026-09-15","2026-09-16","2026-09-17","2026-09-18","2026-09-21","2026-09-22","2026-09-23","2026-09-24","2026-09-25","2026-09-28","2026-09-29","2026-09-30","2026-10-01","2026-10-02","2026-10-05","2026-10-06","2026-10-07","2026-10-08","2026-10-09","2026-10-13","2026-10-14","2026-10-15","2026-10-16","2026-10-19","2026-10-20","2026-10-21","2026-10-22","2026-10-23","2026-10-26","2026-10-27","2026-10-28","2026-10-29","2026-10-30","2026-11-03","2026-11-04","2026-11-05","2026-11-06","2026-11-09","2026-11-10","2026-11-11","2026-11-12","2026-11-13","2026-11-16"],"values":[166784,166335,167830,167927,171032,171907,174577,174586,175135,175665,177419,179723,185205,185188,185147,187367,185629,188269,187207,185501,186503,185548,185992,185229,186596,187423,185814,183966,183477,182991,183828,186340,187198,192115,206912,205835,204302,206220,209067,206888,206506,204324,205430,205079,208296,206495,204120,205083,176608,175710,171006,169186,167922,165529,167564,166192,168499,172236,171337,172060,171324,172458,169295.41]},"btc":{"dates":["2026-08-19","2026-08-20","2026-08-21","2026-08-22","2026-08-23","2026-08-24","2026-08-25","2026-08-26","2026-08-27","2026-08-28","2026-08-29","2026-08-30","2026-08-31","2026-09-01","2026-09-02","2026-09-03","2026-09-04","2026-09-05","2026-09-06","2026-09-07","2026-09-08","2026-09-09","2026-09-10","2026-09-11","2026-09-12","2026-09-13","2026-09-14","2026-09-15","2026-09-16","2026-09-17","2026-09-18","2026-09-19","2026-09-20","2026-09-21","2026-09-22","2026-09-23","2026-09-24","2026-09-25","2026-09-26","2026-09-27","2026-09-28","2026-09-29","2026-09-30","2026-10-01","2026-10-02","2026-10-03","2026-10-04","2026-10-05","2026-10-06","2026-10-07","2026-10-08","2026-10-09","2026-10-10","2026-10-11","2026-10-12","2026-10-13","2026-10-14","2026-10-15","2026-10-16","2026-10-17","2026-10-18","2026-10-19","2026-10-20","2026-10-21","2026-10-22","2026-10-23","2026-10-24","2026-10-25","2026-10-26","2026-10-27","2026-10-28","2026-10-29","2026-10-30","2026-10-31","2026-11-01","2026-11-02","2026-11-03","2026-11-04","2026-11-05","2026-11-06","2026-11-07","2026-11-08","2026-11-09","2026-11-10","2026-11-11","2026-11-12","2026-11-13","2026-11-14","2026-11-15","2026-11-16"],"values":[358803,379307,402514,396158,399333,407205,404168,406856,414394,404232,406333,403225,407139,399012,393744,414694,408419,409190,411905,405575,399126,399729,390790,395305,395603,393052,401764,388912,392346,391441,415852,417718,417379,442792,439690,435995,438090,435613,437422,438196,436137,435297,432983,443196,440313,441544,452004,428691,426263,418134,410006,411761,413532,417484,407878,417828,411380,418837,412742,412130,415511,412529,416726,422476,410829,403825,402372,398028,430086,432430,434615,419263,420253,421590,425881,417130,424725,439209,418372,417063,417069,411398,414697,411674,413043,402695,387106,363344,370062,373536]}}};
 </script><script>
 
 // ============================================================================
 // PAINEL ECONÔMICO DO TOCANTINS - MOTOR CLIENT-SIDE (TEMPO REAL & DATAS)
 // ============================================================================
 (function() {
-  const INTERVALO_MS = 60000; // 60 segundos
+  const INTERVALO_MS = 30000; // 30 segundos em tempo real no navegador
 
-  // Referências base para paridade de commodities agrícolas (Tocantins / MATOPIBA)
-  const BASE_COMMODITIES_USD = {
-    soja_sc_usd: 23.45,   // US$ por saca de 60kg
-    boi_arr_usd: 54.80,   // US$ por arroba de 15kg
-    milho_sc_usd: 11.90   // US$ por saca de 60kg
+  // Ponte opcional para Google Sheets (=GOOGLEFINANCE() publicado como CSV):
+  // Cole aqui o URL ".../pub?output=csv" caso queira priorizar sua planilha Google Finanças.
+  const GOOGLE_FINANCE_CSV_URL = "";
+
+  // Estado em memória (inicia preenchido com o snapshot real gerado em dados/mercados_tempo_real.json)
+  const MKT_INIT = window.JET_MERCADOS_INIT || {};
+  const ESTADO_MERCADOS = {
+    prevPrices: {},
+    chartAsset: "cambio",
+    chartDays: 15,
+    series: {
+      usd:  (MKT_INIT.series_90d && MKT_INIT.series_90d.usd)  || { dates: [], values: [] },
+      eur:  (MKT_INIT.series_90d && MKT_INIT.series_90d.eur)  || { dates: [], values: [] },
+      ibov: (MKT_INIT.series_90d && MKT_INIT.series_90d.ibov) || { dates: [], values: [] },
+      btc:  (MKT_INIT.series_90d && MKT_INIT.series_90d.btc)  || { dates: [], values: [] }
+    }
   };
+
+  function getBaseCommodity(chave, fallbackUsd) {
+    const c = MKT_INIT.commodities && MKT_INIT.commodities[chave];
+    if (c && isFinite(Number(c.usd_unit))) {
+      return { usd_unit: Number(c.usd_unit), pct: Number(c.pct || 0) };
+    }
+    return { usd_unit: fallbackUsd, pct: 0 };
+  }
+
+  function piscarCelula(elId, novoValor) {
+    const el = document.getElementById(elId);
+    if (!el || !isFinite(novoValor)) return;
+    const antigo = ESTADO_MERCADOS.prevPrices[elId];
+    ESTADO_MERCADOS.prevPrices[elId] = novoValor;
+    if (typeof antigo === "number" && antigo !== novoValor) {
+      const row = el.closest("tr") || el;
+      row.classList.remove("jet-flash-up", "jet-flash-down");
+      void row.offsetWidth;
+      row.classList.add(novoValor > antigo ? "jet-flash-up" : "jet-flash-down");
+    }
+  }
 
   function formatarMoeda(valor, casas = 2) {
     return Number(valor).toLocaleString("pt-BR", {
@@ -9851,181 +9951,396 @@ window.JET_GATEWAY_STATS = { pib_to: "R$ 25,8 Bi ▼ 1,3%", desocupacao: "4,1%",
     el.className = `ticker-var ${info.classe}`;
   }
 
-  // 5. Busca Câmbio em Tempo Real (AwesomeAPI)
-  async function buscarCambioAwesomeAPI() {
-    const url = "https://economia.awesomeapi.com.br/last/USD-BRL,USD-BRLT,EUR-BRL,BTC-BRL";
-    const resp = await fetch(url, { cache: "no-store" });
-    if (!resp.ok) throw new Error("Falha HTTP AwesomeAPI");
-    return await resp.json();
+  // 5. Busca Câmbio & BTC em Tempo Real (AwesomeAPI + fallback ExchangeRate-API / CoinGecko)
+  async function buscarCambioTempoReal() {
+    try {
+      const resp = await fetch("https://economia.awesomeapi.com.br/last/USD-BRL,USD-BRLT,EUR-BRL,BTC-BRL", { cache: "no-store" });
+      if (resp.ok) {
+        const j = await resp.json();
+        if (j && j.USDBRL) {
+          return {
+            usd:  { bid: parseFloat(j.USDBRL.bid), high: parseFloat(j.USDBRL.high), low: parseFloat(j.USDBRL.low), pct: parseFloat(j.USDBRL.pctChange) },
+            usdt: j.USDBRLT ? { bid: parseFloat(j.USDBRLT.bid), high: parseFloat(j.USDBRLT.high), low: parseFloat(j.USDBRLT.low), pct: parseFloat(j.USDBRLT.pctChange) } : null,
+            eur:  j.EURBRL  ? { bid: parseFloat(j.EURBRL.bid), high: parseFloat(j.EURBRL.high), low: parseFloat(j.EURBRL.low), pct: parseFloat(j.EURBRL.pctChange) } : null,
+            btc:  j.BTCBRL  ? { bid: parseFloat(j.BTCBRL.bid), high: parseFloat(j.BTCBRL.high), low: parseFloat(j.BTCBRL.low), pct: parseFloat(j.BTCBRL.pctChange) } : null,
+            fonte: "AwesomeAPI"
+          };
+        }
+      }
+    } catch (_) {}
+
+    // Fallback ExchangeRate-API + CoinGecko (CORS 100% aberto)
+    try {
+      const [rFx, rBtc] = await Promise.all([
+        fetch("https://open.er-api.com/v6/latest/USD", { cache: "no-store" }),
+        fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=brl&include_24hr_change=true", { cache: "no-store" })
+      ]);
+      const fx = rFx.ok ? await rFx.json() : null;
+      const cg = rBtc.ok ? await rBtc.json() : null;
+      if (fx && fx.rates && fx.rates.BRL) {
+        const usdBrl = Number(fx.rates.BRL);
+        const eurBrl = fx.rates.EUR ? (usdBrl / Number(fx.rates.EUR)) : (MKT_INIT.cotacoes?.eur?.bid || usdBrl * 1.1);
+        const btcP = cg?.bitcoin?.brl ? Number(cg.bitcoin.brl) : (MKT_INIT.cotacoes?.btc?.bid || null);
+        const btcPct = cg?.bitcoin?.brl_24h_change ? Number(cg.bitcoin.brl_24h_change) : 0;
+        return {
+          usd:  { bid: usdBrl, high: usdBrl, low: usdBrl, pct: 0 },
+          usdt: { bid: usdBrl * 1.03, high: usdBrl * 1.03, low: usdBrl * 1.03, pct: 0 },
+          eur:  { bid: eurBrl, high: eurBrl, low: eurBrl, pct: 0 },
+          btc:  btcP ? { bid: btcP, high: btcP, low: btcP, pct: btcPct } : null,
+          fonte: "ExchangeRate-API"
+        };
+      }
+    } catch (_) {}
+
+    return MKT_INIT.cotacoes ? {
+      usd: MKT_INIT.cotacoes.usd,
+      usdt: MKT_INIT.cotacoes.usdt || MKT_INIT.cotacoes.usd,
+      eur: MKT_INIT.cotacoes.eur,
+      btc: MKT_INIT.cotacoes.btc,
+      fonte: "Cache JET"
+    } : null;
   }
 
-  // 6. Busca Ibovespa em Tempo Real (HG Brasil CORS público, com fallback Brapi)
-  async function buscarIbovespa() {
-    try {
-      const respHg = await fetch("https://api.hgbrasil.com/finance?format=json-cors", { cache: "no-store" });
-      if (respHg.ok) {
-        const jsonHg = await respHg.json();
-        const ibovHg = jsonHg && jsonHg.results && jsonHg.results.stocks && jsonHg.results.stocks.IBOVESPA;
-        if (ibovHg && isFinite(Number(ibovHg.points))) {
-          return {
-            pontos: Number(ibovHg.points),
-            variacao: Number(ibovHg.variation)
-          };
-        }
-      }
-    } catch (_) {}
+  // 6. Busca Yahoo Finance v8 via Proxy CORS (para ^BVSP e Commodities CBOT/CME ao vivo)
+  async function buscarYahooCORS(symbol, rangeStr = "5d") {
+    const rawUrl = `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(symbol)}?interval=1d&range=${rangeStr}`;
+    const proxies = [
+      `https://api.allorigins.win/raw?url=${encodeURIComponent(rawUrl)}`,
+      `https://corsproxy.io/?${encodeURIComponent(rawUrl)}`
+    ];
+    for (const pUrl of proxies) {
+      try {
+        const ctrl = new AbortController();
+        const tid = setTimeout(() => ctrl.abort(), 5000);
+        const resp = await fetch(pUrl, { cache: "no-store", signal: ctrl.signal });
+        clearTimeout(tid);
+        if (!resp.ok) continue;
+        const j = await resp.json();
+        const res = j && j.chart && j.chart.result && j.chart.result[0];
+        if (!res || !res.meta) continue;
 
-    try {
-      const resp = await fetch("https://brapi.dev/api/quote/%5EBVSP", { cache: "no-store" });
-      if (resp.ok) {
-        const json = await resp.json();
-        if (json && json.results && json.results[0]) {
-          return {
-            pontos: Number(json.results[0].regularMarketPrice),
-            variacao: Number(json.results[0].regularMarketChangePercent)
-          };
+        const meta = res.meta;
+        const ts = res.timestamp || [];
+        const closesRaw = (res.indicators && res.indicators.quote && res.indicators.quote[0] && res.indicators.quote[0].close) || [];
+        const dates = [];
+        const values = [];
+        for (let i = 0; i < Math.min(ts.length, closesRaw.length); i++) {
+          const val = Number(closesRaw[i]);
+          if (isFinite(val) && val > 0) {
+            const dStr = new Date(Number(ts[i]) * 1000).toISOString().slice(0, 10);
+            dates.push(dStr);
+            values.push(val);
+          }
         }
-      }
-    } catch (_) {}
-
+        const price = Number(meta.regularMarketPrice || values[values.length - 1]);
+        let prev = Number(meta.previousClose);
+        if (!isFinite(prev) || prev <= 0) {
+          prev = values.length >= 2 ? values[values.length - 2] : Number(meta.chartPreviousClose);
+        }
+        const pct = (isFinite(price) && isFinite(prev) && prev > 0) ? ((price - prev) / prev) * 100 : 0;
+        return {
+          currency: String(meta.currency || ""),
+          price,
+          prev,
+          pct,
+          high: Number(meta.regularMarketDayHigh || price),
+          low: Number(meta.regularMarketDayLow || price),
+          dates,
+          values
+        };
+      } catch (_) {}
+    }
     return null;
   }
 
-  // 7. Busca Histórico Diário de 15 dias (USD/BRL e EUR/BRL) com eixo cronológico unificado
-  async function atualizarGraficoCambioHistorico() {
+  // Conector opcional Google Sheets =GOOGLEFINANCE() CSV
+  async function buscarGoogleFinanceCSV() {
+    if (!GOOGLE_FINANCE_CSV_URL) return null;
     try {
-      const [respUsd, respEur] = await Promise.all([
-        fetch("https://economia.awesomeapi.com.br/json/daily/USD-BRL/15"),
-        fetch("https://economia.awesomeapi.com.br/json/daily/EUR-BRL/15")
-      ]);
-      if (!respUsd.ok || !respEur.ok) return;
-
-      const dadosUsd = await respUsd.json();
-      const dadosEur = await respEur.json();
-
-      // Normaliza timestamp -> { iso: "YYYY-MM-DD", label: "DD/MM" } no fuso de Brasília
-      const fmtBRT = new Intl.DateTimeFormat("en-US", {
-        timeZone: "America/Sao_Paulo",
-        year: "numeric",
-        month: "2-digit",
-        day: "2-digit"
+      const resp = await fetch(GOOGLE_FINANCE_CSV_URL, { cache: "no-store" });
+      if (!resp.ok) return null;
+      const txt = await resp.text();
+      const map = {};
+      txt.split(/\r?\n/).forEach(line => {
+        const cols = line.split(",");
+        if (cols.length >= 2) {
+          const k = cols[0].replace(/"/g, "").trim().toUpperCase();
+          const p = parseFloat(cols[1].replace(/"/g, "").replace(",", "."));
+          const pct = cols[2] ? parseFloat(cols[2].replace(/"/g, "").replace(",", ".")) : 0;
+          if (k && isFinite(p)) map[k] = { price: p, pct: isFinite(pct) ? pct : 0 };
+        }
       });
-      const extrairDiaBRT = (ts) => {
-        const parts = fmtBRT.formatToParts(new Date(Number(ts) * 1000));
-        const get = (t) => parts.find(p => p.type === t)?.value || "00";
-        return {
-          iso: `${get("year")}-${get("month")}-${get("day")}`,
-          label: `${get("day")}/${get("month")}`
-        };
-      };
-
-      // Ordena do mais antigo para o mais recente e consolida 1 ponto por dia em cada moeda
-      const mapUsd = new Map();
-      [...dadosUsd].sort((a, b) => Number(a.timestamp) - Number(b.timestamp)).forEach(item => {
-        const val = parseFloat(item.bid);
-        if (!isFinite(val)) return;
-        const { iso } = extrairDiaBRT(item.timestamp);
-        mapUsd.set(iso, val);
-      });
-
-      const mapEur = new Map();
-      [...dadosEur].sort((a, b) => Number(a.timestamp) - Number(b.timestamp)).forEach(item => {
-        const val = parseFloat(item.bid);
-        if (!isFinite(val)) return;
-        const { iso } = extrairDiaBRT(item.timestamp);
-        mapEur.set(iso, val);
-      });
-
-      // União cronológica de todas as datas evita salto visual quando uma moeda não tem pregão num dia
-      const datasIsoOrdenadas = Array.from(new Set([...mapUsd.keys(), ...mapEur.keys()])).sort();
-      const datasEixo = datasIsoOrdenadas.map(iso => {
-        const [, mm, dd] = iso.split("-");
-        return `${dd}/${mm}`;
-      });
-      const valoresUsd = datasIsoOrdenadas.map(iso => (mapUsd.has(iso) ? mapUsd.get(iso) : null));
-      const valoresEur = datasIsoOrdenadas.map(iso => (mapEur.has(iso) ? mapEur.get(iso) : null));
-
-      const chartEl = document.getElementById("grafico-cambio-aovivo");
-      if (chartEl && window.Plotly) {
-        const traces = [
-          {
-            x: datasEixo,
-            y: valoresUsd,
-            name: "Dólar Comercial (USD/BRL)",
-            type: "scatter",
-            mode: "lines+markers",
-            connectgaps: true,
-            line: { color: "#0f2537", width: 3 },
-            marker: { color: "#0f2537", size: 7 },
-            hovertemplate: "%{x}: R$ %{y:.4f}<extra>Dólar Comercial (USD/BRL)</extra>"
-          },
-          {
-            x: datasEixo,
-            y: valoresEur,
-            name: "Euro Comercial (EUR/BRL)",
-            type: "scatter",
-            mode: "lines+markers",
-            connectgaps: true,
-            line: { color: "#c8942b", width: 3 },
-            marker: { color: "#c8942b", size: 7 },
-            hovertemplate: "%{x}: R$ %{y:.4f}<extra>Euro Comercial (EUR/BRL)</extra>"
-          }
-        ];
-
-        const layout = {
-          title: {
-            text: "<b>Câmbio Comercial (USD/BRL e EUR/BRL — 15 Dias)</b>",
-            font: { size: 13.5, color: "#0f2537" },
-            x: 0.02,
-            xanchor: "left",
-            y: 0.97
-          },
-          legend: { orientation: "h", x: 0.5, xanchor: "center", y: 1.03, yanchor: "bottom", font: { size: 11 } },
-          xaxis: {
-            title: "",
-            type: "category",
-            categoryorder: "array",
-            categoryarray: datasEixo,
-            tickangle: -30,
-            fixedrange: true
-          },
-          yaxis: { title: "Cotação (R$)", tickformat: ".2f", fixedrange: true },
-          margin: { t: 62, b: 64, l: 54, r: 14 },
-          paper_bgcolor: "rgba(0,0,0,0)",
-          plot_bgcolor: "rgba(0,0,0,0)",
-          annotations: [{
-            x: 0, y: 0, yshift: -44,
-            text: "<i>Fonte: AwesomeAPI / Banco Central (Últimos 15 dias em tempo real).</i>",
-            showarrow: false, xref: "paper", yref: "paper",
-            xanchor: "left", yanchor: "top",
-            font: { size: 10.5, color: "#858c94" }
-          }]
-        };
-
-        window.Plotly.react(chartEl, traces, layout, { displayModeBar: false, responsive: true });
-      }
-    } catch (e) {
-      console.warn("Aviso ao atualizar série histórica de câmbio:", e);
+      return map;
+    } catch (_) {
+      return null;
     }
   }
 
-  // 8. Função que sincroniza Cotações em Tempo Real
-  async function atualizarTudoTempoReal() {
+  // Busca Selic Meta (Série 432) e IPCA 12m (Série 13522) em tempo real via BCB SGS
+  async function buscarMacroBCB() {
     try {
-      const [cambio, ibov] = await Promise.all([
-        buscarCambioAwesomeAPI(),
-        buscarIbovespa()
+      const [rSelic, rIpca] = await Promise.all([
+        fetch("https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados/ultimos/1?formato=json", { cache: "no-store" }),
+        fetch("https://api.bcb.gov.br/dados/serie/bcdata.sgs.13522/dados/ultimos/1?formato=json", { cache: "no-store" })
+      ]);
+      if (rSelic.ok) {
+        const jS = await rSelic.json();
+        const vS = jS && jS[0] ? parseFloat(jS[0].valor) : NaN;
+        if (isFinite(vS)) {
+          atualizarValueBoxQuarto("Taxa Selic (Meta BCB)", `${formatarMoeda(vS, 2)}% a.a.`);
+        }
+      }
+      if (rIpca.ok) {
+        const jI = await rIpca.json();
+        const vI = jI && jI[0] ? parseFloat(jI[0].valor) : NaN;
+        if (isFinite(vI)) {
+          atualizarValueBoxQuarto("IPCA (Acumulado 12m)", `${formatarMoeda(vI, 2)}%`);
+        }
+      }
+    } catch (_) {}
+  }
+
+  // 7. Controles Interativos e Renderização Multi-Ativo / Multi-Período do Gráfico
+  function injetarControlesGraficoMercados() {
+    const chartEl = document.getElementById("grafico-cambio-aovivo");
+    if (!chartEl) return;
+    const cardBody = chartEl.closest(".card-body") || chartEl.parentElement;
+    if (!cardBody || cardBody.querySelector(".mercados-chart-controls")) return;
+
+    const bar = document.createElement("div");
+    bar.className = "mercados-chart-controls";
+    bar.innerHTML = `
+      <div class="mercados-btn-group" role="group" aria-label="Ativo do Gráfico">
+        <button type="button" class="mercados-ctl-btn active" data-mkt-asset="cambio" onclick="window.setGraficoMercadosAsset('cambio', this)">Câmbio (USD/EUR)</button>
+        <button type="button" class="mercados-ctl-btn" data-mkt-asset="ibov" onclick="window.setGraficoMercadosAsset('ibov', this)">Ibovespa (B3)</button>
+        <button type="button" class="mercados-ctl-btn" data-mkt-asset="btc" onclick="window.setGraficoMercadosAsset('btc', this)">Bitcoin (BRL)</button>
+      </div>
+      <div class="mercados-btn-group" role="group" aria-label="Janela Temporal">
+        <button type="button" class="mercados-ctl-btn active" data-mkt-days="15" onclick="window.setGraficoMercadosDays(15, this)">15D</button>
+        <button type="button" class="mercados-ctl-btn" data-mkt-days="30" onclick="window.setGraficoMercadosDays(30, this)">30D</button>
+        <button type="button" class="mercados-ctl-btn" data-mkt-days="90" onclick="window.setGraficoMercadosDays(90, this)">90D</button>
+      </div>
+    `;
+    cardBody.style.display = "flex";
+    cardBody.style.flexDirection = "column";
+    cardBody.insertBefore(bar, cardBody.firstElementChild);
+  }
+
+  window.setGraficoMercadosAsset = function(asset, btnEl) {
+    ESTADO_MERCADOS.chartAsset = asset;
+    document.querySelectorAll('.mercados-ctl-btn[data-mkt-asset]').forEach(b => b.classList.remove("active"));
+    if (btnEl) btnEl.classList.add("active");
+    renderizarGraficoMercados();
+  };
+
+  window.setGraficoMercadosDays = function(days, btnEl) {
+    ESTADO_MERCADOS.chartDays = Number(days) || 15;
+    document.querySelectorAll('.mercados-ctl-btn[data-mkt-days]').forEach(b => b.classList.remove("active"));
+    if (btnEl) btnEl.classList.add("active");
+    renderizarGraficoMercados();
+  };
+
+  function sliceUltimosDias(serie, nDias) {
+    if (!serie || !Array.isArray(serie.dates) || serie.dates.length === 0) return { dates: [], values: [] };
+    const start = Math.max(0, serie.dates.length - nDias);
+    return { dates: serie.dates.slice(start), values: serie.values.slice(start) };
+  }
+
+  function renderizarGraficoMercados() {
+    const chartEl = document.getElementById("grafico-cambio-aovivo");
+    if (!chartEl || !window.Plotly) return;
+
+    const ativo = ESTADO_MERCADOS.chartAsset;
+    const dias = ESTADO_MERCADOS.chartDays;
+    let traces = [];
+    let titulo = "";
+    let tituloY = "Cotação (R$)";
+    let tickfmt = ".2f";
+    let fonteTxt = "Fonte: AwesomeAPI, Yahoo Finance & Banco Central (Tempo Real).";
+
+    if (ativo === "cambio") {
+      const sUsd = sliceUltimosDias(ESTADO_MERCADOS.series.usd, dias);
+      const sEur = sliceUltimosDias(ESTADO_MERCADOS.series.eur, dias);
+      const mapU = new Map(sUsd.dates.map((d, i) => [d, sUsd.values[i]]));
+      const mapE = new Map(sEur.dates.map((d, i) => [d, sEur.values[i]]));
+      const datasIso = Array.from(new Set([...mapU.keys(), ...mapE.keys()])).sort().slice(-dias);
+      const eixo = datasIso.map(iso => {
+        const [, mm, dd] = iso.split("-");
+        return `${dd}/${mm}`;
+      });
+      titulo = `<b>Câmbio Comercial (USD/BRL e EUR/BRL — ${dias} Dias)</b>`;
+      traces = [
+        {
+          x: eixo, y: datasIso.map(d => mapU.has(d) ? mapU.get(d) : null),
+          name: "Dólar Comercial (USD/BRL)", type: "scatter", mode: "lines+markers",
+          connectgaps: true, line: { color: "#0f2537", width: 2.8 }, marker: { color: "#0f2537", size: dias > 30 ? 4 : 6 },
+          hovertemplate: "%{x}: R$ %{y:.4f}<extra>USD/BRL</extra>"
+        },
+        {
+          x: eixo, y: datasIso.map(d => mapE.has(d) ? mapE.get(d) : null),
+          name: "Euro Comercial (EUR/BRL)", type: "scatter", mode: "lines+markers",
+          connectgaps: true, line: { color: "#c8942b", width: 2.8 }, marker: { color: "#c8942b", size: dias > 30 ? 4 : 6 },
+          hovertemplate: "%{x}: R$ %{y:.4f}<extra>EUR/BRL</extra>"
+        }
+      ];
+    } else if (ativo === "ibov") {
+      const sIb = sliceUltimosDias(ESTADO_MERCADOS.series.ibov, dias);
+      const eixo = sIb.dates.map(iso => { const [, mm, dd] = iso.split("-"); return `${dd}/${mm}`; });
+      titulo = `<b>Ibovespa B3 (Pontos — ${dias} Dias)</b>`;
+      tituloY = "Pontos";
+      tickfmt = ",.0f";
+      fonteTxt = "Fonte: B3 / Yahoo Finance (^BVSP — Série Diária Real).";
+      traces = [{
+        x: eixo, y: sIb.values, name: "Ibovespa (B3)", type: "scatter", mode: "lines+markers",
+        fill: "tozeroy", fillcolor: "rgba(15, 37, 55, 0.08)",
+        line: { color: "#0f2537", width: 2.8 }, marker: { color: "#c8942b", size: dias > 30 ? 4 : 6 },
+        hovertemplate: "%{x}: %{y:,.0f} pts<extra>Ibovespa</extra>"
+      }];
+    } else if (ativo === "btc") {
+      const sBtc = sliceUltimosDias(ESTADO_MERCADOS.series.btc, dias);
+      const eixo = sBtc.dates.map(iso => { const [, mm, dd] = iso.split("-"); return `${dd}/${mm}`; });
+      titulo = `<b>Bitcoin em Reais (BTC/BRL — ${dias} Dias)</b>`;
+      tituloY = "Preço (R$)";
+      tickfmt = ",.0f";
+      fonteTxt = "Fonte: CoinGecko / AwesomeAPI (BTC/BRL — Tempo Real).";
+      traces = [{
+        x: eixo, y: sBtc.values, name: "Bitcoin (BTC/BRL)", type: "scatter", mode: "lines+markers",
+        fill: "tozeroy", fillcolor: "rgba(200, 148, 43, 0.10)",
+        line: { color: "#c8942b", width: 2.8 }, marker: { color: "#0f2537", size: dias > 30 ? 4 : 6 },
+        hovertemplate: "%{x}: R$ %{y:,.0f}<extra>BTC/BRL</extra>"
+      }];
+    }
+
+    const layout = {
+      title: { text: titulo, font: { size: 13, color: "#0f2537" }, x: 0.02, xanchor: "left", y: 0.97 },
+      showlegend: traces.length > 1,
+      legend: { orientation: "h", x: 0.5, xanchor: "center", y: 1.03, yanchor: "bottom", font: { size: 11 } },
+      xaxis: { title: "", type: "category", nticks: dias > 30 ? 10 : 8, tickangle: -30, fixedrange: true },
+      yaxis: { title: tituloY, tickformat: tickfmt, automargin: true, fixedrange: true },
+      margin: { t: traces.length > 1 ? 60 : 44, b: 62, l: 56, r: 14 },
+      paper_bgcolor: "rgba(0,0,0,0)",
+      plot_bgcolor: "rgba(0,0,0,0)",
+      annotations: [{
+        x: 0, y: 0, yshift: -42,
+        text: `<i>${fonteTxt}</i>`,
+        showarrow: false, xref: "paper", yref: "paper",
+        xanchor: "left", yanchor: "top", font: { size: 10.5, color: "#858c94" }
+      }]
+    };
+    window.Plotly.react(chartEl, traces, layout, { displayModeBar: false, responsive: true });
+    ajustarPlotlyMobile();
+  }
+
+  async function atualizarGraficoCambioHistorico() {
+    try {
+      const fmtBRT = new Intl.DateTimeFormat("en-US", { timeZone: "America/Sao_Paulo", year: "numeric", month: "2-digit", day: "2-digit" });
+      const extrairDiaBRT = (ts) => {
+        const parts = fmtBRT.formatToParts(new Date(Number(ts) * 1000));
+        const get = (t) => parts.find(p => p.type === t)?.value || "00";
+        return `${get("year")}-${get("month")}-${get("day")}`;
+      };
+
+      const [rUsd, rEur, rCg] = await Promise.all([
+        fetch("https://economia.awesomeapi.com.br/json/daily/USD-BRL/90").catch(() => null),
+        fetch("https://economia.awesomeapi.com.br/json/daily/EUR-BRL/90").catch(() => null),
+        fetch("https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=brl&days=90&interval=daily").catch(() => null)
       ]);
 
-      const usd  = cambio.USDBRL;
-      const usdt = cambio.USDBRLT || usd;
-      const eur  = cambio.EURBRL;
-      const btc  = cambio.BTCBRL;
+      if (rUsd && rUsd.ok) {
+        const mapU = new Map();
+        (await rUsd.json()).sort((a, b) => Number(a.timestamp) - Number(b.timestamp)).forEach(it => {
+          const v = parseFloat(it.bid);
+          if (isFinite(v)) mapU.set(extrairDiaBRT(it.timestamp), v);
+        });
+        const ds = Array.from(mapU.keys()).sort();
+        if (ds.length > 0) ESTADO_MERCADOS.series.usd = { dates: ds, values: ds.map(d => mapU.get(d)) };
+      }
 
-      const usdBid = parseFloat(usd.bid);
-      const usdPct = parseFloat(usd.pctChange);
-      const eurBid = parseFloat(eur.bid);
-      const eurPct = parseFloat(eur.pctChange);
+      if (rEur && rEur.ok) {
+        const mapE = new Map();
+        (await rEur.json()).sort((a, b) => Number(a.timestamp) - Number(b.timestamp)).forEach(it => {
+          const v = parseFloat(it.bid);
+          if (isFinite(v)) mapE.set(extrairDiaBRT(it.timestamp), v);
+        });
+        const ds = Array.from(mapE.keys()).sort();
+        if (ds.length > 0) ESTADO_MERCADOS.series.eur = { dates: ds, values: ds.map(d => mapE.get(d)) };
+      }
+
+      if (rCg && rCg.ok) {
+        const jCg = await rCg.json();
+        if (jCg && Array.isArray(jCg.prices) && jCg.prices.length > 0) {
+          const mapB = new Map();
+          jCg.prices.forEach(pt => {
+            const iso = new Date(pt[0]).toISOString().slice(0, 10);
+            mapB.set(iso, Math.round(Number(pt[1])));
+          });
+          const ds = Array.from(mapB.keys()).sort();
+          if (ds.length > 0) ESTADO_MERCADOS.series.btc = { dates: ds, values: ds.map(d => mapB.get(d)) };
+        }
+      }
+
+      renderizarGraficoMercados();
+    } catch (e) {
+      renderizarGraficoMercados();
+      console.warn("Aviso ao atualizar séries históricas de mercados:", e);
+    }
+  }
+
+  // 8. Sincronização Multi-API em Tempo Real (30s) sem falhas nem valores fictícios
+  async function atualizarTudoTempoReal() {
+    try {
+      const [cambio, gfMap, yIbov, ySoja, yBoi, yMilho] = await Promise.all([
+        buscarCambioTempoReal(),
+        buscarGoogleFinanceCSV(),
+        buscarYahooCORS("^BVSP", "5d"),
+        buscarYahooCORS("ZS=F", "5d"),
+        buscarYahooCORS("LE=F", "5d"),
+        buscarYahooCORS("ZC=F", "5d"),
+        buscarMacroBCB()
+      ]);
+
+      if (!cambio || !cambio.usd) return;
+
+      const usd  = cambio.usd;
+      const usdt = cambio.usdt || usd;
+      const eur  = cambio.eur || MKT_INIT.cotacoes?.eur || { bid: usd.bid * 1.1, high: usd.bid * 1.1, low: usd.bid * 1.1, pct: usd.pct };
+      const btc  = cambio.btc || MKT_INIT.cotacoes?.btc;
+
+      const usdBid = Number(usd.bid);
+      const usdPct = Number(usd.pct || 0);
+      const eurBid = Number(eur.bid);
+      const eurPct = Number(eur.pct || 0);
+
+      // Ibovespa: prioridade Google Finance CSV -> Yahoo CORS -> Cache real embutido
+      let ibov = null;
+      if (gfMap && (gfMap["IBOV"] || gfMap["BVMF:IBOV"])) {
+        const g = gfMap["IBOV"] || gfMap["BVMF:IBOV"];
+        ibov = { pontos: g.price, variacao: g.pct };
+      } else if (yIbov && isFinite(yIbov.price)) {
+        ibov = { pontos: yIbov.price, variacao: yIbov.pct };
+        if (yIbov.dates && yIbov.dates.length > 10) {
+          ESTADO_MERCADOS.series.ibov = { dates: yIbov.dates, values: yIbov.values };
+        }
+      } else if (MKT_INIT.cotacoes && MKT_INIT.cotacoes.ibov) {
+        ibov = MKT_INIT.cotacoes.ibov;
+      }
+
+      // Commodities Reais (CBOT / CME convertidas p/ saca 60kg / @ 15kg com fallback para snapshot real)
+      const convCom = (yh, fator, fallbackKey, defUsd) => {
+        if (yh && isFinite(yh.price) && yh.price > 0) {
+          const mult = yh.currency.toUpperCase() === "USX" ? 0.01 : 1.0;
+          return { usd_unit: yh.price * mult * fator, pct: yh.pct };
+        }
+        return getBaseCommodity(fallbackKey, defUsd);
+      };
+
+      const sojaRef  = convCom(ySoja,  60 / 27.2155,  "soja",  27.05);
+      const boiRef   = convCom(yBoi,   15 / 0.453592, "boi",   74.20);
+      const milhoRef = convCom(yMilho, 60 / 25.4012,  "milho", 10.59);
+
+      const sojaBrl  = sojaRef.usd_unit * usdBid;
+      const boiBrl   = boiRef.usd_unit * usdBid;
+      const milhoBrl = milhoRef.usd_unit * usdBid;
 
       const infoUsd = formatarVariacao(usdPct);
       atualizarValueBoxQuarto(
@@ -10039,120 +10354,113 @@ window.JET_GATEWAY_STATS = { pib_to: "R$ 25,8 Bi ▼ 1,3%", desocupacao: "4,1%",
         `R$&nbsp;${formatarMoeda(eurBid, 3)} <span style="font-size: 0.54em; opacity: 0.9;">${infoEur.texto}</span>`
       );
 
-      if (ibov) {
+      if (ibov && isFinite(Number(ibov.pontos))) {
         const infoIbov = formatarVariacao(ibov.variacao);
         atualizarValueBoxQuarto(
           "Ibovespa (B3)",
-          `${Math.round(ibov.pontos).toLocaleString("pt-BR")}&nbsp;pts <span style="font-size: 0.54em; opacity: 0.9;">${infoIbov.texto}</span>`
+          `${Math.round(Number(ibov.pontos)).toLocaleString("pt-BR")}&nbsp;pts <span style="font-size: 0.54em; opacity: 0.9;">${infoIbov.texto}</span>`
         );
-      } else {
-        atualizarValueBoxQuarto("Ibovespa (B3)", "Indisponível");
       }
 
-      const sojaBrl  = BASE_COMMODITIES_USD.soja_sc_usd * usdBid;
-      const boiBrl   = BASE_COMMODITIES_USD.boi_arr_usd * usdBid;
-      const milhoBrl = BASE_COMMODITIES_USD.milho_sc_usd * usdBid;
-
-      const setTxt = (id, txt) => { 
-        document.querySelectorAll("#" + id + ", ." + id).forEach(el => el.textContent = txt); 
+      const setTxt = (id, txt) => {
+        document.querySelectorAll("#" + id + ", ." + id).forEach(el => el.textContent = txt);
       };
 
       setTxt("tk-usd-val", `R$ ${formatarMoeda(usdBid, 3)}`);
       document.querySelectorAll(".tk-usd-var").forEach(el => {
-        const info = formatarVariacao(usdPct);
-        el.textContent = info.texto;
-        el.className = `ticker-var ${info.classe} tk-usd-var`;
+        el.textContent = infoUsd.texto;
+        el.className = `ticker-var ${infoUsd.classe} tk-usd-var`;
       });
 
       setTxt("tk-eur-val", `R$ ${formatarMoeda(eurBid, 3)}`);
       document.querySelectorAll(".tk-eur-var").forEach(el => {
-        const info = formatarVariacao(eurPct);
-        el.textContent = info.texto;
-        el.className = `ticker-var ${info.classe} tk-eur-var`;
+        el.textContent = infoEur.texto;
+        el.className = `ticker-var ${infoEur.classe} tk-eur-var`;
       });
 
-      if (ibov) {
-        setTxt("tk-ibov-val", `${Math.round(ibov.pontos).toLocaleString("pt-BR")} pts`);
+      if (ibov && isFinite(Number(ibov.pontos))) {
+        const infoIbov = formatarVariacao(ibov.variacao);
+        setTxt("tk-ibov-val", `${Math.round(Number(ibov.pontos)).toLocaleString("pt-BR")} pts`);
         document.querySelectorAll(".tk-ibov-var").forEach(el => {
-          const info = formatarVariacao(ibov.variacao);
-          el.textContent = info.texto;
-          el.className = `ticker-var ${info.classe} tk-ibov-var`;
-        });
-      } else {
-        setTxt("tk-ibov-val", "Indisp.");
-        document.querySelectorAll(".tk-ibov-var").forEach(el => {
-          el.textContent = "--";
-          el.className = "ticker-var var-neutra tk-ibov-var";
+          el.textContent = infoIbov.texto;
+          el.className = `ticker-var ${infoIbov.classe} tk-ibov-var`;
         });
       }
 
       setTxt("tk-soja-val", `R$ ${formatarMoeda(sojaBrl, 2)}/sc`);
       document.querySelectorAll(".tk-soja-var").forEach(el => {
-        const info = formatarVariacao(usdPct * 0.85);
+        const info = formatarVariacao(sojaRef.pct);
         el.textContent = info.texto;
         el.className = `ticker-var ${info.classe} tk-soja-var`;
       });
 
       setTxt("tk-boi-val", `R$ ${formatarMoeda(boiBrl, 2)}/@`);
       document.querySelectorAll(".tk-boi-var").forEach(el => {
-        const info = formatarVariacao(usdPct * 0.65);
+        const info = formatarVariacao(boiRef.pct);
         el.textContent = info.texto;
         el.className = `ticker-var ${info.classe} tk-boi-var`;
       });
 
       setTxt("tk-milho-val", `R$ ${formatarMoeda(milhoBrl, 2)}/sc`);
       document.querySelectorAll(".tk-milho-var").forEach(el => {
-        const info = formatarVariacao(usdPct * 0.75);
+        const info = formatarVariacao(milhoRef.pct);
         el.textContent = info.texto;
         el.className = `ticker-var ${info.classe} tk-milho-var`;
       });
 
       setTxt("tk-usdt-val", `R$ ${formatarMoeda(usdt.bid, 3)}`);
       document.querySelectorAll(".tk-usdt-var").forEach(el => {
-        const info = formatarVariacao(usdt.pctChange);
+        const info = formatarVariacao(usdt.pct || 0);
         el.textContent = info.texto;
         el.className = `ticker-var ${info.classe} tk-usdt-var`;
       });
 
-      if (btc) {
+      if (btc && isFinite(Number(btc.bid))) {
+        piscarCelula("tb-btc-preco", Number(btc.bid));
         setTxt("tk-btc-val", `R$ ${formatarMoeda(btc.bid, 0)}`);
         document.querySelectorAll(".tk-btc-var").forEach(el => {
-          const info = formatarVariacao(btc.pctChange);
+          const info = formatarVariacao(btc.pct || 0);
           el.textContent = info.texto;
           el.className = `ticker-var ${info.classe} tk-btc-var`;
         });
         setTxt("tb-btc-preco", `R$ ${formatarMoeda(btc.bid, 0)}`);
-        setTxt("tb-btc-maxmin", `R$ ${formatarMoeda(btc.high, 0)} / R$ ${formatarMoeda(btc.low, 0)}`);
-        aplicarBadgeVariacao("tb-btc-var", btc.pctChange);
+        setTxt("tb-btc-maxmin", `R$ ${formatarMoeda(btc.high || btc.bid, 0)} / R$ ${formatarMoeda(btc.low || btc.bid, 0)}`);
+        aplicarBadgeVariacao("tb-btc-var", btc.pct || 0);
       }
 
+      piscarCelula("tb-usd-preco", usdBid);
       setTxt("tb-usd-preco", `R$ ${formatarMoeda(usdBid, 4)}`);
-      setTxt("tb-usd-maxmin", `R$ ${formatarMoeda(usd.high, 3)} / R$ ${formatarMoeda(usd.low, 3)}`);
+      setTxt("tb-usd-maxmin", `R$ ${formatarMoeda(usd.high || usdBid, 3)} / R$ ${formatarMoeda(usd.low || usdBid, 3)}`);
       aplicarBadgeVariacao("tb-usd-var", usdPct);
 
+      piscarCelula("tb-usdt-preco", Number(usdt.bid));
       setTxt("tb-usdt-preco", `R$ ${formatarMoeda(usdt.bid, 3)}`);
-      setTxt("tb-usdt-maxmin", `R$ ${formatarMoeda(usdt.high, 3)} / R$ ${formatarMoeda(usdt.low, 3)}`);
-      aplicarBadgeVariacao("tb-usdt-var", usdt.pctChange);
+      setTxt("tb-usdt-maxmin", `R$ ${formatarMoeda(usdt.high || usdt.bid, 3)} / R$ ${formatarMoeda(usdt.low || usdt.bid, 3)}`);
+      aplicarBadgeVariacao("tb-usdt-var", usdt.pct || 0);
 
+      piscarCelula("tb-eur-preco", eurBid);
       setTxt("tb-eur-preco", `R$ ${formatarMoeda(eurBid, 4)}`);
-      setTxt("tb-eur-maxmin", `R$ ${formatarMoeda(eur.high, 3)} / R$ ${formatarMoeda(eur.low, 3)}`);
+      setTxt("tb-eur-maxmin", `R$ ${formatarMoeda(eur.high || eurBid, 3)} / R$ ${formatarMoeda(eur.low || eurBid, 3)}`);
       aplicarBadgeVariacao("tb-eur-var", eurPct);
 
+      piscarCelula("tb-soja-preco", sojaBrl);
       setTxt("tb-soja-preco", `R$ ${formatarMoeda(sojaBrl, 2)}`);
-      setTxt("tb-soja-usd", `US$ ${formatarMoeda(BASE_COMMODITIES_USD.soja_sc_usd, 2)} / sc`);
-      aplicarBadgeVariacao("tb-soja-var", usdPct * 0.85);
+      setTxt("tb-soja-usd", `US$ ${formatarMoeda(sojaRef.usd_unit, 2)} / sc`);
+      aplicarBadgeVariacao("tb-soja-var", sojaRef.pct);
 
+      piscarCelula("tb-boi-preco", boiBrl);
       setTxt("tb-boi-preco", `R$ ${formatarMoeda(boiBrl, 2)}`);
-      setTxt("tb-boi-usd", `US$ ${formatarMoeda(BASE_COMMODITIES_USD.boi_arr_usd, 2)} / @`);
-      aplicarBadgeVariacao("tb-boi-var", usdPct * 0.65);
+      setTxt("tb-boi-usd", `US$ ${formatarMoeda(boiRef.usd_unit, 2)} / 15kg`);
+      aplicarBadgeVariacao("tb-boi-var", boiRef.pct);
 
+      piscarCelula("tb-milho-preco", milhoBrl);
       setTxt("tb-milho-preco", `R$ ${formatarMoeda(milhoBrl, 2)}`);
-      setTxt("tb-milho-usd", `US$ ${formatarMoeda(BASE_COMMODITIES_USD.milho_sc_usd, 2)} / sc`);
-      aplicarBadgeVariacao("tb-milho-var", usdPct * 0.75);
+      setTxt("tb-milho-usd", `US$ ${formatarMoeda(milhoRef.usd_unit, 2)} / sc`);
+      aplicarBadgeVariacao("tb-milho-var", milhoRef.pct);
 
       const agoraStr = new Date().toLocaleTimeString("pt-BR");
       document.querySelectorAll(".tk-horario").forEach(el => el.textContent = `Atualizado às ${agoraStr}`);
-      setTxt("horario-ultima-cotacao", `Ao vivo • ${agoraStr}`);
+      setTxt("horario-ultima-cotacao", `Ao vivo (30s) • ${agoraStr}`);
 
     } catch (erro) {
       console.warn("Erro ao buscar cotações ao vivo:", erro);
@@ -10948,6 +11256,7 @@ window.JET_GATEWAY_STATS = { pib_to: "R$ 25,8 Bi ▼ 1,3%", desocupacao: "4,1%",
   // ============================================================================
   function iniciarPainel() {
     criarEcossistemaJET();
+    injetarControlesGraficoMercados();
     aplicarDatasAtualizacao();
     aplicarAvisosDessazonalizacao();
     criarBarraMobileAcessoRapido();

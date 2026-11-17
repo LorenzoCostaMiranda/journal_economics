@@ -1,4 +1,4 @@
-name: Atualizar Dados R, Compilar Boletins LaTeX e Publicar Jornal
+name: Atualizar Dados R, Mercados Tempo Real, Boletins e Publicar Jornal
 
 on:
   # Permite rodar manualmente com 1 clique na aba "Actions" do GitHub
@@ -6,7 +6,7 @@ on:
   # Roda automaticamente todos os dias às 08:00 (horário de Brasília / 11:00 UTC)
   schedule:
     - cron: '0 11 * * *'
-  # Roda automaticamente sempre que qualquer integrante da equipe subir um texto em 'boletins/textos_equipe/'
+  # Roda automaticamente quando houver alteração nos textos, templates ou scripts
   push:
     branches: [ main, master ]
     paths:
@@ -39,11 +39,12 @@ jobs:
       - name: 4. Instalar pacotes do LaTeX e do R necessários
         run: |
           tlmgr install helvetic booktabs tabularx colortbl fancyhdr lastpage parskip babel-portuges
-          Rscript -e 'install.packages(c("jsonlite", "plotly", "DT", "rmarkdown", "knitr", "htmltools"))'
+          Rscript -e 'install.packages(c("jsonlite", "curl", "plotly", "DT", "rmarkdown", "knitr", "htmltools"))'
 
-      - name: 5. Executar rotina de extração de indicadores e compilação de Boletins LaTeX (R)
+      - name: 5. Atualizar indicadores, cotações de mercado e compilar Boletins LaTeX (R)
         run: |
           Rscript scripts/atualizar_dados.R
+          Rscript scripts/atualizar_mercados_json.R
           Rscript scripts/compilar_boletins.R
 
       - name: 6. Configurar Quarto CLI
@@ -58,6 +59,6 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add dados/ boletins/publicados/ index.html news.html || true
-          git diff --staged --quiet || git commit -m "chore(boletins): compilacao automatica de boletins LaTeX e atualizacao do painel"
+          git add dados/ boletins/pdfs/ boletins/figuras/ assets/ index.html news.html || true
+          git diff --staged --quiet || git commit -m "chore(auto): atualizacao de dados, mercados tempo real e compilacao do jornal"
           git push

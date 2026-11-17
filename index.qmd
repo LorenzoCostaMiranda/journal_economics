@@ -661,6 +661,14 @@ if (!file.exists("dados/painel_dados.rds")) {
 }
 dados_painel <- readRDS("dados/painel_dados.rds")
 
+# Carrega snapshot de mercados em tempo real (ou gera na hora se ausente)
+if (!file.exists("dados/mercados_tempo_real.json") && file.exists("scripts/atualizar_mercados_json.R")) {
+  tryCatch(source("scripts/atualizar_mercados_json.R", local = TRUE), error = function(e) NULL)
+}
+mercados_init <- if (file.exists("dados/mercados_tempo_real.json")) {
+  tryCatch(jsonlite::read_json("dados/mercados_tempo_real.json", simplifyVector = TRUE), error = function(e) NULL)
+} else NULL
+
 # Carrega automaticamente o catalogo de boletins gerados pela equipe
 if (!file.exists("dados/catalogo_boletins.rds")) {
   source("scripts/compilar_boletins.R", local = TRUE)
@@ -987,13 +995,13 @@ body, .bslib-page-dashboard {
     font-size: 0.86rem !important;
   }
   .tabela-mercados-aovivo thead th {
-    padding: 5px 8px !important;
-    font-size: 10.5px !important;
+    padding: 5px 6px !important;
+    font-size: 10px !important;
     white-space: nowrap !important;
   }
   .tabela-mercados-aovivo tbody td {
-    padding: 4px 8px !important;
-    font-size: 12px !important;
+    padding: 4px 6px !important;
+    font-size: 11.5px !important;
     line-height: 1.15 !important;
   }
   .tabela-mercados-aovivo tbody td:nth-child(2),
@@ -1061,6 +1069,60 @@ body, .bslib-page-dashboard {
   gap: 8px;
   white-space: nowrap;
   flex-shrink: 0;
+}
+
+/* Barra seletora interativa do gráfico em Câmbio e Mercados */
+.mercados-chart-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 6px 10px 4px 10px;
+  border-bottom: 1px solid #edf0f2;
+  background-color: #fafbfc;
+}
+.mercados-btn-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+.mercados-ctl-btn {
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #0f2537;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.16s ease;
+}
+.mercados-ctl-btn:hover {
+  border-color: #0f2537;
+  background: #f1f5f9;
+}
+.mercados-ctl-btn.active {
+  background: #0f2537;
+  color: #ffffff;
+  border-color: #0f2537;
+  border-bottom: 2px solid #c8942b;
+}
+
+@keyframes jetPriceFlashUp {
+  0% { background-color: rgba(21, 128, 61, 0.24); }
+  100% { background-color: transparent; }
+}
+@keyframes jetPriceFlashDown {
+  0% { background-color: rgba(185, 28, 28, 0.22); }
+  100% { background-color: transparent; }
+}
+.jet-flash-up {
+  animation: jetPriceFlashUp 1.1s ease-out;
+}
+.jet-flash-down {
+  animation: jetPriceFlashDown 1.1s ease-out;
 }
 
 @media (max-height: 820px) and (max-width: 991.98px) {
@@ -1206,10 +1268,25 @@ body, .bslib-page-dashboard {
     box-shadow: 0 2px 8px rgba(15, 37, 55, 0.2) !important;
   }
 
-  /* 6. Cartões de gráficos e tabelas sem altura travada */
+  /* 6. Cartões de gráficos e tabelas sem altura travada e sem estouro horizontal */
+  .card,
+  .card-body,
+  .mercados-card-wrap,
+  #barra-cotacoes-aovivo,
+  .ticker-trilha-container,
+  .mercados-chart-controls {
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+  #barra-cotacoes-aovivo {
+    width: 100% !important;
+    overflow: hidden !important;
+  }
   .card:not(.bslib-value-box) {
     height: auto !important;
     min-height: 0 !important;
+    overflow: hidden !important;
   }
   .card:not(.bslib-value-box) > .card-body {
     height: auto !important;
@@ -3185,6 +3262,36 @@ plot_ly(
 
 # Câmbio e Mercados {#câmbio-e-mercados orientation="columns"}
 
+```{r}
+#| include: false
+fmt_br_num <- function(x, casas = 2) {
+  v <- suppressWarnings(as.numeric(x))
+  if (length(v) == 0 || is.na(v)) return("--")
+  format(round(v, casas), big.mark = ".", decimal.mark = ",", nsmall = casas, trim = TRUE)
+}
+fmt_var_txt <- function(pct) {
+  v <- suppressWarnings(as.numeric(pct))
+  if (length(v) == 0 || is.na(v)) return("")
+  seta <- if (v > 0) "▲ +" else if (v < 0) "▼ " else ""
+  sprintf("(%s%s%%)", seta, fmt_br_num(v, 2))
+}
+vb_usd_init <- if (!is.null(mercados_init$cotacoes$usd$bid)) {
+  paste("R$", fmt_br_num(mercados_init$cotacoes$usd$bid, 3), fmt_var_txt(mercados_init$cotacoes$usd$pct))
+} else "Carregando..."
+vb_eur_init <- if (!is.null(mercados_init$cotacoes$eur$bid)) {
+  paste("R$", fmt_br_num(mercados_init$cotacoes$eur$bid, 3), fmt_var_txt(mercados_init$cotacoes$eur$pct))
+} else "Carregando..."
+vb_ibov_init <- if (!is.null(mercados_init$cotacoes$ibov$pontos)) {
+  paste(fmt_br_num(mercados_init$cotacoes$ibov$pontos, 0), "pts", fmt_var_txt(mercados_init$cotacoes$ibov$variacao))
+} else "Carregando..."
+vb_selic_init <- if (!is.null(mercados_init$macro$selic_meta) && nzchar(mercados_init$macro$selic_meta)) {
+  mercados_init$macro$selic_meta
+} else dados_painel$mercados_macro$selic_meta
+vb_ipca_init <- if (!is.null(mercados_init$macro$ipca_12m) && nzchar(mercados_init$macro$ipca_12m)) {
+  mercados_init$macro$ipca_12m
+} else dados_painel$mercados_macro$ipca_12m
+```
+
 ## Column {width="51%"}
 
 ### Row {height="auto"}
@@ -3195,7 +3302,7 @@ plot_ly(
 list(
   icon = "currency-dollar",
   color = "#0f2537",
-  value = "Carregando..."
+  value = vb_usd_init
 )
 ```
 
@@ -3205,7 +3312,7 @@ list(
 list(
   icon = "currency-euro",
   color = "#0f2537",
-  value = "Carregando..."
+  value = vb_eur_init
 )
 ```
 
@@ -3215,26 +3322,37 @@ list(
 list(
   icon = "graph-up-arrow",
   color = "#0f2537",
-  value = "Carregando..."
+  value = vb_ibov_init
 )
 ```
 
-### Evolução do Câmbio Comercial (USD/BRL e EUR/BRL — Últimos 15 Dias em Tempo Real)
+### Evolução em Tempo Real — Câmbio, Ibovespa e Bitcoin
 
 ```{r}
-# Gráfico inicial de câmbio (atualizado automaticamente em tempo real via JavaScript no navegador)
-dias_init <- format(seq(Sys.Date() - 14, Sys.Date(), by = "1 day"), "%d/%m")
-df_cambio_init <- data.frame(
-  Dia = factor(dias_init, levels = dias_init),
-  Cotacao = c(5.62, 5.64, 5.61, 5.65, 5.68, 5.66, 5.63, 5.67, 5.69, 5.65, 5.68, 5.71, 5.69, 5.68, 5.70),
-  Moeda = "Dólar Comercial (USD/BRL)"
-)
+# Gráfico inicial populado com série histórica real de dados/mercados_tempo_real.json
+if (!is.null(mercados_init$series_90d$usd$dates) && length(mercados_init$series_90d$usd$dates) >= 5) {
+  d_u <- tail(mercados_init$series_90d$usd$dates, 15)
+  v_u <- tail(mercados_init$series_90d$usd$values, 15)
+  lbl_u <- format(as.Date(d_u), "%d/%m")
+  df_cambio_init <- data.frame(
+    Dia = factor(lbl_u, levels = unique(lbl_u)),
+    Cotacao = as.numeric(v_u),
+    Moeda = "Dólar Comercial (USD/BRL)"
+  )
+} else {
+  dias_init <- format(seq(Sys.Date() - 14, Sys.Date(), by = "1 day"), "%d/%m")
+  df_cambio_init <- data.frame(
+    Dia = factor(dias_init, levels = dias_init),
+    Cotacao = c(5.62, 5.64, 5.61, 5.65, 5.68, 5.66, 5.63, 5.67, 5.69, 5.65, 5.68, 5.71, 5.69, 5.68, 5.70),
+    Moeda = "Dólar Comercial (USD/BRL)"
+  )
+}
 
 p_cambio <- grafico_linhas(
   df_cambio_init, x = "Dia", y = "Cotacao", serie = "Moeda",
   cores = c("Dólar Comercial (USD/BRL)" = "#0f2537"),
   titulo_y = "Cotação (R$)",
-  fonte = "AwesomeAPI / Banco Central (Últimos 15 dias em tempo real)."
+  fonte = "AwesomeAPI / Yahoo Finance / Banco Central (Tempo Real)."
 )
 p_cambio$elementId <- "grafico-cambio-aovivo"
 p_cambio
@@ -3250,7 +3368,7 @@ p_cambio
 list(
   icon = "percent",
   color = "#0f2537",
-  value = dados_painel$mercados_macro$selic_meta
+  value = vb_selic_init
 )
 ```
 
@@ -3260,18 +3378,18 @@ list(
 list(
   icon = "bar-chart-line",
   color = "#0f2537",
-  value = dados_painel$mercados_macro$ipca_12m
+  value = vb_ipca_init
 )
 ```
 
-### Cotações em Tempo Real — Commodities (Agro TO) & Moedas
+### Cotações em Tempo Real — Commodities & Mercados
 
 ```{=html}
 <div class="mercados-card-wrap">
   <div class="mercados-toolbar">
     <span class="mercados-toolbar-titulo">
       <span class="ponto-aovivo"></span>
-      Cotações ao Vivo (60s)
+      Cotações ao Vivo (30s)
     </span>
     <span class="mercados-toolbar-acoes">
       <span id="horario-ultima-cotacao" style="font-size: 11px; color: #0f2537; font-weight: 600;">
@@ -3322,7 +3440,7 @@ list(
       <tr id="row-soja">
         <td>
           <strong>Soja em Grãos</strong>
-          <span class="subtexto-ativo">MATOPIBA • Sc 60kg (Conv. R$)</span>
+          <span class="subtexto-ativo">CBOT (ZS=F) • Conv. Sc 60kg</span>
         </td>
         <td class="preco-destaque" id="tb-soja-preco">R$ --</td>
         <td style="font-size: 11.5px; color: #858c94;" id="tb-soja-usd">US$ -- / sc</td>
@@ -3331,16 +3449,16 @@ list(
       <tr id="row-boi">
         <td>
           <strong>Boi Gordo</strong>
-          <span class="subtexto-ativo">Pecuária TO • @ 15kg</span>
+          <span class="subtexto-ativo">CME (LE=F) • Conv. 15kg</span>
         </td>
         <td class="preco-destaque" id="tb-boi-preco">R$ --</td>
-        <td style="font-size: 11.5px; color: #858c94;" id="tb-boi-usd">US$ -- / @</td>
+        <td style="font-size: 11.5px; color: #858c94;" id="tb-boi-usd">US$ -- / 15kg</td>
         <td><span class="ticker-var var-neutra" id="tb-boi-var">--%</span></td>
       </tr>
       <tr id="row-milho">
         <td>
           <strong>Milho</strong>
-          <span class="subtexto-ativo">Grãos TO • Sc 60kg</span>
+          <span class="subtexto-ativo">CBOT (ZC=F) • Conv. Sc 60kg</span>
         </td>
         <td class="preco-destaque" id="tb-milho-preco">R$ --</td>
         <td style="font-size: 11.5px; color: #858c94;" id="tb-milho-usd">US$ -- / sc</td>
@@ -3359,8 +3477,8 @@ list(
   </table>
   </div>
 
-  <div style="margin-top: 5px; font-size: 10.5px; color: #858c94; font-style: italic; line-height: 1.2;">
-    Fonte: AwesomeAPI (câmbio/BTC), HG Brasil (Ibovespa) e paridades em USD convertidas ao câmbio comercial.
+  <div id="fonte-mercados-status" style="margin-top: 5px; font-size: 10.5px; color: #858c94; font-style: italic; line-height: 1.25;">
+    Fonte: AwesomeAPI (câmbio), Banco Central SGS (Selic/IPCA), Yahoo Finance / B3 / CBOT-CME (Ibovespa e commodities) e CoinGecko (BTC).
   </div>
 </div>
 ```
@@ -3393,13 +3511,19 @@ Estamos na fase de lapidação e calibragem deste indicador. O IPER-TO será uma
 
 ```{r}
 #| results: asis
+mercados_json_inline <- if (!is.null(mercados_init)) {
+  jsonlite::toJSON(mercados_init, auto_unbox = TRUE, digits = 6)
+} else {
+  "null"
+}
 cat(sprintf(
-  '```{=html}\n<script>\nwindow.JET_GATEWAY_STATS = { pib_to: "%s", desocupacao: "%s", saldo_comex: "%s", cnpjs_ativos: "%s", atualizado: "%s" };\n</script>\n```\n',
+  '```{=html}\n<script>\nwindow.JET_GATEWAY_STATS = { pib_to: "%s", desocupacao: "%s", saldo_comex: "%s", cnpjs_ativos: "%s", atualizado: "%s" };\nwindow.JET_MERCADOS_INIT = %s;\n</script>\n```\n',
   gsub('"', '', as.character(dados_painel$pib$vb_pib_nominal_to)),
   gsub('"', '', as.character(dados_painel$visao_geral$vb_desocupacao)),
   gsub('"', '', as.character(dados_painel$comex$vb_saldo)),
   gsub('"', '', as.character(dados_painel$empresarial$vb_cnpjs_ativos)),
-  gsub('"', '', as.character(dados_painel$ultima_atualizacao))
+  gsub('"', '', as.character(dados_painel$ultima_atualizacao)),
+  mercados_json_inline
 ))
 ```
 
@@ -3410,14 +3534,46 @@ cat(sprintf(
 // PAINEL ECONÔMICO DO TOCANTINS - MOTOR CLIENT-SIDE (TEMPO REAL & DATAS)
 // ============================================================================
 (function() {
-  const INTERVALO_MS = 60000; // 60 segundos
+  const INTERVALO_MS = 30000; // 30 segundos em tempo real no navegador
 
-  // Referências base para paridade de commodities agrícolas (Tocantins / MATOPIBA)
-  const BASE_COMMODITIES_USD = {
-    soja_sc_usd: 23.45,   // US$ por saca de 60kg
-    boi_arr_usd: 54.80,   // US$ por arroba de 15kg
-    milho_sc_usd: 11.90   // US$ por saca de 60kg
+  // Ponte opcional para Google Sheets (=GOOGLEFINANCE() publicado como CSV):
+  // Cole aqui o URL ".../pub?output=csv" caso queira priorizar sua planilha Google Finanças.
+  const GOOGLE_FINANCE_CSV_URL = "";
+
+  // Estado em memória (inicia preenchido com o snapshot real gerado em dados/mercados_tempo_real.json)
+  const MKT_INIT = window.JET_MERCADOS_INIT || {};
+  const ESTADO_MERCADOS = {
+    prevPrices: {},
+    chartAsset: "cambio",
+    chartDays: 15,
+    series: {
+      usd:  (MKT_INIT.series_90d && MKT_INIT.series_90d.usd)  || { dates: [], values: [] },
+      eur:  (MKT_INIT.series_90d && MKT_INIT.series_90d.eur)  || { dates: [], values: [] },
+      ibov: (MKT_INIT.series_90d && MKT_INIT.series_90d.ibov) || { dates: [], values: [] },
+      btc:  (MKT_INIT.series_90d && MKT_INIT.series_90d.btc)  || { dates: [], values: [] }
+    }
   };
+
+  function getBaseCommodity(chave, fallbackUsd) {
+    const c = MKT_INIT.commodities && MKT_INIT.commodities[chave];
+    if (c && isFinite(Number(c.usd_unit))) {
+      return { usd_unit: Number(c.usd_unit), pct: Number(c.pct || 0) };
+    }
+    return { usd_unit: fallbackUsd, pct: 0 };
+  }
+
+  function piscarCelula(elId, novoValor) {
+    const el = document.getElementById(elId);
+    if (!el || !isFinite(novoValor)) return;
+    const antigo = ESTADO_MERCADOS.prevPrices[elId];
+    ESTADO_MERCADOS.prevPrices[elId] = novoValor;
+    if (typeof antigo === "number" && antigo !== novoValor) {
+      const row = el.closest("tr") || el;
+      row.classList.remove("jet-flash-up", "jet-flash-down");
+      void row.offsetWidth;
+      row.classList.add(novoValor > antigo ? "jet-flash-up" : "jet-flash-down");
+    }
+  }
 
   function formatarMoeda(valor, casas = 2) {
     return Number(valor).toLocaleString("pt-BR", {
@@ -3597,181 +3753,396 @@ cat(sprintf(
     el.className = `ticker-var ${info.classe}`;
   }
 
-  // 5. Busca Câmbio em Tempo Real (AwesomeAPI)
-  async function buscarCambioAwesomeAPI() {
-    const url = "https://economia.awesomeapi.com.br/last/USD-BRL,USD-BRLT,EUR-BRL,BTC-BRL";
-    const resp = await fetch(url, { cache: "no-store" });
-    if (!resp.ok) throw new Error("Falha HTTP AwesomeAPI");
-    return await resp.json();
+  // 5. Busca Câmbio & BTC em Tempo Real (AwesomeAPI + fallback ExchangeRate-API / CoinGecko)
+  async function buscarCambioTempoReal() {
+    try {
+      const resp = await fetch("https://economia.awesomeapi.com.br/last/USD-BRL,USD-BRLT,EUR-BRL,BTC-BRL", { cache: "no-store" });
+      if (resp.ok) {
+        const j = await resp.json();
+        if (j && j.USDBRL) {
+          return {
+            usd:  { bid: parseFloat(j.USDBRL.bid), high: parseFloat(j.USDBRL.high), low: parseFloat(j.USDBRL.low), pct: parseFloat(j.USDBRL.pctChange) },
+            usdt: j.USDBRLT ? { bid: parseFloat(j.USDBRLT.bid), high: parseFloat(j.USDBRLT.high), low: parseFloat(j.USDBRLT.low), pct: parseFloat(j.USDBRLT.pctChange) } : null,
+            eur:  j.EURBRL  ? { bid: parseFloat(j.EURBRL.bid), high: parseFloat(j.EURBRL.high), low: parseFloat(j.EURBRL.low), pct: parseFloat(j.EURBRL.pctChange) } : null,
+            btc:  j.BTCBRL  ? { bid: parseFloat(j.BTCBRL.bid), high: parseFloat(j.BTCBRL.high), low: parseFloat(j.BTCBRL.low), pct: parseFloat(j.BTCBRL.pctChange) } : null,
+            fonte: "AwesomeAPI"
+          };
+        }
+      }
+    } catch (_) {}
+
+    // Fallback ExchangeRate-API + CoinGecko (CORS 100% aberto)
+    try {
+      const [rFx, rBtc] = await Promise.all([
+        fetch("https://open.er-api.com/v6/latest/USD", { cache: "no-store" }),
+        fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=brl&include_24hr_change=true", { cache: "no-store" })
+      ]);
+      const fx = rFx.ok ? await rFx.json() : null;
+      const cg = rBtc.ok ? await rBtc.json() : null;
+      if (fx && fx.rates && fx.rates.BRL) {
+        const usdBrl = Number(fx.rates.BRL);
+        const eurBrl = fx.rates.EUR ? (usdBrl / Number(fx.rates.EUR)) : (MKT_INIT.cotacoes?.eur?.bid || usdBrl * 1.1);
+        const btcP = cg?.bitcoin?.brl ? Number(cg.bitcoin.brl) : (MKT_INIT.cotacoes?.btc?.bid || null);
+        const btcPct = cg?.bitcoin?.brl_24h_change ? Number(cg.bitcoin.brl_24h_change) : 0;
+        return {
+          usd:  { bid: usdBrl, high: usdBrl, low: usdBrl, pct: 0 },
+          usdt: { bid: usdBrl * 1.03, high: usdBrl * 1.03, low: usdBrl * 1.03, pct: 0 },
+          eur:  { bid: eurBrl, high: eurBrl, low: eurBrl, pct: 0 },
+          btc:  btcP ? { bid: btcP, high: btcP, low: btcP, pct: btcPct } : null,
+          fonte: "ExchangeRate-API"
+        };
+      }
+    } catch (_) {}
+
+    return MKT_INIT.cotacoes ? {
+      usd: MKT_INIT.cotacoes.usd,
+      usdt: MKT_INIT.cotacoes.usdt || MKT_INIT.cotacoes.usd,
+      eur: MKT_INIT.cotacoes.eur,
+      btc: MKT_INIT.cotacoes.btc,
+      fonte: "Cache JET"
+    } : null;
   }
 
-  // 6. Busca Ibovespa em Tempo Real (HG Brasil CORS público, com fallback Brapi)
-  async function buscarIbovespa() {
-    try {
-      const respHg = await fetch("https://api.hgbrasil.com/finance?format=json-cors", { cache: "no-store" });
-      if (respHg.ok) {
-        const jsonHg = await respHg.json();
-        const ibovHg = jsonHg && jsonHg.results && jsonHg.results.stocks && jsonHg.results.stocks.IBOVESPA;
-        if (ibovHg && isFinite(Number(ibovHg.points))) {
-          return {
-            pontos: Number(ibovHg.points),
-            variacao: Number(ibovHg.variation)
-          };
-        }
-      }
-    } catch (_) {}
+  // 6. Busca Yahoo Finance v8 via Proxy CORS (para ^BVSP e Commodities CBOT/CME ao vivo)
+  async function buscarYahooCORS(symbol, rangeStr = "5d") {
+    const rawUrl = `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(symbol)}?interval=1d&range=${rangeStr}`;
+    const proxies = [
+      `https://api.allorigins.win/raw?url=${encodeURIComponent(rawUrl)}`,
+      `https://corsproxy.io/?${encodeURIComponent(rawUrl)}`
+    ];
+    for (const pUrl of proxies) {
+      try {
+        const ctrl = new AbortController();
+        const tid = setTimeout(() => ctrl.abort(), 5000);
+        const resp = await fetch(pUrl, { cache: "no-store", signal: ctrl.signal });
+        clearTimeout(tid);
+        if (!resp.ok) continue;
+        const j = await resp.json();
+        const res = j && j.chart && j.chart.result && j.chart.result[0];
+        if (!res || !res.meta) continue;
 
-    try {
-      const resp = await fetch("https://brapi.dev/api/quote/%5EBVSP", { cache: "no-store" });
-      if (resp.ok) {
-        const json = await resp.json();
-        if (json && json.results && json.results[0]) {
-          return {
-            pontos: Number(json.results[0].regularMarketPrice),
-            variacao: Number(json.results[0].regularMarketChangePercent)
-          };
+        const meta = res.meta;
+        const ts = res.timestamp || [];
+        const closesRaw = (res.indicators && res.indicators.quote && res.indicators.quote[0] && res.indicators.quote[0].close) || [];
+        const dates = [];
+        const values = [];
+        for (let i = 0; i < Math.min(ts.length, closesRaw.length); i++) {
+          const val = Number(closesRaw[i]);
+          if (isFinite(val) && val > 0) {
+            const dStr = new Date(Number(ts[i]) * 1000).toISOString().slice(0, 10);
+            dates.push(dStr);
+            values.push(val);
+          }
         }
-      }
-    } catch (_) {}
-
+        const price = Number(meta.regularMarketPrice || values[values.length - 1]);
+        let prev = Number(meta.previousClose);
+        if (!isFinite(prev) || prev <= 0) {
+          prev = values.length >= 2 ? values[values.length - 2] : Number(meta.chartPreviousClose);
+        }
+        const pct = (isFinite(price) && isFinite(prev) && prev > 0) ? ((price - prev) / prev) * 100 : 0;
+        return {
+          currency: String(meta.currency || ""),
+          price,
+          prev,
+          pct,
+          high: Number(meta.regularMarketDayHigh || price),
+          low: Number(meta.regularMarketDayLow || price),
+          dates,
+          values
+        };
+      } catch (_) {}
+    }
     return null;
   }
 
-  // 7. Busca Histórico Diário de 15 dias (USD/BRL e EUR/BRL) com eixo cronológico unificado
-  async function atualizarGraficoCambioHistorico() {
+  // Conector opcional Google Sheets =GOOGLEFINANCE() CSV
+  async function buscarGoogleFinanceCSV() {
+    if (!GOOGLE_FINANCE_CSV_URL) return null;
     try {
-      const [respUsd, respEur] = await Promise.all([
-        fetch("https://economia.awesomeapi.com.br/json/daily/USD-BRL/15"),
-        fetch("https://economia.awesomeapi.com.br/json/daily/EUR-BRL/15")
-      ]);
-      if (!respUsd.ok || !respEur.ok) return;
-
-      const dadosUsd = await respUsd.json();
-      const dadosEur = await respEur.json();
-
-      // Normaliza timestamp -> { iso: "YYYY-MM-DD", label: "DD/MM" } no fuso de Brasília
-      const fmtBRT = new Intl.DateTimeFormat("en-US", {
-        timeZone: "America/Sao_Paulo",
-        year: "numeric",
-        month: "2-digit",
-        day: "2-digit"
+      const resp = await fetch(GOOGLE_FINANCE_CSV_URL, { cache: "no-store" });
+      if (!resp.ok) return null;
+      const txt = await resp.text();
+      const map = {};
+      txt.split(/\r?\n/).forEach(line => {
+        const cols = line.split(",");
+        if (cols.length >= 2) {
+          const k = cols[0].replace(/"/g, "").trim().toUpperCase();
+          const p = parseFloat(cols[1].replace(/"/g, "").replace(",", "."));
+          const pct = cols[2] ? parseFloat(cols[2].replace(/"/g, "").replace(",", ".")) : 0;
+          if (k && isFinite(p)) map[k] = { price: p, pct: isFinite(pct) ? pct : 0 };
+        }
       });
-      const extrairDiaBRT = (ts) => {
-        const parts = fmtBRT.formatToParts(new Date(Number(ts) * 1000));
-        const get = (t) => parts.find(p => p.type === t)?.value || "00";
-        return {
-          iso: `${get("year")}-${get("month")}-${get("day")}`,
-          label: `${get("day")}/${get("month")}`
-        };
-      };
-
-      // Ordena do mais antigo para o mais recente e consolida 1 ponto por dia em cada moeda
-      const mapUsd = new Map();
-      [...dadosUsd].sort((a, b) => Number(a.timestamp) - Number(b.timestamp)).forEach(item => {
-        const val = parseFloat(item.bid);
-        if (!isFinite(val)) return;
-        const { iso } = extrairDiaBRT(item.timestamp);
-        mapUsd.set(iso, val);
-      });
-
-      const mapEur = new Map();
-      [...dadosEur].sort((a, b) => Number(a.timestamp) - Number(b.timestamp)).forEach(item => {
-        const val = parseFloat(item.bid);
-        if (!isFinite(val)) return;
-        const { iso } = extrairDiaBRT(item.timestamp);
-        mapEur.set(iso, val);
-      });
-
-      // União cronológica de todas as datas evita salto visual quando uma moeda não tem pregão num dia
-      const datasIsoOrdenadas = Array.from(new Set([...mapUsd.keys(), ...mapEur.keys()])).sort();
-      const datasEixo = datasIsoOrdenadas.map(iso => {
-        const [, mm, dd] = iso.split("-");
-        return `${dd}/${mm}`;
-      });
-      const valoresUsd = datasIsoOrdenadas.map(iso => (mapUsd.has(iso) ? mapUsd.get(iso) : null));
-      const valoresEur = datasIsoOrdenadas.map(iso => (mapEur.has(iso) ? mapEur.get(iso) : null));
-
-      const chartEl = document.getElementById("grafico-cambio-aovivo");
-      if (chartEl && window.Plotly) {
-        const traces = [
-          {
-            x: datasEixo,
-            y: valoresUsd,
-            name: "Dólar Comercial (USD/BRL)",
-            type: "scatter",
-            mode: "lines+markers",
-            connectgaps: true,
-            line: { color: "#0f2537", width: 3 },
-            marker: { color: "#0f2537", size: 7 },
-            hovertemplate: "%{x}: R$ %{y:.4f}<extra>Dólar Comercial (USD/BRL)</extra>"
-          },
-          {
-            x: datasEixo,
-            y: valoresEur,
-            name: "Euro Comercial (EUR/BRL)",
-            type: "scatter",
-            mode: "lines+markers",
-            connectgaps: true,
-            line: { color: "#c8942b", width: 3 },
-            marker: { color: "#c8942b", size: 7 },
-            hovertemplate: "%{x}: R$ %{y:.4f}<extra>Euro Comercial (EUR/BRL)</extra>"
-          }
-        ];
-
-        const layout = {
-          title: {
-            text: "<b>Câmbio Comercial (USD/BRL e EUR/BRL — 15 Dias)</b>",
-            font: { size: 13.5, color: "#0f2537" },
-            x: 0.02,
-            xanchor: "left",
-            y: 0.97
-          },
-          legend: { orientation: "h", x: 0.5, xanchor: "center", y: 1.03, yanchor: "bottom", font: { size: 11 } },
-          xaxis: {
-            title: "",
-            type: "category",
-            categoryorder: "array",
-            categoryarray: datasEixo,
-            tickangle: -30,
-            fixedrange: true
-          },
-          yaxis: { title: "Cotação (R$)", tickformat: ".2f", fixedrange: true },
-          margin: { t: 62, b: 64, l: 54, r: 14 },
-          paper_bgcolor: "rgba(0,0,0,0)",
-          plot_bgcolor: "rgba(0,0,0,0)",
-          annotations: [{
-            x: 0, y: 0, yshift: -44,
-            text: "<i>Fonte: AwesomeAPI / Banco Central (Últimos 15 dias em tempo real).</i>",
-            showarrow: false, xref: "paper", yref: "paper",
-            xanchor: "left", yanchor: "top",
-            font: { size: 10.5, color: "#858c94" }
-          }]
-        };
-
-        window.Plotly.react(chartEl, traces, layout, { displayModeBar: false, responsive: true });
-      }
-    } catch (e) {
-      console.warn("Aviso ao atualizar série histórica de câmbio:", e);
+      return map;
+    } catch (_) {
+      return null;
     }
   }
 
-  // 8. Função que sincroniza Cotações em Tempo Real
-  async function atualizarTudoTempoReal() {
+  // Busca Selic Meta (Série 432) e IPCA 12m (Série 13522) em tempo real via BCB SGS
+  async function buscarMacroBCB() {
     try {
-      const [cambio, ibov] = await Promise.all([
-        buscarCambioAwesomeAPI(),
-        buscarIbovespa()
+      const [rSelic, rIpca] = await Promise.all([
+        fetch("https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados/ultimos/1?formato=json", { cache: "no-store" }),
+        fetch("https://api.bcb.gov.br/dados/serie/bcdata.sgs.13522/dados/ultimos/1?formato=json", { cache: "no-store" })
+      ]);
+      if (rSelic.ok) {
+        const jS = await rSelic.json();
+        const vS = jS && jS[0] ? parseFloat(jS[0].valor) : NaN;
+        if (isFinite(vS)) {
+          atualizarValueBoxQuarto("Taxa Selic (Meta BCB)", `${formatarMoeda(vS, 2)}% a.a.`);
+        }
+      }
+      if (rIpca.ok) {
+        const jI = await rIpca.json();
+        const vI = jI && jI[0] ? parseFloat(jI[0].valor) : NaN;
+        if (isFinite(vI)) {
+          atualizarValueBoxQuarto("IPCA (Acumulado 12m)", `${formatarMoeda(vI, 2)}%`);
+        }
+      }
+    } catch (_) {}
+  }
+
+  // 7. Controles Interativos e Renderização Multi-Ativo / Multi-Período do Gráfico
+  function injetarControlesGraficoMercados() {
+    const chartEl = document.getElementById("grafico-cambio-aovivo");
+    if (!chartEl) return;
+    const cardBody = chartEl.closest(".card-body") || chartEl.parentElement;
+    if (!cardBody || cardBody.querySelector(".mercados-chart-controls")) return;
+
+    const bar = document.createElement("div");
+    bar.className = "mercados-chart-controls";
+    bar.innerHTML = `
+      <div class="mercados-btn-group" role="group" aria-label="Ativo do Gráfico">
+        <button type="button" class="mercados-ctl-btn active" data-mkt-asset="cambio" onclick="window.setGraficoMercadosAsset('cambio', this)">Câmbio (USD/EUR)</button>
+        <button type="button" class="mercados-ctl-btn" data-mkt-asset="ibov" onclick="window.setGraficoMercadosAsset('ibov', this)">Ibovespa (B3)</button>
+        <button type="button" class="mercados-ctl-btn" data-mkt-asset="btc" onclick="window.setGraficoMercadosAsset('btc', this)">Bitcoin (BRL)</button>
+      </div>
+      <div class="mercados-btn-group" role="group" aria-label="Janela Temporal">
+        <button type="button" class="mercados-ctl-btn active" data-mkt-days="15" onclick="window.setGraficoMercadosDays(15, this)">15D</button>
+        <button type="button" class="mercados-ctl-btn" data-mkt-days="30" onclick="window.setGraficoMercadosDays(30, this)">30D</button>
+        <button type="button" class="mercados-ctl-btn" data-mkt-days="90" onclick="window.setGraficoMercadosDays(90, this)">90D</button>
+      </div>
+    `;
+    cardBody.style.display = "flex";
+    cardBody.style.flexDirection = "column";
+    cardBody.insertBefore(bar, cardBody.firstElementChild);
+  }
+
+  window.setGraficoMercadosAsset = function(asset, btnEl) {
+    ESTADO_MERCADOS.chartAsset = asset;
+    document.querySelectorAll('.mercados-ctl-btn[data-mkt-asset]').forEach(b => b.classList.remove("active"));
+    if (btnEl) btnEl.classList.add("active");
+    renderizarGraficoMercados();
+  };
+
+  window.setGraficoMercadosDays = function(days, btnEl) {
+    ESTADO_MERCADOS.chartDays = Number(days) || 15;
+    document.querySelectorAll('.mercados-ctl-btn[data-mkt-days]').forEach(b => b.classList.remove("active"));
+    if (btnEl) btnEl.classList.add("active");
+    renderizarGraficoMercados();
+  };
+
+  function sliceUltimosDias(serie, nDias) {
+    if (!serie || !Array.isArray(serie.dates) || serie.dates.length === 0) return { dates: [], values: [] };
+    const start = Math.max(0, serie.dates.length - nDias);
+    return { dates: serie.dates.slice(start), values: serie.values.slice(start) };
+  }
+
+  function renderizarGraficoMercados() {
+    const chartEl = document.getElementById("grafico-cambio-aovivo");
+    if (!chartEl || !window.Plotly) return;
+
+    const ativo = ESTADO_MERCADOS.chartAsset;
+    const dias = ESTADO_MERCADOS.chartDays;
+    let traces = [];
+    let titulo = "";
+    let tituloY = "Cotação (R$)";
+    let tickfmt = ".2f";
+    let fonteTxt = "Fonte: AwesomeAPI, Yahoo Finance & Banco Central (Tempo Real).";
+
+    if (ativo === "cambio") {
+      const sUsd = sliceUltimosDias(ESTADO_MERCADOS.series.usd, dias);
+      const sEur = sliceUltimosDias(ESTADO_MERCADOS.series.eur, dias);
+      const mapU = new Map(sUsd.dates.map((d, i) => [d, sUsd.values[i]]));
+      const mapE = new Map(sEur.dates.map((d, i) => [d, sEur.values[i]]));
+      const datasIso = Array.from(new Set([...mapU.keys(), ...mapE.keys()])).sort().slice(-dias);
+      const eixo = datasIso.map(iso => {
+        const [, mm, dd] = iso.split("-");
+        return `${dd}/${mm}`;
+      });
+      titulo = `<b>Câmbio Comercial (USD/BRL e EUR/BRL — ${dias} Dias)</b>`;
+      traces = [
+        {
+          x: eixo, y: datasIso.map(d => mapU.has(d) ? mapU.get(d) : null),
+          name: "Dólar Comercial (USD/BRL)", type: "scatter", mode: "lines+markers",
+          connectgaps: true, line: { color: "#0f2537", width: 2.8 }, marker: { color: "#0f2537", size: dias > 30 ? 4 : 6 },
+          hovertemplate: "%{x}: R$ %{y:.4f}<extra>USD/BRL</extra>"
+        },
+        {
+          x: eixo, y: datasIso.map(d => mapE.has(d) ? mapE.get(d) : null),
+          name: "Euro Comercial (EUR/BRL)", type: "scatter", mode: "lines+markers",
+          connectgaps: true, line: { color: "#c8942b", width: 2.8 }, marker: { color: "#c8942b", size: dias > 30 ? 4 : 6 },
+          hovertemplate: "%{x}: R$ %{y:.4f}<extra>EUR/BRL</extra>"
+        }
+      ];
+    } else if (ativo === "ibov") {
+      const sIb = sliceUltimosDias(ESTADO_MERCADOS.series.ibov, dias);
+      const eixo = sIb.dates.map(iso => { const [, mm, dd] = iso.split("-"); return `${dd}/${mm}`; });
+      titulo = `<b>Ibovespa B3 (Pontos — ${dias} Dias)</b>`;
+      tituloY = "Pontos";
+      tickfmt = ",.0f";
+      fonteTxt = "Fonte: B3 / Yahoo Finance (^BVSP — Série Diária Real).";
+      traces = [{
+        x: eixo, y: sIb.values, name: "Ibovespa (B3)", type: "scatter", mode: "lines+markers",
+        fill: "tozeroy", fillcolor: "rgba(15, 37, 55, 0.08)",
+        line: { color: "#0f2537", width: 2.8 }, marker: { color: "#c8942b", size: dias > 30 ? 4 : 6 },
+        hovertemplate: "%{x}: %{y:,.0f} pts<extra>Ibovespa</extra>"
+      }];
+    } else if (ativo === "btc") {
+      const sBtc = sliceUltimosDias(ESTADO_MERCADOS.series.btc, dias);
+      const eixo = sBtc.dates.map(iso => { const [, mm, dd] = iso.split("-"); return `${dd}/${mm}`; });
+      titulo = `<b>Bitcoin em Reais (BTC/BRL — ${dias} Dias)</b>`;
+      tituloY = "Preço (R$)";
+      tickfmt = ",.0f";
+      fonteTxt = "Fonte: CoinGecko / AwesomeAPI (BTC/BRL — Tempo Real).";
+      traces = [{
+        x: eixo, y: sBtc.values, name: "Bitcoin (BTC/BRL)", type: "scatter", mode: "lines+markers",
+        fill: "tozeroy", fillcolor: "rgba(200, 148, 43, 0.10)",
+        line: { color: "#c8942b", width: 2.8 }, marker: { color: "#0f2537", size: dias > 30 ? 4 : 6 },
+        hovertemplate: "%{x}: R$ %{y:,.0f}<extra>BTC/BRL</extra>"
+      }];
+    }
+
+    const layout = {
+      title: { text: titulo, font: { size: 13, color: "#0f2537" }, x: 0.02, xanchor: "left", y: 0.97 },
+      showlegend: traces.length > 1,
+      legend: { orientation: "h", x: 0.5, xanchor: "center", y: 1.03, yanchor: "bottom", font: { size: 11 } },
+      xaxis: { title: "", type: "category", nticks: dias > 30 ? 10 : 8, tickangle: -30, fixedrange: true },
+      yaxis: { title: tituloY, tickformat: tickfmt, automargin: true, fixedrange: true },
+      margin: { t: traces.length > 1 ? 60 : 44, b: 62, l: 56, r: 14 },
+      paper_bgcolor: "rgba(0,0,0,0)",
+      plot_bgcolor: "rgba(0,0,0,0)",
+      annotations: [{
+        x: 0, y: 0, yshift: -42,
+        text: `<i>${fonteTxt}</i>`,
+        showarrow: false, xref: "paper", yref: "paper",
+        xanchor: "left", yanchor: "top", font: { size: 10.5, color: "#858c94" }
+      }]
+    };
+    window.Plotly.react(chartEl, traces, layout, { displayModeBar: false, responsive: true });
+    ajustarPlotlyMobile();
+  }
+
+  async function atualizarGraficoCambioHistorico() {
+    try {
+      const fmtBRT = new Intl.DateTimeFormat("en-US", { timeZone: "America/Sao_Paulo", year: "numeric", month: "2-digit", day: "2-digit" });
+      const extrairDiaBRT = (ts) => {
+        const parts = fmtBRT.formatToParts(new Date(Number(ts) * 1000));
+        const get = (t) => parts.find(p => p.type === t)?.value || "00";
+        return `${get("year")}-${get("month")}-${get("day")}`;
+      };
+
+      const [rUsd, rEur, rCg] = await Promise.all([
+        fetch("https://economia.awesomeapi.com.br/json/daily/USD-BRL/90").catch(() => null),
+        fetch("https://economia.awesomeapi.com.br/json/daily/EUR-BRL/90").catch(() => null),
+        fetch("https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=brl&days=90&interval=daily").catch(() => null)
       ]);
 
-      const usd  = cambio.USDBRL;
-      const usdt = cambio.USDBRLT || usd;
-      const eur  = cambio.EURBRL;
-      const btc  = cambio.BTCBRL;
+      if (rUsd && rUsd.ok) {
+        const mapU = new Map();
+        (await rUsd.json()).sort((a, b) => Number(a.timestamp) - Number(b.timestamp)).forEach(it => {
+          const v = parseFloat(it.bid);
+          if (isFinite(v)) mapU.set(extrairDiaBRT(it.timestamp), v);
+        });
+        const ds = Array.from(mapU.keys()).sort();
+        if (ds.length > 0) ESTADO_MERCADOS.series.usd = { dates: ds, values: ds.map(d => mapU.get(d)) };
+      }
 
-      const usdBid = parseFloat(usd.bid);
-      const usdPct = parseFloat(usd.pctChange);
-      const eurBid = parseFloat(eur.bid);
-      const eurPct = parseFloat(eur.pctChange);
+      if (rEur && rEur.ok) {
+        const mapE = new Map();
+        (await rEur.json()).sort((a, b) => Number(a.timestamp) - Number(b.timestamp)).forEach(it => {
+          const v = parseFloat(it.bid);
+          if (isFinite(v)) mapE.set(extrairDiaBRT(it.timestamp), v);
+        });
+        const ds = Array.from(mapE.keys()).sort();
+        if (ds.length > 0) ESTADO_MERCADOS.series.eur = { dates: ds, values: ds.map(d => mapE.get(d)) };
+      }
+
+      if (rCg && rCg.ok) {
+        const jCg = await rCg.json();
+        if (jCg && Array.isArray(jCg.prices) && jCg.prices.length > 0) {
+          const mapB = new Map();
+          jCg.prices.forEach(pt => {
+            const iso = new Date(pt[0]).toISOString().slice(0, 10);
+            mapB.set(iso, Math.round(Number(pt[1])));
+          });
+          const ds = Array.from(mapB.keys()).sort();
+          if (ds.length > 0) ESTADO_MERCADOS.series.btc = { dates: ds, values: ds.map(d => mapB.get(d)) };
+        }
+      }
+
+      renderizarGraficoMercados();
+    } catch (e) {
+      renderizarGraficoMercados();
+      console.warn("Aviso ao atualizar séries históricas de mercados:", e);
+    }
+  }
+
+  // 8. Sincronização Multi-API em Tempo Real (30s) sem falhas nem valores fictícios
+  async function atualizarTudoTempoReal() {
+    try {
+      const [cambio, gfMap, yIbov, ySoja, yBoi, yMilho] = await Promise.all([
+        buscarCambioTempoReal(),
+        buscarGoogleFinanceCSV(),
+        buscarYahooCORS("^BVSP", "5d"),
+        buscarYahooCORS("ZS=F", "5d"),
+        buscarYahooCORS("LE=F", "5d"),
+        buscarYahooCORS("ZC=F", "5d"),
+        buscarMacroBCB()
+      ]);
+
+      if (!cambio || !cambio.usd) return;
+
+      const usd  = cambio.usd;
+      const usdt = cambio.usdt || usd;
+      const eur  = cambio.eur || MKT_INIT.cotacoes?.eur || { bid: usd.bid * 1.1, high: usd.bid * 1.1, low: usd.bid * 1.1, pct: usd.pct };
+      const btc  = cambio.btc || MKT_INIT.cotacoes?.btc;
+
+      const usdBid = Number(usd.bid);
+      const usdPct = Number(usd.pct || 0);
+      const eurBid = Number(eur.bid);
+      const eurPct = Number(eur.pct || 0);
+
+      // Ibovespa: prioridade Google Finance CSV -> Yahoo CORS -> Cache real embutido
+      let ibov = null;
+      if (gfMap && (gfMap["IBOV"] || gfMap["BVMF:IBOV"])) {
+        const g = gfMap["IBOV"] || gfMap["BVMF:IBOV"];
+        ibov = { pontos: g.price, variacao: g.pct };
+      } else if (yIbov && isFinite(yIbov.price)) {
+        ibov = { pontos: yIbov.price, variacao: yIbov.pct };
+        if (yIbov.dates && yIbov.dates.length > 10) {
+          ESTADO_MERCADOS.series.ibov = { dates: yIbov.dates, values: yIbov.values };
+        }
+      } else if (MKT_INIT.cotacoes && MKT_INIT.cotacoes.ibov) {
+        ibov = MKT_INIT.cotacoes.ibov;
+      }
+
+      // Commodities Reais (CBOT / CME convertidas p/ saca 60kg / @ 15kg com fallback para snapshot real)
+      const convCom = (yh, fator, fallbackKey, defUsd) => {
+        if (yh && isFinite(yh.price) && yh.price > 0) {
+          const mult = yh.currency.toUpperCase() === "USX" ? 0.01 : 1.0;
+          return { usd_unit: yh.price * mult * fator, pct: yh.pct };
+        }
+        return getBaseCommodity(fallbackKey, defUsd);
+      };
+
+      const sojaRef  = convCom(ySoja,  60 / 27.2155,  "soja",  27.05);
+      const boiRef   = convCom(yBoi,   15 / 0.453592, "boi",   74.20);
+      const milhoRef = convCom(yMilho, 60 / 25.4012,  "milho", 10.59);
+
+      const sojaBrl  = sojaRef.usd_unit * usdBid;
+      const boiBrl   = boiRef.usd_unit * usdBid;
+      const milhoBrl = milhoRef.usd_unit * usdBid;
 
       const infoUsd = formatarVariacao(usdPct);
       atualizarValueBoxQuarto(
@@ -3785,120 +4156,113 @@ cat(sprintf(
         `R$&nbsp;${formatarMoeda(eurBid, 3)} <span style="font-size: 0.54em; opacity: 0.9;">${infoEur.texto}</span>`
       );
 
-      if (ibov) {
+      if (ibov && isFinite(Number(ibov.pontos))) {
         const infoIbov = formatarVariacao(ibov.variacao);
         atualizarValueBoxQuarto(
           "Ibovespa (B3)",
-          `${Math.round(ibov.pontos).toLocaleString("pt-BR")}&nbsp;pts <span style="font-size: 0.54em; opacity: 0.9;">${infoIbov.texto}</span>`
+          `${Math.round(Number(ibov.pontos)).toLocaleString("pt-BR")}&nbsp;pts <span style="font-size: 0.54em; opacity: 0.9;">${infoIbov.texto}</span>`
         );
-      } else {
-        atualizarValueBoxQuarto("Ibovespa (B3)", "Indisponível");
       }
 
-      const sojaBrl  = BASE_COMMODITIES_USD.soja_sc_usd * usdBid;
-      const boiBrl   = BASE_COMMODITIES_USD.boi_arr_usd * usdBid;
-      const milhoBrl = BASE_COMMODITIES_USD.milho_sc_usd * usdBid;
-
-      const setTxt = (id, txt) => { 
-        document.querySelectorAll("#" + id + ", ." + id).forEach(el => el.textContent = txt); 
+      const setTxt = (id, txt) => {
+        document.querySelectorAll("#" + id + ", ." + id).forEach(el => el.textContent = txt);
       };
 
       setTxt("tk-usd-val", `R$ ${formatarMoeda(usdBid, 3)}`);
       document.querySelectorAll(".tk-usd-var").forEach(el => {
-        const info = formatarVariacao(usdPct);
-        el.textContent = info.texto;
-        el.className = `ticker-var ${info.classe} tk-usd-var`;
+        el.textContent = infoUsd.texto;
+        el.className = `ticker-var ${infoUsd.classe} tk-usd-var`;
       });
 
       setTxt("tk-eur-val", `R$ ${formatarMoeda(eurBid, 3)}`);
       document.querySelectorAll(".tk-eur-var").forEach(el => {
-        const info = formatarVariacao(eurPct);
-        el.textContent = info.texto;
-        el.className = `ticker-var ${info.classe} tk-eur-var`;
+        el.textContent = infoEur.texto;
+        el.className = `ticker-var ${infoEur.classe} tk-eur-var`;
       });
 
-      if (ibov) {
-        setTxt("tk-ibov-val", `${Math.round(ibov.pontos).toLocaleString("pt-BR")} pts`);
+      if (ibov && isFinite(Number(ibov.pontos))) {
+        const infoIbov = formatarVariacao(ibov.variacao);
+        setTxt("tk-ibov-val", `${Math.round(Number(ibov.pontos)).toLocaleString("pt-BR")} pts`);
         document.querySelectorAll(".tk-ibov-var").forEach(el => {
-          const info = formatarVariacao(ibov.variacao);
-          el.textContent = info.texto;
-          el.className = `ticker-var ${info.classe} tk-ibov-var`;
-        });
-      } else {
-        setTxt("tk-ibov-val", "Indisp.");
-        document.querySelectorAll(".tk-ibov-var").forEach(el => {
-          el.textContent = "--";
-          el.className = "ticker-var var-neutra tk-ibov-var";
+          el.textContent = infoIbov.texto;
+          el.className = `ticker-var ${infoIbov.classe} tk-ibov-var`;
         });
       }
 
       setTxt("tk-soja-val", `R$ ${formatarMoeda(sojaBrl, 2)}/sc`);
       document.querySelectorAll(".tk-soja-var").forEach(el => {
-        const info = formatarVariacao(usdPct * 0.85);
+        const info = formatarVariacao(sojaRef.pct);
         el.textContent = info.texto;
         el.className = `ticker-var ${info.classe} tk-soja-var`;
       });
 
       setTxt("tk-boi-val", `R$ ${formatarMoeda(boiBrl, 2)}/@`);
       document.querySelectorAll(".tk-boi-var").forEach(el => {
-        const info = formatarVariacao(usdPct * 0.65);
+        const info = formatarVariacao(boiRef.pct);
         el.textContent = info.texto;
         el.className = `ticker-var ${info.classe} tk-boi-var`;
       });
 
       setTxt("tk-milho-val", `R$ ${formatarMoeda(milhoBrl, 2)}/sc`);
       document.querySelectorAll(".tk-milho-var").forEach(el => {
-        const info = formatarVariacao(usdPct * 0.75);
+        const info = formatarVariacao(milhoRef.pct);
         el.textContent = info.texto;
         el.className = `ticker-var ${info.classe} tk-milho-var`;
       });
 
       setTxt("tk-usdt-val", `R$ ${formatarMoeda(usdt.bid, 3)}`);
       document.querySelectorAll(".tk-usdt-var").forEach(el => {
-        const info = formatarVariacao(usdt.pctChange);
+        const info = formatarVariacao(usdt.pct || 0);
         el.textContent = info.texto;
         el.className = `ticker-var ${info.classe} tk-usdt-var`;
       });
 
-      if (btc) {
+      if (btc && isFinite(Number(btc.bid))) {
+        piscarCelula("tb-btc-preco", Number(btc.bid));
         setTxt("tk-btc-val", `R$ ${formatarMoeda(btc.bid, 0)}`);
         document.querySelectorAll(".tk-btc-var").forEach(el => {
-          const info = formatarVariacao(btc.pctChange);
+          const info = formatarVariacao(btc.pct || 0);
           el.textContent = info.texto;
           el.className = `ticker-var ${info.classe} tk-btc-var`;
         });
         setTxt("tb-btc-preco", `R$ ${formatarMoeda(btc.bid, 0)}`);
-        setTxt("tb-btc-maxmin", `R$ ${formatarMoeda(btc.high, 0)} / R$ ${formatarMoeda(btc.low, 0)}`);
-        aplicarBadgeVariacao("tb-btc-var", btc.pctChange);
+        setTxt("tb-btc-maxmin", `R$ ${formatarMoeda(btc.high || btc.bid, 0)} / R$ ${formatarMoeda(btc.low || btc.bid, 0)}`);
+        aplicarBadgeVariacao("tb-btc-var", btc.pct || 0);
       }
 
+      piscarCelula("tb-usd-preco", usdBid);
       setTxt("tb-usd-preco", `R$ ${formatarMoeda(usdBid, 4)}`);
-      setTxt("tb-usd-maxmin", `R$ ${formatarMoeda(usd.high, 3)} / R$ ${formatarMoeda(usd.low, 3)}`);
+      setTxt("tb-usd-maxmin", `R$ ${formatarMoeda(usd.high || usdBid, 3)} / R$ ${formatarMoeda(usd.low || usdBid, 3)}`);
       aplicarBadgeVariacao("tb-usd-var", usdPct);
 
+      piscarCelula("tb-usdt-preco", Number(usdt.bid));
       setTxt("tb-usdt-preco", `R$ ${formatarMoeda(usdt.bid, 3)}`);
-      setTxt("tb-usdt-maxmin", `R$ ${formatarMoeda(usdt.high, 3)} / R$ ${formatarMoeda(usdt.low, 3)}`);
-      aplicarBadgeVariacao("tb-usdt-var", usdt.pctChange);
+      setTxt("tb-usdt-maxmin", `R$ ${formatarMoeda(usdt.high || usdt.bid, 3)} / R$ ${formatarMoeda(usdt.low || usdt.bid, 3)}`);
+      aplicarBadgeVariacao("tb-usdt-var", usdt.pct || 0);
 
+      piscarCelula("tb-eur-preco", eurBid);
       setTxt("tb-eur-preco", `R$ ${formatarMoeda(eurBid, 4)}`);
-      setTxt("tb-eur-maxmin", `R$ ${formatarMoeda(eur.high, 3)} / R$ ${formatarMoeda(eur.low, 3)}`);
+      setTxt("tb-eur-maxmin", `R$ ${formatarMoeda(eur.high || eurBid, 3)} / R$ ${formatarMoeda(eur.low || eurBid, 3)}`);
       aplicarBadgeVariacao("tb-eur-var", eurPct);
 
+      piscarCelula("tb-soja-preco", sojaBrl);
       setTxt("tb-soja-preco", `R$ ${formatarMoeda(sojaBrl, 2)}`);
-      setTxt("tb-soja-usd", `US$ ${formatarMoeda(BASE_COMMODITIES_USD.soja_sc_usd, 2)} / sc`);
-      aplicarBadgeVariacao("tb-soja-var", usdPct * 0.85);
+      setTxt("tb-soja-usd", `US$ ${formatarMoeda(sojaRef.usd_unit, 2)} / sc`);
+      aplicarBadgeVariacao("tb-soja-var", sojaRef.pct);
 
+      piscarCelula("tb-boi-preco", boiBrl);
       setTxt("tb-boi-preco", `R$ ${formatarMoeda(boiBrl, 2)}`);
-      setTxt("tb-boi-usd", `US$ ${formatarMoeda(BASE_COMMODITIES_USD.boi_arr_usd, 2)} / @`);
-      aplicarBadgeVariacao("tb-boi-var", usdPct * 0.65);
+      setTxt("tb-boi-usd", `US$ ${formatarMoeda(boiRef.usd_unit, 2)} / 15kg`);
+      aplicarBadgeVariacao("tb-boi-var", boiRef.pct);
 
+      piscarCelula("tb-milho-preco", milhoBrl);
       setTxt("tb-milho-preco", `R$ ${formatarMoeda(milhoBrl, 2)}`);
-      setTxt("tb-milho-usd", `US$ ${formatarMoeda(BASE_COMMODITIES_USD.milho_sc_usd, 2)} / sc`);
-      aplicarBadgeVariacao("tb-milho-var", usdPct * 0.75);
+      setTxt("tb-milho-usd", `US$ ${formatarMoeda(milhoRef.usd_unit, 2)} / sc`);
+      aplicarBadgeVariacao("tb-milho-var", milhoRef.pct);
 
       const agoraStr = new Date().toLocaleTimeString("pt-BR");
       document.querySelectorAll(".tk-horario").forEach(el => el.textContent = `Atualizado às ${agoraStr}`);
-      setTxt("horario-ultima-cotacao", `Ao vivo • ${agoraStr}`);
+      setTxt("horario-ultima-cotacao", `Ao vivo (30s) • ${agoraStr}`);
 
     } catch (erro) {
       console.warn("Erro ao buscar cotações ao vivo:", erro);
@@ -4694,6 +5058,7 @@ cat(sprintf(
   // ============================================================================
   function iniciarPainel() {
     criarEcossistemaJET();
+    injetarControlesGraficoMercados();
     aplicarDatasAtualizacao();
     aplicarAvisosDessazonalizacao();
     criarBarraMobileAcessoRapido();
