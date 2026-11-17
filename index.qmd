@@ -3,7 +3,6 @@ title: "Jornal Econômico do Tocantins<br><span style='font-size: 14px; font-wei
 lang: pt-BR
 format: 
   dashboard:
-    logo: logo.png
     nav-buttons: [github]
     orientation: rows
     embed-resources: true
@@ -1064,7 +1063,7 @@ body, .bslib-page-dashboard {
   flex-shrink: 0;
 }
 
-@media (max-height: 820px) and (max-width: 991px) {
+@media (max-height: 820px) and (max-width: 991.98px) {
   .bslib-page-dashboard {
     overflow-y: auto !important;
   }
@@ -1077,106 +1076,980 @@ body, .bslib-page-dashboard {
   }
 }
 
-/* Tablets e dispositivos médios (max-width: 991px): colunas empilhadas */
-@media (max-width: 991px) {
-  .dashboard-page[data-orientation="columns"] > .bslib-grid {
-    grid-template-columns: 1fr !important;
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 16px !important;
-    height: auto !important;
-  }
-  .dashboard-page[data-orientation="columns"] > .bslib-grid > * {
-    width: 100% !important;
-    min-height: auto !important;
-  }
-  .dashboard-page {
-    height: auto !important;
-    overflow-y: visible !important;
-  }
-  .bslib-page-dashboard {
-    height: auto !important;
-    overflow-y: auto !important;
-  }
+/* ==========================================================================
+   LAYOUT MOBILE & TABLET (<= 991.98px) — PRESERVA 100% O DESKTOP (>= 992px)
+   ========================================================================== */
+
+/* Barra de acesso rápido aos Boletins/Publicações (oculta no PC, visível no mobile) */
+#barra-mobile-acesso-rapido {
+  display: none;
 }
 
-/* Smartphones e telas menores (max-width: 768px): reorganização da grade, fontes e cartões */
-@media (max-width: 768px) {
-  /* Linhas de cartões (4 ou 3 colunas) reorganizam-se para 2x2 com espaço confortável */
-  .dashboard-page .bslib-grid[style*="minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr)"],
-  .dashboard-page .bslib-grid[style*="1fr 1fr 1fr 1fr"],
-  .dashboard-page .bslib-grid[style*="minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr)"],
-  .dashboard-page .bslib-grid[style*="1fr 1fr 1fr"] {
-    grid-template-columns: repeat(2, 1fr) !important;
-    grid-auto-rows: auto !important;
+@media (max-width: 991.98px) {
+  /* 1. Libera toda a cadeia de containers Quarto/bslib para rolagem vertical fluida */
+  html,
+  body.quarto-dashboard.dashboard-fill {
+    height: auto !important;
+    min-height: 100% !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+  }
+
+  .quarto-dashboard-content.bslib-page-fill,
+  .bslib-sidebar-layout,
+  .bslib-sidebar-layout > .main,
+  .bslib-sidebar-layout > .main > .sidebar-content,
+  .tab-content,
+  .tab-content.bslib-grid {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow-y: visible !important;
+    overflow-x: hidden !important;
+    display: block !important;
+  }
+
+  .tab-content > .tab-pane:not(.active) {
+    display: none !important;
+  }
+
+  .dashboard-page.tab-pane.active {
+    display: block !important;
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 8px 8px 22px 8px !important;
+    overflow: visible !important;
+  }
+
+  /* 2. Desfaz todas as grades rígidas (columns E rows, inclusive #visão-geral e subgrids) */
+  .dashboard-page .bslib-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
     gap: 12px !important;
   }
 
-  .bslib-value-box {
-    min-height: 98px !important;
-    padding: 6px !important;
+  .dashboard-page .bslib-grid > * {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    flex: 0 0 auto !important;
   }
 
-  .bslib-value-box .card-body {
+  /* 3. Linhas com múltiplos ValueBoxes lado a lado (2, 3 ou 4 KPIs) viram grade 2x2 */
+  .dashboard-page .bslib-grid:has(> .bslib-value-box) {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    grid-auto-rows: auto !important;
+    gap: 10px !important;
+  }
+
+  /* 4. Barra Mobile de Acesso Rápido aos Boletins & Caderno de Publicações */
+  #barra-mobile-acesso-rapido {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    background-color: #f4f6f9;
+    border-bottom: 2px solid #c8942b;
+    padding: 7px 10px;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1015;
+  }
+  .jet-mob-btn-destaques,
+  .jet-mob-btn-caderno {
+    flex: 1 1 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 7px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none !important;
+    cursor: pointer;
+    white-space: nowrap;
+    text-align: center;
+    transition: opacity 0.15s ease;
+  }
+  .jet-mob-btn-destaques {
+    background-color: #ffffff;
+    color: #0f2537 !important;
+    border: 1px solid #cbd5e1;
+  }
+  .jet-mob-btn-caderno {
+    background-color: #0f2537;
+    color: #c8942b !important;
+    border: 1px solid #c8942b;
+  }
+
+  /* 5. Gaveta Lateral (Sidebar de Boletins) refinada no mobile/tablet */
+  .bslib-sidebar-layout > .sidebar {
+    width: min(88vw, 340px) !important;
+    max-width: 88vw !important;
+    z-index: 1060 !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .bslib-sidebar-layout > .collapse-toggle {
+    z-index: 1065 !important;
+    background-color: #0f2537 !important;
+    color: #c8942b !important;
+    border: 1px solid #c8942b !important;
+    border-radius: 6px !important;
+    box-shadow: 0 2px 8px rgba(15, 37, 55, 0.2) !important;
+  }
+
+  /* 6. Cartões de gráficos e tabelas sem altura travada */
+  .card:not(.bslib-value-box) {
+    height: auto !important;
+    min-height: 0 !important;
+  }
+  .card:not(.bslib-value-box) > .card-body {
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 8px 10px !important;
+    overflow: visible !important;
+  }
+  .card-header {
     padding: 10px 12px !important;
+    font-size: 0.92rem !important;
   }
 
+  /* 7. Aba IPER-TO responsiva */
+  .iper-em-construcao {
+    height: auto !important;
+    min-height: 300px !important;
+    padding: 26px 16px !important;
+    margin: 6px 2px !important;
+  }
+  .iper-em-construcao h3 {
+    font-size: 1.2rem !important;
+  }
+  .iper-em-construcao p {
+    font-size: 0.95rem !important;
+    line-height: 1.5 !important;
+  }
+}
+
+/* Smartphones (max-width: 768px): navbar, valueboxes, gráficos Plotly, DT e ticker */
+@media (max-width: 768px) {
+  /* Navbar limpa e compacta sem estouro horizontal */
+  .navbar-container {
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    gap: 8px !important;
+    padding: 6px 10px !important;
+  }
+  .navbar-brand-container {
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    gap: 8px !important;
+    align-items: center !important;
+  }
+  .navbar-logo {
+    max-height: 34px !important;
+    width: auto !important;
+    flex-shrink: 0 !important;
+  }
+  .navbar-title,
+  .navbar-title-text {
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+  }
+  .navbar-title-text a {
+    font-size: 14.5px !important;
+    line-height: 1.2 !important;
+    display: block !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+  }
+  .navbar-title-text a span {
+    font-size: 10.5px !important;
+    line-height: 1.25 !important;
+    display: inline-block !important;
+    margin-top: 2px !important;
+  }
+  .navbar-toggler {
+    padding: 4px 6px !important;
+    flex-shrink: 0 !important;
+  }
+  #dashboard-collapse.show,
+  #dashboard-collapse.collapsing {
+    width: 100% !important;
+    flex-basis: 100% !important;
+    background-color: #ffffff !important;
+    border-top: 2px solid #c8942b !important;
+    margin-top: 6px !important;
+    padding: 6px 2px 8px 2px !important;
+  }
+  #dashboard-collapse .navbar-nav {
+    max-height: 62vh !important;
+    overflow-y: auto !important;
+    gap: 2px !important;
+  }
+  #dashboard-collapse .navbar-nav .nav-link {
+    padding: 9px 12px !important;
+    font-size: 13.5px !important;
+    border-radius: 6px !important;
+  }
+
+  /* ValueBoxes compactos em grade 2x2 */
+  .bslib-value-box {
+    min-height: 82px !important;
+    padding: 2px !important;
+  }
+  .bslib-value-box .card-body {
+    min-height: 70px !important;
+    padding: 9px 11px !important;
+  }
+  .bslib-value-box .value-box-grid {
+    gap: 8px !important;
+  }
+  .bslib-value-box .value-box-title {
+    font-size: 0.68rem !important;
+    line-height: 1.2 !important;
+    margin-bottom: 2px !important;
+  }
   .bslib-value-box .value-box-value {
-    font-size: 1.25rem !important;
+    font-size: 1.08rem !important;
+    line-height: 1.15 !important;
   }
-
   .bslib-value-box .value-box-showcase {
-    width: 34px !important;
-    max-width: 36px !important;
+    width: 26px !important;
+    max-width: 28px !important;
+    height: 26px !important;
   }
-
   .bslib-value-box .value-box-showcase i,
   .bslib-value-box .value-box-showcase svg {
-    font-size: 1.45rem !important;
+    font-size: 1.25rem !important;
+  }
+  [class*="icone-img-"] .value-box-area {
+    padding-right: 32px !important;
+  }
+  [class*="icone-img-"]::after {
+    width: 26px !important;
+    height: 26px !important;
+    right: 8px !important;
+    opacity: 0.18 !important;
   }
 
-  /* Barra de cotações em celulares */
+  /* Plotly em celular com altura proporcional */
+  .plotly.html-widget {
+    min-height: 260px !important;
+    height: 295px !important;
+  }
+
+  /* Tabela DT (Mercado de Trabalho) responsiva com rolagem horizontal */
+  .dataTables_wrapper {
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    font-size: 12px !important;
+  }
+  .dataTables_wrapper .dataTables_filter {
+    float: none !important;
+    text-align: left !important;
+    margin-bottom: 8px !important;
+  }
+  .dataTables_wrapper .dataTables_filter input {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-top: 4px !important;
+    box-sizing: border-box !important;
+  }
+  .dataTables_wrapper .dataTables_paginate {
+    float: none !important;
+    text-align: center !important;
+    margin-top: 8px !important;
+    font-size: 11px !important;
+  }
+  .dataTables_wrapper .dataTable th,
+  .dataTables_wrapper .dataTable td {
+    padding: 6px 8px !important;
+    font-size: 11.5px !important;
+    white-space: nowrap !important;
+  }
+
+  /* Barra de cotações ao vivo em celulares */
   #barra-cotacoes-aovivo {
     height: 34px !important;
     font-size: 11px !important;
   }
   .ticker-fixo-esquerda {
-    padding: 0 8px !important;
+    padding: 0 7px !important;
   }
   .badge-aovivo {
     padding: 2px 6px !important;
-    font-size: 9.5px !important;
+    font-size: 9px !important;
+    letter-spacing: 0.3px !important;
+  }
+  .badge-aovivo .txt-mercados-full {
+    display: none !important;
   }
   .ticker-fixo-direita {
-    padding: 0 8px !important;
+    padding: 0 7px !important;
   }
   .ticker-fixo-direita .tk-horario {
     display: none !important;
   }
   .ticker-item {
-    padding: 0 12px !important;
+    padding: 0 11px !important;
+    font-size: 11px !important;
+  }
+
+  /* Toolbar e tabela da aba Câmbio e Mercados */
+  .mercados-card-wrap {
+    padding: 4px 2px !important;
+  }
+  .mercados-toolbar {
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+  }
+  .mercados-toolbar-acoes {
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+  }
+  .tabela-mercados-aovivo {
+    min-width: 440px !important;
+  }
+  .tabela-mercados-aovivo thead th {
+    padding: 6px 8px !important;
+    font-size: 10.5px !important;
+  }
+  .tabela-mercados-aovivo tbody td {
+    padding: 6px 8px !important;
     font-size: 11.5px !important;
   }
 
-  /* Gráficos Plotly em celular ganham altura mínima garantida */
-  .plotly.html-widget {
-    min-height: 280px !important;
+  /* Botão fullscreen do bslib discreto no celular */
+  .bslib-full-screen-enter {
+    opacity: 0.75 !important;
+    bottom: 6px !important;
+    right: 6px !important;
   }
 }
 
-/* Telas muito pequenas (max-width: 480px): 1 cartão por linha para visual impecável */
+/* Telas bem estreitas (max-width: 480px): ajustes finos de densidade e toque */
 @media (max-width: 480px) {
-  .dashboard-page .bslib-grid[style*="minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr)"],
-  .dashboard-page .bslib-grid[style*="1fr 1fr 1fr 1fr"],
-  .dashboard-page .bslib-grid[style*="minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr)"],
-  .dashboard-page .bslib-grid[style*="1fr 1fr 1fr"] {
+  .jet-mob-btn-destaques,
+  .jet-mob-btn-caderno {
+    font-size: 11px !important;
+    padding: 6px 8px !important;
+  }
+  .dashboard-page .bslib-grid:has(> .bslib-value-box) {
+    gap: 8px !important;
+  }
+  .bslib-value-box .value-box-title {
+    font-size: 0.64rem !important;
+  }
+  .bslib-value-box .value-box-value {
+    font-size: 0.98rem !important;
+  }
+  [class*="icone-img-"] .value-box-area {
+    padding-right: 26px !important;
+  }
+  [class*="icone-img-"]::after {
+    width: 22px !important;
+    height: 22px !important;
+    right: 6px !important;
+    opacity: 0.14 !important;
+  }
+}
+
+/* Somente em dispositivos ultra-estreitos (< 350px) empilha em 1 coluna */
+@media (max-width: 349px) {
+  .dashboard-page .bslib-grid:has(> .bslib-value-box) {
     grid-template-columns: 1fr !important;
   }
-  .navbar-brand {
-    font-size: 1.1rem !important;
+}
+
+/* ==========================================================================
+   SISTEMA DE ANIMAÇÕES DE FLUIDEZ EM 2 NÍVEIS (PAINEL JET)
+   - Nível 1 (.anim-macro-enter): Expressiva / Evidente (abertura do Painel e Visão Geral)
+   - Nível 2 (.anim-subtle-enter): Tímida / Executiva (troca entre abas setoriais)
+   ========================================================================== */
+@keyframes jetMacroReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(18px) scale(0.986);
+    filter: blur(1.5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
   }
 }
 
+@keyframes jetSubtleFade {
+  0% {
+    opacity: 0.25;
+    transform: translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dashboard-page.anim-macro-enter .bslib-value-box,
+.dashboard-page.anim-macro-enter .card:not(.bslib-value-box) {
+  animation: jetMacroReveal 0.48s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: var(--jet-stagger, 0ms);
+}
+
+.dashboard-page.anim-subtle-enter .bslib-value-box,
+.dashboard-page.anim-subtle-enter .card:not(.bslib-value-box) {
+  animation: jetSubtleFade 0.23s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--jet-stagger, 0ms);
+}
+
+/* ==========================================================================
+   BARRA GLOBAL DE ECOSSISTEMA JET & PÁGINA INICIAL (GATEWAY + BANCO DE DADOS)
+   ========================================================================== */
+#jet-ecosystem-bar {
+  position: sticky;
+  top: 0;
+  z-index: 1200;
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid #0f2537;
+  box-shadow: 0 3px 14px rgba(15, 37, 55, 0.06);
+  width: 100%;
+}
+.jet-eco-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 7px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.jet-eco-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+  text-decoration: none !important;
+}
+.jet-monogram-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 7px;
+  background: linear-gradient(135deg, #0f2537 0%, #1c3b57 100%);
+  color: #c8942b;
+  border: 1.5px solid #c8942b;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(15, 37, 55, 0.16);
+}
+.jet-eco-brand-txt strong {
+  display: block;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.95rem;
+  font-weight: 900;
+  color: #0f2537;
+  line-height: 1.15;
+}
+.jet-eco-brand-txt span {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.45px;
+  text-transform: uppercase;
+  color: #64748b;
+}
+.jet-eco-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.jet-eco-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #0f2537 !important;
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  text-decoration: none !important;
+  cursor: pointer;
+  letter-spacing: 0.1px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.jet-eco-btn:hover {
+  background: #f8fafc;
+  border-color: #0f2537;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(15, 37, 55, 0.08);
+}
+.jet-eco-btn.active {
+  background: #0f2537;
+  color: #ffffff !important;
+  border-color: #0f2537;
+  border-bottom: 3px solid #c8942b;
+  box-shadow: 0 4px 14px rgba(15, 37, 55, 0.18);
+}
+.jet-panel-svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  display: inline-block;
+}
+
+/* Controle de Visão sem quebrar as dimensões de inicialização do Plotly */
+body[data-jet-view="landing"],
+body[data-jet-view="database"] {
+  height: auto !important;
+  min-height: 100vh !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  background-color: #f4f6f9 !important;
+}
+body[data-jet-view="landing"] #quarto-dashboard-header,
+body[data-jet-view="landing"] .quarto-dashboard-content,
+body[data-jet-view="landing"] #barra-cotacoes-aovivo,
+body[data-jet-view="landing"] #barra-mobile-acesso-rapido,
+body[data-jet-view="database"] #quarto-dashboard-header,
+body[data-jet-view="database"] .quarto-dashboard-content,
+body[data-jet-view="database"] #barra-cotacoes-aovivo,
+body[data-jet-view="database"] #barra-mobile-acesso-rapido {
+  position: fixed !important;
+  left: -99999px !important;
+  top: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+body[data-jet-view="landing"] #jet-database-view {
+  display: none !important;
+}
+body[data-jet-view="database"] #jet-landing-gateway {
+  display: none !important;
+}
+body[data-jet-view="painel"] #jet-landing-gateway,
+body[data-jet-view="painel"] #jet-database-view {
+  display: none !important;
+}
+
+@keyframes jetGatewaySwap {
+  0% { opacity: 0; transform: translateY(14px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+body[data-jet-view="landing"] #jet-landing-gateway,
+body[data-jet-view="database"] #jet-database-view {
+  display: block;
+  animation: jetGatewaySwap 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Scroll Reveal da Página Inicial e Banco de Dados */
+.jet-scroll-reveal {
+  opacity: 0;
+  transform: translateY(22px) scale(0.985);
+  transition: opacity 0.60s cubic-bezier(0.16, 1, 0.3, 1), transform 0.60s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--jet-delay, 0ms);
+}
+.jet-scroll-reveal.is-revealed {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Estilos da Página Inicial Minimalista (#jet-landing-gateway) */
+#jet-landing-gateway,
+#jet-database-view {
+  width: 100%;
+  color: #1e293b;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+}
+.jet-hero-section {
+  background: #ffffff;
+  color: #0f2537;
+  padding: 52px 20px 42px 20px;
+  border-bottom: 1px solid #e2e8f0;
+  text-align: center;
+}
+.jet-hero-inner {
+  max-width: 820px;
+  margin: 0 auto;
+}
+.jet-hero-rule {
+  width: 54px;
+  height: 3px;
+  background: #c8942b;
+  margin: 0 auto 18px auto;
+  border-radius: 2px;
+}
+.jet-hero-kicker {
+  display: block;
+  color: #64748b;
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.4px;
+  margin-bottom: 10px;
+}
+.jet-hero-title {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2rem, 3.8vw, 2.85rem);
+  font-weight: 900;
+  line-height: 1.12;
+  margin: 0 0 16px 0;
+  color: #0f2537;
+}
+.jet-hero-lead {
+  font-size: 1.04rem;
+  line-height: 1.65;
+  color: #475569;
+  margin: 0 auto;
+  max-width: 680px;
+}
+
+.jet-landing-container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 40px 20px 58px 20px;
+}
+.jet-landing-sec-title {
+  text-align: center;
+  margin-bottom: 26px;
+}
+.jet-landing-sec-title small {
+  display: block;
+  font-size: 0.74rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: #c8942b;
+  margin-bottom: 6px;
+}
+.jet-landing-sec-title h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.38rem, 2.4vw, 1.85rem);
+  font-weight: 900;
+  color: #0f2537;
+  margin: 0 0 8px 0;
+}
+.jet-landing-sec-title p {
+  color: #475569;
+  max-width: 680px;
+  margin: 0 auto;
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.jet-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  margin-bottom: 52px;
+}
+.jet-pillar-card {
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-top: 4px solid #0f2537;
+  border-radius: 12px;
+  padding: 30px 28px;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 18px rgba(15, 37, 55, 0.04);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease, border-color 0.25s ease;
+  text-decoration: none !important;
+  cursor: pointer;
+  text-align: left;
+}
+.jet-pillar-card:hover {
+  transform: translateY(-4px);
+  border-color: #0f2537;
+  box-shadow: 0 14px 30px rgba(15, 37, 55, 0.09);
+}
+.jet-pillar-card.gold-top { border-top-color: #c8942b; }
+.jet-pillar-card.slate-top { border-top-color: #475569; }
+.jet-pillar-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.jet-pillar-card h3 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.42rem;
+  font-weight: 900;
+  color: #0f2537;
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.jet-pillar-panel-icon {
+  width: 24px;
+  height: 24px;
+  color: #0f2537;
+  flex-shrink: 0;
+}
+.jet-pillar-status {
+  font-size: 0.70rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: #64748b;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  padding: 3px 9px;
+  border-radius: 6px;
+}
+.jet-pillar-card p {
+  font-size: 0.94rem;
+  line-height: 1.60;
+  color: #475569;
+  margin: 0 0 22px 0;
+}
+.jet-pillar-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none !important;
+  cursor: pointer;
+  background: #0f2537;
+  color: #ffffff !important;
+  border: 1px solid #0f2537;
+  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+  box-sizing: border-box;
+}
+.jet-pillar-card:hover .jet-pillar-btn,
+.jet-pillar-btn:hover {
+  background: #c8942b;
+  border-color: #c8942b;
+  color: #0f2537 !important;
+}
+.jet-pillar-btn.subtle {
+  background: #f8fafc;
+  color: #0f2537 !important;
+  border-color: #cbd5e1;
+}
+.jet-pillar-card:hover .jet-pillar-btn.subtle {
+  background: #0f2537;
+  color: #ffffff !important;
+  border-color: #0f2537;
+}
+
+.jet-team-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+.jet-team-card {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 185px 1fr;
+  box-shadow: 0 4px 16px rgba(15, 37, 55, 0.05);
+}
+.jet-team-card img {
+  width: 100%;
+  height: 100%;
+  min-height: 210px;
+  object-fit: cover;
+  display: block;
+}
+.jet-team-body {
+  padding: 20px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.jet-team-body h3 {
+  font-family: Georgia, serif;
+  font-size: 1.18rem;
+  font-weight: 900;
+  color: #0f2537;
+  margin: 0 0 4px 0;
+}
+.jet-team-role {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: #fdf7eb;
+  color: #0f2537;
+  border: 1px solid #e5c687;
+  padding: 3px 9px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+.jet-team-body p {
+  font-size: 0.86rem;
+  line-height: 1.52;
+  color: #475569;
+  margin: 0;
+}
+
+/* Banco de Dados (Estrutura Prévia) */
+.jet-db-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 22px;
+}
+.jet-db-card {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-left: 4px solid #0b5d32;
+  border-radius: 10px;
+  padding: 18px;
+  box-shadow: 0 2px 10px rgba(15, 37, 55, 0.04);
+}
+.jet-db-card h4 {
+  font-family: Georgia, serif;
+  font-size: 1.02rem;
+  font-weight: 800;
+  color: #0f2537;
+  margin: 0 0 6px 0;
+}
+.jet-db-card p {
+  font-size: 0.82rem;
+  color: #475569;
+  line-height: 1.48;
+  margin: 0 0 10px 0;
+}
+.jet-db-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #0b5d32;
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.jet-hero-grid > *,
+.jet-pillars-grid > *,
+.jet-team-grid > *,
+.jet-db-grid > * {
+  min-width: 0;
+}
+
+@media (max-width: 991.98px) {
+  html,
+  body {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+  }
+  .jet-hero-grid,
+  .jet-pillars-grid,
+  .jet-team-grid,
+  .jet-db-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+@media (max-width: 768px) {
+  .jet-eco-inner {
+    padding: 8px 10px;
+    gap: 8px;
+  }
+  .jet-eco-nav {
+    width: 100%;
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 6px !important;
+  }
+  .jet-eco-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 9px 10px;
+    font-size: 0.78rem;
+  }
+  .jet-hero-section {
+    padding: 32px 14px 26px 14px;
+  }
+  .jet-pillar-card {
+    padding: 20px 18px;
+    min-height: auto;
+  }
+  .jet-team-card {
+    grid-template-columns: 1fr;
+  }
+  .jet-team-card img {
+    height: 210px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dashboard-page.anim-macro-enter .bslib-value-box,
+  .dashboard-page.anim-macro-enter .card,
+  .dashboard-page.anim-subtle-enter .bslib-value-box,
+  .dashboard-page.anim-subtle-enter .card,
+  .jet-scroll-reveal {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+</style>
+<script>
+(function(){
+  try {
+    var h = (window.location.hash || "").toLowerCase();
+    var isPainelHash = (
+      h === "#painel" ||
+      h.indexOf("#vis") === 0 ||
+      h.indexOf("#pib") === 0 ||
+      h.indexOf("#mercado") === 0 ||
+      h.indexOf("#com") === 0 ||
+      h.indexOf("#arrecada") === 0 ||
+      h.indexOf("#din") === 0 ||
+      h.indexOf("#c") === 0 && h.indexOf("mbio") > -1 ||
+      h.indexOf("#iper") === 0
+    );
+    var v = isPainelHash ? "painel" : (h === "#banco-de-dados" ? "database" : "landing");
+    if (document.body) {
+      document.body.setAttribute("data-jet-view", v);
+    } else {
+      document.addEventListener("DOMContentLoaded", function() {
+        document.body.setAttribute("data-jet-view", v);
+      });
+    }
+  } catch (_) {}
+})();
+</script>
 ```
 
 ```{r}
@@ -1809,7 +2682,12 @@ datatable(
   options = list(
     pageLength = 8,
     dom = 'ftp',
-    language = list(url = '//cdn.datatables.net/plug-ins/1.10.11/i18n/Portuguese-Brasil.json'),
+    language = list(
+      search = "Buscar:",
+      zeroRecords = "Nenhum registro encontrado",
+      infoEmpty = "Sem registros",
+      paginate = list(previous = "Anterior", `next` = "Próximo")
+    ),
     initComplete = JS(
       "function(settings, json) {",
       "$(this.api().table().header()).css({'background-color': '#0f2537', 'color': '#fff'});",
@@ -1891,13 +2769,13 @@ plot_geo() |>
       projection = list(type = 'natural earth'),
       bgcolor = "rgba(0,0,0,0)"
     ),
-    margin = list(t = 30, b = 25, l = 5, r = 5),
+    margin = list(t = 44, b = 25, l = 5, r = 5),
     paper_bgcolor = "rgba(0,0,0,0)",
     annotations = list(
       list(
-        x = 0.5, y = 1.06, xref = "paper", yref = "paper",
-        text = "<span style='color:#f0b400; font-size:15px;'>■</span> <b>Exportações excedem Importações (Amarelo)</b> &nbsp;&nbsp;&nbsp;&nbsp; <span style='color:#0f2537; font-size:15px;'>■</span> <b>Importações excedem Exportações (Azul Escuro)</b>",
-        showarrow = FALSE, font = list(size = 11.5, color = "#0f2537"),
+        x = 0.5, y = 1.13, xref = "paper", yref = "paper",
+        text = "<span style='color:#f0b400; font-size:14px;'>■</span> <b>Exportações excedem Importações (Amarelo)</b><br><span style='color:#0f2537; font-size:14px;'>■</span> <b>Importações excedem Exportações (Azul Escuro)</b>",
+        showarrow = FALSE, font = list(size = 11, color = "#0f2537"),
         xanchor = "center"
       ),
       list(
@@ -1954,8 +2832,8 @@ plot_ly(
       font = list(size = 14, color = "#858c94")
     ),
     xaxis = list(title = "", showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE, fixedrange = TRUE),
-    yaxis = list(title = "", automargin = FALSE, fixedrange = TRUE, tickfont = list(size = 12, color = "#0f2537")),
-    margin = list(l = 185, r = 45, t = 40, b = 10),
+    yaxis = list(title = "", automargin = TRUE, fixedrange = TRUE, tickfont = list(size = 11.5, color = "#0f2537")),
+    margin = list(l = 10, r = 45, t = 40, b = 10),
     paper_bgcolor = "rgba(0,0,0,0)",
     plot_bgcolor = "rgba(0,0,0,0)"
   ) |> 
@@ -1991,8 +2869,8 @@ plot_ly(
       font = list(size = 14, color = "#858c94")
     ),
     xaxis = list(title = "", showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE, fixedrange = TRUE),
-    yaxis = list(title = "", automargin = FALSE, fixedrange = TRUE, tickfont = list(size = 12, color = "#474033")),
-    margin = list(l = 185, r = 45, t = 40, b = 10),
+    yaxis = list(title = "", automargin = TRUE, fixedrange = TRUE, tickfont = list(size = 11.5, color = "#474033")),
+    margin = list(l = 10, r = 45, t = 40, b = 10),
     paper_bgcolor = "rgba(0,0,0,0)",
     plot_bgcolor = "rgba(0,0,0,0)"
   ) |> 
@@ -2491,7 +3369,7 @@ list(
 
 ## Row {height="100%"}
 
-::::: {.card `r if (!is.null(selo_novo(dt_iper))) "atualizado"` style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; height: 80vh; padding: 40px; background-color: #f8f9fa; border: 2px dashed #c8942b; border-radius: 12px; margin: 20px;"}
+::::: {.card .iper-em-construcao `r if (!is.null(selo_novo(dt_iper))) "atualizado"` style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; height: 80vh; padding: 40px; background-color: #f8f9fa; border: 2px dashed #c8942b; border-radius: 12px; margin: 20px;"}
 ::: {style="font-size: 64px; color: #0f2537; margin-bottom: 20px;"}
 <i class="bi bi-cone-striped"></i>
 :::
@@ -2512,6 +3390,18 @@ Estamos na fase de lapidação e calibragem deste indicador. O IPER-TO será uma
 
 </p>
 :::::
+
+```{r}
+#| results: asis
+cat(sprintf(
+  '```{=html}\n<script>\nwindow.JET_GATEWAY_STATS = { pib_to: "%s", desocupacao: "%s", saldo_comex: "%s", cnpjs_ativos: "%s", atualizado: "%s" };\n</script>\n```\n',
+  gsub('"', '', as.character(dados_painel$pib$vb_pib_nominal_to)),
+  gsub('"', '', as.character(dados_painel$visao_geral$vb_desocupacao)),
+  gsub('"', '', as.character(dados_painel$comex$vb_saldo)),
+  gsub('"', '', as.character(dados_painel$empresarial$vb_cnpjs_ativos)),
+  gsub('"', '', as.character(dados_painel$ultima_atualizacao))
+))
+```
 
 ```{=html}
 <script>
@@ -2602,7 +3492,7 @@ Estamos na fase de lapidação e calibragem deste indicador. O IPER-TO será uma
     barra.id = "barra-cotacoes-aovivo";
     barra.innerHTML = `
       <div class="ticker-fixo-esquerda">
-        <span class="badge-aovivo"><span class="ponto-aovivo"></span> MERCADOS AO VIVO</span>
+        <span class="badge-aovivo"><span class="ponto-aovivo"></span> <span class="txt-mercados-full">MERCADOS </span>AO VIVO</span>
       </div>
       <div class="ticker-trilha-container">
         <div class="ticker-trilha">
@@ -3230,16 +4120,590 @@ Estamos na fase de lapidação e calibragem deste indicador. O IPER-TO será uma
   window.addEventListener("scroll", ocultarPopoverGlobal, { passive: true });
 
   // ============================================================================
+  // 9.2. BARRA MOBILE DE ACESSO RÁPIDO & NAVEGAÇÃO HAMBÚRGUER AUTO-FECHÁVEL
+  // ============================================================================
+  function criarBarraMobileAcessoRapido() {
+    if (document.getElementById("barra-mobile-acesso-rapido")) return;
+    const header = document.querySelector("#quarto-dashboard-header") || document.querySelector(".quarto-dashboard-header") || document.querySelector(".navbar");
+    if (!header) return;
+
+    const bar = document.createElement("div");
+    bar.id = "barra-mobile-acesso-rapido";
+    bar.innerHTML = `
+      <button type="button" class="jet-mob-btn-destaques" id="btn-mobile-abrir-sidebar">
+        <span>📑</span><span>Destaques &amp; Boletins</span>
+      </button>
+      <a href="news.html" class="jet-mob-btn-caderno">
+        <span>📰</span><span>Caderno &amp; PDFs →</span>
+      </a>
+    `;
+    header.insertAdjacentElement("afterend", bar);
+
+    const btnSidebar = document.getElementById("btn-mobile-abrir-sidebar");
+    if (btnSidebar) {
+      btnSidebar.addEventListener("click", () => {
+        const toggleBtn = document.querySelector(".bslib-sidebar-layout > button.collapse-toggle, .bslib-sidebar-layout > .collapse-toggle");
+        if (toggleBtn) {
+          toggleBtn.click();
+        }
+      });
+    }
+  }
+
+  function registrarNavegacaoMobile() {
+    document.querySelectorAll("#dashboard-collapse .nav-link").forEach(link => {
+      if (link.dataset.mobileCloseBound) return;
+      link.dataset.mobileCloseBound = "true";
+      link.addEventListener("click", () => {
+        const collapseEl = document.getElementById("dashboard-collapse");
+        if (window.innerWidth < 768 && collapseEl && collapseEl.classList.contains("show")) {
+          if (window.bootstrap && window.bootstrap.Collapse) {
+            try {
+              window.bootstrap.Collapse.getOrCreateInstance(collapseEl).hide();
+              return;
+            } catch (_) {}
+          }
+          const toggler = document.querySelector(".navbar-toggler");
+          if (toggler) toggler.click();
+        }
+      });
+    });
+  }
+
+  // ============================================================================
+  // 9.3. ADAPTAÇÃO DINÂMICA DE GRÁFICOS PLOTLY PARA CELULAR (<= 768px)
+  //      Preserva 100% os parâmetros originais no Desktop (> 768px)
+  // ============================================================================
+  function clonarSeguro(obj) {
+    try { return JSON.parse(JSON.stringify(obj)); } catch (_) { return obj; }
+  }
+
+  function quebrarRotuloMobile(txt, maxChars) {
+    const lim = maxChars || 16;
+    const limLimpo = String(txt || "").replace(/<br\s*\/?>/gi, " ").replace(/\s+/g, " ").trim();
+    const words = limLimpo.split(" ");
+    const lines = [];
+    let cur = "";
+    words.forEach(w => {
+      if (!cur) {
+        cur = w;
+      } else if ((cur + " " + w).length <= lim) {
+        cur += " " + w;
+      } else {
+        lines.push(cur);
+        cur = w;
+      }
+    });
+    if (cur) lines.push(cur);
+    if (lines.length > 3) {
+      const head = lines.slice(0, 2);
+      let third = lines.slice(2).join(" ");
+      if (third.length > lim) third = third.slice(0, lim - 3) + "...";
+      head.push(third);
+      return head.join("<br>");
+    }
+    return lines.join("<br>");
+  }
+
+  function ajustarPlotlyMobile() {
+    if (!window.Plotly) return;
+    const isMobile = window.innerWidth <= 768;
+    const isNarrow = window.innerWidth <= 420;
+
+    document.querySelectorAll(".plotly.html-widget").forEach(el => {
+      if (!el.layout || !el.data || el.data.length === 0) return;
+
+      // Salva estado original de desktop na primeira execução
+      if (!el._desktopSnapshot) {
+        const trace0 = el.data[0] || {};
+        el._desktopSnapshot = {
+          margin: clonarSeguro(el.layout.margin || {}),
+          height: el.layout.height || null,
+          titleFontSize: (el.layout.title && el.layout.title.font && el.layout.title.font.size) ? el.layout.title.font.size : null,
+          xTickFontSize: (el.layout.xaxis && el.layout.xaxis.tickfont && el.layout.xaxis.tickfont.size) ? el.layout.xaxis.tickfont.size : null,
+          xNticks: (el.layout.xaxis && el.layout.xaxis.nticks) ? el.layout.xaxis.nticks : null,
+          xTickAngle: (el.layout.xaxis && typeof el.layout.xaxis.tickangle !== "undefined") ? el.layout.xaxis.tickangle : null,
+          yTickFontSize: (el.layout.yaxis && el.layout.yaxis.tickfont && el.layout.yaxis.tickfont.size) ? el.layout.yaxis.tickfont.size : null,
+          yAutomargin: (el.layout.yaxis && typeof el.layout.yaxis.automargin !== "undefined") ? el.layout.yaxis.automargin : null,
+          yTickMode: (el.layout.yaxis && el.layout.yaxis.tickmode) ? el.layout.yaxis.tickmode : null,
+          yTitleFontSize: (el.layout.yaxis && el.layout.yaxis.title && el.layout.yaxis.title.font && el.layout.yaxis.title.font.size) ? el.layout.yaxis.title.font.size : null,
+          legendFontSize: (el.layout.legend && el.layout.legend.font && el.layout.legend.font.size) ? el.layout.legend.font.size : null,
+          legendY: (el.layout.legend && typeof el.layout.legend.y !== "undefined") ? el.layout.legend.y : null,
+          annotations: clonarSeguro(el.layout.annotations || []),
+          traceTitleFontSize: (trace0.title && trace0.title.font && trace0.title.font.size) ? trace0.title.font.size : null,
+          traceNumberFontSize: (trace0.number && trace0.number.font && trace0.number.font.size) ? trace0.number.font.size : null,
+          traceDeltaFontSize: (trace0.delta && trace0.delta.font && trace0.delta.font.size) ? trace0.delta.font.size : null
+        };
+      }
+
+      if (!isMobile) {
+        if (el.dataset.mobileAdjusted === "true") {
+          const snap = el._desktopSnapshot;
+          const restore = {
+            margin: clonarSeguro(snap.margin),
+            height: snap.height
+          };
+          if (snap.titleFontSize !== null) restore["title.font.size"] = snap.titleFontSize;
+          if (snap.xTickFontSize !== null) restore["xaxis.tickfont.size"] = snap.xTickFontSize;
+          if (snap.xNticks !== null) restore["xaxis.nticks"] = snap.xNticks;
+          if (snap.xTickAngle !== null) restore["xaxis.tickangle"] = snap.xTickAngle;
+          if (snap.yTickFontSize !== null) restore["yaxis.tickfont.size"] = snap.yTickFontSize;
+          if (snap.yAutomargin !== null) restore["yaxis.automargin"] = snap.yAutomargin;
+          restore["yaxis.tickmode"] = snap.yTickMode || "auto";
+          restore["yaxis.tickvals"] = null;
+          restore["yaxis.ticktext"] = null;
+          if (snap.yTitleFontSize !== null) restore["yaxis.title.font.size"] = snap.yTitleFontSize;
+          if (snap.legendFontSize !== null) restore["legend.font.size"] = snap.legendFontSize;
+          if (snap.legendY !== null) restore["legend.y"] = snap.legendY;
+          if (snap.annotations && snap.annotations.length > 0) restore.annotations = clonarSeguro(snap.annotations);
+          try {
+            window.Plotly.relayout(el, restore);
+            if ((el.data[0] || {}).type === "indicator") {
+              const rTrace = {};
+              if (snap.traceTitleFontSize !== null) rTrace["title.font.size"] = snap.traceTitleFontSize;
+              if (snap.traceNumberFontSize !== null) rTrace["number.font.size"] = snap.traceNumberFontSize;
+              if (snap.traceDeltaFontSize !== null) rTrace["delta.font.size"] = snap.traceDeltaFontSize;
+              if (Object.keys(rTrace).length > 0) window.Plotly.restyle(el, rTrace, [0]);
+            }
+            window.Plotly.Plots.resize(el);
+          } catch (_) {}
+          el.dataset.mobileAdjusted = "false";
+        }
+        return;
+      }
+
+      const trace0 = el.data[0] || {};
+      const snap = el._desktopSnapshot;
+      const update = {};
+
+      if (trace0.orientation === "h") {
+        // Pódio de Exportações e Importações: quebra rótulos em até 3 linhas + automargin
+        const origY = Array.isArray(trace0.y) ? trace0.y : [];
+        if (origY.length > 0) {
+          update["yaxis.tickmode"] = "array";
+          update["yaxis.tickvals"] = origY;
+          update["yaxis.ticktext"] = origY.map(lbl => quebrarRotuloMobile(lbl, isNarrow ? 15 : 18));
+        }
+        update["yaxis.automargin"] = true;
+        update["margin.l"] = 6;
+        update["margin.r"] = 28;
+        update["margin.t"] = 36;
+        update["margin.b"] = 10;
+        update["yaxis.tickfont.size"] = isNarrow ? 9.5 : 10.5;
+        update["title.font.size"] = isNarrow ? 11.5 : 12.5;
+        update["height"] = 265;
+      } else if (trace0.type === "choropleth") {
+        // Mapa Global de Comércio Exterior
+        update["margin.l"] = 4;
+        update["margin.r"] = 4;
+        update["margin.t"] = 46;
+        update["margin.b"] = 34;
+        update["height"] = 300;
+        if (snap.annotations && snap.annotations.length > 0) {
+          const anns = clonarSeguro(snap.annotations);
+          if (anns[0]) {
+            anns[0].y = 1.15;
+            anns[0].font = Object.assign({}, anns[0].font, { size: isNarrow ? 9 : 10 });
+            anns[0].text = "<span style='color:#f0b400; font-size:13px;'>■</span> <b>Export. &gt; Import.</b><br><span style='color:#0f2537; font-size:13px;'>■</span> <b>Import. &gt; Export.</b>";
+          }
+          if (anns[1]) {
+            anns[1].y = -0.05;
+            anns[1].font = Object.assign({}, anns[1].font, { size: 8.5 });
+            anns[1].text = "<i>Fonte: Comex Stat / MDIC. Toque num país p/ detalhes.</i>";
+          }
+          update.annotations = anns;
+        }
+      } else if (trace0.type === "indicator") {
+        // Velocímetro (Tempo de abertura de empresas)
+        update["margin.l"] = 14;
+        update["margin.r"] = 14;
+        update["margin.t"] = 42;
+        update["margin.b"] = 26;
+        update["height"] = 275;
+        if (snap.annotations && snap.annotations.length > 0) {
+          const anns = clonarSeguro(snap.annotations);
+          if (anns[0]) anns[0].font = Object.assign({}, anns[0].font, { size: 9.5 });
+          update.annotations = anns;
+        }
+        try {
+          window.Plotly.restyle(el, {
+            "title.font.size": isNarrow ? 11 : 12,
+            "number.font.size": isNarrow ? 28 : 34,
+            "delta.font.size": isNarrow ? 14 : 16
+          }, [0]);
+        } catch (_) {}
+      } else if (trace0.type === "pie") {
+        // Rosca (Distribuição por Porte)
+        update["margin.l"] = 10;
+        update["margin.r"] = 10;
+        update["margin.t"] = 14;
+        update["margin.b"] = 74;
+        update["height"] = 295;
+        update["legend.font.size"] = isNarrow ? 10 : 11;
+        if (snap.annotations && snap.annotations.length > 0) {
+          const anns = clonarSeguro(snap.annotations);
+          if (anns[0]) anns[0].font = Object.assign({}, anns[0].font, { size: isNarrow ? 13 : 14.5 });
+          if (anns[1]) anns[1].font = Object.assign({}, anns[1].font, { size: 9.5 });
+          update.annotations = anns;
+        }
+      } else {
+        // Gráficos de Linha e Barra padrão
+        update["margin.l"] = isNarrow ? 38 : 44;
+        update["margin.r"] = 12;
+        update["margin.t"] = 44;
+        update["margin.b"] = 50;
+        update["height"] = 285;
+        update["xaxis.tickfont.size"] = isNarrow ? 9 : 9.5;
+        update["xaxis.nticks"] = isNarrow ? 6 : 8;
+        update["xaxis.tickangle"] = -35;
+        update["yaxis.tickfont.size"] = 9.5;
+        update["yaxis.title.font.size"] = 9.5;
+        update["legend.font.size"] = isNarrow ? 9.5 : 10.5;
+        update["legend.y"] = 1.15;
+        if (snap.annotations && snap.annotations.length > 0) {
+          const anns = clonarSeguro(snap.annotations);
+          anns.forEach(a => {
+            if (a.font) a.font.size = 9;
+          });
+          update.annotations = anns;
+        }
+      }
+
+      try {
+        window.Plotly.relayout(el, update);
+        window.Plotly.Plots.resize(el);
+        el.dataset.mobileAdjusted = "true";
+      } catch (_) {}
+    });
+  }
+
+  let resizeTimerMobile = null;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimerMobile);
+    resizeTimerMobile = setTimeout(ajustarPlotlyMobile, 150);
+  });
+
+  // ============================================================================
+  // 9.4. PORTAL INICIAL DO JET (GATEWAY + BANCO DE DADOS) & ANIMAÇÕES 2 NÍVEIS
+  // ============================================================================
+  const ABAS_SETORIAIS_TIMIDAS = new Set([
+    "pib-to",
+    "mercado-de-trabalho",
+    "comércio-exterior",
+    "arrecadação-e-finanças",
+    "dinâmica-empresarial",
+    "câmbio-e-mercados",
+    "iper-to"
+  ]);
+
+  function detectarViewPeloHash() {
+    const h = (window.location.hash || "").toLowerCase();
+    const isPainel = (
+      h === "#painel" ||
+      h.indexOf("#vis") === 0 ||
+      h.indexOf("#pib") === 0 ||
+      h.indexOf("#mercado") === 0 ||
+      h.indexOf("#com") === 0 ||
+      h.indexOf("#arrecada") === 0 ||
+      h.indexOf("#din") === 0 ||
+      (h.indexOf("#c") === 0 && h.indexOf("mbio") > -1) ||
+      h.indexOf("#iper") === 0
+    );
+    if (isPainel) return "painel";
+    if (h === "#banco-de-dados") return "database";
+    return "landing";
+  }
+
+  function atualizarBotoesEcossistema(view) {
+    document.querySelectorAll("#jet-ecosystem-bar .jet-eco-btn[data-jet-view-btn]").forEach(btn => {
+      btn.classList.toggle("active", btn.getAttribute("data-jet-view-btn") === view);
+    });
+  }
+
+  function aplicarAnimacaoAba(paneEl, modo) {
+    if (!paneEl) return;
+    const cards = paneEl.querySelectorAll(".bslib-value-box, .card:not(.bslib-value-box)");
+    paneEl.classList.remove("anim-macro-enter", "anim-subtle-enter");
+    cards.forEach((c, idx) => {
+      const passo = (modo === "macro") ? Math.min(idx * 55, 280) : Math.min(idx * 18, 90);
+      c.style.setProperty("--jet-stagger", passo + "ms");
+    });
+    void paneEl.offsetWidth;
+    paneEl.classList.add(modo === "macro" ? "anim-macro-enter" : "anim-subtle-enter");
+  }
+
+  function iniciarScrollReveal(rootSelector) {
+    const items = document.querySelectorAll(rootSelector + " .jet-scroll-reveal");
+    if (!items.length) return;
+    if (!("IntersectionObserver" in window)) {
+      items.forEach(el => el.classList.add("is-revealed"));
+      return;
+    }
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-revealed");
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: "0px 0px -20px 0px" });
+
+    items.forEach((el, idx) => {
+      el.style.setProperty("--jet-delay", Math.min((idx % 4) * 75, 225) + "ms");
+      if (el.getBoundingClientRect().top < window.innerHeight * 0.92) {
+        el.classList.add("is-revealed");
+      } else {
+        obs.observe(el);
+      }
+    });
+  }
+
+  window.switchJetView = function(view, updateHash) {
+    document.body.setAttribute("data-jet-view", view);
+    atualizarBotoesEcossistema(view);
+
+    if (updateHash !== false) {
+      const targetHash = view === "painel" ? "#painel" : (view === "database" ? "#banco-de-dados" : "#inicio");
+      try { history.replaceState(null, "", targetHash); } catch (_) {}
+    }
+
+    if (view === "landing" || view === "database") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      iniciarScrollReveal(view === "landing" ? "#jet-landing-gateway" : "#jet-database-view");
+    } else if (view === "painel") {
+      window.scrollTo({ top: 0, behavior: "auto" });
+      const activePane = document.querySelector(".dashboard-page.tab-pane.active") || document.getElementById("visão-geral");
+      aplicarAnimacaoAba(activePane, "macro");
+      atualizarVisibilidadeBarraTicker();
+      setTimeout(() => {
+        window.dispatchEvent(new Event("resize"));
+        ajustarPlotlyMobile();
+        if (window.Plotly) {
+          document.querySelectorAll(".plotly.html-widget").forEach(el => {
+            try { window.Plotly.Plots.resize(el); } catch (_) {}
+          });
+        }
+      }, 60);
+      setTimeout(() => {
+        ajustarPlotlyMobile();
+        window.dispatchEvent(new Event("resize"));
+      }, 240);
+    }
+  };
+
+  function criarEcossistemaJET() {
+    if (document.getElementById("jet-ecosystem-bar")) return;
+    const stats = window.JET_GATEWAY_STATS || {
+      pib_to: "R$ 25,8 Bi",
+      desocupacao: "4,1%",
+      saldo_comex: "+ US$ 136,9 Mi",
+      cnpjs_ativos: "167.565",
+      atualizado: "--"
+    };
+
+    const headerDash = document.querySelector("#quarto-dashboard-header") || document.body.firstElementChild;
+
+    // 1. Barra Global Superior do Ecossistema JET (3 Abas + Início)
+    const ecoBar = document.createElement("header");
+    ecoBar.id = "jet-ecosystem-bar";
+    ecoBar.innerHTML = `
+      <div class="jet-eco-inner">
+        <button type="button" class="jet-eco-brand" onclick="window.switchJetView('landing')">
+          <span class="jet-monogram-badge" aria-hidden="true">JET</span>
+          <div class="jet-eco-brand-txt">
+            <strong>Jornal Econômico do Tocantins</strong>
+            <span>Observatório &amp; Inteligência Regional</span>
+          </div>
+        </button>
+        <nav class="jet-eco-nav" aria-label="Navegação Principal do Ecossistema JET">
+          <button type="button" class="jet-eco-btn" data-jet-view-btn="landing" onclick="window.switchJetView('landing')">Início</button>
+          <a href="news.html" class="jet-eco-btn">Feed e Boletins</a>
+          <button type="button" class="jet-eco-btn" data-jet-view-btn="database" onclick="window.switchJetView('database')">Banco de Dados</button>
+          <button type="button" class="jet-eco-btn" data-jet-view-btn="painel" onclick="window.switchJetView('painel')">
+            <svg class="jet-panel-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="3"></rect>
+              <line x1="8" y1="16" x2="8" y2="11"></line>
+              <line x1="12" y1="16" x2="12" y2="7"></line>
+              <line x1="16" y1="16" x2="16" y2="13"></line>
+            </svg>
+            <span>Painel JET</span>
+          </button>
+        </nav>
+      </div>
+    `;
+
+    // 2. Página Inicial Minimalista (Gateway do JET sem dados econômicos e sem emojis)
+    const landing = document.createElement("main");
+    landing.id = "jet-landing-gateway";
+    landing.innerHTML = `
+      <section class="jet-hero-section">
+        <div class="jet-hero-inner">
+          <div class="jet-hero-rule"></div>
+          <span class="jet-hero-kicker">Observatório Econômico &amp; Jornalismo de Dados</span>
+          <h1 class="jet-hero-title">Jornal Econômico do Tocantins</h1>
+          <p class="jet-hero-lead">
+            Uma iniciativa independente dedicada a acompanhar a economia tocantinense em duas frentes complementares: a apuração jornalística conduzida por economistas e a visualização clara de séries oficiais. Escolha abaixo a área que deseja explorar.
+          </p>
+        </div>
+      </section>
+
+      <div class="jet-landing-container">
+        <div class="jet-pillars-grid">
+          <div class="jet-pillar-card slate-top jet-scroll-reveal" onclick="document.getElementById('jet-equipe-inicio')?.scrollIntoView({behavior:'smooth'})">
+            <div>
+              <div class="jet-pillar-card-head">
+                <h3>Início</h3>
+                <span class="jet-pillar-status">Apresentação</span>
+              </div>
+              <p>Apresentação institucional do Jornal Econômico do Tocantins e dos profissionais responsáveis pelo projeto. Reúne a visão geral da estrutura editorial e o acesso direto às demais seções.</p>
+            </div>
+            <span class="jet-pillar-btn subtle"><span>Conhecer a equipe editorial</span><span>↓</span></span>
+          </div>
+
+          <a href="news.html" class="jet-pillar-card gold-top jet-scroll-reveal">
+            <div>
+              <div class="jet-pillar-card-head">
+                <h3>Feed e Boletins</h3>
+                <span class="jet-pillar-status">Publicações</span>
+              </div>
+              <p>Espaço jornalístico com análises assinadas, boletins periódicos e dossiês temáticos em leitura contínua. Permite acompanhar novas matérias e baixar edições completas em PDF.</p>
+            </div>
+            <span class="jet-pillar-btn"><span>Acessar Feed e Boletins</span><span>→</span></span>
+          </a>
+
+          <div class="jet-pillar-card jet-scroll-reveal" onclick="window.switchJetView('database')">
+            <div>
+              <div class="jet-pillar-card-head">
+                <h3>Banco de Dados</h3>
+                <span class="jet-pillar-status">Repositório</span>
+              </div>
+              <p>Catálogo em organização para reunir séries históricas tratadas e bases metodológicas utilizadas pelo portal. Estruturado para apoiar consultas técnicas e pesquisas futuras.</p>
+            </div>
+            <span class="jet-pillar-btn"><span>Acessar Banco de Dados</span><span>→</span></span>
+          </div>
+
+          <div class="jet-pillar-card jet-scroll-reveal" onclick="window.switchJetView('painel')">
+            <div>
+              <div class="jet-pillar-card-head">
+                <h3>
+                  <svg class="jet-pillar-panel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="3" y="3" width="18" height="18" rx="3"></rect>
+                    <line x1="8" y1="16" x2="8" y2="11"></line>
+                    <line x1="12" y1="16" x2="12" y2="7"></line>
+                    <line x1="16" y1="16" x2="16" y2="13"></line>
+                  </svg>
+                  <span>Painel JET</span>
+                </h3>
+                <span class="jet-pillar-status">Visualização</span>
+              </div>
+              <p>Ambiente interativo organizado por abas setoriais para explorar gráficos, mapas e séries temporais. Oferece navegação ágil entre diferentes dimensões em um único painel.</p>
+            </div>
+            <span class="jet-pillar-btn"><span>Entrar no Painel JET</span><span>→</span></span>
+          </div>
+        </div>
+
+        <div id="jet-equipe-inicio" class="jet-landing-sec-title jet-scroll-reveal" style="margin-top: 8px;">
+          <small>Corpo Editorial</small>
+          <h2>Economistas Responsáveis</h2>
+          <p>Análises redigidas e assinadas por profissionais de economia, aproximando a pesquisa econômica da realidade regional.</p>
+        </div>
+
+        <div class="jet-team-grid">
+          <article class="jet-team-card jet-scroll-reveal">
+            <img src="assets/autores/tarcisio_iago.jpg" alt="Tarcisio Iago — Economista" style="object-position: 72% 16%;" />
+            <div class="jet-team-body">
+              <h3>Tarcisio Iago</h3>
+              <span class="jet-team-role">Economista</span>
+              <p>Economista no Jornal Econômico do Tocantins (JET). Dedica-se à análise de conjuntura regional, mercado de trabalho formal, comércio exterior e dinâmica empresarial tocantinense.</p>
+            </div>
+          </article>
+
+          <article class="jet-team-card jet-scroll-reveal">
+            <img src="assets/autores/lorenzo_costa.jpg" alt="Lorenzo Costa — Graduado em Economia" style="object-position: 28% 16%;" />
+            <div class="jet-team-body">
+              <h3>Lorenzo Costa</h3>
+              <span class="jet-team-role">Graduado em Economia</span>
+              <p>Graduado em Economia pela UFT e idealizador do Jornal Econômico do Tocantins (JET). Atua na análise macroeconômica, dessazonalização de séries e inteligência de dados públicos.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    `;
+
+    // 3. Visão Dedicada do Banco de Dados (Estrutura Prévia Minimalista)
+    const dbView = document.createElement("section");
+    dbView.id = "jet-database-view";
+    dbView.innerHTML = `
+      <div class="jet-landing-container" style="padding-top: 34px;">
+        <div class="jet-landing-sec-title jet-scroll-reveal" style="text-align:left; margin-bottom: 18px;">
+          <small>Infraestrutura de Dados Abertos • Em Implantação</small>
+          <h2>Banco de Dados Econômicos do Tocantins</h2>
+          <p style="margin:0; max-width:820px;">Este módulo reunirá para download direto (.CSV, .XLSX e dicionários metodológicos) as bases oficiais coletadas e tratadas pelo JET. Enquanto concluímos a catalogação, é possível explorar as visualizações no <strong>Painel JET</strong> ou ler as análises no <strong>Feed e Boletins</strong>.</p>
+        </div>
+
+        <div class="jet-db-grid">
+          <div class="jet-db-card jet-scroll-reveal">
+            <h4>Contas Regionais e PIB (TO)</h4>
+            <p>Séries trimestrais dessazonalizadas (X-13ARIMA-SEATS / SEPLAN-TO), comparativo nacional e contas regionais municipais.</p>
+            <span class="jet-db-badge">Base Estruturada • Em Catalogação</span>
+          </div>
+          <div class="jet-db-card jet-scroll-reveal">
+            <h4>Trabalho e Renda</h4>
+            <p>Microdados agregados do Novo CAGED, estoque depurado da RAIS por município e série da PNAD Contínua Trimestral.</p>
+            <span class="jet-db-badge">Base Estruturada • Em Catalogação</span>
+          </div>
+          <div class="jet-db-card jet-scroll-reveal">
+            <h4>Comércio Exterior (Comex Stat)</h4>
+            <p>Balança comercial mensal e anualizada, fluxos bilaterais por país parceiro e pauta por posição SH4.</p>
+            <span class="jet-db-badge">Base Estruturada • Em Catalogação</span>
+          </div>
+          <div class="jet-db-card jet-scroll-reveal">
+            <h4>Arrecadação e Finanças Públicas</h4>
+            <p>Receita tributária própria estadual (ICMS por atividade, IPVA e demais tributos) e transferências do FPE.</p>
+            <span class="jet-db-badge">Base Estruturada • Em Catalogação</span>
+          </div>
+          <div class="jet-db-card jet-scroll-reveal">
+            <h4>Demografia Empresarial e QSA</h4>
+            <p>Aberturas, baixas e estoque de CNPJs ativos por porte, optantes pelo Simples Nacional e perfil societário.</p>
+            <span class="jet-db-badge">Base Estruturada • Em Catalogação</span>
+          </div>
+          <div class="jet-db-card jet-scroll-reveal">
+            <h4>Agropecuária Regional</h4>
+            <p>Produção Agrícola Municipal (PAM) e Pecuária (PPM) do IBGE para os principais polos produtivos estaduais.</p>
+            <span class="jet-db-badge">Base Estruturada • Em Catalogação</span>
+          </div>
+        </div>
+
+        <div style="margin-top: 28px; display: flex; flex-wrap: wrap; gap: 12px;">
+          <button type="button" class="jet-pillar-btn" style="width:auto; padding:10px 22px;" onclick="window.switchJetView('painel')">Ir para o Painel JET →</button>
+          <a href="news.html" class="jet-pillar-btn subtle" style="width:auto; padding:10px 22px;">Ler Feed e Boletins →</a>
+        </div>
+      </div>
+    `;
+
+    document.body.insertBefore(dbView, headerDash);
+    document.body.insertBefore(landing, dbView);
+    document.body.insertBefore(ecoBar, landing);
+
+    const viewInicial = detectarViewPeloHash();
+    window.switchJetView(viewInicial, false);
+  }
+
+  // ============================================================================
   // 10. INICIALIZAÇÃO ROBUSTA COM SUPORTE TOTAL A DOCUMENT READY & ABAS
   // ============================================================================
   function iniciarPainel() {
+    criarEcossistemaJET();
     aplicarDatasAtualizacao();
     aplicarAvisosDessazonalizacao();
+    criarBarraMobileAcessoRapido();
+    registrarNavegacaoMobile();
     criarBarraTickerTopo();
     configurarBotaoAtualizar();
     registrarEventosAbaMercados();
     atualizarTudoTempoReal();
     atualizarGraficoCambioHistorico();
+    ajustarPlotlyMobile();
     setInterval(atualizarTudoTempoReal, INTERVALO_MS);
   }
 
@@ -3249,13 +4713,28 @@ Estamos na fase de lapidação e calibragem deste indicador. O IPER-TO será uma
     iniciarPainel();
   }
 
-  // Garante que ao alternar entre abas do dashboard, tudo se mantenha atualizado
-  document.addEventListener("shown.bs.tab", () => {
+  window.addEventListener("hashchange", () => {
+    const v = detectarViewPeloHash();
+    if (document.body.getAttribute("data-jet-view") !== v) {
+      window.switchJetView(v, false);
+    }
+  });
+
+  // Garante fluidez em 2 níveis (Expressiva na Visão Geral / Tímida nas Abas Setoriais)
+  document.addEventListener("shown.bs.tab", (ev) => {
+    const targetHref = (ev.target && (ev.target.getAttribute("data-bs-target") || ev.target.getAttribute("href"))) || "";
+    const paneId = targetHref.replace(/^#/, "");
+    const paneEl = paneId ? document.getElementById(paneId) : document.querySelector(".dashboard-page.tab-pane.active");
+    const modoAnim = ABAS_SETORIAIS_TIMIDAS.has(paneId) ? "subtle" : "macro";
+
     aplicarDatasAtualizacao();
     aplicarAvisosDessazonalizacao();
     atualizarVisibilidadeBarraTicker();
+    aplicarAnimacaoAba(paneEl, modoAnim);
+
     setTimeout(() => {
       window.dispatchEvent(new Event("resize"));
+      ajustarPlotlyMobile();
       if (window.Plotly) {
         document.querySelectorAll(".plotly.html-widget").forEach(el => {
           try { window.Plotly.Plots.resize(el); } catch (_) {}
@@ -3263,15 +4742,17 @@ Estamos na fase de lapidação e calibragem deste indicador. O IPER-TO será uma
       }
     }, 60);
     setTimeout(() => {
+      ajustarPlotlyMobile();
       window.dispatchEvent(new Event("resize"));
     }, 250);
   });
   window.addEventListener("load", () => {
     aplicarDatasAtualizacao();
     aplicarAvisosDessazonalizacao();
+    ajustarPlotlyMobile();
   });
-  setTimeout(() => { aplicarDatasAtualizacao(); aplicarAvisosDessazonalizacao(); }, 300);
-  setTimeout(() => { aplicarDatasAtualizacao(); aplicarAvisosDessazonalizacao(); }, 1000);
+  setTimeout(() => { aplicarDatasAtualizacao(); aplicarAvisosDessazonalizacao(); ajustarPlotlyMobile(); }, 300);
+  setTimeout(() => { aplicarDatasAtualizacao(); aplicarAvisosDessazonalizacao(); ajustarPlotlyMobile(); }, 1000);
 })();
 
 </script>

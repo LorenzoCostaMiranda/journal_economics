@@ -1,7 +1,7 @@
 TIPO: flash_comex
 TITULO: Balança comercial do Tocantins mantém superávit robusto no mês puxada pelo complexo soja e carnes
 SUBTITULO: Embarques para o mercado asiático sustentam geração líquida de divisas e compensam importação de fertilizantes
-AUTOR: Lorenzo Costa e Equipe | Jornal Econômico do Tocantins
+AUTOR: Tarcisio Iago | Economista — Jornal Econômico do Tocantins
 DATA: 30/10/2026
 PERIODO: Outubro/2026
 DESTAQUE_CURTO: Com exportações acumuladas de US$ 2,54 bilhões e saldo positivo de US$ 2,06 bilhões, o setor externo tocantinense registra índice de cobertura de 5,3 vezes sobre as compras externas.

@@ -1,7 +1,7 @@
 TIPO: flash_pib
 TITULO: Boletim Flash — PIB Trimestral do Tocantins e Comparativo Setorial com o Brasil
 SUBTITULO: Pareamento lado a lado entre a série dessazonalizada X-13ARIMA-SEATS (SEPLAN-TO) e a Tabela 1621 do IBGE, acrescido das Contas Regionais (Tabela 5938)
-AUTOR: Lorenzo Costa e Equipe | Jornal Econômico do Tocantins
+AUTOR: Lorenzo Costa | Graduado em Economia — Jornal Econômico do Tocantins
 DATA: 14/11/2026
 PERIODO: 1º Trimestre de 2026
 DESTAQUE_CURTO: Indústria (+3,1%) e Serviços (+1,5%) lideram a expansão trimestral dessazonalizada no Tocantins, compensando a acomodação sazonal da Agropecuária (-7,2%) e mantendo o PIB nominal trimestral em R$ 25,8 bilhões.

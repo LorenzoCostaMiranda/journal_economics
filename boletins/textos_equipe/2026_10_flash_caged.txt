@@ -1,7 +1,7 @@
 TIPO: flash_caged
 TITULO: Mercado de trabalho formal no Tocantins mantém geração líquida positiva puxada por Serviços e Construção
 SUBTITULO: Dinamismo nos polos regionais de Palmas, Araguaína e Gurupi sustenta baixa taxa de desocupação estadual
-AUTOR: Lorenzo Costa e Equipe | Jornal Econômico do Tocantins
+AUTOR: Tarcisio Iago | Economista — Jornal Econômico do Tocantins
 DATA: 29/10/2026
 PERIODO: Outubro/2026
 DESTAQUE_CURTO: Com saldo positivo no Novo CAGED e taxa de desocupação em 5,4%, o mercado de trabalho tocantinense demonstra resiliência mesmo diante de juros básicos elevados no cenário nacional.

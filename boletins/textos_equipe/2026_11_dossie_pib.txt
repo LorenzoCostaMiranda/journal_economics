@@ -1,7 +1,7 @@
 TIPO: dossie_pib
 TITULO: Dossiê Anual — PIB do Tocantins, Séries Dessazonalizadas e Contas Regionais
 SUBTITULO: Balanço estrutural sob a ótica acumulada em 4 trimestres e plurianual: comparação entre o ajuste sazonal X-13ARIMA-SEATS (TO), a Tabela 1621 do IBGE (Brasil) e o PIB Municipal (Tabela 5938)
-AUTOR: Lorenzo Costa e Equipe | Núcleo de Conjuntura do Jornal Econômico do Tocantins
+AUTOR: Lorenzo Costa | Graduado em Economia — Jornal Econômico do Tocantins
 DATA: 14/11/2026
 PERIODO: Consolidado Anual / Últimos 4 Trimestres (2025–2026)
 DESTAQUE_CURTO: Sob a ótica anualizada de quatro trimestres e das Contas Regionais do IBGE (Tabela 5938), o Tocantins sustenta ganho consistente de participação na Região Norte e no Brasil, combinando pujança primária com densificação industrial e de serviços nos dez maiores municípios.

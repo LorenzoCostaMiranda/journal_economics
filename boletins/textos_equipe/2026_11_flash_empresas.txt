@@ -1,7 +1,7 @@
 TIPO: flash_empresas
 TITULO: Boletim Flash — Dinâmica Empresarial, Simples Nacional e Quadro Societário (QSA)
 SUBTITULO: Evolução mensal do estoque de CNPJs ativos, participação de MEIs e Microempresas, tempos do Mapa de Empresas e perfil dos sócios no Tocantins
-AUTOR: Lorenzo Costa e Equipe | Jornal Econômico do Tocantins
+AUTOR: Tarcisio Iago | Economista — Jornal Econômico do Tocantins
 DATA: 14/11/2026
 PERIODO: Outubro/2026
 DESTAQUE_CURTO: O Tocantins atinge 167.565 CNPJs ativos (+2.760 novas inscrições no mês), com 86,9% concentrados em MEIs e Microempresas, 164.996 optantes pelo Simples Nacional e tempo médio de abertura de 18,5 horas.

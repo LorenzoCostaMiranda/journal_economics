@@ -363,7 +363,7 @@ gerar_tabela_padrao_html <- function(df, col_nomes, alinhamento, titulo_tabela, 
   } else ""
 
   sprintf(
-    '<div style="margin:12px 0;"><div style="font-weight:700; color:%s; font-size:0.90rem; margin-bottom:4px;">%s</div><div style="overflow-x:auto;"><table class="tabela-boletim-html"><thead><tr>%s</tr></thead><tbody>%s</tbody></table></div>%s</div>',
+    '<div style="margin:12px 0;"><div style="font-weight:700; color:%s; font-size:0.90rem; margin-bottom:4px;">%s</div><div class="jet-tabela-scroll" style="overflow-x:auto; -webkit-overflow-scrolling:touch;"><table class="tabela-boletim-html"><thead><tr>%s</tr></thead><tbody>%s</tbody></table></div>%s</div>',
     cor_primaria, escapar_html(titulo_tabela), ths, trs, nota_h
   )
 }
@@ -741,18 +741,61 @@ for (idx_arq in seq_along(arquivos_txt)) {
 
     # Adiciona ao catálogo público do site (news.qmd) se for FLASH ou Dossiê Anual (Cartas ficam apenas em PDF p/ assinantes)
     if (isTRUE(id_ed$publicar_no_site)) {
+      # Localiza thumbnail PNG gerada para este boletim (para cards e feed estilo G1)
+      pngs_slug <- sort(list.files("boletins/figuras", pattern = paste0("^", slug, "_.*\\.png$")))
+      thumb_png <- if (length(pngs_slug) > 0) paste0("boletins/figuras/", pngs_slug[1]) else ""
+
+      # Gera 2 destaques curtos em formato bullet jornalístico (estilo G1)
+      bullets_feed <- character(0)
+      if (!is.null(dados_tm$kpis) && length(dados_tm$kpis) > 0) {
+        bullets_feed <- vapply(dados_tm$kpis[seq_len(min(2L, length(dados_tm$kpis)))], function(k) {
+          sprintf("%s: %s (%s)", k$rotulo, k$valor, k$sub)
+        }, character(1))
+      } else if (!is.null(dados_tm$diag_lista) && length(dados_tm$diag_lista) > 0) {
+        bullets_feed <- vapply(dados_tm$diag_lista[seq_len(min(2L, length(dados_tm$diag_lista)))], function(d) {
+          sprintf("%s: %s", d$nome, d$valor_fmt)
+        }, character(1))
+      }
+
+      # Mapeia perfil humano do economista responsável pelo post
+      autor_lower <- tolower(meta$autor)
+      if (grepl("tarc", autor_lower)) {
+        autor_id       <- "tarcisio"
+        autor_nome     <- "Tarcisio Iago"
+        autor_titulo   <- "Economista"
+        autor_foto     <- "assets/autores/tarcisio_iago.jpg"
+        autor_foto_pos <- "72% 18%"
+        autor_bio      <- "Economista no Jornal Econômico do Tocantins (JET). Dedica-se à análise de conjuntura regional, mercado de trabalho formal, comércio exterior e dinâmica empresarial tocantinense."
+      } else {
+        autor_id       <- "lorenzo"
+        autor_nome     <- "Lorenzo Costa"
+        autor_titulo   <- "Graduado em Economia"
+        autor_foto     <- "assets/autores/lorenzo_costa.jpg"
+        autor_foto_pos <- "28% 18%"
+        autor_bio      <- "Graduado em Economia pela UFT e editor do Jornal Econômico do Tocantins (JET). Atua na análise macroeconômica, dessazonalização de séries temporais e inteligência de dados econômicos."
+      }
+
       catalogo_boletins[[length(catalogo_boletins) + 1]] <- list(
         slug                    = slug,
         tipo                    = meta$tipo,
         estilo_layout           = id_ed$estilo_layout,
         categoria               = dados_tm$categoria_nome,
+        tema_nome               = dados_tm$tema_nome,
         titulo                  = meta$titulo,
         subtitulo               = meta$subtitulo,
         autor                   = meta$autor,
+        autor_id                = autor_id,
+        autor_nome              = autor_nome,
+        autor_titulo            = autor_titulo,
+        autor_foto              = autor_foto,
+        autor_foto_pos          = autor_foto_pos,
+        autor_bio               = autor_bio,
         data                    = meta$data,
         periodo                 = meta$periodo,
         fonte_curta             = dados_tm$fonte_curta,
         destaque_curto          = meta$destaque_curto,
+        bullets_feed            = bullets_feed,
+        thumb_png               = thumb_png,
         cor_primaria            = id_ed$cor_primaria_css,
         cor_secundaria          = id_ed$cor_secundaria_css,
         cor_acento              = id_ed$cor_acento_css,

@@ -1,7 +1,7 @@
 TIPO: flash_icms
 TITULO: Arrecadação de ICMS no Tocantins avança sustentada pelo comércio atacadista e setor de combustíveis
 SUBTITULO: Receita própria estadual ganha tração e equilibra a composição fiscal ao lado das transferências federais do FPE
-AUTOR: Lorenzo Costa e Equipe | Jornal Econômico do Tocantins
+AUTOR: Lorenzo Costa | Graduado em Economia — Jornal Econômico do Tocantins
 DATA: 29/10/2026
 PERIODO: Outubro/2026
 DESTAQUE_CURTO: O desempenho positivo da arrecadação tributária própria reflete o maior giro mercantil no corredor logístico da BR-153 e a expansão do consumo interno no Estado.

@@ -1,7 +1,7 @@
 TIPO: dossie_trabalho
 TITULO: Dossiê Anual — Mercado de Trabalho Formal (RAIS e Novo CAGED) e PNAD nas 27 UFs
 SUBTITULO: Avaliação em perspectiva de 12 meses do estoque de vínculos ativos sem abandonados (RAIS), saldo acumulado de vagas (Novo CAGED), Top 5 municípios e ranking nacional de desocupação (Tabela 4099 IBGE)
-AUTOR: Lorenzo Costa e Equipe | Núcleo de Conjuntura do Jornal Econômico do Tocantins
+AUTOR: Tarcisio Iago | Economista — Jornal Econômico do Tocantins
 DATA: 14/11/2026
 PERIODO: Balanço Anual / 12 Meses (2025–2026)
 DESTAQUE_CURTO: Com 437.580 vínculos formais ativos na RAIS (em 33.198 estabelecimentos), remuneração média de R$ 4.022,93 e taxa de desocupação de apenas 4,1% na PNAD Contínua, o Tocantins consolida uma das melhores trajetórias laborais do país em 12 meses.

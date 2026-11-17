@@ -1,7 +1,7 @@
 TIPO: fechamento_comex
 TITULO: Balanço Consolidado do Comércio Exterior Tocantinense: Superávit estrutural e avanço das cadeias agroindustriais
 SUBTITULO: Análise integrada da pauta exportadora, dependências de insumos importados e posicionamento competitivo do Estado no mercado internacional
-AUTOR: Lorenzo Costa e Equipe | Jornal Econômico do Tocantins
+AUTOR: Tarcisio Iago | Economista — Jornal Econômico do Tocantins
 DATA: 29/10/2026
 PERIODO: Consolidado 2026
 DESTAQUE_CURTO: O Tocantins consolida saldo comercial superavitário de US$ 2,06 bilhões na parcial consolidada, sustentado pela força da soja em grãos, da proteína bovina refrigerada/congelada e do milho, enquanto a pauta importadora confirma forte investimento em fertilizantes e maquinário produtivo.

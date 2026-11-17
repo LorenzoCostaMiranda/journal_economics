@@ -1,7 +1,7 @@
 TIPO: dossie_empresas
 TITULO: Dossiê Anual — Demografia Empresarial, Simples Nacional e Quadro Societário (QSA)
 SUBTITULO: Balanço de 12 meses das aberturas, baixas e estoque de CNPJs ativos por porte (MEI, ME e EPP), adesão ao Simples Nacional, perfil societário (QSA) e eficiência da REDESIM no Tocantins
-AUTOR: Lorenzo Costa e Equipe | Núcleo de Conjuntura do Jornal Econômico do Tocantins
+AUTOR: Lorenzo Costa | Graduado em Economia — Jornal Econômico do Tocantins
 DATA: 14/11/2026
 PERIODO: Acumulado em 12 Meses (Novembro/2025 a Outubro/2026)
 DESTAQUE_CURTO: Nos últimos 12 meses, o Tocantins acumulou saldo líquido positivo de +15.608 empresas (32.893 aberturas contra 17.285 baixas), elevando o parque ativo para 167.565 CNPJs e 102.075 sócios ativos no QSA.

@@ -1,7 +1,7 @@
 TIPO: flash_panorama
 TITULO: Boletim Flash — Visão Geral: Pulso Macroeconômico de Curto Prazo do Tocantins
 SUBTITULO: Monitoramento integrado das variações entre períodos subsequentes em atividade, mercado de trabalho, arrecadação de ICMS e abertura de empresas
-AUTOR: Lorenzo Costa e Equipe | Jornal Econômico do Tocantins
+AUTOR: Lorenzo Costa | Graduado em Economia — Jornal Econômico do Tocantins
 DATA: 14/11/2026
 PERIODO: Novembro/2026
 DESTAQUE_CURTO: O painel antecedente aponta manutenção do baixo desemprego estadual (4,1%) e ritmo consistente de abertura de novos CNPJs (2.760 no mês), amortecendo oscilações sazonais da atividade primária e da arrecadação tributária.
