@@ -70,22 +70,20 @@
 \fancyfoot[L]{\scriptsize\color{cinzasub}\textbf{\color{corprimaria}Jornal Econômico do Tocantins} $\cdot$ {{TEMA_NOME}} $\cdot$ Publicado em {{DATA_PUBLICACAO}}}
 \fancyfoot[R]{\scriptsize\bfseries\color{corprimaria}Pág. \thepage\ de \pageref*{LastPage}}
 
-% Comando para Títulos de Seção Estilo Jornal Financeiro
+% Título de Seção Editorial Limpo (Fio fino inferior, sem bloco escuro pesado)
 \newcommand{\secaoboletim}[1]{%
-  \par\vspace{0.16cm}%
-  \noindent\begin{tikzpicture}
-    \fill[corprimaria] (0,0) rectangle (\textwidth, 0.52);
-    \fill[douradoto] (0,0) rectangle (0.16, 0.52);
-    \node[anchor=west, font=\small\bfseries, text=white] at (0.30, 0.26) {\MakeUppercase{#1}};
-  \end{tikzpicture}%
-  \par\vspace{0.08cm}%
+  \par\vspace{0.18cm}%
+  \noindent{\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}\MakeUppercase{#1}}%
+  \par\vspace{2pt}%
+  {\color{douradoto}\hrule height 1.0pt}%
+  \vspace{0.08cm}%
 }
 
 \newcommand{\subsecaoboletim}[1]{%
   \par\vspace{0.10cm}%
-  \noindent{\small\bfseries\color{corprimaria}\rule{0.14cm}{0.26cm}\hspace{5pt}#1}%
+  \noindent{\small\bfseries\color{corprimaria}#1}%
   \par\vspace{0.03cm}%
-  {\color{douradoto}\hrule height 0.6pt}%
+  {\color{cinzaborda}\hrule height 0.5pt}%
   \vspace{0.06cm}%
 }
 
@@ -93,32 +91,23 @@
 \color{cinzatexto}
 
 % ==============================================================================
-% MASTHEAD DE JORNAL ECONÔMICO (AUTO-AJUSTÁVEL, SEM SOBREPOSIÇÃO DE TEXTO)
+% MASTHEAD EDITORIAL CLARO ESTILO PERIÓDICO FINANCEIRO (ZERO BLOCOS PESADOS)
 % ==============================================================================
-\noindent\begin{tikzpicture}
-  \node[
-    fill=corprimaria,
-    inner xsep=12pt,
-    inner ysep=10pt,
-    text width=\textwidth-24pt,
-    align=left
-  ] (masthead) {
-    % Linha superior do cabeçalho do jornal
-    \hbox to \linewidth{%
-      {\colorbox{douradoto}{\strut\hspace{4pt}\scriptsize\bfseries\color{corprimaria}{{TIPO_PUBLICACAO_UPPER}} $\cdot$ {{EDICAO_NUMERO}}\hspace{4pt}}}%
-      \hfill
-      {\scriptsize\color{white}\textbf{JORNAL ECONÔMICO DO TOCANTINS} \enspace{\color{douradoto}$\vert$}\enspace Ref.: \textbf{{{PERIODO_REFERENCIA}}} \enspace{\color{douradoto}$\vert$}\enspace {{DATA_PUBLICACAO}}}%
-    }%
-    \par\vspace{5pt}%
-    {\color{douradoto}\hrule height 0.8pt}%
-    \par\vspace{6pt}%
-    % Título Principal e Subtítulo com quebra automática limpa
-    {\fontsize{13.5}{16.2}\selectfont\bfseries\color{white}{{TITULO_DOCUMENTO}}\par}%
-    \vspace{3.5pt}%
-    {\footnotesize\color{corfundo}{{SUBTITULO_DOCUMENTO}}\par}%
-  };
-  \fill[douradoto] (masthead.south west) rectangle ([yshift=-2.5pt]masthead.south east);
-\end{tikzpicture}
+\noindent{\color{corprimaria}\hrule height 2.2pt}%
+\par\vspace{2pt}%
+{\color{douradoto}\hrule height 0.8pt}%
+\par\vspace{6pt}%
+\noindent\hbox to \linewidth{%
+  {\scriptsize\bfseries\color{douradoto}\MakeUppercase{{{TIPO_PUBLICACAO_UPPER}}} \enspace$\cdot$\enspace {{EDICAO_NUMERO}}}%
+  \hfill
+  {\scriptsize\color{cinzasub}\textbf{\color{corprimaria}JORNAL ECONÔMICO DO TOCANTINS} \enspace$\vert$\enspace Ref.: \textbf{{{PERIODO_REFERENCIA}}} \enspace$\vert$\enspace {{DATA_PUBLICACAO}}}%
+}%
+\par\vspace{5pt}%
+{\fontsize{14.5}{17.4}\selectfont\bfseries\color{corprimaria}{{TITULO_DOCUMENTO}}\par}%
+\vspace{3pt}%
+{\footnotesize\itshape\color{cinzasub}{{SUBTITULO_DOCUMENTO}}\par}%
+\par\vspace{6pt}%
+{\color{cinzaborda}\hrule height 0.6pt}%
 
 \vspace{0.14cm}
 

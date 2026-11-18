@@ -9,6 +9,9 @@ format:
 ---
 
 ```{=html}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,700;0,6..72,800;1,6..72,400;1,6..72,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 /* ==========================================================================
    SÍMBOLO ELEGANTE DE ATUALIZAÇÃO RECENTE ("ATUALIZADO")
@@ -1018,23 +1021,41 @@ body, .bslib-page-dashboard {
   }
   #câmbio-e-mercados .bslib-value-box {
     min-height: 76px !important;
-    padding: 6px 10px !important;
+    padding: 0 !important;
   }
   #câmbio-e-mercados .bslib-value-box .card-body {
-    min-height: 62px !important;
-    padding: 6px 10px !important;
+    min-height: 64px !important;
+    padding: 8px 10px !important;
+  }
+  #câmbio-e-mercados .bslib-value-box .value-box-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+  #câmbio-e-mercados .bslib-value-box .value-box-area {
+    flex: 1 1 0% !important;
+    padding: 0 !important;
+    min-width: 0 !important;
   }
   #câmbio-e-mercados .bslib-value-box .value-box-title {
-    font-size: 0.68rem !important;
-    line-height: 1.15 !important;
+    font-size: 0.70rem !important;
+    line-height: 1.2 !important;
+    word-break: normal !important;
+    overflow-wrap: break-word !important;
   }
   #câmbio-e-mercados .bslib-value-box .value-box-value {
-    font-size: 1.12rem !important;
-    white-space: nowrap !important;
+    font-size: clamp(0.86rem, 1.0vw, 1.04rem) !important;
+    line-height: 1.18 !important;
+    white-space: normal !important;
   }
   #câmbio-e-mercados .bslib-value-box .value-box-showcase {
-    width: 28px !important;
-    max-width: 30px !important;
+    flex: 0 0 24px !important;
+    width: 24px !important;
+    max-width: 24px !important;
+    padding: 0 !important;
+    font-size: 0.95rem !important;
   }
 }
 .mercados-card-wrap {
@@ -1590,32 +1611,32 @@ body, .bslib-page-dashboard {
 }
 
 /* ==========================================================================
-   BARRA GLOBAL DE ECOSSISTEMA JET & PÁGINA INICIAL (GATEWAY + BANCO DE DADOS)
+   BARRA GLOBAL DE ECOSSISTEMA JET & PÁGINA INICIAL EDITORIAL (DESIGN SYSTEM)
    ========================================================================== */
 #jet-ecosystem-bar {
   position: sticky;
   top: 0;
   z-index: 1200;
   background: rgba(255, 255, 255, 0.97);
-  backdrop-filter: blur(10px);
-  border-bottom: 2px solid #0f2537;
-  box-shadow: 0 3px 14px rgba(15, 37, 55, 0.06);
+  backdrop-filter: blur(8px);
+  border-bottom: 1.5px solid #0f2537;
   width: 100%;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
 }
 .jet-eco-inner {
-  max-width: 1280px;
+  max-width: 1260px;
   margin: 0 auto;
-  padding: 7px 18px;
+  padding: 9px 22px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 14px;
   flex-wrap: wrap;
 }
 .jet-eco-brand {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
+  gap: 11px;
   background: none;
   border: none;
   padding: 0;
@@ -1629,37 +1650,36 @@ body, .bslib-page-dashboard {
   justify-content: center;
   width: 34px;
   height: 34px;
-  border-radius: 7px;
-  background: linear-gradient(135deg, #0f2537 0%, #1c3b57 100%);
+  border-radius: 4px;
+  background: #0f2537;
   color: #c8942b;
   border: 1.5px solid #c8942b;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: "Newsreader", Georgia, "Times New Roman", serif;
   font-size: 0.78rem;
-  font-weight: 900;
-  letter-spacing: 0.5px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
   flex-shrink: 0;
-  box-shadow: 0 2px 6px rgba(15, 37, 55, 0.16);
 }
 .jet-eco-brand-txt strong {
   display: block;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 0.95rem;
-  font-weight: 900;
+  font-family: "Newsreader", Georgia, "Times New Roman", serif;
+  font-size: 1.04rem;
+  font-weight: 800;
   color: #0f2537;
-  line-height: 1.15;
+  line-height: 1.1;
 }
 .jet-eco-brand-txt span {
   display: block;
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.45px;
+  font-size: 0.63rem;
+  font-weight: 600;
+  letter-spacing: 0.85px;
   text-transform: uppercase;
   color: #64748b;
 }
 .jet-eco-nav {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   flex-wrap: wrap;
 }
 .jet-eco-btn {
@@ -1667,34 +1687,31 @@ body, .bslib-page-dashboard {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-size: 0.88rem;
+  padding: 9px 18px;
+  border-radius: 5px;
+  font-size: 0.86rem;
   font-weight: 700;
   color: #0f2537 !important;
   background: #ffffff;
-  border: 1.5px solid #cbd5e1;
+  border: 1px solid #cbd5e1;
   text-decoration: none !important;
   cursor: pointer;
   letter-spacing: 0.1px;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
 }
 .jet-eco-btn:hover {
-  background: #f8fafc;
+  background: #faf8f5;
   border-color: #0f2537;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(15, 37, 55, 0.08);
 }
 .jet-eco-btn.active {
   background: #0f2537;
   color: #ffffff !important;
   border-color: #0f2537;
   border-bottom: 3px solid #c8942b;
-  box-shadow: 0 4px 14px rgba(15, 37, 55, 0.18);
 }
 .jet-panel-svg {
-  width: 16px;
-  height: 16px;
+  width: 15px;
+  height: 15px;
   flex-shrink: 0;
   display: inline-block;
 }
@@ -1706,7 +1723,7 @@ body[data-jet-view="database"] {
   min-height: 100vh !important;
   overflow-y: auto !important;
   overflow-x: hidden !important;
-  background-color: #f4f6f9 !important;
+  background-color: #faf8f5 !important;
 }
 body[data-jet-view="landing"] #quarto-dashboard-header,
 body[data-jet-view="landing"] .quarto-dashboard-content,
@@ -1737,150 +1754,168 @@ body[data-jet-view="painel"] #jet-database-view {
 }
 
 @keyframes jetGatewaySwap {
-  0% { opacity: 0; transform: translateY(14px); }
+  0% { opacity: 0; transform: translateY(10px); }
   100% { opacity: 1; transform: translateY(0); }
 }
 body[data-jet-view="landing"] #jet-landing-gateway,
 body[data-jet-view="database"] #jet-database-view {
   display: block;
-  animation: jetGatewaySwap 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: jetGatewaySwap 0.42s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-/* Scroll Reveal da Página Inicial e Banco de Dados */
+/* Scroll Reveal Suave */
 .jet-scroll-reveal {
   opacity: 0;
-  transform: translateY(22px) scale(0.985);
-  transition: opacity 0.60s cubic-bezier(0.16, 1, 0.3, 1), transform 0.60s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(16px);
+  transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1), transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
   transition-delay: var(--jet-delay, 0ms);
 }
 .jet-scroll-reveal.is-revealed {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  transform: translateY(0);
 }
 
-/* Estilos da Página Inicial Minimalista (#jet-landing-gateway) */
+/* ==========================================================================
+   PÁGINA INICIAL EDITORIAL (#jet-landing-gateway) — GRID SUÍÇO DE FIOS FINOS
+   ========================================================================== */
 #jet-landing-gateway,
 #jet-database-view {
   width: 100%;
   color: #1e293b;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
 }
 .jet-hero-section {
   background: #ffffff;
   color: #0f2537;
-  padding: 52px 20px 42px 20px;
-  border-bottom: 1px solid #e2e8f0;
+  padding: 48px 24px 40px 24px;
+  border-bottom: 1px solid #cbd5e1;
   text-align: center;
 }
 .jet-hero-inner {
   max-width: 820px;
   margin: 0 auto;
 }
-.jet-hero-rule {
-  width: 54px;
-  height: 3px;
-  background: #c8942b;
-  margin: 0 auto 18px auto;
-  border-radius: 2px;
+.jet-hero-double-rule {
+  max-width: 140px;
+  margin: 0 auto 20px auto;
+  border-top: 2.5px solid #0f2537;
+  padding-top: 3px;
+  border-bottom: 1px solid #c8942b;
 }
 .jet-hero-kicker {
   display: block;
-  color: #64748b;
-  font-size: 0.74rem;
+  color: #9a6c11;
+  font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1.4px;
+  letter-spacing: 0.14em;
   margin-bottom: 10px;
 }
 .jet-hero-title {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(2rem, 3.8vw, 2.85rem);
-  font-weight: 900;
-  line-height: 1.12;
+  font-family: "Newsreader", Georgia, "Times New Roman", serif;
+  font-size: clamp(2.1rem, 4vw, 3.05rem);
+  font-weight: 800;
+  line-height: 1.08;
   margin: 0 0 16px 0;
   color: #0f2537;
+  letter-spacing: -0.02em;
 }
 .jet-hero-lead {
-  font-size: 1.04rem;
-  line-height: 1.65;
+  font-family: "Newsreader", Georgia, serif;
+  font-size: 1.12rem;
+  line-height: 1.62;
   color: #475569;
   margin: 0 auto;
-  max-width: 680px;
+  max-width: 670px;
 }
 
 .jet-landing-container {
   max-width: 1120px;
   margin: 0 auto;
-  padding: 40px 20px 58px 20px;
+  padding: 40px 24px 64px 24px;
 }
 .jet-landing-sec-title {
-  text-align: center;
-  margin-bottom: 26px;
+  text-align: left;
+  border-top: 2px solid #0f2537;
+  padding-top: 14px;
+  margin-bottom: 24px;
 }
 .jet-landing-sec-title small {
   display: block;
-  font-size: 0.74rem;
-  font-weight: 800;
+  font-size: 0.70rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1.2px;
-  color: #c8942b;
-  margin-bottom: 6px;
+  letter-spacing: 0.12em;
+  color: #9a6c11;
+  margin-bottom: 4px;
 }
 .jet-landing-sec-title h2 {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(1.38rem, 2.4vw, 1.85rem);
-  font-weight: 900;
+  font-family: "Newsreader", Georgia, "Times New Roman", serif;
+  font-size: clamp(1.42rem, 2.5vw, 1.9rem);
+  font-weight: 800;
   color: #0f2537;
-  margin: 0 0 8px 0;
+  margin: 0 0 6px 0;
 }
 .jet-landing-sec-title p {
   color: #475569;
   max-width: 680px;
-  margin: 0 auto;
-  font-size: 0.95rem;
+  margin: 0;
+  font-size: 0.94rem;
   line-height: 1.55;
 }
 
+/* Grade Contínua de 4 Quadrantes (Sem Caixas Pesadas / Sombras) */
 .jet-pillars-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 22px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-top: 3px solid #0f2537;
   margin-bottom: 52px;
 }
 .jet-pillar-card {
   background: #ffffff;
-  border: 1.5px solid #cbd5e1;
-  border-top: 4px solid #0f2537;
-  border-radius: 12px;
-  padding: 30px 28px;
-  min-height: 200px;
+  padding: 32px 32px;
+  min-height: 210px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: 0 4px 18px rgba(15, 37, 55, 0.04);
-  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease, border-color 0.25s ease;
+  border-right: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
   text-decoration: none !important;
   cursor: pointer;
   text-align: left;
+  transition: background-color 0.2s ease;
+}
+.jet-pillar-card:nth-child(2n) {
+  border-right: none;
+}
+.jet-pillar-card:nth-child(3),
+.jet-pillar-card:nth-child(4) {
+  border-bottom: none;
 }
 .jet-pillar-card:hover {
-  transform: translateY(-4px);
-  border-color: #0f2537;
-  box-shadow: 0 14px 30px rgba(15, 37, 55, 0.09);
+  background: #faf8f5;
 }
-.jet-pillar-card.gold-top { border-top-color: #c8942b; }
-.jet-pillar-card.slate-top { border-top-color: #475569; }
 .jet-pillar-card-head {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
   gap: 12px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
+}
+.jet-pillar-num {
+  font-family: "Newsreader", Georgia, serif;
+  font-style: italic;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #c8942b;
+  flex-shrink: 0;
 }
 .jet-pillar-card h3 {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.42rem;
-  font-weight: 900;
+  font-family: "Newsreader", Georgia, "Times New Roman", serif;
+  font-size: 1.48rem;
+  font-weight: 800;
   color: #0f2537;
   margin: 0;
   display: inline-flex;
@@ -1888,153 +1923,152 @@ body[data-jet-view="database"] #jet-database-view {
   gap: 10px;
 }
 .jet-pillar-panel-icon {
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
   color: #0f2537;
   flex-shrink: 0;
 }
-.jet-pillar-status {
-  font-size: 0.70rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.6px;
-  color: #64748b;
-  border: 1px solid #e2e8f0;
-  background: #f8fafc;
-  padding: 3px 9px;
-  border-radius: 6px;
-}
 .jet-pillar-card p {
-  font-size: 0.94rem;
-  line-height: 1.60;
+  font-size: 0.93rem;
+  line-height: 1.62;
   color: #475569;
   margin: 0 0 22px 0;
 }
+.jet-pillar-action-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #0f2537;
+  border-bottom: 1.5px solid #c8942b;
+  padding-bottom: 2px;
+  align-self: flex-start;
+  transition: gap 0.2s ease, color 0.2s ease;
+}
+.jet-pillar-card:hover .jet-pillar-action-link {
+  gap: 12px;
+  color: #9a6c11;
+}
+
+/* Botões utilitários para Banco de Dados */
 .jet-pillar-btn {
   display: inline-flex;
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding: 12px 16px;
-  border-radius: 8px;
-  font-size: 0.88rem;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 0.84rem;
   font-weight: 700;
   text-decoration: none !important;
   cursor: pointer;
   background: #0f2537;
   color: #ffffff !important;
   border: 1px solid #0f2537;
-  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
-  box-sizing: border-box;
+  border-bottom: 2px solid #c8942b;
+  transition: opacity 0.18s ease;
 }
-.jet-pillar-card:hover .jet-pillar-btn,
 .jet-pillar-btn:hover {
-  background: #c8942b;
-  border-color: #c8942b;
-  color: #0f2537 !important;
+  opacity: 0.9;
 }
 .jet-pillar-btn.subtle {
-  background: #f8fafc;
+  background: #ffffff;
   color: #0f2537 !important;
-  border-color: #cbd5e1;
-}
-.jet-pillar-card:hover .jet-pillar-btn.subtle {
-  background: #0f2537;
-  color: #ffffff !important;
-  border-color: #0f2537;
+  border: 1px solid #cbd5e1;
 }
 
+/* Perfis de Colunistas / Economistas sem Caixas Pesadas */
 .jet-team-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 22px;
-}
-.jet-team-card {
+  gap: 32px;
   background: #ffffff;
   border: 1px solid #cbd5e1;
-  border-radius: 12px;
-  overflow: hidden;
-  display: grid;
-  grid-template-columns: 185px 1fr;
-  box-shadow: 0 4px 16px rgba(15, 37, 55, 0.05);
+  padding: 28px 32px;
+}
+.jet-team-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding-right: 16px;
+  border-right: 1px solid #e2e8f0;
+}
+.jet-team-card:last-child {
+  border-right: none;
+  padding-right: 0;
 }
 .jet-team-card img {
-  width: 100%;
-  height: 100%;
-  min-height: 210px;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
   object-fit: cover;
+  flex-shrink: 0;
+  border: 2px solid #c8942b;
   display: block;
 }
-.jet-team-body {
-  padding: 20px 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
 .jet-team-body h3 {
-  font-family: Georgia, serif;
-  font-size: 1.18rem;
-  font-weight: 900;
+  font-family: "Newsreader", Georgia, serif;
+  font-size: 1.28rem;
+  font-weight: 800;
   color: #0f2537;
-  margin: 0 0 4px 0;
+  margin: 0 0 2px 0;
 }
 .jet-team-role {
-  display: inline-block;
-  align-self: flex-start;
+  display: block;
   font-size: 0.72rem;
-  font-weight: 800;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  background: #fdf7eb;
-  color: #0f2537;
-  border: 1px solid #e5c687;
-  padding: 3px 9px;
-  border-radius: 4px;
-  margin-bottom: 10px;
+  letter-spacing: 0.09em;
+  color: #9a6c11;
+  margin-bottom: 8px;
 }
 .jet-team-body p {
-  font-size: 0.86rem;
-  line-height: 1.52;
+  font-size: 0.87rem;
+  line-height: 1.56;
   color: #475569;
   margin: 0;
 }
 
-/* Banco de Dados (Estrutura Prévia) */
+/* Banco de Dados (Estrutura Prévia Editorial) */
 .jet-db-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-top: 3px solid #0f2537;
   margin-top: 22px;
 }
 .jet-db-card {
-  background: #ffffff;
-  border: 1px solid #cbd5e1;
-  border-left: 4px solid #0b5d32;
-  border-radius: 10px;
-  padding: 18px;
-  box-shadow: 0 2px 10px rgba(15, 37, 55, 0.04);
+  padding: 22px 22px;
+  border-right: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+}
+.jet-db-card:nth-child(3n) {
+  border-right: none;
+}
+.jet-db-card:nth-child(n+4) {
+  border-bottom: none;
 }
 .jet-db-card h4 {
-  font-family: Georgia, serif;
-  font-size: 1.02rem;
+  font-family: "Newsreader", Georgia, serif;
+  font-size: 1.08rem;
   font-weight: 800;
   color: #0f2537;
   margin: 0 0 6px 0;
 }
 .jet-db-card p {
-  font-size: 0.82rem;
+  font-size: 0.84rem;
   color: #475569;
-  line-height: 1.48;
+  line-height: 1.52;
   margin: 0 0 10px 0;
 }
 .jet-db-badge {
   font-size: 0.68rem;
   font-weight: 700;
-  color: #0b5d32;
-  background: #ecfdf5;
-  border: 1px solid #a7f3d0;
-  padding: 2px 8px;
-  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #9a6c11;
 }
 
 .jet-hero-grid > *,
@@ -2077,15 +2111,36 @@ body[data-jet-view="database"] #jet-database-view {
   .jet-hero-section {
     padding: 32px 14px 26px 14px;
   }
-  .jet-pillar-card {
+  .jet-team-card {
+    flex-direction: column;
+    border-right: none;
+    border-bottom: 1px solid #e2e8f0;
+    padding-right: 0;
+    padding-bottom: 20px;
+  }
+  .jet-team-card:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  .jet-team-grid {
     padding: 20px 18px;
+    gap: 20px;
+  }
+  .jet-pillar-card {
+    border-right: none !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+    padding: 22px 18px;
     min-height: auto;
   }
-  .jet-team-card {
-    grid-template-columns: 1fr;
+  .jet-pillar-card:last-child {
+    border-bottom: none !important;
   }
-  .jet-team-card img {
-    height: 210px;
+  .jet-db-card {
+    border-right: none !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+  }
+  .jet-db-card:last-child {
+    border-bottom: none !important;
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -2201,6 +2256,9 @@ trimestres <- c("T3 2024", "T4 2024", "T1 2025", "T2 2025", "T3 2025", "T4 2025"
 #  {.sidebar}
 
 ```{=html}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,700;0,6..72,800;1,6..72,400;1,6..72,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 .jet-sidebar-newspaper {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -2352,9 +2410,9 @@ trimestres <- c("T3 2024", "T4 2024", "T1 2025", "T2 2025", "T3 2025", "T4 2025"
   </div>
   <div class="jet-sidebar-tabs">
     <button type="button" class="jet-sidebar-tab active" onclick="filtrarBoletinsSidebar('todos', this)">Todos</button>
-    <button type="button" class="jet-sidebar-tab" onclick="filtrarBoletinsSidebar('flash', this)">⚡ Flash</button>
-    <button type="button" class="jet-sidebar-tab" onclick="filtrarBoletinsSidebar('dossie', this)">📕 Dossiês</button>
-    <button type="button" class="jet-sidebar-tab" onclick="filtrarBoletinsSidebar('carta', this)">📘 Carta</button>
+    <button type="button" class="jet-sidebar-tab" onclick="filtrarBoletinsSidebar('flash', this)">Flash</button>
+    <button type="button" class="jet-sidebar-tab" onclick="filtrarBoletinsSidebar('dossie', this)">Dossiês</button>
+    <button type="button" class="jet-sidebar-tab" onclick="filtrarBoletinsSidebar('carta', this)">Carta</button>
   </div>
 ```
 
@@ -2364,15 +2422,15 @@ cat("```{=html}\n")
 # Card Especial: Carta de Conjuntura Integrada
 if (file.exists("boletins/pdfs/2026_10_carta_pib.pdf")) {
   cat(
-    '<div class="jet-sidebar-card" data-jet-fam="carta" style="border-left-color:#0A2E73; background:#F3F6FB;">',
+    '<div class="jet-sidebar-card" data-jet-fam="carta" style="border-left-color:#0F2537; background:#FAF8F5;">',
     '  <div class="jet-sidebar-card-top">',
-    '    <span class="jet-sidebar-badge" style="background:#0A2E73; color:#8CE000;">Carta de Conjuntura</span>',
+    '    <span class="jet-sidebar-badge" style="background:#0F2537; color:#C8942B;">Carta de Conjuntura</span>',
     '    <span class="jet-sidebar-period">Ed. Especial</span>',
     '  </div>',
-    '  <a href="news.html#caderno-carta-conjuntura" class="jet-sidebar-headline" style="color:#0A2E73;">Carta de Conjuntura Econômica do Tocantins</a>',
+    '  <a href="news.html#caderno-carta-conjuntura" class="jet-sidebar-headline" style="color:#0F2537;">Carta de Conjuntura Econômica do Tocantins</a>',
     '  <div class="jet-sidebar-actions">',
-    '    <a href="news.html#caderno-carta-conjuntura" class="jet-sidebar-link-ler" style="color:#0A2E73 !important;">Ver edição →</a>',
-    '    <a href="boletins/pdfs/2026_10_carta_pib.pdf" target="_blank" class="jet-sidebar-btn-pdf" style="background:#0A2E73; color:#ffffff !important;">📄 PDF</a>',
+    '    <a href="news.html#caderno-carta-conjuntura" class="jet-sidebar-link-ler" style="color:#0F2537 !important;">Ver edição →</a>',
+    '    <a href="boletins/pdfs/2026_10_carta_pib.pdf" target="_blank" class="jet-sidebar-btn-pdf" style="background:#0F2537; color:#FAF8F5 !important;">PDF</a>',
     '  </div>',
     '</div>\n',
     sep = "\n"
@@ -2384,13 +2442,13 @@ if (exists('catalogo_boletins') && length(catalogo_boletins) > 0) {
     b <- catalogo_boletins[[i]]
     eh_dossie <- identical(b$estilo_layout, "periodico")
     fam_str   <- if (eh_dossie) "dossie" else "flash"
-    cor_borda <- if (eh_dossie) "#0B5D32" else "#0F2537"
-    cor_bg_bd <- if (eh_dossie) "#0B5D32" else "#0F2537"
-    cor_tx_bd <- if (eh_dossie) "#FAF6EE" else "#C8942B"
+    cor_borda <- if (eh_dossie) "#9A6C11" else "#0F2537"
+    cor_bg_bd <- if (eh_dossie) "#FAF8F5" else "#0F2537"
+    cor_tx_bd <- if (eh_dossie) "#0F2537" else "#C8942B"
     rot_badge <- if (eh_dossie) "Dossiê Anual" else "Boletim Flash"
     btn_pdf   <- if (isTRUE(b$tem_pdf)) {
-      sprintf('<a href="%s" target="_blank" class="jet-sidebar-btn-pdf" style="background:%s; color:%s !important;">📄 PDF</a>',
-              b$pdf_url, cor_bg_bd, ifelse(eh_dossie, "#ffffff", "#C8942B"))
+      sprintf('<a href="%s" target="_blank" class="jet-sidebar-btn-pdf" style="background:#0F2537; color:%s !important;">PDF</a>',
+              b$pdf_url, ifelse(eh_dossie, "#FAF8F5", "#C8942B"))
     } else ""
 
     cat(sprintf(
@@ -2417,7 +2475,7 @@ cat("```\n")
 ```
 
 ```{=html}
-  <a href="news.html" class="jet-btn-portal-completo">📰 Abrir Caderno Completo de Publicações →</a>
+  <a href="news.html" class="jet-btn-portal-completo">Abrir Caderno Completo de Publicações →</a>
 </div>
 <script>
 function filtrarBoletinsSidebar(fam, btn) {
@@ -3536,9 +3594,9 @@ cat(sprintf(
 (function() {
   const INTERVALO_MS = 30000; // 30 segundos em tempo real no navegador
 
-  // Ponte opcional para Google Sheets (=GOOGLEFINANCE() publicado como CSV):
-  // Cole aqui o URL ".../pub?output=csv" caso queira priorizar sua planilha Google Finanças.
-  const GOOGLE_FINANCE_CSV_URL = "";
+  // Ponte Google Sheets (=GOOGLEFINANCE() publicado como CSV):
+  // Planilha "JET - Cotacoes Tempo Real (Google Finance)" publicada em CSV (CORS livre).
+  const GOOGLE_FINANCE_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSAhUWdagW5b2c3CILb8x4EqwUHn-YHBXU5Gwjg7GkiiPS6loj2cxVXisrpEYzNS2ZiaWpBVAV5K8_G/pub?gid=0&single=true&output=csv";
 
   // Estado em memória (inicia preenchido com o snapshot real gerado em dados/mercados_tempo_real.json)
   const MKT_INIT = window.JET_MERCADOS_INIT || {};
@@ -3860,7 +3918,10 @@ cat(sprintf(
     if (!GOOGLE_FINANCE_CSV_URL) return null;
     try {
       const resp = await fetch(GOOGLE_FINANCE_CSV_URL, { cache: "no-store" });
-      if (!resp.ok) return null;
+      if (!resp.ok) {
+        window.JET_GF_DEBUG = { ok: false, status: resp.status, ts: new Date().toISOString() };
+        return null;
+      }
       const txt = await resp.text();
       const map = {};
       txt.split(/\r?\n/).forEach(line => {
@@ -3869,11 +3930,27 @@ cat(sprintf(
           const k = cols[0].replace(/"/g, "").trim().toUpperCase();
           const p = parseFloat(cols[1].replace(/"/g, "").replace(",", "."));
           const pct = cols[2] ? parseFloat(cols[2].replace(/"/g, "").replace(",", ".")) : 0;
-          if (k && isFinite(p)) map[k] = { price: p, pct: isFinite(pct) ? pct : 0 };
+          const rawDt = cols[3] ? cols[3].replace(/"/g, "").trim() : "";
+          const dtMatch = rawDt.match(/^(\d{4}-\d{2}-\d{2})/);
+          if (k && isFinite(p)) {
+            map[k] = {
+              price: p,
+              pct: isFinite(pct) ? pct : 0,
+              dateIso: dtMatch ? dtMatch[1] : new Date().toISOString().slice(0, 10)
+            };
+          }
         }
       });
+      window.JET_GF_DEBUG = {
+        ok: true,
+        status: resp.status,
+        url: resp.url,
+        ibov: map["IBOV"] || map["BVMF:IBOV"] || null,
+        ts: new Date().toISOString()
+      };
       return map;
-    } catch (_) {
+    } catch (err) {
+      window.JET_GF_DEBUG = { ok: false, error: String(err && err.message || err), ts: new Date().toISOString() };
       return null;
     }
   }
@@ -3991,7 +4068,7 @@ cat(sprintf(
       titulo = `<b>Ibovespa B3 (Pontos — ${dias} Dias)</b>`;
       tituloY = "Pontos";
       tickfmt = ",.0f";
-      fonteTxt = "Fonte: B3 / Yahoo Finance (^BVSP — Série Diária Real).";
+      fonteTxt = "Fonte: B3 / Google Finance & Yahoo Finance.";
       traces = [{
         x: eixo, y: sIb.values, name: "Ibovespa (B3)", type: "scatter", mode: "lines+markers",
         fill: "tozeroy", fillcolor: "rgba(15, 37, 55, 0.08)",
@@ -4118,6 +4195,17 @@ cat(sprintf(
       if (gfMap && (gfMap["IBOV"] || gfMap["BVMF:IBOV"])) {
         const g = gfMap["IBOV"] || gfMap["BVMF:IBOV"];
         ibov = { pontos: g.price, variacao: g.pct };
+        const sIb = ESTADO_MERCADOS.series.ibov;
+        if (sIb && Array.isArray(sIb.dates) && g.dateIso) {
+          const idxLast = sIb.dates.indexOf(g.dateIso);
+          if (idxLast >= 0) {
+            sIb.values[idxLast] = g.price;
+          } else {
+            sIb.dates.push(g.dateIso);
+            sIb.values.push(g.price);
+          }
+          if (ESTADO_MERCADOS.chartAsset === "ibov") renderizarGraficoMercados();
+        }
       } else if (yIbov && isFinite(yIbov.price)) {
         ibov = { pontos: yIbov.price, variacao: yIbov.pct };
         if (yIbov.dates && yIbov.dates.length > 10) {
@@ -4495,10 +4583,10 @@ cat(sprintf(
     bar.id = "barra-mobile-acesso-rapido";
     bar.innerHTML = `
       <button type="button" class="jet-mob-btn-destaques" id="btn-mobile-abrir-sidebar">
-        <span>📑</span><span>Destaques &amp; Boletins</span>
+        <span>Destaques &amp; Boletins</span>
       </button>
       <a href="news.html" class="jet-mob-btn-caderno">
-        <span>📰</span><span>Caderno &amp; PDFs →</span>
+        <span>Caderno &amp; PDFs →</span>
       </a>
     `;
     header.insertAdjacentElement("afterend", bar);
@@ -4902,7 +4990,7 @@ cat(sprintf(
     landing.innerHTML = `
       <section class="jet-hero-section">
         <div class="jet-hero-inner">
-          <div class="jet-hero-rule"></div>
+          <div class="jet-hero-double-rule"></div>
           <span class="jet-hero-kicker">Observatório Econômico &amp; Jornalismo de Dados</span>
           <h1 class="jet-hero-title">Jornal Econômico do Tocantins</h1>
           <p class="jet-hero-lead">
@@ -4913,37 +5001,37 @@ cat(sprintf(
 
       <div class="jet-landing-container">
         <div class="jet-pillars-grid">
-          <div class="jet-pillar-card slate-top jet-scroll-reveal" onclick="document.getElementById('jet-equipe-inicio')?.scrollIntoView({behavior:'smooth'})">
+          <div class="jet-pillar-card jet-scroll-reveal" onclick="document.getElementById('jet-equipe-inicio')?.scrollIntoView({behavior:'smooth'})">
             <div>
               <div class="jet-pillar-card-head">
                 <h3>Início</h3>
-                <span class="jet-pillar-status">Apresentação</span>
+                <span class="jet-pillar-num">01</span>
               </div>
               <p>Apresentação institucional do Jornal Econômico do Tocantins e dos profissionais responsáveis pelo projeto. Reúne a visão geral da estrutura editorial e o acesso direto às demais seções.</p>
             </div>
-            <span class="jet-pillar-btn subtle"><span>Conhecer a equipe editorial</span><span>↓</span></span>
+            <span class="jet-pillar-action-link"><span>Conhecer a equipe editorial</span><span>↓</span></span>
           </div>
 
-          <a href="news.html" class="jet-pillar-card gold-top jet-scroll-reveal">
+          <a href="news.html" class="jet-pillar-card jet-scroll-reveal">
             <div>
               <div class="jet-pillar-card-head">
                 <h3>Feed e Boletins</h3>
-                <span class="jet-pillar-status">Publicações</span>
+                <span class="jet-pillar-num">02</span>
               </div>
               <p>Espaço jornalístico com análises assinadas, boletins periódicos e dossiês temáticos em leitura contínua. Permite acompanhar novas matérias e baixar edições completas em PDF.</p>
             </div>
-            <span class="jet-pillar-btn"><span>Acessar Feed e Boletins</span><span>→</span></span>
+            <span class="jet-pillar-action-link"><span>Acessar Feed e Boletins</span><span>→</span></span>
           </a>
 
           <div class="jet-pillar-card jet-scroll-reveal" onclick="window.switchJetView('database')">
             <div>
               <div class="jet-pillar-card-head">
                 <h3>Banco de Dados</h3>
-                <span class="jet-pillar-status">Repositório</span>
+                <span class="jet-pillar-num">03</span>
               </div>
               <p>Catálogo em organização para reunir séries históricas tratadas e bases metodológicas utilizadas pelo portal. Estruturado para apoiar consultas técnicas e pesquisas futuras.</p>
             </div>
-            <span class="jet-pillar-btn"><span>Acessar Banco de Dados</span><span>→</span></span>
+            <span class="jet-pillar-action-link"><span>Acessar Banco de Dados</span><span>→</span></span>
           </div>
 
           <div class="jet-pillar-card jet-scroll-reveal" onclick="window.switchJetView('painel')">
@@ -4958,11 +5046,11 @@ cat(sprintf(
                   </svg>
                   <span>Painel JET</span>
                 </h3>
-                <span class="jet-pillar-status">Visualização</span>
+                <span class="jet-pillar-num">04</span>
               </div>
               <p>Ambiente interativo organizado por abas setoriais para explorar gráficos, mapas e séries temporais. Oferece navegação ágil entre diferentes dimensões em um único painel.</p>
             </div>
-            <span class="jet-pillar-btn"><span>Entrar no Painel JET</span><span>→</span></span>
+            <span class="jet-pillar-action-link"><span>Entrar no Painel JET</span><span>→</span></span>
           </div>
         </div>
 
@@ -5038,9 +5126,9 @@ cat(sprintf(
           </div>
         </div>
 
-        <div style="margin-top: 28px; display: flex; flex-wrap: wrap; gap: 12px;">
-          <button type="button" class="jet-pillar-btn" style="width:auto; padding:10px 22px;" onclick="window.switchJetView('painel')">Ir para o Painel JET →</button>
-          <a href="news.html" class="jet-pillar-btn subtle" style="width:auto; padding:10px 22px;">Ler Feed e Boletins →</a>
+        <div style="margin-top: 28px; display: flex; flex-wrap: wrap; gap: 24px; align-items: center;">
+          <button type="button" class="jet-pillar-action-link" style="background:none; border:none; cursor:pointer; padding:6px 0;" onclick="window.switchJetView('painel')">Ir para o Painel JET →</button>
+          <a href="news.html" class="jet-pillar-action-link" style="padding:6px 0; color:#475569 !important;">Ler Feed e Boletins →</a>
         </div>
       </div>
     `;

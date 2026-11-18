@@ -33,7 +33,7 @@
 % Cores institucionais do Boletim FLASH
 \definecolor{corprimaria}{HTML}{0F2537}
 \definecolor{corsecundaria}{HTML}{244B6B}
-\definecolor{corfundo}{HTML}{F4F6F9}
+\definecolor{corfundo}{HTML}{F8FAFC}
 \definecolor{douradoto}{HTML}{C8942B}
 \definecolor{coracento}{HTML}{C8942B}
 \definecolor{cinzatexto}{HTML}{1E293B}
@@ -64,28 +64,26 @@
 \renewcommand{\footrulewidth}{0.5pt}
 \renewcommand{\footrule}{\hbox to\headwidth{\color{douradoto}\leaders\hrule height \footrulewidth\hfill}}
 
-\fancyhead[L]{\ifnum\value{page}>1 \scriptsize\bfseries\color{corprimaria}JORNAL ECONÔMICO DO TOCANTINS \enspace{\color{douradoto}$\vert$}\enspace {\mdseries\color{cinzasub}BOLETIM RÁPIDO (FLASH MENSAL) $\cdot$ Outubro/2026}\fi}
+\fancyhead[L]{\ifnum\value{page}>1 \scriptsize\bfseries\color{corprimaria}JORNAL ECONÔMICO DO TOCANTINS \enspace{\color{douradoto}$\vert$}\enspace {\mdseries\color{cinzasub}BOLETIM FLASH DE CONJUNTURA $\cdot$ Outubro/2026}\fi}
 \fancyhead[R]{\ifnum\value{page}>1 \scriptsize\color{cinzasub}\#10/2026\fi}
 
 \fancyfoot[L]{\scriptsize\color{cinzasub}\textbf{\color{corprimaria}Jornal Econômico do Tocantins} $\cdot$ Dinâmica Empresarial, Simples Nacional e Quadro Societário (TO) $\cdot$ Publicado em 14/11/2026}
 \fancyfoot[R]{\scriptsize\bfseries\color{corprimaria}Pág. \thepage\ de \pageref*{LastPage}}
 
-% Comando para Títulos de Seção Estilo Jornal Financeiro
+% Título de Seção Editorial Limpo (Fio fino inferior, sem bloco escuro pesado)
 \newcommand{\secaoboletim}[1]{%
-  \par\vspace{0.16cm}%
-  \noindent\begin{tikzpicture}
-    \fill[corprimaria] (0,0) rectangle (\textwidth, 0.52);
-    \fill[douradoto] (0,0) rectangle (0.16, 0.52);
-    \node[anchor=west, font=\small\bfseries, text=white] at (0.30, 0.26) {\MakeUppercase{#1}};
-  \end{tikzpicture}%
-  \par\vspace{0.08cm}%
+  \par\vspace{0.18cm}%
+  \noindent{\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}\MakeUppercase{#1}}%
+  \par\vspace{2pt}%
+  {\color{douradoto}\hrule height 1.0pt}%
+  \vspace{0.08cm}%
 }
 
 \newcommand{\subsecaoboletim}[1]{%
   \par\vspace{0.10cm}%
-  \noindent{\small\bfseries\color{corprimaria}\rule{0.14cm}{0.26cm}\hspace{5pt}#1}%
+  \noindent{\small\bfseries\color{corprimaria}#1}%
   \par\vspace{0.03cm}%
-  {\color{douradoto}\hrule height 0.6pt}%
+  {\color{cinzaborda}\hrule height 0.5pt}%
   \vspace{0.06cm}%
 }
 
@@ -93,32 +91,23 @@
 \color{cinzatexto}
 
 % ==============================================================================
-% MASTHEAD DE JORNAL ECONÔMICO (AUTO-AJUSTÁVEL, SEM SOBREPOSIÇÃO DE TEXTO)
+% MASTHEAD EDITORIAL CLARO ESTILO PERIÓDICO FINANCEIRO (ZERO BLOCOS PESADOS)
 % ==============================================================================
-\noindent\begin{tikzpicture}
-  \node[
-    fill=corprimaria,
-    inner xsep=12pt,
-    inner ysep=10pt,
-    text width=\textwidth-24pt,
-    align=left
-  ] (masthead) {
-    % Linha superior do cabeçalho do jornal
-    \hbox to \linewidth{%
-      {\colorbox{douradoto}{\strut\hspace{4pt}\scriptsize\bfseries\color{corprimaria}BOLETIM RÁPIDO (FLASH MENSAL) $\cdot$ \#10/2026\hspace{4pt}}}%
-      \hfill
-      {\scriptsize\color{white}\textbf{JORNAL ECONÔMICO DO TOCANTINS} \enspace{\color{douradoto}$\vert$}\enspace Ref.: \textbf{Outubro/2026} \enspace{\color{douradoto}$\vert$}\enspace 14/11/2026}%
-    }%
-    \par\vspace{5pt}%
-    {\color{douradoto}\hrule height 0.8pt}%
-    \par\vspace{6pt}%
-    % Título Principal e Subtítulo com quebra automática limpa
-    {\fontsize{13.5}{16.2}\selectfont\bfseries\color{white}Boletim Flash — Dinâmica Empresarial, Simples Nacional e Quadro Societário (QSA)\par}%
-    \vspace{3.5pt}%
-    {\footnotesize\color{corfundo}Evolução mensal do estoque de CNPJs ativos, participação de MEIs e Microempresas, tempos do Mapa de Empresas e perfil dos sócios no Tocantins\par}%
-  };
-  \fill[douradoto] (masthead.south west) rectangle ([yshift=-2.5pt]masthead.south east);
-\end{tikzpicture}
+\noindent{\color{corprimaria}\hrule height 2.2pt}%
+\par\vspace{2pt}%
+{\color{douradoto}\hrule height 0.8pt}%
+\par\vspace{6pt}%
+\noindent\hbox to \linewidth{%
+  {\scriptsize\bfseries\color{douradoto}\MakeUppercase{BOLETIM FLASH DE CONJUNTURA} \enspace$\cdot$\enspace \#10/2026}%
+  \hfill
+  {\scriptsize\color{cinzasub}\textbf{\color{corprimaria}JORNAL ECONÔMICO DO TOCANTINS} \enspace$\vert$\enspace Ref.: \textbf{Outubro/2026} \enspace$\vert$\enspace 14/11/2026}%
+}%
+\par\vspace{5pt}%
+{\fontsize{14.5}{17.4}\selectfont\bfseries\color{corprimaria}Boletim Flash — Dinâmica Empresarial, Simples Nacional e Quadro Societário (QSA)\par}%
+\vspace{3pt}%
+{\footnotesize\itshape\color{cinzasub}Evolução mensal do estoque de CNPJs ativos, participação de MEIs e Microempresas, tempos do Mapa de Empresas e perfil dos sócios no Tocantins\par}%
+\par\vspace{6pt}%
+{\color{cinzaborda}\hrule height 0.6pt}%
 
 \vspace{0.14cm}
 
@@ -127,40 +116,40 @@
 % ==============================================================================
 \noindent\makebox[\textwidth][s]{%
 \begin{tikzpicture}[baseline=(box.base)]
-  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
-        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
-    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}CNPJS ATIVOS (ESTOQUE)}\par\vspace{1.2pt}%
-    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}167.565}\par\vspace{1pt}%
-    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Saldo 12m: + 15.608}%
+  \node[fill=white, draw=cinzaborda, line width=0.35pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.14cm, align=left] (box) {%
+    {\fontsize{6.0}{7.2}\selectfont\bfseries\color{cinzasub}CNPJS ATIVOS (ESTOQUE)}\par\vspace{1.2pt}%
+    {\fontsize{9.2}{10.8}\selectfont\bfseries\color{corprimaria}167.565}\par\vspace{1pt}%
+    {\fontsize{5.8}{6.8}\selectfont\color{cinzasub}Saldo 12m: + 15.608}%
   };
-  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+  \fill[coracento] (box.north west) rectangle ([yshift=-1.6pt]box.north east);
 \end{tikzpicture}\hfill%
 \begin{tikzpicture}[baseline=(box.base)]
-  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
-        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
-    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}MEI / MICROEMPRESAS}\par\vspace{1.2pt}%
-    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}52,9\% / 34,0\%}\par\vspace{1pt}%
-    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Pequenos Negócios: 86,9\%}%
+  \node[fill=white, draw=cinzaborda, line width=0.35pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.14cm, align=left] (box) {%
+    {\fontsize{6.0}{7.2}\selectfont\bfseries\color{cinzasub}MEI / MICROEMPRESAS}\par\vspace{1.2pt}%
+    {\fontsize{9.2}{10.8}\selectfont\bfseries\color{corprimaria}52,9\% / 34,0\%}\par\vspace{1pt}%
+    {\fontsize{5.8}{6.8}\selectfont\color{cinzasub}Pequenos Negócios: 86,9\%}%
   };
-  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+  \fill[coracento] (box.north west) rectangle ([yshift=-1.6pt]box.north east);
 \end{tikzpicture}\hfill%
 \begin{tikzpicture}[baseline=(box.base)]
-  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
-        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
-    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}OPTANTES SIMPLES (SINAC)}\par\vspace{1.2pt}%
-    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}164.996}\par\vspace{1pt}%
-    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Sócios QSA: 106.471}%
+  \node[fill=white, draw=cinzaborda, line width=0.35pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.14cm, align=left] (box) {%
+    {\fontsize{6.0}{7.2}\selectfont\bfseries\color{cinzasub}OPTANTES SIMPLES (SINAC)}\par\vspace{1.2pt}%
+    {\fontsize{9.2}{10.8}\selectfont\bfseries\color{corprimaria}164.996}\par\vspace{1pt}%
+    {\fontsize{5.8}{6.8}\selectfont\color{cinzasub}Sócios QSA: 106.471}%
   };
-  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+  \fill[coracento] (box.north west) rectangle ([yshift=-1.6pt]box.north east);
 \end{tikzpicture}\hfill%
 \begin{tikzpicture}[baseline=(box.base)]
-  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
-        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.22cm, align=left] (box) {%
-    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}TEMPO DE ABERTURA (2026)}\par\vspace{1.2pt}%
-    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}18,5 horas}\par\vspace{1pt}%
-    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Viab.: 15,7h | Reg.: 2,7h}%
+  \node[fill=white, draw=cinzaborda, line width=0.35pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.206\textwidth, minimum height=1.14cm, align=left] (box) {%
+    {\fontsize{6.0}{7.2}\selectfont\bfseries\color{cinzasub}TEMPO DE ABERTURA (2026)}\par\vspace{1.2pt}%
+    {\fontsize{9.2}{10.8}\selectfont\bfseries\color{corprimaria}18,5 horas}\par\vspace{1pt}%
+    {\fontsize{5.8}{6.8}\selectfont\color{cinzasub}Viab.: 15,7h | Reg.: 2,7h}%
   };
-  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+  \fill[coracento] (box.north west) rectangle ([yshift=-1.6pt]box.north east);
 \end{tikzpicture}%
 }
 
@@ -170,19 +159,18 @@
 % ==============================================================================
 % 2. ANÁLISE PRELIMINAR AUTOMATIZADA DO SCRIPT (RASTREAMENTO DE VARIAÇÕES)
 % ==============================================================================
-\noindent\begin{tikzpicture}
-  \node[fill=corfundo, draw=cinzaborda, line width=0.5pt, rounded corners=2pt,
-        inner xsep=8pt, inner ysep=5pt, text width=\textwidth-17pt, font=\scriptsize\color{cinzatexto}] (dbox) {
-    {\footnotesize\bfseries\color{corprimaria}Síntese de Variações entre Períodos Subsequentes}\par\vspace{2pt}
-    \begin{itemize}[leftmargin=11pt, itemsep=1.0pt, topsep=1pt, parsep=0pt]
-       \item \textbf{\color{verdealta}[EXPANSÃO DRÁSTICA / SALTO POSITIVO] Estoque de CNPJs Ativos (Out/2026):} Estoque de CNPJs Ativos (Out/2026) registrou aceleração expressiva de +9,65\% (mudança drástica acima do padrão recente). [nível: 167.565]
-       \item \textbf{\color{verdealta}[EXPANSÃO DRÁSTICA / SALTO POSITIVO] Novas Inscrições de CNPJ no Mês:} Novas Inscrições de CNPJ no Mês registrou aceleração expressiva de +5,46\% (mudança drástica acima do padrão recente). [nível: 2.760]
-       \item \textbf{\color{corsecundaria}[ESTABILIDADE (VALOR INALTERADO)] Participação de MEIs + Microempresas (ME):} Participação de MEIs + Microempresas (ME) manteve-se praticamente inalterado (+0,05\%), indicando estabilidade marginal. [nível: 86,9\%]
-       \item \textbf{\color{vermelhobaixa}[QUEDA DRÁSTICA / CONTRAÇÃO ACENTUADA] Tempo Médio de Abertura de Empresas (TO vs. Brasil):} Tempo Médio de Abertura de Empresas (TO vs. Brasil) sofreu retração acentuada de -29,39\% (queda drástica que requer atenção conjuntural). [nível: 18,5h (BR: 26,2h)]
-    \end{itemize}
-  };
-  \fill[corprimaria] (dbox.north west) rectangle ([xshift=3pt]dbox.south west);
-\end{tikzpicture}
+\par\vspace{0.05cm}
+\noindent{\color{cinzaborda}\hrule height 0.5pt}\par\vspace{4pt}
+{\fontsize{7.8}{9.4}\selectfont\bfseries\color{corprimaria}\MakeUppercase{Síntese dos Indicadores no Período}}\par\vspace{2pt}
+{\scriptsize\color{cinzatexto}
+\begin{itemize}[leftmargin=10pt, itemsep=1.2pt, topsep=1pt, parsep=0pt]
+   \item \textbf{\color{corprimaria}Estoque de CNPJs Ativos (Out/2026):} Estoque de CNPJs Ativos (Out/2026) registrou aceleração expressiva de +9,65\% (mudança drástica acima do padrão recente). (patamar atual: 167.565)
+   \item \textbf{\color{corprimaria}Novas Inscrições de CNPJ no Mês:} Novas Inscrições de CNPJ no Mês registrou aceleração expressiva de +5,46\% (mudança drástica acima do padrão recente). (patamar atual: 2.760)
+   \item \textbf{\color{corprimaria}Participação de MEIs + Microempresas (ME):} Participação de MEIs + Microempresas (ME) manteve-se praticamente inalterado (+0,05\%), indicando estabilidade marginal. (patamar atual: 86,9\%)
+   \item \textbf{\color{corprimaria}Tempo Médio de Abertura de Empresas (TO vs. Brasil):} Tempo Médio de Abertura de Empresas (TO vs. Brasil) sofreu retração acentuada de -29,39\% (queda drástica que requer atenção conjuntural). (patamar atual: 18,5h (BR: 26,2h))
+\end{itemize}
+}
+\noindent{\color{cinzaborda}\hrule height 0.5pt}\par\vspace{0.05cm}
 
 
 \vspace{0.08cm}

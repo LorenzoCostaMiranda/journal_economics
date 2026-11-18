@@ -72,37 +72,25 @@
 \fancyfoot[L]{\scriptsize\color{cinzasub}\textbf{\color{corprimaria}Jornal Econômico do Tocantins} $\cdot$ {{AUTORIA_EQUIPE}} $\cdot$ Publicado em {{DATA_PUBLICACAO}}}
 \fancyfoot[R]{\scriptsize\bfseries\color{corprimaria}Pág. \thepage\ de \pageref*{LastPage}}
 
-% Banner de Abertura de Seção Principal (Caderno Periódico)
+% Banner Editorial Limpo de Abertura de Seção Principal (Caderno Periódico)
 \newcommand{\bannersecaoperiodico}[3]{%
-  \par\vspace{0.14cm}%
-  \noindent\begin{tikzpicture}
-    \node[
-      fill=corprimaria,
-      inner xsep=10pt,
-      inner ysep=6pt,
-      text width=\textwidth-20pt,
-      align=left
-    ] (bsec) {
-      \hbox to \linewidth{%
-        {\colorbox{coracentoheader}{\strut\hspace{4pt}\scriptsize\bfseries\color{coracentotexto}SEÇÃO #1\hspace{4pt}}}%
-        \hspace{8pt}%
-        {\normalsize\bfseries\color{white}#2}%
-        \hfill
-      }%
-      \par\vspace{2pt}%
-      {\scriptsize\color{corfundo}#3\par}%
-    };
-    \fill[coracento] (bsec.south west) rectangle ([yshift=-2pt]bsec.south east);
-  \end{tikzpicture}%
+  \par\vspace{0.16cm}%
+  \noindent{\color{corprimaria}\hrule height 1.4pt}%
+  \par\vspace{4pt}%
+  \noindent{\scriptsize\bfseries\color{coracento}SEÇÃO #1 \enspace$\cdot$\enspace}{\normalsize\bfseries\color{corprimaria}#2}%
+  \par\vspace{2pt}%
+  {\scriptsize\itshape\color{cinzasub}#3\par}%
+  \vspace{3pt}%
+  {\color{cinzaborda}\hrule height 0.5pt}%
   \par\vspace{0.10cm}%
 }
 
 % Subtítulo de Coluna dentro do Layout de 2 Colunas
 \newcommand{\secaoperiodico}[1]{%
   \par\vspace{0.10cm}%
-  \noindent{\small\bfseries\color{corprimaria}\rule{0.14cm}{0.26cm}\hspace{4pt}{\color{coracento}\rule{0.06cm}{0.26cm}}\hspace{5pt}#1}%
+  \noindent{\small\bfseries\color{corprimaria}#1}%
   \par\vspace{0.03cm}%
-  {\color{coracento}\hrule height 0.7pt}%
+  {\color{coracento}\hrule height 0.6pt}%
   \vspace{0.06cm}%
 }
 
@@ -110,32 +98,25 @@
 \color{cinzatexto}
 
 % ==============================================================================
-% MASTHEAD DE CAPA DO PERIÓDICO (AUTO-AJUSTÁVEL, SEM COLISÃO DE TÍTULO/SUBTÍTULO)
+% MASTHEAD EDITORIAL CLARO DE PERIÓDICO (DOSSIÊ ANUAL OU CARTA DE CONJUNTURA)
 % ==============================================================================
-\noindent\begin{tikzpicture}
-  \node[
-    fill=corprimaria,
-    inner xsep=12pt,
-    inner ysep=9pt,
-    text width=\textwidth-24pt,
-    align=left
-  ] (masthead) {
-    \hbox to \linewidth{%
-      {\colorbox{coracentoheader}{\strut\hspace{5pt}\scriptsize\bfseries\color{coracentotexto}{{TIPO_PUBLICACAO_UPPER}} $\cdot$ {{EDICAO_NUMERO}}\hspace{5pt}}}%
-      \hfill
-      {\scriptsize\color{white}\textbf{JORNAL ECONÔMICO DO TOCANTINS} \enspace{\color{coracentoheader}$\vert$}\enspace Publicado em {{DATA_PUBLICACAO}}}%
-    }%
-    \par\vspace{4pt}%
-    {\color{coracento}\hrule height 0.9pt}%
-    \par\vspace{5pt}%
-    {\fontsize{13.5}{16.2}\selectfont\bfseries\color{white}{{TITULO_DOCUMENTO}}\par}%
-    \vspace{3pt}%
-    {\footnotesize\color{corfundo}{{SUBTITULO_DOCUMENTO}} \enspace{\color{coracentoheader}$\vert$}\enspace \textbf{Ref.: {{PERIODO_REFERENCIA}}}\par}%
-  };
-  \fill[coracento] (masthead.south west) rectangle ([yshift=-2.6pt]masthead.south east);
-\end{tikzpicture}
+\noindent{\color{corprimaria}\hrule height 2.2pt}%
+\par\vspace{2pt}%
+{\color{coracento}\hrule height 0.8pt}%
+\par\vspace{6pt}%
+\noindent\hbox to \linewidth{%
+  {\scriptsize\bfseries\color{coracento}\MakeUppercase{{{TIPO_PUBLICACAO_UPPER}}} \enspace$\cdot$\enspace {{EDICAO_NUMERO}}}%
+  \hfill
+  {\scriptsize\color{cinzasub}\textbf{\color{corprimaria}JORNAL ECONÔMICO DO TOCANTINS} \enspace$\vert$\enspace Publicado em {{DATA_PUBLICACAO}}}%
+}%
+\par\vspace{5pt}%
+{\fontsize{14.5}{17.4}\selectfont\bfseries\color{corprimaria}{{TITULO_DOCUMENTO}}\par}%
+\vspace{3pt}%
+{\footnotesize\itshape\color{cinzasub}{{SUBTITULO_DOCUMENTO}} \enspace$\vert$\enspace \textbf{\color{corprimaria}Ref.: {{PERIODO_REFERENCIA}}}\par}%
+\par\vspace{6pt}%
+{\color{cinzaborda}\hrule height 0.6pt}%
 
-\vspace{0.10cm}
+\vspace{0.12cm}
 
 % ==============================================================================
 % CORPO COMPLETO DO PERIÓDICO (DOSSIÊ ANUAL OU CARTA DE CONJUNTURA)

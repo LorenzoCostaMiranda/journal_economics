@@ -24,31 +24,39 @@ url_substack <- "https://substack.com"
 ```
 
 ```{=html}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,700;0,6..72,800;1,6..72,400;1,6..72,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
 <style>
 /* ==========================================================================
-   BASE EDITORIAL & RESET QUARTO PARA O FEED ESTILO PORTAL DE NOTÍCIAS (G1)
+   SISTEMA TIPOGRÁFICO & DESIGN EDITORIAL DO JORNAL ECONÔMICO DO TOCANTINS
+   Inspirado em Financial Times (Origami), The Economist e Nexo Jornal
    ========================================================================== */
 :root {
   --jet-navy: #0f2537;
-  --jet-navy-light: #1c3b57;
+  --jet-navy-soft: #244b6b;
   --jet-gold: #c8942b;
-  --jet-gold-soft: #fdf7eb;
-  --jet-green: #0b5d32;
-  --jet-cobalt: #0a2e73;
-  --jet-bg: #f4f6f9;
-  --jet-border: #e2e8f0;
+  --jet-gold-deep: #9a6c11;
+  --jet-paper: #faf8f5;
+  --jet-surface: #ffffff;
+  --jet-rule: #cbd5e1;
+  --jet-rule-soft: #e2e8f0;
   --jet-text: #1e293b;
   --jet-muted: #475569;
+  --jet-serif: "Newsreader", Georgia, "Times New Roman", serif;
+  --jet-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
 }
 
 html, body {
-  background-color: var(--jet-bg);
+  background-color: var(--jet-paper);
   color: var(--jet-text);
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  font-family: var(--jet-sans);
   margin: 0;
   padding: 0;
   max-width: 100%;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
 .quarto-title-banner, #title-block-header, #quarto-header {
@@ -57,7 +65,7 @@ html, body {
 
 #quarto-content {
   display: block !important;
-  max-width: 1260px !important;
+  max-width: 1240px !important;
   width: 100% !important;
   margin: 0 auto !important;
   padding: 0 !important;
@@ -66,30 +74,29 @@ html, body {
 
 main.content,
 main#quarto-document-content.content {
-  max-width: 1260px !important;
+  max-width: 1240px !important;
   width: 100% !important;
   margin: 0 auto !important;
-  padding: 18px 22px 48px 22px !important;
+  padding: 18px 24px 56px 24px !important;
   box-sizing: border-box !important;
 }
 
 /* ==========================================================================
-   BARRA GLOBAL DE NAVEGAÇÃO DO ECOSSISTEMA JET (3 ABAS + INÍCIO)
+   BARRA GLOBAL DE NAVEGAÇÃO DO ECOSSISTEMA JET (EDITORIAL FLAT)
    ========================================================================== */
 .jet-eco-topbar {
   position: sticky;
   top: 0;
   z-index: 1100;
-  background: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(10px);
-  border-bottom: 2px solid var(--jet-navy);
-  box-shadow: 0 4px 16px rgba(15, 37, 55, 0.06);
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(8px);
+  border-bottom: 1.5px solid var(--jet-navy);
   width: 100%;
 }
 .jet-eco-topbar-inner {
   max-width: 1240px;
   margin: 0 auto;
-  padding: 8px 22px;
+  padding: 9px 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -99,7 +106,7 @@ main#quarto-document-content.content {
 .jet-eco-brand {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 11px;
   text-decoration: none !important;
   color: var(--jet-navy) !important;
 }
@@ -109,40 +116,36 @@ main#quarto-document-content.content {
   justify-content: center;
   width: 34px;
   height: 34px;
-  border-radius: 7px;
-  background: linear-gradient(135deg, #0f2537 0%, #1c3b57 100%);
-  color: #c8942b;
-  border: 1.5px solid #c8942b;
-  font-family: Georgia, "Times New Roman", serif;
+  border-radius: 4px;
+  background: var(--jet-navy);
+  color: var(--jet-gold);
+  border: 1.5px solid var(--jet-gold);
+  font-family: var(--jet-serif);
   font-size: 0.78rem;
-  font-weight: 900;
-  letter-spacing: 0.5px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
   flex-shrink: 0;
-  box-shadow: 0 2px 6px rgba(15, 37, 55, 0.16);
-}
-.jet-eco-brand-txt {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.15;
 }
 .jet-eco-brand-txt strong {
-  font-family: "Georgia", serif;
-  font-size: 0.98rem;
-  font-weight: 900;
+  display: block;
+  font-family: var(--jet-serif);
+  font-size: 1.04rem;
+  font-weight: 800;
   color: var(--jet-navy);
-  letter-spacing: -0.2px;
+  line-height: 1.1;
 }
 .jet-eco-brand-txt span {
-  font-size: 0.68rem;
+  display: block;
+  font-size: 0.64rem;
   color: var(--jet-muted);
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.9px;
 }
 .jet-eco-nav {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   flex-wrap: wrap;
 }
 .jet-eco-tab {
@@ -150,51 +153,47 @@ main#quarto-document-content.content {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-size: 0.88rem;
+  padding: 9px 18px;
+  border-radius: 5px;
+  font-size: 0.86rem;
   font-weight: 700;
   color: var(--jet-navy) !important;
   background: #ffffff;
-  border: 1.5px solid #cbd5e1;
+  border: 1px solid var(--jet-rule);
   text-decoration: none !important;
   letter-spacing: 0.1px;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
 }
 .jet-eco-tab:hover {
-  background: #f8fafc;
+  background: var(--jet-paper);
   border-color: var(--jet-navy);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(15, 37, 55, 0.08);
 }
 .jet-eco-tab.active {
   background: var(--jet-navy);
   color: #ffffff !important;
   border-color: var(--jet-navy);
   border-bottom: 3px solid var(--jet-gold);
-  box-shadow: 0 4px 14px rgba(15, 37, 55, 0.18);
 }
 .jet-panel-svg {
-  width: 16px;
-  height: 16px;
+  width: 15px;
+  height: 15px;
   flex-shrink: 0;
-  display: inline-block;
 }
 
 /* ==========================================================================
-   ANIMAÇÕES DE FLUIDEZ (ENTRADA E SCROLL REVEAL)
+   ANIMAÇÕES DE FLUIDEZ SUAVE
    ========================================================================== */
 @keyframes jetFeedEnter {
-  0% { opacity: 0; transform: translateY(14px); }
+  0% { opacity: 0; transform: translateY(10px); }
   100% { opacity: 1; transform: translateY(0); }
 }
 .jet-anim-in {
-  animation: jetFeedEnter 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: jetFeedEnter 0.42s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 .jet-reveal-item {
   opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.52s cubic-bezier(0.16, 1, 0.3, 1), transform 0.52s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(14px);
+  transition: opacity 0.48s cubic-bezier(0.16, 1, 0.3, 1), transform 0.48s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .jet-reveal-item.is-visible {
   opacity: 1;
@@ -210,16 +209,14 @@ main#quarto-document-content.content {
 }
 
 /* ==========================================================================
-   CABEÇALHO EDITORIAL DO FEED (JORNALÍSTICO E LIMPO)
+   MASTHEAD CLÁSSICO DE JORNAL + BARRA DE EDITORIAS (SEM EMOJIS / SEM PÍLULAS)
    ========================================================================== */
 .jet-feed-masthead {
-  background: #ffffff;
-  border: 1px solid var(--jet-border);
-  border-top: 5px solid var(--jet-navy);
-  border-radius: 10px;
-  padding: 20px 26px 18px 26px;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 12px rgba(15, 37, 55, 0.04);
+  border-top: 3px solid var(--jet-navy);
+  border-bottom: 1px solid var(--jet-rule);
+  padding: 16px 0 18px 0;
+  margin-bottom: 0;
+  background: transparent;
 }
 .jet-feed-masthead-top {
   display: flex;
@@ -227,97 +224,82 @@ main#quarto-document-content.content {
   align-items: center;
   flex-wrap: wrap;
   gap: 8px;
-  border-bottom: 1px solid var(--jet-border);
-  padding-bottom: 8px;
-  margin-bottom: 12px;
-  font-size: 0.72rem;
+  padding-bottom: 10px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid var(--jet-rule-soft);
+  font-size: 0.69rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.6px;
+  letter-spacing: 0.1em;
   color: var(--jet-muted);
 }
-.jet-feed-title-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 16px;
-  flex-wrap: wrap;
-}
 .jet-feed-title-row h1 {
-  font-family: "Georgia", "Times New Roman", serif;
-  font-size: 2.05rem;
-  font-weight: 900;
+  font-family: var(--jet-serif);
+  font-size: clamp(1.75rem, 3vw, 2.35rem);
+  font-weight: 800;
   color: var(--jet-navy);
-  margin: 0 0 4px 0;
-  line-height: 1.1;
+  margin: 0 0 6px 0;
+  line-height: 1.12;
+  letter-spacing: -0.015em;
 }
 .jet-feed-title-row p {
   margin: 0;
-  font-size: 0.94rem;
+  font-size: 0.96rem;
   color: var(--jet-muted);
+  max-width: 780px;
+  line-height: 1.5;
 }
 
-/* Barra de Filtros Editoriais e Autores */
 .jet-toolbar-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 12px;
-  background: #ffffff;
-  border: 1px solid var(--jet-border);
-  border-left: 5px solid var(--jet-gold);
-  padding: 12px 18px;
-  border-radius: 8px;
-  margin-bottom: 22px;
-  box-shadow: 0 2px 8px rgba(15, 37, 55, 0.03);
+  gap: 14px;
+  border-bottom: 2px solid var(--jet-navy);
+  padding: 10px 0 0 0;
+  margin-bottom: 26px;
 }
 .jet-filter-group {
   display: flex;
-  gap: 6px;
+  gap: 4px;
   flex-wrap: wrap;
   align-items: center;
 }
 .jet-filter-btn {
-  background: #f1f5f9;
-  border: 1px solid #cbd5e1;
-  color: #334155;
-  font-size: 0.78rem;
+  background: transparent;
+  border: none;
+  border-bottom: 2.5px solid transparent;
+  color: var(--jet-muted);
+  font-size: 0.80rem;
   font-weight: 700;
-  padding: 6px 13px;
-  border-radius: 999px;
+  padding: 8px 12px 10px 12px;
   cursor: pointer;
-  transition: all 0.18s ease;
+  transition: color 0.15s ease, border-color 0.15s ease;
 }
 .jet-filter-btn:hover {
-  background: #e2e8f0;
   color: var(--jet-navy);
 }
 .jet-filter-btn.active {
-  background: var(--jet-navy);
-  color: #ffffff;
-  border-color: var(--jet-navy);
-}
-.jet-filter-btn.author-pill {
-  background: #fdf7eb;
-  border-color: #e6c88a;
-  color: #7c5812;
-}
-.jet-filter-btn.author-pill.active {
-  background: var(--jet-gold);
   color: var(--jet-navy);
-  border-color: var(--jet-gold);
+  border-bottom-color: var(--jet-gold);
+}
+.jet-filter-divider {
+  width: 1px;
+  height: 16px;
+  background: var(--jet-rule);
+  margin: 0 4px;
 }
 
 /* ==========================================================================
-   LAYOUT G1 EM 2 COLUNAS: FEED VERTICAL À ESQUERDA + SIDEBAR À DIREITA
+   GRID SUÍÇO DE 2 COLUNAS COM FIO DIVISÓRIO CONTÍNUO
    ========================================================================== */
 .jet-g1-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 340px;
-  gap: 28px;
+  grid-template-columns: minmax(0, 1fr) 330px;
+  gap: 32px;
   align-items: start;
-  margin-bottom: 38px;
+  margin-bottom: 42px;
   width: 100%;
   box-sizing: border-box;
 }
@@ -327,52 +309,80 @@ main#quarto-document-content.content {
 
 .jet-g1-feed-column {
   min-width: 0;
-  background: #ffffff;
-  border: 1px solid var(--jet-border);
-  border-radius: 12px;
-  padding: 8px 26px 20px 26px;
-  box-shadow: 0 2px 14px rgba(15, 37, 55, 0.04);
+  background: var(--jet-surface);
+  border: 1px solid var(--jet-rule-soft);
+  padding: 6px 28px 18px 28px;
 }
 
-/* Destaque Hero da Carta de Conjuntura no topo do Feed */
+/* Destaque Editorial da Carta de Conjuntura (Sóbrio, sem neon) */
 .jet-carta-hero {
-  background: linear-gradient(135deg, #0A2E73 0%, #071f4e 100%);
-  color: #ffffff;
-  border-radius: 10px;
-  border-top: 4px solid #8CE000;
-  padding: 18px 22px;
-  margin: 14px 0 6px 0;
-  box-shadow: 0 8px 22px rgba(10, 46, 115, 0.14);
+  background: var(--jet-paper);
+  border: 1px solid var(--jet-rule);
+  border-top: 3px solid var(--jet-navy);
+  border-left: 4px solid var(--jet-gold);
+  padding: 20px 24px;
+  margin: 18px 0 8px 0;
 }
 .jet-carta-hero-grid {
   display: grid;
   grid-template-columns: 1fr auto;
-  gap: 18px;
+  gap: 20px;
   align-items: center;
 }
-.jet-carta-sec-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-  margin-top: 10px;
-}
-.jet-carta-sec-pill {
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(140, 224, 0, 0.45);
-  color: #f8fafc;
+.jet-carta-kicker {
   font-size: 0.70rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--jet-gold-deep);
+  margin-bottom: 6px;
+}
+.jet-carta-hero h2 {
+  font-family: var(--jet-serif);
+  font-size: 1.48rem;
+  font-weight: 800;
+  color: var(--jet-navy);
+  margin: 0 0 8px 0;
+  line-height: 1.18;
+}
+.jet-carta-hero p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--jet-muted);
+  line-height: 1.52;
+}
+.jet-carta-sections-line {
+  margin-top: 10px;
+  font-size: 0.73rem;
+  font-weight: 600;
+  color: var(--jet-navy);
+  line-height: 1.5;
+}
+.jet-carta-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--jet-navy);
+  color: #ffffff !important;
+  font-size: 0.80rem;
   font-weight: 700;
-  padding: 2px 8px;
+  padding: 11px 18px;
   border-radius: 4px;
+  text-decoration: none !important;
+  border-bottom: 2px solid var(--jet-gold);
+  transition: opacity 0.18s ease;
+}
+.jet-carta-cta:hover {
+  opacity: 0.92;
 }
 
-/* Item Vertical estilo G1 (Imagem à esquerda + Texto & Bullets à direita) */
+/* Card de Notícia do Feed Vertical */
 .jet-g1-card {
   display: grid;
-  grid-template-columns: 265px minmax(0, 1fr);
-  gap: 22px;
-  padding: 22px 0;
-  border-bottom: 1px solid #e2e8f0;
+  grid-template-columns: 248px minmax(0, 1fr);
+  gap: 24px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--jet-rule-soft);
   align-items: start;
 }
 .jet-g1-card:last-child {
@@ -380,13 +390,11 @@ main#quarto-document-content.content {
 }
 .jet-g1-thumb-link {
   display: block;
-  position: relative;
-  border-radius: 10px;
+  border-radius: 4px;
   overflow: hidden;
-  background: #f8fafc;
-  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  border: 1px solid var(--jet-rule-soft);
   aspect-ratio: 16 / 10;
-  box-shadow: 0 2px 8px rgba(15, 37, 55, 0.06);
 }
 .jet-g1-thumb-link img {
   width: 100%;
@@ -397,36 +405,29 @@ main#quarto-document-content.content {
   display: block;
 }
 .jet-g1-card:hover .jet-g1-thumb-link img {
-  transform: scale(1.04);
-}
-.jet-g1-thumb-badge {
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  font-size: 0.63rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.4px;
-  padding: 3px 8px;
-  border-radius: 4px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.22);
+  transform: scale(1.03);
 }
 .jet-g1-kicker {
-  font-size: 0.76rem;
+  font-size: 0.70rem;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.4px;
+  letter-spacing: 0.08em;
+  color: var(--jet-gold-deep);
   margin-bottom: 5px;
   display: flex;
   align-items: center;
   gap: 8px;
   flex-wrap: wrap;
 }
+.jet-g1-kicker span.jet-period-muted {
+  color: #64748b;
+  font-weight: 600;
+}
 .jet-g1-headline {
   display: block;
-  font-family: "Georgia", "Times New Roman", serif;
-  font-size: 1.32rem;
-  font-weight: 800;
+  font-family: var(--jet-serif);
+  font-size: 1.36rem;
+  font-weight: 700;
   line-height: 1.24;
   color: var(--jet-navy) !important;
   text-decoration: none !important;
@@ -434,27 +435,36 @@ main#quarto-document-content.content {
   transition: color 0.15s ease;
 }
 .jet-g1-headline:hover {
-  color: #9a6c11 !important;
+  color: var(--jet-gold-deep) !important;
 }
 .jet-g1-bullets {
   margin: 0 0 10px 0;
-  padding-left: 16px;
-  list-style: disc;
+  padding: 0;
+  list-style: none;
 }
 .jet-g1-bullets li {
-  font-size: 0.84rem;
+  position: relative;
+  padding-left: 14px;
+  font-size: 0.83rem;
   font-weight: 600;
-  line-height: 1.38;
+  line-height: 1.42;
   color: #334155;
   margin-bottom: 4px;
+  font-variant-numeric: tabular-nums;
 }
-.jet-g1-bullets li::marker {
-  color: var(--jet-gold);
+.jet-g1-bullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.58em;
+  width: 6px;
+  height: 1.5px;
+  background: var(--jet-gold);
 }
 .jet-g1-deck {
   font-size: 0.86rem;
-  color: #475569;
-  line-height: 1.45;
+  color: var(--jet-muted);
+  line-height: 1.5;
   margin: 0 0 10px 0;
 }
 .jet-g1-meta-row {
@@ -463,7 +473,7 @@ main#quarto-document-content.content {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 10px;
-  padding-top: 8px;
+  padding-top: 6px;
 }
 .jet-g1-author-mini {
   display: inline-flex;
@@ -471,16 +481,16 @@ main#quarto-document-content.content {
   gap: 8px;
 }
 .jet-g1-author-mini img {
-  width: 30px;
-  height: 30px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   object-fit: cover;
-  border: 1.5px solid var(--jet-gold);
+  border: 1px solid var(--jet-gold);
 }
 .jet-g1-author-mini-info {
-  font-size: 0.75rem;
-  line-height: 1.2;
-  color: #334155;
+  font-size: 0.74rem;
+  line-height: 1.25;
+  color: var(--jet-muted);
 }
 .jet-g1-author-mini-info strong {
   color: var(--jet-navy);
@@ -488,233 +498,208 @@ main#quarto-document-content.content {
 .jet-g1-actions {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
 }
-.jet-g1-btn-read {
+.jet-g1-link-text {
   font-size: 0.76rem;
-  font-weight: 800;
+  font-weight: 700;
   color: var(--jet-navy) !important;
   text-decoration: none !important;
-  padding: 5px 10px;
-  border-radius: 6px;
-  background: #f1f5f9;
-  transition: background 0.15s ease;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s ease, color 0.15s ease;
 }
-.jet-g1-btn-read:hover {
-  background: #e2e8f0;
-}
-.jet-g1-btn-pdf {
-  font-size: 0.74rem;
-  font-weight: 800;
-  padding: 5px 10px;
-  border-radius: 6px;
-  text-decoration: none !important;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
+.jet-g1-link-text:hover {
+  color: var(--jet-gold-deep) !important;
+  border-bottom-color: var(--jet-gold);
 }
 
 /* ==========================================================================
-   COLUNA LATERAL DIREITA: ECONOMISTAS (FOTOS + BIOS) & "LEIA TAMBÉM"
+   COLUNA LATERAL EDITORIAL (COLUNISTAS, LEIA TAMBÉM NUMERADO E ASSINATURA)
    ========================================================================== */
 .jet-g1-sidebar {
   position: sticky;
-  top: 68px;
+  top: 72px;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 22px;
 }
 .jet-side-box {
-  background: #ffffff;
-  border: 1px solid var(--jet-border);
-  border-radius: 12px;
-  padding: 18px;
-  box-shadow: 0 2px 12px rgba(15, 37, 55, 0.04);
+  background: var(--jet-surface);
+  border: 1px solid var(--jet-rule-soft);
+  border-top: 2.5px solid var(--jet-navy);
+  padding: 18px 20px;
 }
 .jet-side-box-title {
-  font-family: "Georgia", serif;
-  font-size: 1.05rem;
-  font-weight: 900;
+  font-family: var(--jet-serif);
+  font-size: 1.06rem;
+  font-weight: 800;
   color: var(--jet-navy);
   margin: 0 0 14px 0;
   padding-bottom: 8px;
-  border-bottom: 2px solid var(--jet-gold);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  border-bottom: 1px solid var(--jet-rule);
 }
 
-/* Cartões Humanizados dos Economistas com Foto e Descrição */
-.jet-author-profile-card {
-  border: 1px solid #e2e8f0;
-  border-radius: 10px;
-  overflow: hidden;
-  margin-bottom: 14px;
-  background: #fafbfd;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+.jet-author-profile-item {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--jet-rule-soft);
 }
-.jet-author-profile-card:last-of-type {
-  margin-bottom: 0;
+.jet-author-profile-item:first-of-type {
+  padding-top: 2px;
 }
-.jet-author-profile-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(15, 37, 55, 0.08);
+.jet-author-profile-item:last-of-type {
+  border-bottom: none;
+  padding-bottom: 2px;
 }
-.jet-author-photo-wrap {
-  width: 100%;
-  height: 175px;
-  overflow: hidden;
-  position: relative;
-  background: #0f2537;
+.jet-author-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
 }
-.jet-author-photo-wrap img {
-  width: 100%;
-  height: 100%;
+.jet-author-photo-thumb {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
   object-fit: cover;
-  display: block;
-}
-.jet-author-photo-caption {
-  padding: 12px 14px;
+  flex-shrink: 0;
+  border: 1.5px solid var(--jet-gold);
 }
 .jet-author-name {
-  font-family: "Georgia", serif;
-  font-size: 1.02rem;
-  font-weight: 900;
+  font-family: var(--jet-serif);
+  font-size: 1.05rem;
+  font-weight: 800;
   color: var(--jet-navy);
-  margin: 0 0 3px 0;
+  margin: 0 0 2px 0;
 }
 .jet-author-role {
-  display: inline-block;
-  font-size: 0.72rem;
-  font-weight: 800;
+  display: block;
+  font-size: 0.70rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.4px;
-  color: var(--jet-navy);
-  background: var(--jet-gold-soft);
-  border: 1px solid #e5c687;
-  padding: 2px 8px;
-  border-radius: 4px;
-  margin-bottom: 8px;
+  letter-spacing: 0.08em;
+  color: var(--jet-gold-deep);
 }
 .jet-author-bio {
   font-size: 0.80rem;
-  line-height: 1.45;
-  color: #475569;
-  margin: 0 0 8px 0;
+  line-height: 1.48;
+  color: var(--jet-muted);
+  margin: 0 0 6px 0;
 }
 .jet-author-filter-link {
   background: none;
   border: none;
   padding: 0;
-  font-size: 0.76rem;
-  font-weight: 800;
+  font-size: 0.75rem;
+  font-weight: 700;
   color: var(--jet-navy);
   cursor: pointer;
-  text-decoration: underline;
-  text-decoration-color: var(--jet-gold);
+  border-bottom: 1px solid var(--jet-gold);
 }
 .jet-author-filter-link:hover {
-  color: #9a6c11;
+  color: var(--jet-gold-deep);
 }
 
-/* Widget "Leia também ⬇️" Estilo G1 */
 .jet-leia-item {
   display: grid;
-  grid-template-columns: 1fr 78px;
-  gap: 12px;
-  align-items: center;
+  grid-template-columns: 24px 1fr 72px;
+  gap: 10px;
+  align-items: start;
   padding: 11px 0;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid var(--jet-rule-soft);
   text-decoration: none !important;
 }
 .jet-leia-item:last-child {
   border-bottom: none;
   padding-bottom: 2px;
 }
+.jet-leia-num {
+  font-family: var(--jet-serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--jet-gold);
+  line-height: 1.1;
+}
 .jet-leia-txt {
-  font-size: 0.86rem;
+  font-size: 0.83rem;
   font-weight: 700;
   line-height: 1.32;
   color: var(--jet-navy);
   transition: color 0.15s ease;
 }
 .jet-leia-item:hover .jet-leia-txt {
-  color: #9a6c11;
+  color: var(--jet-gold-deep);
 }
 .jet-leia-sub {
   display: block;
-  font-size: 0.70rem;
-  font-weight: 600;
+  font-size: 0.69rem;
+  font-weight: 500;
   color: #64748b;
   margin-top: 3px;
 }
 .jet-leia-thumb {
-  width: 78px;
-  height: 58px;
-  border-radius: 8px;
+  width: 72px;
+  height: 52px;
+  border-radius: 3px;
   object-fit: cover;
-  border: 1px solid #cbd5e1;
-  background: #f8fafc;
+  border: 1px solid var(--jet-rule-soft);
 }
 
 .jet-substack-side input[type="email"] {
   width: 100%;
-  padding: 8px 11px;
-  border: 1px solid #94a3b8;
-  border-radius: 6px;
+  padding: 9px 11px;
+  border: 1px solid var(--jet-rule);
+  border-radius: 4px;
   font-size: 0.82rem;
   margin-bottom: 8px;
   box-sizing: border-box;
 }
 .jet-substack-side button {
   width: 100%;
-  background: var(--jet-gold);
-  color: var(--jet-navy);
-  font-weight: 800;
-  font-size: 0.82rem;
+  background: var(--jet-navy);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.80rem;
   border: none;
+  border-bottom: 2px solid var(--jet-gold);
   padding: 9px 12px;
-  border-radius: 6px;
+  border-radius: 4px;
   cursor: pointer;
 }
 
 /* ==========================================================================
-   CADERNOS DE LEITURA INTEGRAL (POSTS HTML EXEMPLARES COM FOTO DO AUTOR)
+   ARTIGOS COMPLETOS (DIAGRAMAÇÃO EDITORIAL TIPO PERIÓDICO)
    ========================================================================== */
 .jet-section-header {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  border-bottom: 2px solid var(--jet-navy);
-  padding-bottom: 6px;
-  margin: 34px 0 18px 0;
+  border-top: 2px solid var(--jet-navy);
+  border-bottom: 1px solid var(--jet-rule);
+  padding: 10px 0;
+  margin: 36px 0 22px 0;
 }
 .jet-section-header h3 {
-  font-family: "Georgia", "Times New Roman", serif;
-  font-size: 1.28rem;
+  font-family: var(--jet-serif);
+  font-size: 1.32rem;
   font-weight: 800;
   color: var(--jet-navy);
   margin: 0;
-  text-transform: uppercase;
-  letter-spacing: 0.4px;
 }
 .card-boletim {
-  background-color: #ffffff;
-  border-radius: 10px;
-  padding: 28px 34px;
+  background-color: var(--jet-surface);
+  padding: 32px 38px;
   margin-bottom: 34px;
-  box-shadow: 0 4px 20px rgba(15, 37, 55, 0.06);
-  border: 1px solid #cbd5e1;
-  border-top: 6px solid #0f2537;
+  border: 1px solid var(--jet-rule-soft);
+  border-top: 3px solid var(--jet-navy);
   scroll-margin-top: 76px;
 }
 .card-boletim.layout-periodico {
-  background-color: #fdfcf9;
-  border-top: 6px solid #0B5D32;
+  background-color: #ffffff;
 }
 @keyframes jetHighlightCard {
-  0% { box-shadow: 0 0 0 4px rgba(200, 148, 43, 0.55); }
-  100% { box-shadow: 0 4px 20px rgba(15, 37, 55, 0.06); }
+  0% { box-shadow: 0 0 0 3px rgba(200, 148, 43, 0.55); }
+  100% { box-shadow: none; }
 }
 .card-boletim.jet-post-focused {
   animation: jetHighlightCard 1.5s ease-out;
@@ -726,62 +711,50 @@ main#quarto-document-content.content {
   flex-wrap: wrap;
   gap: 10px;
   padding-bottom: 10px;
-  margin-bottom: 14px;
-  border-bottom: 2px solid #0f2537;
-}
-.card-boletim.layout-periodico .meta-boletim {
-  border-bottom: 2px solid #0B5D32;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--jet-rule);
 }
 .badge-categoria {
-  background-color: #0f2537;
-  color: #c8942b;
+  font-size: 0.72rem;
   font-weight: 800;
-  font-size: 0.74rem;
-  padding: 4px 11px;
-  border-radius: 3px;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
+  color: var(--jet-gold-deep);
 }
 .manchete-jornal {
-  font-family: "Georgia", "Times New Roman", serif;
-  font-size: 1.75rem;
-  font-weight: 900;
-  color: #0f2537;
-  line-height: 1.18;
+  font-family: var(--jet-serif);
+  font-size: 1.88rem;
+  font-weight: 800;
+  color: var(--jet-navy);
+  line-height: 1.16;
   margin: 0 0 8px 0;
-}
-.card-boletim.layout-periodico .manchete-jornal {
-  color: #0B5D32;
+  letter-spacing: -0.015em;
 }
 .subtitulo-boletim {
-  font-family: "Georgia", "Times New Roman", serif;
-  color: #475569;
-  font-size: 1.05rem;
+  font-family: var(--jet-serif);
+  color: var(--jet-muted);
+  font-size: 1.06rem;
   font-style: italic;
-  margin-bottom: 14px;
-  line-height: 1.4;
+  margin-bottom: 16px;
+  line-height: 1.45;
 }
 
-/* Bloco Humanizado de Autoria Dentro do Post HTML */
 .jet-post-author-box {
   display: flex;
   align-items: center;
   gap: 14px;
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-left: 4px solid var(--jet-gold);
-  border-radius: 8px;
-  padding: 12px 16px;
-  margin-bottom: 16px;
+  border-top: 1px solid var(--jet-rule-soft);
+  border-bottom: 1px solid var(--jet-rule-soft);
+  padding: 12px 0;
+  margin-bottom: 18px;
 }
 .jet-post-author-avatar {
-  width: 62px;
-  height: 62px;
+  width: 54px;
+  height: 54px;
   border-radius: 50%;
   object-fit: cover;
   flex-shrink: 0;
-  border: 2px solid var(--jet-gold);
-  box-shadow: 0 2px 8px rgba(15, 37, 55, 0.14);
+  border: 1.5px solid var(--jet-gold);
 }
 .jet-post-author-details {
   flex: 1 1 auto;
@@ -792,90 +765,75 @@ main#quarto-document-content.content {
   align-items: center;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 3px;
+  margin-bottom: 2px;
 }
 .jet-post-author-top strong {
-  font-size: 0.94rem;
+  font-size: 0.90rem;
   color: var(--jet-navy);
 }
 .jet-post-author-badge {
   font-size: 0.68rem;
-  font-weight: 800;
+  font-weight: 700;
   text-transform: uppercase;
-  padding: 2px 8px;
-  border-radius: 999px;
-  background: var(--jet-navy);
-  color: var(--jet-gold);
+  letter-spacing: 0.06em;
+  color: var(--jet-gold-deep);
 }
 .jet-post-author-bio-inline {
   font-size: 0.78rem;
-  color: #475569;
-  line-height: 1.4;
-  margin: 0 0 4px 0;
+  color: var(--jet-muted);
+  line-height: 1.42;
+  margin: 0 0 3px 0;
 }
 .jet-post-author-meta {
-  font-size: 0.74rem;
+  font-size: 0.73rem;
   color: #64748b;
 }
 
 .destaque-executivo {
-  background-color: #f8f9fa;
-  border-left: 4px solid #c8942b;
+  background: var(--jet-paper);
+  border-left: 3px solid var(--jet-gold);
   padding: 13px 18px;
-  border-radius: 4px;
-  margin: 14px 0 20px 0;
+  margin: 14px 0 18px 0;
   font-size: 0.94rem;
-  line-height: 1.5;
+  line-height: 1.56;
 }
 .secao-tag {
-  background-color: #0f2537;
-  color: #ffffff;
-  padding: 7px 16px;
-  border-radius: 3px;
-  font-size: 0.82rem;
+  font-family: var(--jet-serif);
+  color: var(--jet-navy);
+  font-size: 1.12rem;
   font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin: 22px 0 14px 0;
+  padding: 0 0 6px 0;
+  margin: 26px 0 14px 0;
+  border-bottom: 1.5px solid var(--jet-gold);
   display: block;
-  border-left: 5px solid #c8942b;
 }
-.jet-periodico-2col {
+.jet-periodico-2col,
+.jet-flash-2col {
   column-count: 2;
-  column-gap: 32px;
-  column-rule: 1px solid #cbd5e1;
+  column-gap: 34px;
+  column-rule: 1px solid var(--jet-rule-soft);
   text-align: justify;
-  font-family: "Georgia", "Times New Roman", serif;
-  font-size: 0.96rem;
-  line-height: 1.62;
+  font-family: var(--jet-serif);
+  font-size: 1.00rem;
+  line-height: 1.68;
   color: #1e293b;
-  margin: 12px 0 18px 0;
+  margin: 10px 0 18px 0;
 }
 .jet-periodico-2col p:first-of-type::first-letter {
   float: left;
-  font-family: "Georgia", "Times New Roman", serif;
-  font-size: 2.7rem;
+  font-family: var(--jet-serif);
+  font-size: 2.8rem;
   line-height: 0.85;
   padding-right: 8px;
-  padding-top: 3px;
-  font-weight: 900;
-  color: #0B5D32;
-}
-.jet-flash-2col {
-  column-count: 2;
-  column-gap: 28px;
-  column-rule: 1px solid #e2e8f0;
-  text-align: justify;
-  font-size: 0.94rem;
-  line-height: 1.58;
-  color: #1e293b;
-  margin: 10px 0 16px 0;
+  padding-top: 4px;
+  font-weight: 800;
+  color: var(--jet-navy);
 }
 .painel-empirico-html {
   background-color: #ffffff;
-  border: 1px solid #cbd5e1;
-  border-radius: 6px;
-  padding: 16px 18px;
+  border-top: 1px solid var(--jet-rule-soft);
+  border-bottom: 1px solid var(--jet-rule-soft);
+  padding: 16px 0;
   margin: 16px 0 20px 0;
 }
 .painel-empirico-html img,
@@ -886,53 +844,54 @@ main#quarto-document-content.content {
 .tabela-boletim-html {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.85rem;
+  font-size: 0.84rem;
+  font-variant-numeric: tabular-nums;
   margin-top: 6px;
 }
 .tabela-boletim-html th {
   padding: 8px 10px;
   text-align: left;
   font-weight: 700;
-  border-bottom: 2px solid #c8942b;
+  border-bottom: 2px solid var(--jet-gold);
 }
 .tabela-boletim-html td {
   padding: 6px 10px;
   border-bottom: 1px solid #e2e8f0;
 }
 .tabela-boletim-html tbody tr:nth-child(even) {
-  background-color: #f8fafc;
+  background-color: #fafbfc;
 }
 .btn-pdf-latex {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  background-color: #0f2537;
+  gap: 6px;
+  background-color: var(--jet-navy);
   color: #ffffff !important;
   text-decoration: none !important;
-  font-weight: 800;
-  font-size: 0.82rem;
-  padding: 8px 15px;
+  font-weight: 700;
+  font-size: 0.78rem;
+  padding: 7px 14px;
   border-radius: 4px;
-  border: 1px solid rgba(255,255,255,0.2);
-  transition: all 0.18s ease;
+  border-bottom: 2px solid var(--jet-gold);
+  transition: opacity 0.16s ease;
 }
 .btn-pdf-latex:hover {
-  opacity: 0.92;
-  transform: translateY(-1px);
+  opacity: 0.90;
 }
 
 /* ==========================================================================
-   RESPONSIVIDADE MOBILE & TABLET (<= 991.98px, <= 768px, <= 480px)
+   RESPONSIVIDADE MOBILE & TABLET
    ========================================================================== */
 @media (max-width: 991.98px) {
   .jet-g1-layout {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 22px;
   }
   .jet-g1-sidebar {
     position: static;
   }
-  main.content {
+  main.content,
+  main#quarto-document-content.content {
     padding: 12px 12px 36px 12px !important;
   }
   .jet-periodico-2col, .jet-flash-2col {
@@ -961,60 +920,43 @@ main#quarto-document-content.content {
     padding: 9px 10px;
     font-size: 0.78rem;
   }
-  .jet-feed-masthead {
-    padding: 14px 14px;
-  }
-  .jet-feed-title-row h1 {
-    font-size: 1.45rem;
-  }
   .jet-toolbar-row {
-    padding: 10px 12px;
+    padding: 8px 0 4px 0;
+    gap: 6px;
   }
   .jet-filter-group {
     width: 100%;
   }
+  .jet-filter-divider {
+    display: none;
+  }
   .jet-filter-btn {
-    flex: 1 1 calc(50% - 4px);
-    text-align: center;
-    font-size: 0.72rem;
+    font-size: 0.74rem;
     padding: 7px 8px;
   }
   .jet-g1-feed-column {
-    padding: 6px 14px 14px 14px;
+    padding: 4px 14px 14px 14px;
   }
   .jet-g1-card {
     grid-template-columns: 1fr;
     gap: 12px;
-    padding: 16px 0;
-  }
-  .jet-g1-thumb-link {
-    aspect-ratio: 16 / 9;
+    padding: 18px 0;
   }
   .jet-g1-headline {
-    font-size: 1.15rem;
+    font-size: 1.2rem;
+  }
+  .jet-carta-hero {
+    padding: 16px 14px;
   }
   .jet-carta-hero-grid {
     grid-template-columns: 1fr;
   }
-  .jet-carta-hero-grid > div:last-child {
-    min-width: 0 !important;
-    width: 100% !important;
-  }
   .card-boletim {
-    padding: 16px 14px;
+    padding: 18px 14px;
     margin-bottom: 22px;
   }
-  .jet-post-author-box {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 12px 12px;
-    gap: 10px;
-  }
   .manchete-jornal {
-    font-size: 1.28rem;
-  }
-  .subtitulo-boletim {
-    font-size: 0.92rem;
+    font-size: 1.38rem;
   }
   .tabela-boletim-html {
     min-width: 480px;
@@ -1038,7 +980,7 @@ main#quarto-document-content.content {
 }
 </style>
 
-<!-- BARRA GLOBAL DO ECOSSISTEMA JET -->
+<!-- BARRA GLOBAL DO ECOSSISTEMA JET (SEM EMOJIS, APENAS SÍMBOLO DO PAINEL) -->
 <header class="jet-eco-topbar">
   <div class="jet-eco-topbar-inner">
     <a href="index.html" class="jet-eco-brand">
@@ -1065,32 +1007,31 @@ main#quarto-document-content.content {
   </div>
 </header>
 
-<!-- CABEÇALHO JORNALÍSTICO DO FEED -->
+<!-- CABEÇALHO EDITORIAL -->
 <section class="jet-feed-masthead jet-anim-in">
   <div class="jet-feed-masthead-top">
-    <span>PALMAS — TOCANTINS &nbsp;•&nbsp; FEED DE ANÁLISES &amp; CADERNO EDITORIAL</span>
-    <span>JORNALISMO ECONÔMICO BASEADO EM EVIDÊNCIAS</span>
+    <span>PALMAS — TOCANTINS &nbsp;·&nbsp; FEED EDITORIAL &amp; PUBLICAÇÕES</span>
+    <span>ANÁLISES ASSINADAS POR ECONOMISTAS</span>
   </div>
   <div class="jet-feed-title-row">
-    <div>
-      <h1>Feed Econômico &amp; Boletins do Tocantins</h1>
-      <p>Leituras conjunturais assinadas por economistas, boletins executivos e dossiês setoriais com dados oficiais.</p>
-    </div>
+    <h1>Feed Econômico e Boletins</h1>
+    <p>Acompanhamento conjuntural, boletins mensais, dossiês setoriais e cartas de conjuntura sobre a economia tocantinense.</p>
   </div>
 </section>
 
-<!-- BARRA DE FILTROS EDITORIAIS + FILTRO POR ECONOMISTA -->
+<!-- BARRA DE EDITORIAS E ECONOMISTAS -->
 <div class="jet-toolbar-row jet-anim-in">
   <div class="jet-filter-group">
-    <button type="button" class="jet-filter-btn active" data-filter-group="fam" onclick="aplicarFiltroFeed('fam', 'todos', this)">Todas as Matérias (12)</button>
-    <button type="button" class="jet-filter-btn" data-filter-group="fam" onclick="aplicarFiltroFeed('fam', 'flash', this)">⚡ Boletins Flash (6)</button>
-    <button type="button" class="jet-filter-btn" data-filter-group="fam" onclick="aplicarFiltroFeed('fam', 'dossie', this)">📕 Dossiês Anuais (5)</button>
-    <button type="button" class="jet-filter-btn" data-filter-group="fam" onclick="aplicarFiltroFeed('fam', 'carta', this)">📘 Carta de Conjuntura (1)</button>
+    <button type="button" class="jet-filter-btn active" data-filter-group="fam" onclick="aplicarFiltroFeed('fam', 'todos', this)">Todas as Edições (12)</button>
+    <button type="button" class="jet-filter-btn" data-filter-group="fam" onclick="aplicarFiltroFeed('fam', 'flash', this)">Boletins Flash (6)</button>
+    <button type="button" class="jet-filter-btn" data-filter-group="fam" onclick="aplicarFiltroFeed('fam', 'dossie', this)">Dossiês Anuais (5)</button>
+    <button type="button" class="jet-filter-btn" data-filter-group="fam" onclick="aplicarFiltroFeed('fam', 'carta', this)">Carta de Conjuntura (1)</button>
   </div>
   <div class="jet-filter-group">
-    <button type="button" class="jet-filter-btn author-pill active" data-filter-group="autor" onclick="aplicarFiltroFeed('autor', 'todos', this)">👥 Todos os Autores</button>
-    <button type="button" class="jet-filter-btn author-pill" data-filter-group="autor" onclick="aplicarFiltroFeed('autor', 'tarcisio', this)">👤 Tarcisio Iago</button>
-    <button type="button" class="jet-filter-btn author-pill" data-filter-group="autor" onclick="aplicarFiltroFeed('autor', 'lorenzo', this)">👤 Lorenzo Costa</button>
+    <span class="jet-filter-divider" aria-hidden="true"></span>
+    <button type="button" class="jet-filter-btn active" data-filter-group="autor" onclick="aplicarFiltroFeed('autor', 'todos', this)">Todos os Autores</button>
+    <button type="button" class="jet-filter-btn" data-filter-group="autor" onclick="aplicarFiltroFeed('autor', 'tarcisio', this)">Tarcisio Iago</button>
+    <button type="button" class="jet-filter-btn" data-filter-group="autor" onclick="aplicarFiltroFeed('autor', 'lorenzo', this)">Lorenzo Costa</button>
   </div>
 </div>
 ```
@@ -1099,12 +1040,10 @@ main#quarto-document-content.content {
 #| results: asis
 
 # ==============================================================================
-# 1. LAYOUT ESTILO G1: FEED VERTICAL À ESQUERDA + AUTORES & "LEIA TAMBÉM" À DIREITA
+# 1. FEED EDITORIAL EM 2 COLUNAS (COLUNA PRINCIPAL + SIDEBAR LIMPA)
 # ==============================================================================
 cat("```{=html}\n")
 cat('<div class="jet-g1-layout">\n')
-
-# --- COLUNA ESQUERDA: STREAM VERTICAL DE MATÉRIAS ESTILO G1 ---
 cat('  <div class="jet-g1-feed-column">\n')
 
 if (file.exists("boletins/pdfs/2026_10_carta_pib.pdf")) {
@@ -1112,25 +1051,14 @@ if (file.exists("boletins/pdfs/2026_10_carta_pib.pdf")) {
     '<div id="caderno-carta-conjuntura" class="jet-carta-hero jet-reveal-item" data-portal-fam="carta" data-portal-autor="todos">',
     '  <div class="jet-carta-hero-grid">',
     '    <div>',
-    '      <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:6px;">',
-    '        <span style="background:#8CE000; color:#0A2E73; font-weight:900; font-size:0.68rem; padding:3px 9px; border-radius:4px; text-transform:uppercase; letter-spacing:0.5px;">📘 Edição Especial • Carta de Conjuntura</span>',
-    '      </div>',
-    '      <h2 style="font-family:Georgia,serif; font-size:1.42rem; font-weight:900; color:#ffffff; margin:0 0 6px 0;">Carta de Conjuntura Econômica do Tocantins</h2>',
-    '      <p style="margin:0; font-size:0.86rem; color:#e2e8f0; line-height:1.48;">Relatório analítico completo elaborado por Lorenzo Costa e Tarcisio Iago reunindo PIB, emprego formal, comércio exterior, finanças públicas, agropecuária e economia municipal.</p>',
-    '      <div class="jet-carta-sec-pills">',
-    '        <span class="jet-carta-sec-pill">1. Visão Intersetorial</span>',
-    '        <span class="jet-carta-sec-pill">2. PIB &amp; Atividade</span>',
-    '        <span class="jet-carta-sec-pill">3. Emprego</span>',
-    '        <span class="jet-carta-sec-pill">4. Comex</span>',
-    '        <span class="jet-carta-sec-pill">5. Finanças</span>',
-    '        <span class="jet-carta-sec-pill">6. Empresas</span>',
-    '        <span class="jet-carta-sec-pill">7. Agro &amp; Safras</span>',
-    '        <span class="jet-carta-sec-pill">8. Municípios</span>',
-    '      </div>',
+    '      <div class="jet-carta-kicker">Edição Especial · Carta de Conjuntura</div>',
+    '      <h2>Carta de Conjuntura Econômica do Tocantins</h2>',
+    '      <p>Relatório analítico completo elaborado por Lorenzo Costa e Tarcisio Iago integrando atividade econômica, trabalho, comércio exterior, finanças públicas, empresas e agropecuária estadual.</p>',
+    '      <div class="jet-carta-sections-line">1. Visão Intersetorial · 2. Atividade e PIB · 3. Emprego · 4. Comércio Exterior · 5. Finanças Públicas · 6. Ambiente Empresarial · 7. Agropecuária · 8. Municípios</div>',
     '    </div>',
-    '    <div style="display:flex; flex-direction:column; gap:8px; min-width:210px;">',
-    '      <a href="boletins/pdfs/2026_10_carta_pib.pdf" target="_blank" class="btn-pdf-latex" style="background:#8CE000; color:#0A2E73 !important; justify-content:center; font-size:0.84rem; padding:11px 16px;" download>📥 Baixar Carta (17 págs)</a>',
-    '      <a href="boletins/pdfs/2026_10_carta_pib.pdf" target="_blank" style="text-align:center; font-size:0.74rem; color:#f8fafc !important; text-decoration:underline;">Abrir PDF no navegador →</a>',
+    '    <div style="display:flex; flex-direction:column; gap:6px; min-width:190px; text-align:center;">',
+    '      <a href="boletins/pdfs/2026_10_carta_pib.pdf" target="_blank" class="jet-carta-cta" download>Baixar Carta (17 págs) ↓</a>',
+    '      <a href="boletins/pdfs/2026_10_carta_pib.pdf" target="_blank" class="jet-g1-link-text" style="font-size:0.74rem;">Abrir no navegador →</a>',
     '    </div>',
     '  </div>',
     '</div>\n',
@@ -1142,11 +1070,8 @@ if (length(catalogo_boletins) > 0) {
   for (b in catalogo_boletins) {
     eh_per <- identical(b$estilo_layout, "periodico")
     fam_str <- if (eh_per) "dossie" else "flash"
-    cor_p <- if (!is.null(b$cor_primaria)) b$cor_primaria else "#0f2537"
-    cor_a <- if (!is.null(b$cor_acento)) b$cor_acento else "#c8942b"
-    cor_badge_txt <- if (eh_per) "#FAF6EE" else "#C8942B"
     tag_layout <- if (eh_per) "Dossiê Anual" else "Boletim Flash"
-    thumb_src <- if (!is.null(b$thumb_png) && nzchar(b$thumb_png) && file.exists(b$thumb_png)) b$thumb_png else "logo.png"
+    thumb_src <- if (!is.null(b$thumb_png) && nzchar(b$thumb_png) && file.exists(b$thumb_png)) b$thumb_png else "assets/autores/lorenzo_costa.jpg"
     resumo_curto <- if (nzchar(b$destaque_curto)) b$destaque_curto else b$subtitulo
     tema_curto <- if (!is.null(b$tema_nome) && nzchar(b$tema_nome)) b$tema_nome else b$categoria
 
@@ -1163,21 +1088,18 @@ if (length(catalogo_boletins) > 0) {
     }
 
     btn_pdf_card <- if (isTRUE(b$tem_pdf)) {
-      sprintf('<a href="%s" target="_blank" class="jet-g1-btn-pdf" style="background:%s; color:%s !important;" download>📄 PDF</a>',
-              b$pdf_url, cor_p, ifelse(eh_per, "#ffffff", "#C8942B"))
+      sprintf('<a href="%s" target="_blank" class="jet-g1-link-text" download>Baixar PDF ↓</a>', b$pdf_url)
     } else ""
 
     cat(sprintf(
       '<article class="jet-g1-card jet-reveal-item" data-portal-fam="%s" data-portal-autor="%s">
   <a href="#%s" class="jet-g1-thumb-link" onclick="focarPostArtigo(\'%s\')">
     <img src="%s" alt="%s" loading="lazy" />
-    <span class="jet-g1-thumb-badge" style="background:%s; color:%s; border-left:3px solid %s;">%s</span>
   </a>
   <div>
-    <div class="jet-g1-kicker" style="color:%s;">
-      <span>%s</span>
-      <span style="color:#94a3b8;">•</span>
-      <span style="color:#64748b; font-weight:600;">%s</span>
+    <div class="jet-g1-kicker">
+      <span>%s · %s</span>
+      <span class="jet-period-muted">%s</span>
     </div>
     <a href="#%s" class="jet-g1-headline" onclick="focarPostArtigo(\'%s\')">%s</a>
     %s
@@ -1186,12 +1108,12 @@ if (length(catalogo_boletins) > 0) {
       <div class="jet-g1-author-mini">
         <img src="%s" alt="%s" style="object-position:%s;" />
         <div class="jet-g1-author-mini-info">
-          <strong>%s</strong> <span style="color:#64748b;">(%s)</span><br/>
-          <span style="font-size:0.68rem; color:#64748b;">Publicado em %s</span>
+          <strong>%s</strong> · %s<br/>
+          <span>%s</span>
         </div>
       </div>
       <div class="jet-g1-actions">
-        <a href="#%s" class="jet-g1-btn-read" onclick="focarPostArtigo(\'%s\')">📖 Ler matéria ↓</a>
+        <a href="#%s" class="jet-g1-link-text" onclick="focarPostArtigo(\'%s\')">Ler matéria →</a>
         %s
       </div>
     </div>
@@ -1200,8 +1122,7 @@ if (length(catalogo_boletins) > 0) {
       fam_str, autor_id,
       b$slug, b$slug,
       thumb_src, gsub('"', '', b$titulo),
-      cor_p, cor_badge_txt, cor_a, tag_layout,
-      cor_p, tema_curto, b$periodo,
+      tag_layout, tema_curto, b$periodo,
       b$slug, b$slug, b$titulo,
       bullets_html,
       resumo_curto,
@@ -1214,74 +1135,73 @@ if (length(catalogo_boletins) > 0) {
 
 cat('  </div>\n') # fim .jet-g1-feed-column
 
-# --- COLUNA DIREITA: ECONOMISTAS (FOTOS + BIOS) & "LEIA TAMBÉM ⬇️" ---
+# --- COLUNA LATERAL DIREITA ---
 cat('  <aside class="jet-g1-sidebar">\n')
 
-# Card 1: Autores e Economistas
 cat('    <div class="jet-side-box jet-anim-in">\n')
-cat('      <h4 class="jet-side-box-title"><span>👥 Economistas do JET</span></h4>\n')
+cat('      <h4 class="jet-side-box-title">Economistas do JET</h4>\n')
 
-cat('      <div class="jet-author-profile-card">\n')
-cat('        <div class="jet-author-photo-wrap">\n')
-cat('          <img src="assets/autores/tarcisio_iago.jpg" alt="Tarcisio Iago — Economista" style="object-position: 72% 16%;" />\n')
+cat('      <div class="jet-author-profile-item">\n')
+cat('        <div class="jet-author-header">\n')
+cat('          <img src="assets/autores/tarcisio_iago.jpg" alt="Tarcisio Iago — Economista" class="jet-author-photo-thumb" style="object-position: 72% 16%;" />\n')
+cat('          <div>\n')
+cat('            <h5 class="jet-author-name">Tarcisio Iago</h5>\n')
+cat('            <span class="jet-author-role">Economista</span>\n')
+cat('          </div>\n')
 cat('        </div>\n')
-cat('        <div class="jet-author-photo-caption">\n')
-cat('          <h5 class="jet-author-name">Tarcisio Iago</h5>\n')
-cat('          <span class="jet-author-role">Economista</span>\n')
-cat('          <p class="jet-author-bio">Economista no Jornal Econômico do Tocantins (JET). Responsável pelas análises de mercado de trabalho formal, comércio exterior e dinâmica empresarial regional.</p>\n')
-cat('          <button type="button" class="jet-author-filter-link" onclick="filtrarPorAutorSidebar(\'tarcisio\')">Ver publicações assinadas →</button>\n')
-cat('        </div>\n')
+cat('        <p class="jet-author-bio">Economista no Jornal Econômico do Tocantins (JET). Responsável pelas análises de mercado de trabalho formal, comércio exterior e dinâmica empresarial regional.</p>\n')
+cat('        <button type="button" class="jet-author-filter-link" onclick="filtrarPorAutorSidebar(\'tarcisio\')">Filtrar análises assinadas →</button>\n')
 cat('      </div>\n')
 
-cat('      <div class="jet-author-profile-card">\n')
-cat('        <div class="jet-author-photo-wrap">\n')
-cat('          <img src="assets/autores/lorenzo_costa.jpg" alt="Lorenzo Costa — Graduado em Economia" style="object-position: 28% 16%;" />\n')
+cat('      <div class="jet-author-profile-item">\n')
+cat('        <div class="jet-author-header">\n')
+cat('          <img src="assets/autores/lorenzo_costa.jpg" alt="Lorenzo Costa — Graduado em Economia" class="jet-author-photo-thumb" style="object-position: 28% 16%;" />\n')
+cat('          <div>\n')
+cat('            <h5 class="jet-author-name">Lorenzo Costa</h5>\n')
+cat('            <span class="jet-author-role">Graduado em Economia</span>\n')
+cat('          </div>\n')
 cat('        </div>\n')
-cat('        <div class="jet-author-photo-caption">\n')
-cat('          <h5 class="jet-author-name">Lorenzo Costa</h5>\n')
-cat('          <span class="jet-author-role">Graduado em Economia</span>\n')
-cat('          <p class="jet-author-bio">Graduado em Economia e editor do Jornal Econômico do Tocantins (JET). Atua em macroeconomia regional, séries dessazonalizadas, contas regionais e finanças públicas.</p>\n')
-cat('          <button type="button" class="jet-author-filter-link" onclick="filtrarPorAutorSidebar(\'lorenzo\')">Ver publicações assinadas →</button>\n')
-cat('        </div>\n')
+cat('        <p class="jet-author-bio">Graduado em Economia e editor do Jornal Econômico do Tocantins (JET). Atua em macroeconomia regional, séries dessazonalizadas, contas regionais e finanças públicas.</p>\n')
+cat('        <button type="button" class="jet-author-filter-link" onclick="filtrarPorAutorSidebar(\'lorenzo\')">Filtrar análises assinadas →</button>\n')
 cat('      </div>\n')
 cat('    </div>\n')
 
-# Card 2: Leia também (Estilo G1)
+# Leia também numerado (sem emojis)
 cat('    <div class="jet-side-box jet-anim-in">\n')
-cat('      <h4 class="jet-side-box-title"><span>Leia também ⬇️</span></h4>\n')
+cat('      <h4 class="jet-side-box-title">Leia também</h4>\n')
 if (length(catalogo_boletins) > 0) {
   n_rec <- min(4L, length(catalogo_boletins))
   for (j in seq_len(n_rec)) {
     rec <- catalogo_boletins[[j]]
-    rec_thumb <- if (!is.null(rec$thumb_png) && nzchar(rec$thumb_png) && file.exists(rec$thumb_png)) rec$thumb_png else "logo.png"
+    rec_thumb <- if (!is.null(rec$thumb_png) && nzchar(rec$thumb_png) && file.exists(rec$thumb_png)) rec$thumb_png else "assets/autores/lorenzo_costa.jpg"
     cat(sprintf(
       '<a href="#%s" class="jet-leia-item" onclick="focarPostArtigo(\'%s\')">
-  <div class="jet-leia-txt">%s<span class="jet-leia-sub">%s • %s</span></div>
+  <span class="jet-leia-num">0%d</span>
+  <div class="jet-leia-txt">%s<span class="jet-leia-sub">%s · %s</span></div>
   <img src="%s" alt="%s" class="jet-leia-thumb" loading="lazy" />
 </a>\n',
-      rec$slug, rec$slug, rec$titulo, rec$autor_nome, rec$periodo, rec_thumb, gsub('"', '', rec$titulo)
+      rec$slug, rec$slug, j, rec$titulo, rec$autor_nome, rec$periodo, rec_thumb, gsub('"', '', rec$titulo)
     ))
   }
 }
 cat('    </div>\n')
 
-# Card 3: Receber Edições por E-mail
 cat('    <div class="jet-side-box jet-substack-side">\n')
-cat('      <h4 class="jet-side-box-title"><span>📩 Receba as Edições</span></h4>\n')
-cat('      <p style="font-size:0.80rem; color:#475569; line-height:1.42; margin:0 0 10px 0;">Assine gratuitamente via Substack para receber novos boletins flash e a Carta de Conjuntura no seu e-mail.</p>\n')
-cat('      <form onsubmit="event.preventDefault(); window.open(\'https://substack.com\', \'_blank\'); this.querySelector(\'button\').textContent = \'✓ Redirecionado!\';">\n')
+cat('      <h4 class="jet-side-box-title">Receba por E-mail</h4>\n')
+cat('      <p style="font-size:0.80rem; color:#475569; line-height:1.45; margin:0 0 10px 0;">Cadastre-se via Substack para receber novos boletins e a Carta de Conjuntura.</p>\n')
+cat('      <form onsubmit="event.preventDefault(); window.open(\'https://substack.com\', \'_blank\'); this.querySelector(\'button\').textContent = \'Redirecionado\';">\n')
 cat('        <input type="email" placeholder="Seu e-mail profissional..." required />\n')
-cat('        <button type="submit">Assinar via Substack</button>\n')
+cat('        <button type="submit">Assinar Newsletter</button>\n')
 cat('      </form>\n')
 cat('    </div>\n')
 
-cat('  </aside>\n') # fim .jet-g1-sidebar
-cat('</div>\n') # fim .jet-g1-layout
+cat('  </aside>\n')
+cat('</div>\n')
 
 # ==============================================================================
-# 2. ARTIGOS COMPLETOS NA ÍNTEGRA (COM ASSINATURA HUMANA & FOTO DO ECONOMISTA)
+# 2. ARTIGOS COMPLETOS NA ÍNTEGRA (PALETA E TIPOGRAFIA EDITORIAL UNIFICADAS)
 # ==============================================================================
-cat('<div class="jet-section-header"><h3>📰 Leituras Completas &amp; Séries Históricas</h3><span style="font-size:0.78rem; color:#475569;">Artigos completos assinados pelos economistas do JET</span></div>\n')
+cat('<div class="jet-section-header"><h3>Leituras Completas e Séries Históricas</h3><span style="font-size:0.78rem; color:#475569;">Edições integrais assinadas pelos economistas do JET</span></div>\n')
 cat("```\n")
 
 if (length(catalogo_boletins) == 0) {
@@ -1289,14 +1209,12 @@ if (length(catalogo_boletins) == 0) {
 } else {
   for (b in catalogo_boletins) {
     cor_p <- if (!is.null(b$cor_primaria)) b$cor_primaria else "#0f2537"
-    cor_f <- if (!is.null(b$cor_fundo)) b$cor_fundo else "#f8f9fa"
     cor_a <- if (!is.null(b$cor_acento)) b$cor_acento else "#c8942b"
     eh_per <- identical(b$estilo_layout, "periodico")
     fam_str <- if (eh_per) "dossie" else "flash"
-    cor_badge_txt <- if (eh_per) "#FAF6EE" else "#c8942b"
     classe_card <- if (eh_per) "card-boletim layout-periodico" else "card-boletim"
     classe_colunas <- if (eh_per) "jet-periodico-2col" else "jet-flash-2col"
-    selo_layout <- if (eh_per) "📕 DOSSIÊ ANUAL" else "⚡ BOLETIM FLASH"
+    selo_layout <- if (eh_per) "Dossiê Anual" else "Boletim Flash"
 
     autor_id <- if (!is.null(b$autor_id)) b$autor_id else "lorenzo"
     autor_nome <- if (!is.null(b$autor_nome)) b$autor_nome else "Lorenzo Costa"
@@ -1307,28 +1225,27 @@ if (length(catalogo_boletins) == 0) {
 
     cat("```{=html}\n")
     cat(sprintf('<span id="%s" style="scroll-margin-top: 76px;"></span>\n', b$slug))
-    cat(sprintf('<div id="post-%s" class="%s jet-reveal-item" data-portal-fam="%s" data-portal-autor="%s" style="border-top: 6px solid %s;">\n', b$slug, classe_card, fam_str, autor_id, cor_p))
+    cat(sprintf('<div id="post-%s" class="%s jet-reveal-item" data-portal-fam="%s" data-portal-autor="%s">\n', b$slug, classe_card, fam_str, autor_id))
     cat('<div class="meta-boletim">\n')
-    cat(sprintf('  <div><span class="badge-categoria" style="background-color: %s; color: %s; border-left: 3px solid %s;">%s • %s</span> <span style="font-size: 0.75rem; color: %s; font-weight: 800; margin-left: 8px; letter-spacing: 0.4px;">%s</span></div>\n', cor_p, cor_badge_txt, cor_a, b$categoria, b$periodo, cor_p, selo_layout))
+    cat(sprintf('  <div><span class="badge-categoria">%s · %s · %s</span></div>\n', selo_layout, b$categoria, b$periodo))
     if (isTRUE(b$tem_pdf)) {
-      cat(sprintf('  <a href="%s" target="_blank" class="btn-pdf-latex" style="background-color: %s; color: #ffffff !important;" download>📥 Baixar em PDF</a>\n', b$pdf_url, cor_p))
+      cat(sprintf('  <a href="%s" target="_blank" class="btn-pdf-latex" download>Baixar em PDF ↓</a>\n', b$pdf_url))
     }
     cat('</div>\n')
 
     cat(sprintf('<h2 class="manchete-jornal">%s</h2>\n', b$titulo))
     cat(sprintf('<div class="subtitulo-boletim">%s</div>\n', b$subtitulo))
 
-    # Bloco Humanizado de Autoria com Foto e Breve Descrição
     cat(sprintf(
       '<div class="jet-post-author-box">
   <img src="%s" alt="%s" class="jet-post-author-avatar" style="object-position:%s;" />
   <div class="jet-post-author-details">
     <div class="jet-post-author-top">
       <strong>Por %s</strong>
-      <span class="jet-post-author-badge">%s</span>
+      <span class="jet-post-author-badge">· %s</span>
     </div>
     <p class="jet-post-author-bio-inline">%s</p>
-    <div class="jet-post-author-meta"><strong>Data de Fechamento:</strong> %s &nbsp;•&nbsp; <strong>Fontes Primárias:</strong> %s</div>
+    <div class="jet-post-author-meta">Fechamento: %s &nbsp;·&nbsp; Fontes Primárias: %s</div>
   </div>
 </div>\n',
       autor_foto, autor_nome, autor_pos,
@@ -1338,7 +1255,7 @@ if (length(catalogo_boletins) == 0) {
     ))
 
     if (nzchar(b$destaque_curto)) {
-      cat(sprintf('<div class="destaque-executivo" style="background-color: %s; border-left: 4px solid %s;"><strong style="color: %s;">Síntese Executiva:</strong> %s</div>\n', cor_f, cor_a, cor_p, b$destaque_curto))
+      cat(sprintf('<div class="destaque-executivo"><strong style="color: %s;">Síntese Executiva:</strong> %s</div>\n', cor_p, b$destaque_curto))
     }
 
     if (!is.null(b$kpis_html) && nzchar(b$kpis_html)) {
@@ -1349,23 +1266,23 @@ if (length(catalogo_boletins) == 0) {
       cat(b$diagnostico_script_html, "\n")
     }
 
-    cat(sprintf('<div class="secao-tag" style="background-color: %s; border-left: 5px solid %s;">1. Panorama Estatístico e Evidência Empírica</div>\n', cor_p, cor_a))
+    cat('<div class="secao-tag">01. Panorama Estatístico e Evidência Empírica</div>\n')
     cat(sprintf('<div class="%s">%s</div>\n', classe_colunas, b$texto_auto_html))
 
     if (!is.null(b$visual_html) && nzchar(b$visual_html)) {
       cat(b$visual_html, "\n")
     }
 
-    cat(sprintf('<div class="secao-tag" style="background-color: %s; border-left: 5px solid %s;">2. Análise de Conjuntura e Leitura Setorial</div>\n', cor_p, cor_a))
+    cat('<div class="secao-tag">02. Análise de Conjuntura e Leitura Setorial</div>\n')
     cat(sprintf('<div class="%s">%s</div>\n', classe_colunas, b$conjuntura_html))
 
     if (nzchar(b$perspectivas_html)) {
-      cat(sprintf('<div class="secao-tag" style="background-color: %s; border-left: 5px solid %s;">3. Perspectivas e Cenários</div>\n', cor_p, cor_a))
+      cat('<div class="secao-tag">03. Perspectivas e Cenários</div>\n')
       cat(sprintf('<div class="%s">%s</div>\n', classe_colunas, b$perspectivas_html))
     }
 
     if (isTRUE(b$tem_pdf)) {
-      cat(sprintf('<div style="margin-top: 18px; padding-top: 14px; border-top: 2px solid #cbd5e1; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;"><span style="font-size: 0.84rem; color: #475569;"><strong>Versão para Leitura Offline e Impressão:</strong> Baixe esta edição completa em PDF para arquivamento ou compartilhamento:</span><a href="%s" target="_blank" class="btn-pdf-latex" style="background-color: %s; color: #ffffff !important;" download>📥 Baixar Edição em PDF</a></div>\n', b$pdf_url, cor_p))
+      cat(sprintf('<div style="margin-top: 20px; padding-top: 14px; border-top: 1px solid #cbd5e1; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;"><span style="font-size: 0.82rem; color: #475569;"><strong>Versão para impressão:</strong> Baixe esta edição completa diagramada em PDF.</span><a href="%s" target="_blank" class="btn-pdf-latex" download>Baixar Edição em PDF ↓</a></div>\n', b$pdf_url))
     }
     cat('</div>\n')
     cat("```\n\n")
@@ -1408,11 +1325,10 @@ if (length(catalogo_boletins) == 0) {
 
   window.filtrarPorAutorSidebar = function(autorId) {
     aplicarFiltroFeed("autor", autorId, null);
-    window.scrollTo({ top: 140, behavior: "smooth" });
+    window.scrollTo({ top: 130, behavior: "smooth" });
   };
 
   window.focarPostArtigo = function(slug) {
-    // Garante que o filtro não esconda o artigo clicado via "Leia também"
     if (filtroAtual.fam !== "todos" || filtroAtual.autor !== "todos") {
       aplicarFiltroFeed("fam", "todos", null);
       aplicarFiltroFeed("autor", "todos", null);
@@ -1428,7 +1344,6 @@ if (length(catalogo_boletins) == 0) {
     }, 50);
   };
 
-  // Scroll Reveal elegante para os cards do Feed e Artigos
   if ("IntersectionObserver" in window) {
     var obs = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {

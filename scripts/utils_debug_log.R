@@ -197,7 +197,7 @@ gerar_resumo_diagnostico_script <- function(lista_indicadores, otica = "mensal")
   if (length(lista_indicadores) == 0) return(list(latex = "", html = "", itens = list()))
   analises <- lapply(lista_indicadores, function(it) {
     cl <- classificar_variacao_automatica(it$var_pct, it$nome, it$serie)
-    val_info <- if (!is.null(it$valor_fmt) && nzchar(it$valor_fmt)) paste0(" [nível: ", it$valor_fmt, "]") else ""
+    val_info <- if (!is.null(it$valor_fmt) && nzchar(it$valor_fmt)) paste0(" (patamar atual: ", it$valor_fmt, ")") else ""
     list(
       nome      = it$nome,
       valor_fmt = it$valor_fmt,
@@ -207,11 +207,11 @@ gerar_resumo_diagnostico_script <- function(lista_indicadores, otica = "mensal")
     )
   })
   rotulo_otica <- if (identical(otica, "anual")) {
-    "Síntese de Variações e Desempenho (Ótica Anual / 12 Meses)"
+    "Síntese dos Indicadores — Balanço em 12 Meses"
   } else if (identical(otica, "conjuntura")) {
-    "Radar de Variações, Saltos e Estabilidades Conjunturais"
+    "Síntese Conjuntural dos Indicadores"
   } else {
-    "Síntese de Variações entre Períodos Subsequentes"
+    "Síntese dos Indicadores no Período"
   }
   list(
     titulo = rotulo_otica,

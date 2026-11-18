@@ -127,7 +127,7 @@ paragrafos_para_html <- function(texto_bruto) {
   }, character(1)), collapse = "\n")
 }
 
-# Helper interno para gerar 1 linha de caixas KPI em LaTeX preenchendo \textwidth
+# Helper interno para gerar 1 faixa minimalista de indicadores em LaTeX (estilo FT/Economist)
 .render_linha_kpis_latex <- function(lista_kpis, eh_ranking_setor = FALSE) {
   n <- length(lista_kpis)
   if (n == 0) return("")
@@ -140,40 +140,40 @@ paragrafos_para_html <- function(texto_bruto) {
   } else {
     "0.156\\textwidth"
   }
-  altura_box <- if (eh_ranking_setor) "0.92cm" else "1.22cm"
+  altura_box <- if (eh_ranking_setor) "0.88cm" else "1.14cm"
   caixas <- vapply(lista_kpis, function(k) {
     cor_valor <- if (!is.null(k$cor_valor)) k$cor_valor else "corprimaria"
     cor_borda <- if (!is.null(k$cor_borda)) k$cor_borda else "coracento"
     paste0(
       "\\begin{tikzpicture}[baseline=(box.base)]\n",
-      "  \\node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,\n",
+      "  \\node[fill=white, draw=cinzaborda, line width=0.35pt,\n",
       "        inner xsep=6pt, inner ysep=4pt, text width=", largura_box, ", minimum height=", altura_box, ", align=left] (box) {%\n",
-      "    {\\fontsize{6.2}{7.5}\\selectfont\\bfseries\\color{corsecundaria}", escapar_latex(k$rotulo), "}\\par\\vspace{1.2pt}%\n",
-      "    {\\fontsize{9.0}{10.8}\\selectfont\\bfseries\\color{", cor_valor, "}", escapar_latex(k$valor), "}\\par\\vspace{1pt}%\n",
-      "    {\\fontsize{5.9}{7.0}\\selectfont\\color{cinzasub}", escapar_latex(k$sub), "}%\n",
+      "    {\\fontsize{6.0}{7.2}\\selectfont\\bfseries\\color{cinzasub}", escapar_latex(k$rotulo), "}\\par\\vspace{1.2pt}%\n",
+      "    {\\fontsize{9.2}{10.8}\\selectfont\\bfseries\\color{", cor_valor, "}", escapar_latex(k$valor), "}\\par\\vspace{1pt}%\n",
+      "    {\\fontsize{5.8}{6.8}\\selectfont\\color{cinzasub}", escapar_latex(k$sub), "}%\n",
       "  };\n",
-      "  \\fill[", cor_borda, "] (box.north west) rectangle ([xshift=2.4pt]box.south west);\n",
+      "  \\fill[", cor_borda, "] (box.north west) rectangle ([yshift=-1.6pt]box.north east);\n",
       "\\end{tikzpicture}"
     )
   }, character(1))
   paste0("\\noindent\\makebox[\\textwidth][s]{%\n", paste(caixas, collapse = "\\hfill%\n"), "%\n}\n")
 }
 
-# Gera Caixas de Indicadores-Chave (KPIs) + Faixa Setorial Ordenada em LaTeX
+# Gera Faixa de Indicadores-Chave (KPIs) + Faixa Setorial Ordenada em LaTeX
 gerar_kpis_latex <- function(kpis, kpis_extra = NULL) {
   out <- .render_linha_kpis_latex(kpis, eh_ranking_setor = FALSE)
   if (!is.null(kpis_extra) && length(kpis_extra) > 0) {
     out <- paste0(
       out,
       "\\par\\vspace{0.03cm}\n",
-      "\\noindent{\\fontsize{6.3}{7.5}\\selectfont\\bfseries\\color{corsecundaria}DESEMPENHO SETORIAL NO TRIMESTRE (DO MAIOR CRESCIMENTO AO MENOR, DA ESQUERDA PARA A DIREITA)}\\par\\vspace{0.02cm}\n",
+      "\\noindent{\\fontsize{6.2}{7.4}\\selectfont\\bfseries\\color{cinzasub}DESEMPENHO SETORIAL NO TRIMESTRE (DO MAIOR CRESCIMENTO AO MENOR)}\\par\\vspace{0.02cm}\n",
       .render_linha_kpis_latex(kpis_extra, eh_ranking_setor = TRUE)
     )
   }
   out
 }
 
-# Helper interno para gerar 1 grade responsiva de caixas KPI em HTML
+# Helper interno para gerar 1 faixa minimalista de indicadores em HTML (sem caixas pesadas)
 .render_linha_kpis_html <- function(lista_kpis, cor_primaria, cor_fundo, cor_acento) {
   n <- length(lista_kpis)
   if (n == 0) return("")
@@ -182,74 +182,66 @@ gerar_kpis_latex <- function(kpis, kpis_extra = NULL) {
     c_val <- if (!is.null(k$cor_valor_css)) k$cor_valor_css else cor_primaria
     c_brd <- if (!is.null(k$cor_borda_css)) k$cor_borda_css else cor_acento
     sprintf(
-      '<div class="jet-kpi-card" style="background:%s; border:1px solid #d6dce5; border-left:4px solid %s; border-radius:4px; padding:10px 12px; min-width:0;"><div style="font-size:0.68rem; font-weight:700; color:%s; text-transform:uppercase; letter-spacing:0.04em;">%s</div><div style="font-size:1.08rem; font-weight:800; color:%s; margin:3px 0; font-family:Georgia,serif;">%s</div><div style="font-size:0.72rem; color:#475569;">%s</div></div>',
-      cor_fundo, c_brd, cor_primaria, escapar_html(k$rotulo), c_val, escapar_html(k$valor), escapar_html(k$sub)
+      '<div class="jet-kpi-card" style="background:transparent; border-top:2px solid %s; padding:10px 12px 8px 4px; min-width:0;"><div style="font-size:0.66rem; font-weight:700; color:#64748b; text-transform:uppercase; letter-spacing:0.06em;">%s</div><div style="font-size:1.18rem; font-weight:800; color:%s; margin:4px 0 3px 0; font-family:Newsreader,Georgia,serif; font-variant-numeric:tabular-nums;">%s</div><div style="font-size:0.74rem; color:#475569; line-height:1.3;">%s</div></div>',
+      c_brd, escapar_html(k$rotulo), c_val, escapar_html(k$valor), escapar_html(k$sub)
     )
   }, character(1))
   sprintf(
-    '<div class="jet-kpi-grid" style="display:grid; grid-template-columns:repeat(%d, minmax(0, 1fr)); gap:10px; margin:12px 0 10px 0;">%s</div>',
+    '<div class="jet-kpi-grid" style="display:grid; grid-template-columns:repeat(%d, minmax(0, 1fr)); gap:14px; margin:14px 0 12px 0; border-bottom:1px solid #cbd5e1; padding-bottom:10px;">%s</div>',
     cols, paste(cards, collapse = "")
   )
 }
 
-# Gera Caixas de Indicadores-Chave (KPIs) + Faixa Setorial Ordenada em HTML (para news.qmd)
-gerar_kpis_html <- function(kpis, cor_primaria = "#0F2537", cor_fundo = "#F4F6F9", cor_acento = "#C8942B", kpis_extra = NULL) {
+# Gera Faixa de Indicadores-Chave (KPIs) + Faixa Setorial Ordenada em HTML (para news.qmd)
+gerar_kpis_html <- function(kpis, cor_primaria = "#0F2537", cor_fundo = "#FAF8F5", cor_acento = "#C8942B", kpis_extra = NULL) {
   out <- .render_linha_kpis_html(kpis, cor_primaria, cor_fundo, cor_acento)
   if (!is.null(kpis_extra) && length(kpis_extra) > 0) {
     out <- paste0(
       out,
-      sprintf('<div style="font-size:0.68rem; font-weight:800; color:%s; text-transform:uppercase; letter-spacing:0.04em; margin:8px 0 -4px 0;">Desempenho Setorial (do maior crescimento ao menor)</div>', cor_primaria),
+      '<div style="font-size:0.68rem; font-weight:700; color:#64748b; text-transform:uppercase; letter-spacing:0.06em; margin:10px 0 -6px 0;">Desempenho Setorial (do maior crescimento ao menor)</div>',
       .render_linha_kpis_html(kpis_extra, cor_primaria, cor_fundo, cor_acento)
     )
   }
   out
 }
 
-# Gera o Bloco de Diagnóstico Estatístico Automático do Script ("Análise Robótica") em LaTeX
+# Gera o Bloco de Síntese Editorial dos Indicadores em LaTeX (Sem rótulos robóticos "[STATUS]")
 gerar_bloco_diagnostico_script_latex <- function(lista_indicadores, otica = "mensal") {
   res_diag <- gerar_resumo_diagnostico_script(lista_indicadores, otica = otica)
   if (length(res_diag$itens) == 0) return("")
   itens_tex <- vapply(res_diag$itens, function(it) {
-    cor_st <- if (grepl("EXPANS|CRESCIMENTO|AVAN", it$status)) "verdealta"
-              else if (grepl("QUEDA|RETRA|OSCILA", it$status)) "vermelhobaixa"
-              else "corsecundaria"
     paste0(
-      "\\item \\textbf{\\color{", cor_st, "}[", escapar_latex(it$status), "] ",
-      escapar_latex(it$nome), ":} ", escapar_latex(it$frase)
+      "\\item \\textbf{\\color{corprimaria}", escapar_latex(it$nome), ":} ", escapar_latex(it$frase)
     )
   }, character(1))
 
   paste0(
-    "\\noindent\\begin{tikzpicture}\n",
-    "  \\node[fill=corfundo, draw=cinzaborda, line width=0.5pt, rounded corners=2pt,\n",
-    "        inner xsep=8pt, inner ysep=5pt, text width=\\textwidth-17pt, font=\\scriptsize\\color{cinzatexto}] (dbox) {\n",
-    "    {\\footnotesize\\bfseries\\color{corprimaria}", escapar_latex(res_diag$titulo), "}\\par\\vspace{2pt}\n",
-    "    \\begin{itemize}[leftmargin=11pt, itemsep=1.0pt, topsep=1pt, parsep=0pt]\n",
-    paste("      ", itens_tex, collapse = "\n"), "\n",
-    "    \\end{itemize}\n",
-    "  };\n",
-    "  \\fill[corprimaria] (dbox.north west) rectangle ([xshift=3pt]dbox.south west);\n",
-    "\\end{tikzpicture}\n"
+    "\\par\\vspace{0.05cm}\n",
+    "\\noindent{\\color{cinzaborda}\\hrule height 0.5pt}\\par\\vspace{4pt}\n",
+    "{\\fontsize{7.8}{9.4}\\selectfont\\bfseries\\color{corprimaria}\\MakeUppercase{", escapar_latex(res_diag$titulo), "}}\\par\\vspace{2pt}\n",
+    "{\\scriptsize\\color{cinzatexto}\n",
+    "\\begin{itemize}[leftmargin=10pt, itemsep=1.2pt, topsep=1pt, parsep=0pt]\n",
+    paste("  ", itens_tex, collapse = "\n"), "\n",
+    "\\end{itemize}\n",
+    "}\n",
+    "\\noindent{\\color{cinzaborda}\\hrule height 0.5pt}\\par\\vspace{0.05cm}\n"
   )
 }
 
-# Gera o Bloco de Diagnóstico Estatístico Automático do Script em HTML (para news.qmd)
-gerar_bloco_diagnostico_script_html <- function(lista_indicadores, otica = "mensal", cor_primaria = "#0F2537", cor_fundo = "#F4F6F9", cor_acento = "#C8942B") {
+# Gera o Bloco de Síntese Editorial em HTML (para news.qmd, sem caixas/colchetes robóticos)
+gerar_bloco_diagnostico_script_html <- function(lista_indicadores, otica = "mensal", cor_primaria = "#0F2537", cor_fundo = "#FAF8F5", cor_acento = "#C8942B") {
   res_diag <- gerar_resumo_diagnostico_script(lista_indicadores, otica = otica)
   if (length(res_diag$itens) == 0) return("")
   lis <- vapply(res_diag$itens, function(it) {
-    cor_st <- if (grepl("EXPANS|CRESCIMENTO|AVAN", it$status)) "#15803d"
-              else if (grepl("QUEDA|RETRA|OSCILA", it$status)) "#b91c1c"
-              else cor_primaria
     sprintf(
-      '<li style="margin-bottom:4px;"><span style="font-weight:700; color:%s;">[%s] %s:</span> %s</li>',
-      cor_st, escapar_html(it$status), escapar_html(it$nome), escapar_html(it$frase)
+      '<li style="margin-bottom:5px; line-height:1.48;"><strong style="color:%s;">%s:</strong> %s</li>',
+      cor_primaria, escapar_html(it$nome), escapar_html(it$frase)
     )
   }, character(1))
 
   sprintf(
-    '<div style="background:%s; border:1px solid #cbd5e1; border-left:4px solid %s; border-radius:4px; padding:11px 15px; margin:12px 0 16px 0; font-size:0.84rem;"><div style="font-weight:700; color:%s; margin-bottom:6px; text-transform:uppercase; font-size:0.76rem; letter-spacing:0.03em;">%s</div><ul style="margin:0; padding-left:18px;">%s</ul></div>',
-    cor_fundo, cor_primaria, cor_primaria, escapar_html(res_diag$titulo), paste(lis, collapse = "")
+    '<div style="border-top:1px solid #cbd5e1; border-bottom:1px solid #cbd5e1; padding:12px 2px; margin:14px 0 18px 0; font-size:0.86rem;"><div style="font-weight:700; color:%s; margin-bottom:7px; text-transform:uppercase; font-size:0.72rem; letter-spacing:0.08em;">%s</div><ul style="margin:0; padding-left:18px; color:#334155;">%s</ul></div>',
+    cor_primaria, escapar_html(res_diag$titulo), paste(lis, collapse = "")
   )
 }
 
@@ -368,21 +360,26 @@ gerar_tabela_padrao_html <- function(df, col_nomes, alinhamento, titulo_tabela, 
   )
 }
 
-# Tema de Gráficos ggplot2 dos Boletins
+# Tema de Gráficos ggplot2 dos Boletins (Estilo Editorial FT / The Economist)
 tema_grafico_boletim <- function() {
-  theme_minimal(base_size = 8.5) +
+  theme_minimal(base_size = 8.6) +
     theme(
-      plot.title       = element_text(face = "bold", size = 9.2, color = "#0F2537", margin = margin(b = 2)),
-      plot.subtitle    = element_text(size = 7.5, color = "#64748B", margin = margin(b = 5)),
-      legend.position  = "top",
-      legend.title     = element_blank(),
-      legend.text      = element_text(size = 7.5),
-      legend.margin    = margin(b = -4),
-      panel.grid.minor = element_blank(),
-      panel.grid.major = element_line(color = "#E2E8F0", linewidth = 0.35),
-      axis.text        = element_text(size = 7.5, color = "#334155"),
-      axis.title       = element_text(size = 7.8, face = "bold", color = "#334155"),
-      plot.margin      = margin(4, 6, 4, 4)
+      plot.title         = element_text(face = "bold", size = 9.6, color = "#0F2537", hjust = 0, margin = margin(b = 2)),
+      plot.subtitle      = element_text(size = 7.4, color = "#64748B", hjust = 0, margin = margin(b = 7)),
+      legend.position    = "top",
+      legend.justification = "left",
+      legend.title       = element_blank(),
+      legend.text        = element_text(size = 7.5, color = "#334155"),
+      legend.margin      = margin(b = -2),
+      panel.grid.minor   = element_blank(),
+      panel.grid.major.x = element_blank(),
+      panel.grid.major.y = element_line(color = "#CBD5E1", linewidth = 0.35, linetype = "dotted"),
+      axis.line.x        = element_line(color = "#94A3B8", linewidth = 0.4),
+      axis.text          = element_text(size = 7.4, color = "#475569"),
+      axis.title         = element_text(size = 7.6, face = "bold", color = "#334155"),
+      plot.background    = element_rect(fill = "#FFFFFF", color = NA),
+      panel.background   = element_rect(fill = "#FFFFFF", color = NA),
+      plot.margin        = margin(6, 8, 6, 4)
     )
 }
 
@@ -445,65 +442,59 @@ preencher_template_tex <- function(caminho_template, substituicoes) {
   tex
 }
 
-# Definição das 3 Paletas e Estilos Editoriais Aprovados
+# Paleta Editorial Unificada JET (Azul-Marinho #0F2537 + Dourado/Ocre #C8942B sobre papel claro)
 obter_identidade_editorial <- function(tipo) {
   tp <- tolower(trimws(tipo))
   if (grepl("^carta", tp)) {
-    # CARTA DE CONJUNTURA: Azul Cobalto Profundo (#0A2E73), Verde Esmeralda Técnico (#1B7A43),
-    #                      Verde-Lima Editorial (#8CE000 exclusivo no cabeçalho escuro) e Branco/Gelo (#F3F6FB)
     list(
       familia               = "carta",
       estilo_layout         = "periodico",
-      publicar_no_site      = FALSE, # Exclusiva para assinantes (PDF em boletins/pdfs/)
+      publicar_no_site      = FALSE,
       tipo_upper            = "CARTA DE CONJUNTURA DO TOCANTINS",
-      cor_primaria_hex      = "0A2E73",
-      cor_secundaria_hex    = "1B7A43",
-      cor_acento_hex        = "1B7A43",
-      cor_acento_header_hex = "8CE000",
-      cor_acento_texto_hex  = "0A2E73",
-      cor_fundo_hex         = "F3F6FB",
-      cor_primaria_css      = "#0A2E73",
-      cor_secundaria_css    = "#1B7A43",
-      cor_acento_css        = "#1B7A43",
-      cor_fundo_css         = "#F3F6FB"
-    )
-  } else if (grepl("^(dossie|fechamento)", tp)) {
-    # DOSSIÊ ANUAL (DA): Verde Floresta (#0B5D32), Marfim Editorial Suave (#FAF6EE)
-    #                    e Carmim Editorial (#A61C1C apenas em filetes/marcadores/séries secundárias)
-    list(
-      familia               = "dossie",
-      estilo_layout         = "periodico",
-      publicar_no_site      = TRUE,
-      tipo_upper            = "DOSSIÊ ANUAL / SEMESTRAL (DA)",
-      cor_primaria_hex      = "0B5D32",
-      cor_secundaria_hex    = "146B3A",
-      cor_acento_hex        = "A61C1C",
-      cor_acento_header_hex = "FAF6EE",
-      cor_acento_texto_hex  = "0B5D32",
-      cor_fundo_hex         = "FAF6EE",
-      cor_primaria_css      = "#0B5D32",
-      cor_secundaria_css    = "#146B3A",
-      cor_acento_css        = "#A61C1C",
-      cor_fundo_css         = "#FAF6EE"
-    )
-  } else {
-    # BOLETIM FLASH: Azul-Marinho (#0F2537), Azul Secundário (#244B6B),
-    #                Dourado Institucional (#C8942B) e Fundo Cinza Claro (#F4F6F9)
-    list(
-      familia               = "flash",
-      estilo_layout         = "padrao",
-      publicar_no_site      = TRUE,
-      tipo_upper            = "BOLETIM RÁPIDO (FLASH MENSAL)",
       cor_primaria_hex      = "0F2537",
       cor_secundaria_hex    = "244B6B",
       cor_acento_hex        = "C8942B",
       cor_acento_header_hex = "C8942B",
       cor_acento_texto_hex  = "0F2537",
-      cor_fundo_hex         = "F4F6F9",
+      cor_fundo_hex         = "FAF8F5",
       cor_primaria_css      = "#0F2537",
       cor_secundaria_css    = "#244B6B",
       cor_acento_css        = "#C8942B",
-      cor_fundo_css         = "#F4F6F9"
+      cor_fundo_css         = "#FAF8F5"
+    )
+  } else if (grepl("^(dossie|fechamento)", tp)) {
+    list(
+      familia               = "dossie",
+      estilo_layout         = "periodico",
+      publicar_no_site      = TRUE,
+      tipo_upper            = "DOSSIÊ ANUAL / SEMESTRAL (DA)",
+      cor_primaria_hex      = "0F2537",
+      cor_secundaria_hex    = "334155",
+      cor_acento_hex        = "9A6C11",
+      cor_acento_header_hex = "C8942B",
+      cor_acento_texto_hex  = "0F2537",
+      cor_fundo_hex         = "FAF8F5",
+      cor_primaria_css      = "#0F2537",
+      cor_secundaria_css    = "#334155",
+      cor_acento_css        = "#9A6C11",
+      cor_fundo_css         = "#FAF8F5"
+    )
+  } else {
+    list(
+      familia               = "flash",
+      estilo_layout         = "padrao",
+      publicar_no_site      = TRUE,
+      tipo_upper            = "BOLETIM FLASH DE CONJUNTURA",
+      cor_primaria_hex      = "0F2537",
+      cor_secundaria_hex    = "244B6B",
+      cor_acento_hex        = "C8942B",
+      cor_acento_header_hex = "C8942B",
+      cor_acento_texto_hex  = "0F2537",
+      cor_fundo_hex         = "F8FAFC",
+      cor_primaria_css      = "#0F2537",
+      cor_secundaria_css    = "#244B6B",
+      cor_acento_css        = "#C8942B",
+      cor_fundo_css         = "#F8FAFC"
     )
   }
 }

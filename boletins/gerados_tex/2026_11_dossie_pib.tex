@@ -32,12 +32,12 @@
 \usepackage{hyperref}
 
 % Paleta Editorial Dinâmica (Proporção 75% Neutro / 20% Primária / 5% Acento)
-\definecolor{corprimaria}{HTML}{0B5D32}
-\definecolor{corsecundaria}{HTML}{146B3A}
-\definecolor{coracento}{HTML}{A61C1C}
-\definecolor{coracentoheader}{HTML}{FAF6EE}
-\definecolor{coracentotexto}{HTML}{0B5D32}
-\definecolor{corfundo}{HTML}{FAF6EE}
+\definecolor{corprimaria}{HTML}{0F2537}
+\definecolor{corsecundaria}{HTML}{334155}
+\definecolor{coracento}{HTML}{9A6C11}
+\definecolor{coracentoheader}{HTML}{C8942B}
+\definecolor{coracentotexto}{HTML}{0F2537}
+\definecolor{corfundo}{HTML}{FAF8F5}
 \definecolor{cinzatexto}{HTML}{1E293B}
 \definecolor{cinzasub}{HTML}{475569}
 \definecolor{cinzaborda}{HTML}{CBD5E1}
@@ -72,37 +72,25 @@
 \fancyfoot[L]{\scriptsize\color{cinzasub}\textbf{\color{corprimaria}Jornal Econômico do Tocantins} $\cdot$ Lorenzo Costa | Graduado em Economia — Jornal Econômico do Tocantins $\cdot$ Publicado em 14/11/2026}
 \fancyfoot[R]{\scriptsize\bfseries\color{corprimaria}Pág. \thepage\ de \pageref*{LastPage}}
 
-% Banner de Abertura de Seção Principal (Caderno Periódico)
+% Banner Editorial Limpo de Abertura de Seção Principal (Caderno Periódico)
 \newcommand{\bannersecaoperiodico}[3]{%
-  \par\vspace{0.14cm}%
-  \noindent\begin{tikzpicture}
-    \node[
-      fill=corprimaria,
-      inner xsep=10pt,
-      inner ysep=6pt,
-      text width=\textwidth-20pt,
-      align=left
-    ] (bsec) {
-      \hbox to \linewidth{%
-        {\colorbox{coracentoheader}{\strut\hspace{4pt}\scriptsize\bfseries\color{coracentotexto}SEÇÃO #1\hspace{4pt}}}%
-        \hspace{8pt}%
-        {\normalsize\bfseries\color{white}#2}%
-        \hfill
-      }%
-      \par\vspace{2pt}%
-      {\scriptsize\color{corfundo}#3\par}%
-    };
-    \fill[coracento] (bsec.south west) rectangle ([yshift=-2pt]bsec.south east);
-  \end{tikzpicture}%
+  \par\vspace{0.16cm}%
+  \noindent{\color{corprimaria}\hrule height 1.4pt}%
+  \par\vspace{4pt}%
+  \noindent{\scriptsize\bfseries\color{coracento}SEÇÃO #1 \enspace$\cdot$\enspace}{\normalsize\bfseries\color{corprimaria}#2}%
+  \par\vspace{2pt}%
+  {\scriptsize\itshape\color{cinzasub}#3\par}%
+  \vspace{3pt}%
+  {\color{cinzaborda}\hrule height 0.5pt}%
   \par\vspace{0.10cm}%
 }
 
 % Subtítulo de Coluna dentro do Layout de 2 Colunas
 \newcommand{\secaoperiodico}[1]{%
   \par\vspace{0.10cm}%
-  \noindent{\small\bfseries\color{corprimaria}\rule{0.14cm}{0.26cm}\hspace{4pt}{\color{coracento}\rule{0.06cm}{0.26cm}}\hspace{5pt}#1}%
+  \noindent{\small\bfseries\color{corprimaria}#1}%
   \par\vspace{0.03cm}%
-  {\color{coracento}\hrule height 0.7pt}%
+  {\color{coracento}\hrule height 0.6pt}%
   \vspace{0.06cm}%
 }
 
@@ -110,111 +98,103 @@
 \color{cinzatexto}
 
 % ==============================================================================
-% MASTHEAD DE CAPA DO PERIÓDICO (AUTO-AJUSTÁVEL, SEM COLISÃO DE TÍTULO/SUBTÍTULO)
+% MASTHEAD EDITORIAL CLARO DE PERIÓDICO (DOSSIÊ ANUAL OU CARTA DE CONJUNTURA)
 % ==============================================================================
-\noindent\begin{tikzpicture}
-  \node[
-    fill=corprimaria,
-    inner xsep=12pt,
-    inner ysep=9pt,
-    text width=\textwidth-24pt,
-    align=left
-  ] (masthead) {
-    \hbox to \linewidth{%
-      {\colorbox{coracentoheader}{\strut\hspace{5pt}\scriptsize\bfseries\color{coracentotexto}DOSSIÊ ANUAL / SEMESTRAL (DA) $\cdot$ \#08/2026\hspace{5pt}}}%
-      \hfill
-      {\scriptsize\color{white}\textbf{JORNAL ECONÔMICO DO TOCANTINS} \enspace{\color{coracentoheader}$\vert$}\enspace Publicado em 14/11/2026}%
-    }%
-    \par\vspace{4pt}%
-    {\color{coracento}\hrule height 0.9pt}%
-    \par\vspace{5pt}%
-    {\fontsize{13.5}{16.2}\selectfont\bfseries\color{white}Dossiê Anual — PIB do Tocantins, Séries Dessazonalizadas e Contas Regionais\par}%
-    \vspace{3pt}%
-    {\footnotesize\color{corfundo}Balanço estrutural sob a ótica acumulada em 4 trimestres e plurianual: comparação entre o ajuste sazonal X-13ARIMA-SEATS (TO), a Tabela 1621 do IBGE (Brasil) e o PIB Municipal (Tabela 5938) \enspace{\color{coracentoheader}$\vert$}\enspace \textbf{Ref.: Consolidado Anual / Últimos 4 Trimestres (2025–2026)}\par}%
-  };
-  \fill[coracento] (masthead.south west) rectangle ([yshift=-2.6pt]masthead.south east);
-\end{tikzpicture}
+\noindent{\color{corprimaria}\hrule height 2.2pt}%
+\par\vspace{2pt}%
+{\color{coracento}\hrule height 0.8pt}%
+\par\vspace{6pt}%
+\noindent\hbox to \linewidth{%
+  {\scriptsize\bfseries\color{coracento}\MakeUppercase{DOSSIÊ ANUAL / SEMESTRAL (DA)} \enspace$\cdot$\enspace \#08/2026}%
+  \hfill
+  {\scriptsize\color{cinzasub}\textbf{\color{corprimaria}JORNAL ECONÔMICO DO TOCANTINS} \enspace$\vert$\enspace Publicado em 14/11/2026}%
+}%
+\par\vspace{5pt}%
+{\fontsize{14.5}{17.4}\selectfont\bfseries\color{corprimaria}Dossiê Anual — PIB do Tocantins, Séries Dessazonalizadas e Contas Regionais\par}%
+\vspace{3pt}%
+{\footnotesize\itshape\color{cinzasub}Balanço estrutural sob a ótica acumulada em 4 trimestres e plurianual: comparação entre o ajuste sazonal X-13ARIMA-SEATS (TO), a Tabela 1621 do IBGE (Brasil) e o PIB Municipal (Tabela 5938) \enspace$\vert$\enspace \textbf{\color{corprimaria}Ref.: Consolidado Anual / Últimos 4 Trimestres (2025–2026)}\par}%
+\par\vspace{6pt}%
+{\color{cinzaborda}\hrule height 0.6pt}%
 
-\vspace{0.10cm}
+\vspace{0.12cm}
 
 % ==============================================================================
 % CORPO COMPLETO DO PERIÓDICO (DOSSIÊ ANUAL OU CARTA DE CONJUNTURA)
 % ==============================================================================
 \noindent\makebox[\textwidth][s]{%
 \begin{tikzpicture}[baseline=(box.base)]
-  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
-        inner xsep=6pt, inner ysep=4pt, text width=0.286\textwidth, minimum height=1.22cm, align=left] (box) {%
-    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}PIB NOMINAL (TOCANTINS)}\par\vspace{1.2pt}%
-    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}R\$ 25,8 Bi $\blacktriangledown$ 1,3\%}\par\vspace{1pt}%
-    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Ref.: T1 2026 (SEPLAN-TO)}%
+  \node[fill=white, draw=cinzaborda, line width=0.35pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.286\textwidth, minimum height=1.14cm, align=left] (box) {%
+    {\fontsize{6.0}{7.2}\selectfont\bfseries\color{cinzasub}PIB NOMINAL (TOCANTINS)}\par\vspace{1.2pt}%
+    {\fontsize{9.2}{10.8}\selectfont\bfseries\color{corprimaria}R\$ 25,8 Bi $\blacktriangledown$ 1,3\%}\par\vspace{1pt}%
+    {\fontsize{5.8}{6.8}\selectfont\color{cinzasub}Ref.: T1 2026 (SEPLAN-TO)}%
   };
-  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+  \fill[coracento] (box.north west) rectangle ([yshift=-1.6pt]box.north east);
 \end{tikzpicture}\hfill%
 \begin{tikzpicture}[baseline=(box.base)]
-  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
-        inner xsep=6pt, inner ysep=4pt, text width=0.286\textwidth, minimum height=1.22cm, align=left] (box) {%
-    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}IMPOSTOS LÍQUIDOS (TO)}\par\vspace{1.2pt}%
-    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}R\$ 2,26 Bi $\blacktriangledown$ 0,2\%}\par\vspace{1pt}%
-    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Preços Correntes e Var. Dessaz.}%
+  \node[fill=white, draw=cinzaborda, line width=0.35pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.286\textwidth, minimum height=1.14cm, align=left] (box) {%
+    {\fontsize{6.0}{7.2}\selectfont\bfseries\color{cinzasub}IMPOSTOS LÍQUIDOS (TO)}\par\vspace{1.2pt}%
+    {\fontsize{9.2}{10.8}\selectfont\bfseries\color{corprimaria}R\$ 2,26 Bi $\blacktriangledown$ 0,2\%}\par\vspace{1pt}%
+    {\fontsize{5.8}{6.8}\selectfont\color{cinzasub}Preços Correntes e Var. Dessaz.}%
   };
-  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+  \fill[coracento] (box.north west) rectangle ([yshift=-1.6pt]box.north east);
 \end{tikzpicture}\hfill%
 \begin{tikzpicture}[baseline=(box.base)]
-  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
-        inner xsep=6pt, inner ysep=4pt, text width=0.286\textwidth, minimum height=1.22cm, align=left] (box) {%
-    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}PIB NOMINAL (BRASIL)}\par\vspace{1.2pt}%
-    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{corprimaria}R\$ 3,43 Tri $\blacktriangle$ 0,5\%}\par\vspace{1pt}%
-    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}IBGE Tabelas 1846 / 5932}%
+  \node[fill=white, draw=cinzaborda, line width=0.35pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.286\textwidth, minimum height=1.14cm, align=left] (box) {%
+    {\fontsize{6.0}{7.2}\selectfont\bfseries\color{cinzasub}PIB NOMINAL (BRASIL)}\par\vspace{1.2pt}%
+    {\fontsize{9.2}{10.8}\selectfont\bfseries\color{corprimaria}R\$ 3,43 Tri $\blacktriangle$ 0,5\%}\par\vspace{1pt}%
+    {\fontsize{5.8}{6.8}\selectfont\color{cinzasub}IBGE Tabelas 1846 / 5932}%
   };
-  \fill[coracento] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+  \fill[coracento] (box.north west) rectangle ([yshift=-1.6pt]box.north east);
 \end{tikzpicture}%
 }
 \par\vspace{0.03cm}
-\noindent{\fontsize{6.3}{7.5}\selectfont\bfseries\color{corsecundaria}DESEMPENHO SETORIAL NO TRIMESTRE (DO MAIOR CRESCIMENTO AO MENOR, DA ESQUERDA PARA A DIREITA)}\par\vspace{0.02cm}
+\noindent{\fontsize{6.2}{7.4}\selectfont\bfseries\color{cinzasub}DESEMPENHO SETORIAL NO TRIMESTRE (DO MAIOR CRESCIMENTO AO MENOR)}\par\vspace{0.02cm}
 \noindent\makebox[\textwidth][s]{%
 \begin{tikzpicture}[baseline=(box.base)]
-  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
-        inner xsep=6pt, inner ysep=4pt, text width=0.286\textwidth, minimum height=0.92cm, align=left] (box) {%
-    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}1\textordmasculine{} Indústria}\par\vspace{1.2pt}%
-    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{verdealta}$\blacktriangle$ + 3,1\%}\par\vspace{1pt}%
-    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Maior crescimento trimestral}%
+  \node[fill=white, draw=cinzaborda, line width=0.35pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.286\textwidth, minimum height=0.88cm, align=left] (box) {%
+    {\fontsize{6.0}{7.2}\selectfont\bfseries\color{cinzasub}1\textordmasculine{} Indústria}\par\vspace{1.2pt}%
+    {\fontsize{9.2}{10.8}\selectfont\bfseries\color{verdealta}$\blacktriangle$ + 3,1\%}\par\vspace{1pt}%
+    {\fontsize{5.8}{6.8}\selectfont\color{cinzasub}Maior crescimento trimestral}%
   };
-  \fill[verdealta] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+  \fill[verdealta] (box.north west) rectangle ([yshift=-1.6pt]box.north east);
 \end{tikzpicture}\hfill%
 \begin{tikzpicture}[baseline=(box.base)]
-  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
-        inner xsep=6pt, inner ysep=4pt, text width=0.286\textwidth, minimum height=0.92cm, align=left] (box) {%
-    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}2\textordmasculine{} Serviços}\par\vspace{1.2pt}%
-    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{verdealta}$\blacktriangle$ + 1,5\%}\par\vspace{1pt}%
-    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Desempenho positivo na margem}%
+  \node[fill=white, draw=cinzaborda, line width=0.35pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.286\textwidth, minimum height=0.88cm, align=left] (box) {%
+    {\fontsize{6.0}{7.2}\selectfont\bfseries\color{cinzasub}2\textordmasculine{} Serviços}\par\vspace{1.2pt}%
+    {\fontsize{9.2}{10.8}\selectfont\bfseries\color{verdealta}$\blacktriangle$ + 1,5\%}\par\vspace{1pt}%
+    {\fontsize{5.8}{6.8}\selectfont\color{cinzasub}Desempenho positivo na margem}%
   };
-  \fill[verdealta] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+  \fill[verdealta] (box.north west) rectangle ([yshift=-1.6pt]box.north east);
 \end{tikzpicture}\hfill%
 \begin{tikzpicture}[baseline=(box.base)]
-  \node[fill=corfundo, draw=cinzaborda, line width=0.45pt, rounded corners=2pt,
-        inner xsep=6pt, inner ysep=4pt, text width=0.286\textwidth, minimum height=0.92cm, align=left] (box) {%
-    {\fontsize{6.2}{7.5}\selectfont\bfseries\color{corsecundaria}3\textordmasculine{} Agropecuária}\par\vspace{1.2pt}%
-    {\fontsize{9.0}{10.8}\selectfont\bfseries\color{vermelhobaixa}$\blacktriangledown$ - 7,2\%}\par\vspace{1pt}%
-    {\fontsize{5.9}{7.0}\selectfont\color{cinzasub}Retração trimestral na margem}%
+  \node[fill=white, draw=cinzaborda, line width=0.35pt,
+        inner xsep=6pt, inner ysep=4pt, text width=0.286\textwidth, minimum height=0.88cm, align=left] (box) {%
+    {\fontsize{6.0}{7.2}\selectfont\bfseries\color{cinzasub}3\textordmasculine{} Agropecuária}\par\vspace{1.2pt}%
+    {\fontsize{9.2}{10.8}\selectfont\bfseries\color{vermelhobaixa}$\blacktriangledown$ - 7,2\%}\par\vspace{1pt}%
+    {\fontsize{5.8}{6.8}\selectfont\color{cinzasub}Retração trimestral na margem}%
   };
-  \fill[vermelhobaixa] (box.north west) rectangle ([xshift=2.4pt]box.south west);
+  \fill[vermelhobaixa] (box.north west) rectangle ([yshift=-1.6pt]box.north east);
 \end{tikzpicture}%
 }
 
 \vspace{0.03cm}
-\noindent\begin{tikzpicture}
-  \node[fill=corfundo, draw=cinzaborda, line width=0.5pt, rounded corners=2pt,
-        inner xsep=8pt, inner ysep=5pt, text width=\textwidth-17pt, font=\scriptsize\color{cinzatexto}] (dbox) {
-    {\footnotesize\bfseries\color{corprimaria}Síntese de Variações e Desempenho (Ótica Anual / 12 Meses)}\par\vspace{2pt}
-    \begin{itemize}[leftmargin=11pt, itemsep=1.0pt, topsep=1pt, parsep=0pt]
-       \item \textbf{\color{vermelhobaixa}[OSCILAÇÃO NEGATIVA LEVE] PIB Trimestral do Tocantins (Ajuste Sazonal X-13):} PIB Trimestral do Tocantins (Ajuste Sazonal X-13) apresentou acomodação negativa de -1,28\%. [nível: R\$ 25,8 Bi $\blacktriangledown$ 1,3\%]
-       \item \textbf{\color{verdealta}[AVANÇO MODERADO] PIB Trimestral do Brasil (IBGE Tabela 1621):} PIB Trimestral do Brasil (IBGE Tabela 1621) avançou +1,07\% em trajetória de expansão gradual. [nível: R\$ 3,43 Tri $\blacktriangle$ 0,5\%]
-       \item \textbf{\color{verdealta}[AVANÇO MODERADO] 1\textordmasculine{} Setor em Desempenho (Indústria):} 1\textordmasculine{} Setor em Desempenho (Indústria) avançou +3,07\% em trajetória de expansão gradual. [nível: $\blacktriangle$ + 3,1\%]
-       \item \textbf{\color{vermelhobaixa}[RETRAÇÃO RELEVANTE] 3\textordmasculine{} Setor em Desempenho (Agropecuária):} 3\textordmasculine{} Setor em Desempenho (Agropecuária) recuou -7,16\%, sinalizando desaceleração relevante no período. [nível: $\blacktriangledown$ - 7,2\%]
-    \end{itemize}
-  };
-  \fill[corprimaria] (dbox.north west) rectangle ([xshift=3pt]dbox.south west);
-\end{tikzpicture}
+\par\vspace{0.05cm}
+\noindent{\color{cinzaborda}\hrule height 0.5pt}\par\vspace{4pt}
+{\fontsize{7.8}{9.4}\selectfont\bfseries\color{corprimaria}\MakeUppercase{Síntese dos Indicadores — Balanço em 12 Meses}}\par\vspace{2pt}
+{\scriptsize\color{cinzatexto}
+\begin{itemize}[leftmargin=10pt, itemsep=1.2pt, topsep=1pt, parsep=0pt]
+   \item \textbf{\color{corprimaria}PIB Trimestral do Tocantins (Ajuste Sazonal X-13):} PIB Trimestral do Tocantins (Ajuste Sazonal X-13) apresentou acomodação negativa de -1,28\%. (patamar atual: R\$ 25,8 Bi $\blacktriangledown$ 1,3\%)
+   \item \textbf{\color{corprimaria}PIB Trimestral do Brasil (IBGE Tabela 1621):} PIB Trimestral do Brasil (IBGE Tabela 1621) avançou +1,07\% em trajetória de expansão gradual. (patamar atual: R\$ 3,43 Tri $\blacktriangle$ 0,5\%)
+   \item \textbf{\color{corprimaria}1\textordmasculine{} Setor em Desempenho (Indústria):} 1\textordmasculine{} Setor em Desempenho (Indústria) avançou +3,07\% em trajetória de expansão gradual. (patamar atual: $\blacktriangle$ + 3,1\%)
+   \item \textbf{\color{corprimaria}3\textordmasculine{} Setor em Desempenho (Agropecuária):} 3\textordmasculine{} Setor em Desempenho (Agropecuária) recuou -7,16\%, sinalizando desaceleração relevante no período. (patamar atual: $\blacktriangledown$ - 7,2\%)
+\end{itemize}
+}
+\noindent{\color{cinzaborda}\hrule height 0.5pt}\par\vspace{0.05cm}
 
 \vspace{0.03cm}
 \begin{multicols}{2}
